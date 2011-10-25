@@ -29,12 +29,12 @@ namespace InstaSharp.Endpoints.Media {
             return _unauthenticated.PopularJson();
         }
 
-         public MediaResponse Search(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
-            return (MediaResponse)Json.Map<MediaResponse>(SearchJson(longitude, longitude, maxTimestamp, minTimestamp, distance));
-        }
+        // public MediaResponse Search(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
+        //    return (MediaResponse)Json.Map<MediaResponse>(SearchJson(longitude, longitude, maxTimestamp, minTimestamp, distance));
+        //}
 
-        public string SearchJson(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
-            return _unauthenticated.SearchJson(latitude, longitude, maxTimestamp, minTimestamp, distance);
-        }
+        //public string SearchJson(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
+        //    return _unauthenticated.SearchJson(latitude, longitude, maxTimestamp, minTimestamp, distance);
+        //}
     }
 }

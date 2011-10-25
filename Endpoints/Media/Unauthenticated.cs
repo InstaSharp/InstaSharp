@@ -29,11 +29,22 @@ namespace InstaSharp.Endpoints.Media {
             return HttpClient.GET(uri);
         }
 
-        public MediaResponse Search(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
+        public MediaResponse Search(double latitude, double longitude) {
+            return Search(latitude, longitude, null, null, null);
+        }
+
+        //public MediaResponse Search(double latitude, double longitude, DateTime maxTimestamp, int minTimestamp) {
+            
+        //}
+
+
+        public MediaResponse Search(double latitude, double longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
             return (MediaResponse)Json.Map<MediaResponse>(SearchJson(longitude, longitude, maxTimestamp, minTimestamp, distance));
         }
 
-        public string SearchJson(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
+
+
+        private string SearchJson(double latitude, double longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
             string uri = string.Format("search?client_id={0}lat={1}&long={2}", InstagramConfig.ClientId, latitude, longitude);
 
             if (maxTimestamp != 0) uri += "&max_timestamp=" + maxTimestamp;
