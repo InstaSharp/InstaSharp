@@ -1,0 +1,10 @@
+C:\Projects\2010\InstaSharp\bin\Release\InstaSharp.dll
+C:\Projects\2010\InstaSharp\bin\Release\InstaSharp.pdb
+C:\Projects\2010\InstaSharp\obj\Release\ResolveAssemblyReference.cache
+C:\Projects\2010\InstaSharp\obj\Release\InstaSharp.dll
+C:\Projects\2010\InstaSharp\obj\Release\InstaSharp.pdb
+C:\Projects\2010\InstaBoard\InstaSharp\bin\Release\InstaSharp.dll
+C:\Projects\2010\InstaBoard\InstaSharp\bin\Release\InstaSharp.pdb
+C:\Projects\2010\InstaBoard\InstaSharp\obj\Release\ResolveAssemblyReference.cache
+C:\Projects\2010\InstaBoard\InstaSharp\obj\Release\InstaSharp.dll
+C:\Projects\2010\InstaBoard\InstaSharp\obj\Release\InstaSharp.pdb
