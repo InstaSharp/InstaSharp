@@ -12,7 +12,7 @@ namespace InstaSharp.Endpoints.Media {
         }
 
         public MediaResponse Get(string mediaId) {
-            return (MediaResponse)Json.Map<MediaResponse>(GetJson(mediaId));         
+            return (MediaResponse)Mapper.Map<MediaResponse>(GetJson(mediaId));         
         }
 
         public string GetJson(string mediaId) {
@@ -21,7 +21,7 @@ namespace InstaSharp.Endpoints.Media {
         }
 
         public MediaResponse Popular() {
-            return (MediaResponse)Json.Map<MediaResponse>(PopularJson());
+            return (MediaResponse)Mapper.Map<MediaResponse>(PopularJson());
         }
 
         public string PopularJson() {
@@ -30,25 +30,21 @@ namespace InstaSharp.Endpoints.Media {
         }
 
         public MediaResponse Search(double latitude, double longitude) {
-            return Search(latitude, longitude, null, null, null);
+            return Search(latitude, longitude, null, null, 0);
         }
 
-        //public MediaResponse Search(double latitude, double longitude, DateTime maxTimestamp, int minTimestamp) {
-            
-        //}
-
-
-        public MediaResponse Search(double latitude, double longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
-            return (MediaResponse)Json.Map<MediaResponse>(SearchJson(longitude, longitude, maxTimestamp, minTimestamp, distance));
+        public MediaResponse Search(double latitude, double longitude, DateTime? maxTimestamp, DateTime? minTimestamp) {
+            return Search(latitude, longitude, maxTimestamp, minTimestamp, 0);
         }
 
+        public MediaResponse Search(double latitude, double longitude, DateTime? maxTimestamp, DateTime? minTimestamp, int distance) {
+            return (MediaResponse)Mapper.Map<MediaResponse>(SearchJson(latitude, longitude, maxTimestamp, minTimestamp, distance));
+        } 
 
-
-        private string SearchJson(double latitude, double longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
+        private string SearchJson(double latitude, double longitude, DateTime? maxTimestamp, DateTime? minTimestamp, int distance) {
             string uri = string.Format("search?client_id={0}lat={1}&long={2}", InstagramConfig.ClientId, latitude, longitude);
 
-            if (maxTimestamp != 0) uri += "&max_timestamp=" + maxTimestamp;
-            if (minTimestamp != 0) uri += "&min_timestamp=" + minTimestamp;
+            if (maxTimestamp != null) uri += string.Format("&max_timestamp={0}&min_timestamp={1}", maxTimestamp, minTimestamp);
             if (distance != 0) uri += "&distance=" + distance;
 
             return HttpClient.GET(uri);

@@ -11,7 +11,7 @@ namespace InstaSharp.Endpoints.Likes {
             : base(config, "/media/") { }
 
         public UsersResponse Get(string mediaId) {
-            return (UsersResponse)Json.Map<UsersResponse>(GetJson(mediaId));
+            return (UsersResponse)Mapper.Map<UsersResponse>(GetJson(mediaId));
         }
 
         public string GetJson(string mediaId) {

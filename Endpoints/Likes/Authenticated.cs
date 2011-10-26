@@ -22,8 +22,8 @@ namespace InstaSharp.Endpoints.Likes {
             return _unauthenticated.GetJson(mediaId);
         }
 
-         public UsersResponse Post(string mediaId) {
-            return (UsersResponse)Json.Map<UsersResponse>(PostJson(mediaId));
+         public LikesResponse Post(string mediaId) {
+            return (LikesResponse)Mapper.Map<LikesResponse>(PostJson(mediaId));
         }
 
         public string PostJson(string mediaId) {
@@ -32,7 +32,7 @@ namespace InstaSharp.Endpoints.Likes {
         }
 
         public LikesResponse Delete(string mediaId) {
-            return (LikesResponse)Json.Map<LikesResponse>(DeleteJson(mediaId));
+            return (LikesResponse)Mapper.Map<LikesResponse>(DeleteJson(mediaId));
         }
 
         public string DeleteJson(string mediaId) {

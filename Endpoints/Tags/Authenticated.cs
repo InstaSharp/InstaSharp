@@ -22,20 +22,12 @@ namespace InstaSharp.Endpoints.Tags {
             return _unauthenticated.GetJson(tagName);
         }
 
-        public MediaResponse Recent(string tagName) {
+        public MediasResponse Recent(string tagName) {
             return _unauthenticated.Recent(tagName);
-        }
-
-        public string RecentJson(string tagName) {
-            return _unauthenticated.RecentJson(tagName);
         }
 
         public TagsResponse Search(string searchTerm) {
             return _unauthenticated.Search(searchTerm);
-        }
-
-        public string SearchJson(string searchTerm) {
-            return _unauthenticated.SearchJson(searchTerm);
         }
     }
 }

@@ -14,27 +14,32 @@ namespace InstaSharp.Endpoints.Media {
         }
 
         public MediaResponse Get(string mediaId) {
-            return (MediaResponse)Json.Map<MediaResponse>(GetJson(mediaId));         
+            return (MediaResponse)Mapper.Map<MediaResponse>(GetJson(mediaId));         
         }
 
-        public string GetJson(string mediaId) {
-            return _unauthenticated.GetJson(mediaId);
+        private string GetJson(string mediaId) {
+            string uri = string.Format(base.Uri + "{0}?access_token={1}", mediaId, AuthInfo.Access_Token);
+            return HttpClient.GET(uri);
         }
 
-        public MediaResponse Popular() {
-            return (MediaResponse)Json.Map<MediaResponse>(PopularJson());
+        public MediasResponse Popular() {
+            return (MediasResponse)Mapper.Map<MediasResponse>(PopularJson());
         }
 
-        public string PopularJson() {
+        private string PopularJson() {
             return _unauthenticated.PopularJson();
         }
 
-        // public MediaResponse Search(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
-        //    return (MediaResponse)Json.Map<MediaResponse>(SearchJson(longitude, longitude, maxTimestamp, minTimestamp, distance));
-        //}
+        public MediaResponse Search(double latitude, double longitude) {
+            return Search(latitude, longitude, null, null, 0);   
+        }
+        
+        public MediaResponse Search(double latitude, double longitude, DateTime? minTimestamp, DateTime? maxTimestamp) {
+            return Search(latitude, longitude, minTimestamp, maxTimestamp, 0); 
+        }
 
-        //public string SearchJson(decimal latitude, decimal longitude, int? maxTimestamp, int? minTimestamp, int? distance) {
-        //    return _unauthenticated.SearchJson(latitude, longitude, maxTimestamp, minTimestamp, distance);
-        //}
+        public MediaResponse Search(double latitude, double longitude, DateTime? minTimestamp, DateTime? maxTimestamp, int distance) {
+            return _unauthenticated.Search(latitude, longitude, minTimestamp, maxTimestamp, distance);
+        }
     }
 }

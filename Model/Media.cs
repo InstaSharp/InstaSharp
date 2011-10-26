@@ -5,6 +5,7 @@ using System.Text;
 
 namespace InstaSharp.Model {
     public class Media {
+
         [JsonMapping("location", JsonMapping.MappingType.Class)]
         public Model.Location Location { get; set; }
         

@@ -13,7 +13,7 @@ namespace InstaSharp.Endpoints.Relationships {
 
         public UsersResponse Follows(int userId) {
             string uri = string.Format(base.Uri + "{0}/follows?client_id={1}", userId, InstagramConfig.ClientId);
-            return (UsersResponse)Json.Map<UsersResponse>(FollowsJson(userId));
+            return (UsersResponse)Mapper.Map<UsersResponse>(FollowsJson(userId));
         }
 
         public string FollowsJson(int userId) {
@@ -22,7 +22,7 @@ namespace InstaSharp.Endpoints.Relationships {
         }
 
         public UsersResponse FollowedBy(int userId) {
-            return (UsersResponse)Json.Map<UsersResponse>(FollowedByJson(userId));
+            return (UsersResponse)Mapper.Map<UsersResponse>(FollowedByJson(userId));
         }
 
         public string FollowedByJson(int userId) {

@@ -15,7 +15,7 @@ namespace InstaSharp.Endpoints.Locations {
         }
 
         public LocationResponse Get(string locationId) {
-            return (LocationResponse)Json.Map<LocationResponse>(GetJson(locationId));
+            return (LocationResponse)Mapper.Map<LocationResponse>(GetJson(locationId));
         }
 
         public string GetJson(string locationId) {
@@ -23,8 +23,8 @@ namespace InstaSharp.Endpoints.Locations {
             return HttpClient.GET(uri);
         }
 
-        public MediaResponse Recent(string locationId) {
-            return (MediaResponse)Json.Map<MediaResponse>(RecentJson(locationId));
+        public MediasResponse Recent(string locationId) {
+            return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(locationId));
         }
 
         public string RecentJson(string locationId) {
@@ -33,7 +33,7 @@ namespace InstaSharp.Endpoints.Locations {
         }
 
         public LocationsResponse Search(double latitude, double longitude) {
-            return (LocationsResponse)Json.Map<LocationsResponse>(SearchJson(latitude, longitude, null, FoursquareVersion.None, 0));
+            return (LocationsResponse)Mapper.Map<LocationsResponse>(SearchJson(latitude, longitude, null, FoursquareVersion.None, 0));
         }
 
         public LocationsResponse Search(string foursquare_id, FoursquareVersion foursquare_version) {
@@ -41,7 +41,7 @@ namespace InstaSharp.Endpoints.Locations {
         }
 
         public LocationsResponse Search(string foursquare_id, FoursquareVersion foursquare_version, int distance) {
-            return (LocationsResponse)Json.Map<LocationsResponse>(SearchJson(0, 0, foursquare_id, foursquare_version, distance));
+            return (LocationsResponse)Mapper.Map<LocationsResponse>(SearchJson(0, 0, foursquare_id, foursquare_version, distance));
         }
 
         private string SearchJson(double latitude, double longitude, string foursquare_id, FoursquareVersion foursquare_version, int distance) {

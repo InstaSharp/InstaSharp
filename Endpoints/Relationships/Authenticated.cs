@@ -27,7 +27,7 @@ namespace InstaSharp.Endpoints.Relationships {
         }
 
         public UsersResponse Follows(int userId) {
-            return (UsersResponse)Json.Map<UsersResponse>(FollowsJson(userId));
+            return (UsersResponse)Mapper.Map<UsersResponse>(FollowsJson(userId));
         }
 
         public string FollowsJson() {
@@ -43,7 +43,7 @@ namespace InstaSharp.Endpoints.Relationships {
         }
 
         public UsersResponse FollowedBy(int userId) {
-            return (UsersResponse)Json.Map<UsersResponse>(FollowedByJson(userId));
+            return (UsersResponse)Mapper.Map<UsersResponse>(FollowedByJson(userId));
         }
 
         public string FollowedByJson() {
@@ -56,7 +56,7 @@ namespace InstaSharp.Endpoints.Relationships {
 
         public UsersResponse RequestedBy() {
             string uri = string.Format(base.Uri + "/self/requested-by?access_token={0}", AuthInfo.Access_Token);
-            return (UsersResponse)Json.Map<UsersResponse>(RequestedByJson());
+            return (UsersResponse)Mapper.Map<UsersResponse>(RequestedByJson());
         }
 
         public string RequestedByJson() {
@@ -65,11 +65,11 @@ namespace InstaSharp.Endpoints.Relationships {
         }
 
         public RelationshipResponse Relationship(int userId) {
-            return (RelationshipResponse)Json.Map<RelationshipResponse>(RelationshipJson(userId));
+            return (RelationshipResponse)Mapper.Map<RelationshipResponse>(RelationshipJson(userId));
         }
 
         public RelationshipResponse Relationship(int userId, Action action) {
-            return (RelationshipResponse)Json.Map<RelationshipResponse>(RelationshipJson(userId, action));
+            return (RelationshipResponse)Mapper.Map<RelationshipResponse>(RelationshipJson(userId, action));
         }
 
         public string RelationshipJson(int userId) {

@@ -22,11 +22,11 @@ namespace InstaSharp.Endpoints.Comments {
             return _unauthenticated.GetJson(mediaId);
         }
 
-        public CommentsResponse Post(string mediaId, string comment) {
-            return (CommentsResponse)Json.Map<CommentsResponse>(PostJson(mediaId, comment));
+        public CommentResponse Post(string mediaId, string comment) {
+            return (CommentResponse)Mapper.Map<CommentResponse>(PostJson(mediaId, comment));
         }
 
-        public string PostJson(string mediaId, string comment) {
+        private string PostJson(string mediaId, string comment) {
             var args = new Dictionary<string, string>();
             args.Add("text", comment);
 
@@ -35,11 +35,11 @@ namespace InstaSharp.Endpoints.Comments {
             return HttpClient.POST(uri, args);
         }
 
-        public CommentsResponse Delete(string mediaId, int commentId) {
-            return (CommentsResponse)Json.Map<CommentsResponse>(DeleteJson(mediaId, commentId));
+        public CommentResponse Delete(string mediaId, int commentId) {
+            return (CommentResponse)Mapper.Map<CommentResponse>(DeleteJson(mediaId, commentId));
         }
     
-        public string DeleteJson(string mediaId, int commentId) {
+        private string DeleteJson(string mediaId, int commentId) {
             string uri = string.Format(base.Uri + "{0}/comments/{1}?access_token={2}", mediaId, commentId, AuthInfo.Access_Token);
             return HttpClient.DELETE(uri);
         }

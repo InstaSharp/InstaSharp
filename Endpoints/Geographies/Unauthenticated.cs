@@ -9,7 +9,7 @@ namespace InstaSharp.Endpoints.Geographies {
         public Unauthenticated(InstagramConfig config) : base(config, "/geographies/") {}
 
         public MediaResponse Get(string mediaId, int? count, string min_id) {
-            return (MediaResponse)Json.Map<MediaResponse>(GetJson(mediaId, count, min_id));
+            return (MediaResponse)Mapper.Map<MediaResponse>(GetJson(mediaId, count, min_id));
         }
 
         public string GetJson(string mediaId, int? count, string min_id) {

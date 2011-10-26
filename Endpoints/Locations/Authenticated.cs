@@ -18,7 +18,7 @@ namespace InstaSharp.Endpoints.Locations {
             return _unauthenticated.Get(locationId);
         }
 
-        public MediaResponse Recent(string locationId) {
+        public MediasResponse Recent(string locationId) {
             return _unauthenticated.Recent(locationId);
         }
 

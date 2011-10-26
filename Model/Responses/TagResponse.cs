@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 
 namespace InstaSharp.Model.Responses {
-    public class TagResponse {
+    public class TagResponse : IResponse {
 
         public string Json { get; set; }
 
+        [JsonMapping("meta", JsonMapping.MappingType.Class)]
+        public Model.Meta Meta { get; set; }
+
          [JsonMapping("data", JsonMapping.MappingType.Class)]
-        public Model.Tag Response { get; set; }
+        public Model.Tag Data { get; set; }
     }
 }

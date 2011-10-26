@@ -10,7 +10,7 @@ namespace InstaSharp.Endpoints.Users {
         public Unauthenticated (InstagramConfig config) : base(config, "/users/")  { }
 
         public UserResponse Get(int userId) {
-            return (UserResponse)Json.Map<UserResponse>(GetJson(userId));
+            return (UserResponse)Mapper.Map<UserResponse>(GetJson(userId));
         }
 
         public string GetJson(int userId) {
@@ -19,7 +19,7 @@ namespace InstaSharp.Endpoints.Users {
         }
 
         public UsersResponse Search(string searchTerm, int? count) {
-            return (UsersResponse)Json.Map<UsersResponse>(SearchJson(searchTerm, count));
+            return (UsersResponse)Mapper.Map<UsersResponse>(SearchJson(searchTerm, count));
         }
 
         public string SearchJson(string searchTerm, int? count) {

@@ -11,7 +11,7 @@ namespace InstaSharp.Endpoints.Comments {
             : base(config, "/media/") { }
 
         public CommentsResponse Get(string mediaId) {
-            return (CommentsResponse)Json.Map<CommentsResponse>(GetJson(mediaId));
+            return (CommentsResponse)Mapper.Map<CommentsResponse>(GetJson(mediaId));
         }
 
         public string GetJson(string mediaId) {
