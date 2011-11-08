@@ -26,6 +26,10 @@ namespace InstaSharp.Endpoints.Tags {
             return _unauthenticated.Recent(tagName);
         }
 
+        public MediasResponse Recent(string tagName, string min_id, string max_id) {
+            return _unauthenticated.Recent(tagName, min_id, max_id);
+        }
+
         public TagsResponse Search(string searchTerm) {
             return _unauthenticated.Search(searchTerm);
         }
