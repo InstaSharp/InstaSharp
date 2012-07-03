@@ -29,7 +29,7 @@ namespace InstaSharp.Endpoints.Tags {
 
         public MediasResponse Recent(string tagName, int count, string min_id, string max_id)
         {
-            return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(tagName, min_id, max_id, 15));
+            return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(tagName, min_id, max_id, count));
         }
 
         public MediasResponse Recent(string tagName, string min_id, string max_id) {
@@ -38,8 +38,8 @@ namespace InstaSharp.Endpoints.Tags {
 
         private string RecentJson(string tagName, string min_id, string max_id, int count) {
             string uri = string.Format(base.Uri + "{0}/media/recent?client_id={1}&count={2}", tagName, InstagramConfig.ClientId,count);
-            if (!string.IsNullOrEmpty(min_id)) uri += "&min_id=" + min_id;
-            if (!string.IsNullOrEmpty(max_id)) uri += "&max_id=" + max_id;
+            if (!string.IsNullOrEmpty(min_id)) uri += "&min_tag_id=" + min_id;
+            if (!string.IsNullOrEmpty(max_id)) uri += "&max_tag_id=" + max_id;
             
             return HttpClient.GET(uri);
         }
