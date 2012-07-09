@@ -19,3 +19,7 @@ C:\Projects\InstaBoard\InstaSharp\bin\Debug\Newtonsoft.Json.xml
 C:\Projects\InstaBoard\InstaSharp\obj\Debug\ResolveAssemblyReference.cache
 C:\Projects\InstaBoard\InstaSharp\obj\Debug\InstaSharp.dll
 C:\Projects\InstaBoard\InstaSharp\obj\Debug\InstaSharp.pdb
+C:\_Projects\git\InstaSharp\bin\Debug\InstaSharp.dll
+C:\_Projects\git\InstaSharp\bin\Debug\InstaSharp.pdb
+C:\_Projects\git\InstaSharp\obj\Debug\InstaSharp.dll
+C:\_Projects\git\InstaSharp\obj\Debug\InstaSharp.pdb
