@@ -12,7 +12,7 @@ namespace InstaSharp.Model {
         [JsonMapping("from", JsonMapping.MappingType.Class)]
         public Model.User From { get; set; }
         [JsonMapping("id", JsonMapping.MappingType.Primitive)]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [JsonMapping("count", JsonMapping.MappingType.Primitive)]
         public int Count { get; set; }
     }
