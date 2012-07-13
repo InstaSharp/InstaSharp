@@ -6,6 +6,7 @@
 .project
 .metadata
 bin/
+obj/
 tmp/
 *.tmp
 *.bak
@@ -161,3 +162,6 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+/bin
+/obj
