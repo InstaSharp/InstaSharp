@@ -35,11 +35,11 @@ namespace InstaSharp.Endpoints.Comments {
             return HttpClient.POST(uri, args);
         }
 
-        public CommentResponse Delete(string mediaId, int commentId) {
+        public CommentResponse Delete(string mediaId, string commentId) {
             return (CommentResponse)Mapper.Map<CommentResponse>(DeleteJson(mediaId, commentId));
         }
     
-        private string DeleteJson(string mediaId, int commentId) {
+        private string DeleteJson(string mediaId, string commentId) {
             string uri = string.Format(base.Uri + "{0}/comments/{1}?access_token={2}", mediaId, commentId, AuthInfo.Access_Token);
             return HttpClient.DELETE(uri);
         }
