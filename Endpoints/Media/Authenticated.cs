@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using InstaSharp.Model.Responses;
 
-namespace InstaSharp.Endpoints.Media {
-    public class Authenticated : InstagramAPI{
-        
+namespace InstaSharp.Endpoints.Media
+{
+    public class Authenticated : InstagramAPI
+    {
+
         readonly Unauthenticated _unauthenticated;
 
         public Authenticated(InstagramConfig config, AuthInfo auth) : base(config, auth, "/media/") {
@@ -14,7 +16,7 @@ namespace InstaSharp.Endpoints.Media {
         }
 
         public MediaResponse Get(string mediaId) {
-            return (MediaResponse)Mapper.Map<MediaResponse>(GetJson(mediaId));         
+            return (MediaResponse)Mapper.Map<MediaResponse>(GetJson(mediaId));
         }
 
         private string GetJson(string mediaId) {
@@ -27,19 +29,29 @@ namespace InstaSharp.Endpoints.Media {
         }
 
         private string PopularJson() {
-            return _unauthenticated.PopularJson();
+            string uri = string.Format(base.Uri + "popular/?access_token={0}", AuthInfo.Access_Token);
+            return HttpClient.GET(uri);
         }
 
-        public MediaResponse Search(double latitude, double longitude) {
-            return Search(latitude, longitude, null, null, 0);   
-        }
-        
-        public MediaResponse Search(double latitude, double longitude, DateTime? minTimestamp, DateTime? maxTimestamp) {
-            return Search(latitude, longitude, minTimestamp, maxTimestamp, 0); 
+        public MediasResponse Search(double latitude, double longitude) {
+            return Search(latitude, longitude, null, null, 0);
         }
 
-        public MediaResponse Search(double latitude, double longitude, DateTime? minTimestamp, DateTime? maxTimestamp, int distance) {
-            return _unauthenticated.Search(latitude, longitude, minTimestamp, maxTimestamp, distance);
+        public MediasResponse Search(double latitude, double longitude, DateTime? minTimestamp, DateTime? maxTimestamp) {
+            return Search(latitude, longitude, minTimestamp, maxTimestamp, 0);
+        }
+
+        public MediasResponse Search(double latitude, double longitude, DateTime? minTimestamp, DateTime? maxTimestamp, int distance) {
+            return (MediasResponse)Mapper.Map<MediasResponse>(SearchJson(latitude, longitude, minTimestamp, maxTimestamp, distance));
+        }
+
+        private string SearchJson(double latitude, double longitude, DateTime? minTimestamp, DateTime? maxTimestamp, int distance) {
+            string uri = string.Format(base.Uri + "search?access_token={0}&lat={1}&lng={2}", AuthInfo.Access_Token, latitude, longitude);
+
+            if (maxTimestamp != null) uri += string.Format("&max_timestamp={0}&min_timestamp={1}", maxTimestamp, minTimestamp);
+            if (distance != 0) uri += "&distance=" + distance;
+
+            return HttpClient.GET(uri);
         }
     }
 }
