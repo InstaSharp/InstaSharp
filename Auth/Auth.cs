@@ -12,6 +12,11 @@ namespace InstaSharp {
 
         JavaScriptSerializer _serializer;
 
+        public enum ResponseType {
+            code,
+            token
+        }
+
         public enum Scope {
             basic,
             comments,
@@ -23,17 +28,18 @@ namespace InstaSharp {
             _config = config;
         }
 
-        public static string AuthLink(string instagramOAuthURI, string clientId, string callbackURI, List<Scope> scopes) {
+        public static string AuthLink(string instagramOAuthURI, string clientId, string callbackURI, List<Scope> scopes, ResponseType responseType = ResponseType.code) {
             StringBuilder scope = new StringBuilder();
             scopes.ForEach(s => {
                 if (scope.Length > 0) scope.Append("+");
                 scope.Append(s);
             });
 
-            return string.Format("{0}/authorize/?client_id={1}&redirect_uri={2}&response_type=code&scope={3}", new object[] {
+            return string.Format("{0}/authorize/?client_id={1}&redirect_uri={2}&response_type={3}code&scope={4}", new object[] {
                 instagramOAuthURI,
                 clientId, 
                 callbackURI, 
+                responseType,
                 scope.ToString()
             });
         }
