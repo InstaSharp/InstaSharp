@@ -31,5 +31,17 @@ namespace InstaSharp.Tests {
             var result = _relationships.FollowedBy();
             Assert.IsTrue(result.Data.Count > 0);
         }
+
+        [TestMethod, TestCategory("Relationships.FollowedBy")]
+        public void FollowedBy_Id() {
+            var result = _relationships.FollowedBy(auth.User.Id);
+            Assert.IsTrue(result.Data.Count > 0);
+        }
+
+        [TestMethod, TestCategory("Relationships.Relationship")]
+        public void Relationship() {
+            var result = _relationships.Relationship(22987123);
+            Assert.IsTrue(result.Data != null);
+        }
     }
 }

@@ -118,6 +118,22 @@ namespace InstaSharp.Endpoints {
         }
 
         /// <summary>
+        /// Get information about a relationship to another user.
+        /// <para>
+        /// <c>Requires Authentication:</c> True
+        /// </para>
+        /// <para>
+        /// <c>Required scope:</c> relationships
+        /// </para>
+        /// </summary>
+        /// <param name="userId">The user id about which to get relationship information.</param>
+        /// <param name="action">One of Action enum.</param>
+        /// <returns>RelationshipResponse</returns>
+        public RelationshipResponse Relationship(int userId) {
+            return (RelationshipResponse)Mapper.Map<RelationshipResponse>(RelationshipJson(userId));
+        }
+
+        /// <summary>
         /// Modify the relationship between the current user and the target user.
         /// <para>
         /// <c>Requires Authentication:</c> True
@@ -143,9 +159,27 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="userId">The user id about which to get relationship information.</param>
+        /// <returns>String</returns>
+        public string RelationshipJson(int userId) {
+            string uri = string.Format(base.Uri + "{0}/relationship?access_token={1}", userId, AuthInfo.Access_Token);
+            var parameters = new Dictionary<string, string>();
+
+            return HttpClient.GET(uri);
+        }
+
+        /// <summary>
+        /// Modify the relationship between the current user and the target user.
+        /// <para>
+        /// <c>Requires Authentication:</c> True
+        /// </para>
+        /// <para>
+        /// <c>Required scope:</c> relationships
+        /// </para>
+        /// </summary>
+        /// <param name="userId">The user id about which to get relationship information.</param>
         /// <param name="action">One of Action enum.</param>
         /// <returns>String</returns>
-        public string RelationshipJson(int userId, Action? action) {
+        public string RelationshipJson(int userId, Action? action = null) {
             string uri = string.Format(base.Uri + "{0}/relationship?access_token={1}", userId, AuthInfo.Access_Token);
             var parameters = new Dictionary<string, string>();
             if (action != null) {

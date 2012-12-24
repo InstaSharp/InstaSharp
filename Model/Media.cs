@@ -15,6 +15,9 @@ namespace InstaSharp.Model {
         [JsonMapping("caption", JsonMapping.MappingType.Primitive)]
         public string Caption { get; set; }
 
+        [JsonMapping("user_has_liked", JsonMapping.MappingType.Primitive)]
+        public bool UserHasLiked { get; set; }
+
         [JsonMapping("link", JsonMapping.MappingType.Primitive)]
         public string Link { get; set; }
         
