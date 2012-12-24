@@ -38,7 +38,7 @@ namespace InstaSharp.Tests
 
         [TestMethod, TestCategory("Users.Feed")]
         public void Feed_MaxId() {
-            var result = _users.Feed(10);
+            var result = _users.Feed(null, 10);
             Assert.IsTrue(result.Data.Count > 0, "Parameters: Count");
         }
 
@@ -66,7 +66,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Recent")]
         public void Recent_MaxId_Count()
         {
-            var result = _users.Recent("304848768082410173_2849381", 10);
+            var result = _users.Recent("304848768082410173_2849381", "", 10);
             Assert.IsTrue(result.Data.Count > 0, "Parameters: MaxId, Count");
         }
 

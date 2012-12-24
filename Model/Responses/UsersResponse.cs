@@ -5,9 +5,6 @@ using System.Text;
 
 namespace InstaSharp.Model.Responses {
     public class UsersResponse : IResponse {
-
-        public string Json { get; set; }
-
         [JsonMapping("meta", JsonMapping.MappingType.Class)]
         public Model.Meta Meta { get; set; }
         [JsonMapping("data", JsonMapping.MappingType.Collection)]
