@@ -35,23 +35,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Required scope:</c> relationships
         /// </para>
         /// </summary>
-        /// <returns>UsersResponse</returns>
-        public UsersResponse Follows() {
-            return Follows(AuthInfo.User.Id);
-        }
-
-        /// <summary>
-        /// Get the list of users this user follows.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
         /// <returns>UsersResponse</returns>
-        public UsersResponse Follows(int userId) {
+        public UsersResponse Follows(int? userId = null) {
             return (UsersResponse)Mapper.Map<UsersResponse>(FollowsJson(userId));
         }
 
@@ -64,39 +50,11 @@ namespace InstaSharp.Endpoints {
         /// <c>Required scope:</c> relationships
         /// </para>
         /// </summary>
-        /// <returns>String</returns>
-        public string FollowsJson() {
-            return FollowsJson(AuthInfo.User.Id);
-        }
-
-        /// <summary>
-        /// Get the list of users this user follows.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
         /// <returns>String</returns>
-        public string FollowsJson(int userId) {
-            string uri = string.Format(base.Uri + "{0}/follows?client_id={1}", userId, InstagramConfig.ClientId);
+        public string FollowsJson(int? userId = null) {
+            string uri = string.Format(base.Uri + "{0}/follows?client_id={1}", userId ?? AuthInfo.User.Id, InstagramConfig.ClientId);
             return HttpClient.GET(uri);
-        }
-
-        /// <summary>
-        /// Get the list of users this user is followed by.
-        /// </summary>
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// <returns>UsersResponse</returns>
-        public UsersResponse FollowedBy() {
-            return FollowedBy(AuthInfo.User.Id);
         }
 
         /// <summary>
@@ -110,7 +68,7 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="userId">The id of the user to get the followers of.</param>
         /// <returns>UsersResponse</returns>
-        public UsersResponse FollowedBy(int userId) {
+        public UsersResponse FollowedBy(int? userId = null) {
             return (UsersResponse)Mapper.Map<UsersResponse>(FollowedByJson(userId));
         }
 
@@ -123,24 +81,10 @@ namespace InstaSharp.Endpoints {
         /// <c>Required scope:</c> relationships
         /// </para>
         /// </summary>
-        /// <returns>String</returns>
-        public string FollowedByJson() {
-            return FollowedByJson(base.AuthInfo.User.Id);
-        }
-
-        /// <summary>
-        /// Get the list of users this user is followed by.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
         /// <param name="userId">The id of the user to get the followers of.</param>
         /// <returns>String</returns>
-        public string FollowedByJson(int userId) {
-            string uri = string.Format(base.Uri + "{0}/followed-by?client_id={1}", userId, InstagramConfig.ClientId);
+        public string FollowedByJson(int? userId = null) {
+            string uri = string.Format(base.Uri + "{0}/followed-by?client_id={1}", userId ?? AuthInfo.User.Id, InstagramConfig.ClientId);
             return HttpClient.GET(uri);
         }
 

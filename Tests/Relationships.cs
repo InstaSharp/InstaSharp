@@ -26,10 +26,10 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Data.Count > 0);
         }
 
-        [TestMethod, TestCategory("Relationships.Follows")]
-        public void Follows_Json() {
-            var result = _relationships.FollowsJson(base.auth.User.Id);
-            Console.WriteLine(result);
+        [TestMethod, TestCategory("Relationships.FollowedBy")]
+        public void FollowedBy() {
+            var result = _relationships.FollowedBy();
+            Assert.IsTrue(result.Data.Count > 0);
         }
     }
 }
