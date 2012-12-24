@@ -4,15 +4,23 @@ using System.Linq;
 using System.Text;
 using InstaSharp.Model.Responses;
 
-namespace InstaSharp.Endpoints.Users {
+namespace InstaSharp.Endpoints {
     public class Users : InstagramAPI {
 
-        readonly Unauthenticated _unauthenticated;
-
+        /// <summary>
+        /// The users endpoint for all methods. Requires successful authentication prior.
+        /// </summary>
+        /// <param name="config">An instance of the InstagramConfiguration class</param>
+        /// <param name="authInfo">An instance of the AuthInfo class</param>
         public Users(InstagramConfig config, AuthInfo authInfo)
-            : base(config, authInfo, "/users/") {
-                _unauthenticated = new Unauthenticated(config);
-        }
+            : base(config, authInfo, "/users/") { }
+
+        /// <summary>
+        /// The users endpoint for unauthenticated calls only. Only requires configuration.
+        /// </summary>
+        /// <param name="config">An instance of the InstragramConfiguration class</param>
+        public Users(InstagramConfig config)
+            : base(config, "/users/") { }
 
         /// <summary>
         /// Get basic information about a user.
@@ -118,6 +126,9 @@ namespace InstaSharp.Endpoints.Users {
         /// <para>
         /// <c>Requires Authentication: True</c>
         /// </para>
+        /// <para>
+        /// <paramref name="maxId"/>: Return media earlier than this max_id.
+        /// </para>
         /// </summary>
         public MediasResponse Recent(string maxId) {
             return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(maxId, "", 0, null, null));
@@ -127,6 +138,12 @@ namespace InstaSharp.Endpoints.Users {
         /// Get the most recent media published by a user.
         /// <para>
         /// <c>Requires Authentication: True</c>
+        /// </para>
+        /// <para>
+        /// <paramref name="maxId"/>: Return media earlier than this max_id.
+        /// </para>
+        /// <para>
+        /// <paramref name="count"/>: Count of media to return.
         /// </para>
         /// </summary>
         public MediasResponse Recent(string maxId, int count) {
@@ -138,6 +155,15 @@ namespace InstaSharp.Endpoints.Users {
         /// <para>
         /// <c>Requires Authentication: True</c>
         /// </para>
+        /// <para>
+        /// <paramref name="maxId"/>: Return media earlier than this max_id.
+        /// </para>
+        /// <para>
+        /// <paramref name="minId"/>: Return media later than this min_id.
+        /// </para>
+        /// <para>
+        /// <paramref name="count"/>: Count of media to return.
+        /// </para>
         /// </summary>
         public MediasResponse Recent (string maxId, string minId, int count) {
             return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(maxId, minId, count, null, null));
@@ -147,6 +173,21 @@ namespace InstaSharp.Endpoints.Users {
         /// Get the most recent media published by a user.
         /// <para>
         /// <c>Requires Authentication: True</c>
+        /// </para>
+        /// <para>
+        /// <paramref name="maxId"/>: Return media earlier than this max_id.
+        /// </para>
+        /// <para>
+        /// <paramref name="minId"/>: Return media later than this min_id.
+        /// </para>
+        /// <para>
+        /// <paramref name="count"/>: Count of media to return.
+        /// </para>
+        /// <para>
+        /// <paramref name="minTimestamp"/>: Return media after this timestamp.
+        /// </para>
+        /// <para>
+        /// <paramref name="maxTimestamp"/>: Return media before this timestamp.
         /// </para>
         /// </summary>
         public MediasResponse Recent(string maxId, string minId, int count, DateTime minTimestamp, DateTime maxTimestamp) {

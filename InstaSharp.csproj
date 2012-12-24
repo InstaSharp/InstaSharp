@@ -30,7 +30,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UNITTEST|AnyCPU'">
+    <OutputPath>bin\UNITTEST\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -58,10 +62,8 @@
     <Compile Include="Endpoints\Media\Unauthenticated.cs" />
     <Compile Include="Endpoints\Relationships\Authenticated.cs" />
     <Compile Include="Endpoints\Relationships\Unauthenticated.cs" />
-    <Compile Include="Endpoints\Tags\Authenticated.cs" />
-    <Compile Include="Endpoints\Tags\Unauthenticated.cs" />
-    <Compile Include="Endpoints\Users\Authenticated.cs" />
-    <Compile Include="Endpoints\Users\Unauthenticated.cs" />
+    <Compile Include="Endpoints\Tags.cs" />
+    <Compile Include="Endpoints\Users.cs" />
     <Compile Include="HttpClient.cs" />
     <Compile Include="Auth\AuthInfo.cs" />
     <Compile Include="Auth\Auth.cs" />
@@ -94,6 +96,9 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Responses\UserResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Tags.cs" />
+    <Compile Include="Tests\Users.cs" />
+    <Compile Include="Tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
