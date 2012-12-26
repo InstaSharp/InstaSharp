@@ -24,7 +24,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="authInfo">An instance of the AuthInfo class.</param>
         public Relationships(InstagramConfig config, AuthInfo authInfo)
-            : base(config, authInfo, "/users/") { }
+            : base("/users/", config, authInfo) { }
 
         /// <summary>
         /// Get the list of users this user follows.

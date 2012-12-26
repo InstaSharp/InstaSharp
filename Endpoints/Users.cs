@@ -8,19 +8,12 @@ namespace InstaSharp.Endpoints {
     public class Users : InstagramAPI {
 
         /// <summary>
-        /// The users endpoint for all methods. Requires successful authentication prior.
+        /// The users endpoint for all methods.
         /// </summary>
         /// <param name="config">An instance of the InstagramConfiguration class</param>
         /// <param name="authInfo">An instance of the AuthInfo class</param>
-        public Users(InstagramConfig config, AuthInfo authInfo)
-            : base(config, authInfo, "/users/") { }
-
-        /// <summary>
-        /// The users endpoint for unauthenticated calls only. Only requires configuration.
-        /// </summary>
-        /// <param name="config">An instance of the InstragramConfiguration class</param>
-        public Users(InstagramConfig config)
-            : base(config, "/users/") { }
+        public Users(InstagramConfig config, AuthInfo authInfo = null)
+            : base("/users/", config, authInfo) { }
 
         /// <summary>
         /// Get basic information about a user.
@@ -31,13 +24,28 @@ namespace InstaSharp.Endpoints {
         /// <paramref name="userId"/>: The id of the user who's profile you want to retreive.
         /// </para>
         /// </summary>
+        /// <returns>
+        /// UserResponse
+        /// </returns>
         public UserResponse Get(int? userId = null) {
             return (UserResponse)Mapper.Map<UserResponse>(GetJson(userId));
         }
 
+        /// <summary>
+        /// Get basic information about a user.
+        /// <para>
+        /// <c>Requires Authentication: False</c>
+        /// </para>
+        /// <para>
+        /// <paramref name="userId"/>: The id of the user who's profile you want to retreive.
+        /// </para>
+        /// </summary>
+        /// <returns>
+        /// String
+        /// </returns>
         private string GetJson(int? userId) {
-            string uri = string.Format(base.Uri + "{0}/?client_id={1}", userId ?? base.AuthInfo.User.Id, InstagramConfig.ClientId);
-            return HttpClient.GET(uri);
+            base.FormatUri(userId == null ? base.AuthInfo.User.Id.ToString() : userId.ToString());
+            return HttpClient.GET(base.Uri.ToString());
         }
 
         /// <summary>
@@ -46,6 +54,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication: True</c>
         /// </para>
         /// </summary>
+        /// <returns>
+        /// MediasResponse
+        /// </returns>
         public MediasResponse Feed() {
             return (MediasResponse)Mapper.Map<MediasResponse>(FeedJson(string.Empty, 0));
         }
@@ -62,17 +73,19 @@ namespace InstaSharp.Endpoints {
         /// <paramref name="count"/>: Count of media to return.
         /// </para>
         /// </summary>
+        /// <returns>
+        /// </returns>
         public MediasResponse Feed(string maxId = "", int? count = null) {
             return (MediasResponse)Mapper.Map<MediasResponse>(FeedJson(maxId, count));
         }
 
         private string FeedJson(string maxId, int? count) {
-            string uri = string.Format(base.Uri + "self/feed?access_token={0}", AuthInfo.Access_Token);
+            base.FormatUri("self/feed");
 
-            if (!string.IsNullOrEmpty(maxId)) uri += "&max_id=" + maxId;
-            if (count != null) uri += "&count=" + count;
+            if (!string.IsNullOrEmpty(maxId)) base.Uri.AppendFormat("&max_id={0}", maxId);
+            if (count != null) base.Uri.AppendFormat("&count={0}", count);
 
-            return HttpClient.GET(uri);
+            return HttpClient.GET(base.Uri.ToString());
         }
 
         /// <summary>
@@ -101,15 +114,15 @@ namespace InstaSharp.Endpoints {
         }
 
         public string RecentJson(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
-            string uri = string.Format(base.Uri + "{0}/media/recent?access_token={1}", AuthInfo.User.Id, AuthInfo.Access_Token);
+            base.FormatUri(string.Format("{0}/media/recent", AuthInfo.User.Id));
 
-            if (!string.IsNullOrEmpty(maxId)) uri += "&max_id=" + maxId;
-            if (!string.IsNullOrEmpty(minId)) uri += "&min_id=" + minId;
-            if (count != 0) uri += "&count=" + count;
-            if (minTimestamp != null) uri += "&min_timestamp=" + minTimestamp;
-            if (maxTimestamp != null) uri += "&max_timestamp" + maxTimestamp;
+            if (!string.IsNullOrEmpty(maxId)) base.Uri.AppendFormat("&max_id={0}", maxId);
+            if (!string.IsNullOrEmpty(minId)) base.Uri.AppendFormat("&min_id={0}", minId);
+            if (count != null) base.Uri.AppendFormat("&count={0}", count);
+            if (minTimestamp != null) base.Uri.AppendFormat("&min_timestamp={0}", ((DateTime)minTimestamp).ToUnixTimestamp());
+            if (maxTimestamp != null) base.Uri.AppendFormat("&max_timestamp={1}" + ((DateTime)maxTimestamp).ToUnixTimestamp());
 
-            return HttpClient.GET(uri);
+            return HttpClient.GET(base.Uri.ToString());
         }
 
         /// <summary>
@@ -118,17 +131,26 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication: True</c>
         /// </para>
         /// </summary>
-        public MediasResponse Liked(string max_like_id = "", int? count = null) {
+        public MediasResponse Liked(string max_like_id = "", int? count = 20) {
             return (MediasResponse)Mapper.Map<MediasResponse>(LikedJson(max_like_id, count));
         }
 
-        public string LikedJson(string max_like_id = "", int? count = null) {
-            string uri = string.Format(base.Uri + "self/media/liked?access_token={0}", AuthInfo.Access_Token);
+        /// <summary>
+        /// See the authenticated user's list of media they've liked. Note that this list is ordered by the order in which the user liked the media. Private media is returned as long as the authenticated user has permission to view that media. Liked media lists are only available for the currently authenticated user.
+        /// <para>
+        /// <c>Requires Authentication: True</c>
+        /// </para>
+        /// </summary>
+        /// <param name="max_like_id">Return media liked before this id.</param>
+        /// <param name="count">Count of media to return.</param>
+        /// <returns>String</returns>
+        public string LikedJson(string max_like_id = "", int? count = 20) {
+            base.FormatUri("self/media/liked");
 
-            if (max_like_id != null) uri += "&max_like_id=" + max_like_id;
-            if (count != null) uri += "&count=" + count;
+            if (!string.IsNullOrEmpty(max_like_id)) base.Uri.AppendFormat("&max_like_id={0}", max_like_id);
+            if (count != null) base.Uri.AppendFormat("&count={0}", count);
 
-            return HttpClient.GET(uri);
+            return HttpClient.GET(base.Uri.ToString());
         }
 
         /// <summary>
@@ -152,9 +174,10 @@ namespace InstaSharp.Endpoints {
         }
 
         private string SearchJson(string searchTerm, int? count = null) {
-            string uri = string.Format(base.Uri + "/search?q={0}&client_id={1}", searchTerm, InstagramConfig.ClientId);
-            if (count != null) uri += "&count=" + count;
-            return HttpClient.GET(uri);
+            base.FormatUri("search");
+            base.Uri.AppendFormat("&q={0}", searchTerm);
+            if (count != null) base.Uri.AppendFormat("&count={0}", count);
+            return HttpClient.GET(base.Uri.ToString());
         }
     }
 }

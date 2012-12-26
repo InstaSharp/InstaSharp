@@ -49,15 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Endpoints\Comments\Authenticated.cs" />
-    <Compile Include="Endpoints\Comments\Unauthenticated.cs" />
-    <Compile Include="Endpoints\Geographies\Authenticated.cs" />
-    <Compile Include="Endpoints\Geographies\Unauthenticated.cs" />
+    <Compile Include="Endpoints\Comments.cs" />
+    <Compile Include="Endpoints\Geographies.cs" />
+    <Compile Include="Endpoints\Likes.cs" />
+    <Compile Include="ExtenionMethods.cs" />
     <Compile Include="Endpoints\InstagramAPI.cs" />
-    <Compile Include="Endpoints\Likes\Authenticated.cs" />
-    <Compile Include="Endpoints\Likes\Unauthenticated.cs" />
-    <Compile Include="Endpoints\Locations\Authenticated.cs" />
-    <Compile Include="Endpoints\Locations\Unauthenticated.cs" />
+    <Compile Include="Endpoints\Locations.cs" />
     <Compile Include="Endpoints\Media.cs" />
     <Compile Include="Endpoints\Relationships.cs" />
     <Compile Include="Endpoints\Tags.cs" />

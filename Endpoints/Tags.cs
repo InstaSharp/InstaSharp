@@ -13,7 +13,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class</param>
         public Tags(InstagramConfig config)
-            : base(config, "/tags/") { }
+            : base("/tags/", config) { }
 
         /// <summary>
         /// Get information about a tag object.

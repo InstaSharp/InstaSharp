@@ -7,8 +7,8 @@ using InstaSharp.Model.Responses;
 namespace InstaSharp.Endpoints {
     public class Media : InstagramAPI {
 
-        public Media(InstagramConfig config, AuthInfo auth)
-            : base(config, auth, "/media/") { }
+        public Media(InstagramConfig config, AuthInfo auth = null)
+            : base("/media/", config, auth) { }
 
         /// <summary>
         /// Get information about a media object. Note: if you are authenticated, you will receive the user_has_liked key which quickly tells you whether the current user has liked this media item.
@@ -60,6 +60,9 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Search for media in a given area.
+        /// <para>
+        /// <c>Requires Authentication:</c> False
+        /// </para>
         /// </summary>
         /// <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
         /// <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
@@ -73,6 +76,9 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Search for media in a given area.
+        /// <para>
+        /// <c>Requires Authentication:</c> False
+        /// </para>
         /// </summary>
         /// <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
         /// <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>

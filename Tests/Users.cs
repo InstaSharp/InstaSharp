@@ -76,6 +76,18 @@ namespace InstaSharp.Tests
             var result = _users.Recent("307891304812280686_2849381", "304848768082410173_2849381", 1);
             Assert.IsTrue(result.Data.Count > 0, "Parameters: MaxId, MinId, Count");
         }
+
+        [TestMethod, TestCategory("Users.Search")]
+        public void Search() {
+            var result = _users.Search("beiber");
+            Assert.IsTrue(result.Data.Count > 0);
+        }
+
+        [TestMethod, TestCategory("Users.Liked")]
+        public void Liked() {
+            var result = _users.Liked();
+            Assert.IsTrue(result.Meta.Code == 200);
+        }
     }
 }
 
