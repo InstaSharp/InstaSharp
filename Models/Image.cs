@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InstaSharp.Model {
+namespace InstaSharp.Models {
     public class Image {
         [JsonMapping("low_resolution", JsonMapping.MappingType.Class)]
         public Resolution LowResolution { get; set; }

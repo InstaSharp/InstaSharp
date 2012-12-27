@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints {
     public class Geographies : InstagramAPI {
 
+        /// <summary>
+        /// Geographies Endpoints
+        /// </summary>
+        /// <param name="config">An instance of the InstagramConfig class.</param>
         public Geographies(InstagramConfig config) : base("/geographies/", config) {}
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace InstaSharp.Model.Responses {
+namespace InstaSharp.Models.Responses {
     public interface IResponse {
-        InstaSharp.Model.Meta Meta { get; set; }
+        InstaSharp.Models.Meta Meta { get; set; }
     }
 }

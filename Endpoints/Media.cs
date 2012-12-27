@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints {
     public class Media : InstagramAPI {
 
+        /// <summary>
+        /// Media Endpoints
+        /// </summary>
+        /// <param name="config">An instance of the InstagramConfig class.</param>
+        /// <param name="auth">An instance of the AuthInfo class.</param>
         public Media(InstagramConfig config, AuthInfo auth = null)
             : base("/media/", config, auth) { }
 
@@ -85,13 +90,13 @@ namespace InstaSharp.Endpoints {
         /// <param name="minTimestamp">All media returned will be taken later than this timestamp.</param>
         /// <param name="maxTimestamp">All media returned will be taken earlier than this timestamp.</param>
         /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
-        /// <returns>MediasResponse</returns>
+        /// <returns>String</returns>
         private string SearchJson(double? latitude = null, double? longitude = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, int distance = 1000) {
             string uri = string.Format(base.Uri + "search?access_token={0}&distance={1}", AuthInfo.Access_Token, distance);
 
             if (latitude != null || longitude != null) uri += string.Format("&lat={0}&lng={1}", latitude, longitude);
-            if (maxTimestamp != null) uri += "&max_timestamp=" + maxTimestamp;
-            if (minTimestamp != null) uri += "&min_timestamp=" + minTimestamp;
+            if (maxTimestamp != null) uri += "&max_timestamp=" + ((DateTime)maxTimestamp).ToUnixTimestamp();
+            if (minTimestamp != null) uri += "&min_timestamp=" + ((DateTime)minTimestamp).ToUnixTimestamp();
 
             return HttpClient.GET(uri);
         }

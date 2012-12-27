@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace InstaSharp.Model {
+namespace InstaSharp.Models {
     public class Like {
         [JsonMapping("count", JsonMapping.MappingType.Primitive)]
         public int Count { get; set; }

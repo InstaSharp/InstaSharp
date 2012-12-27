@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InstaSharp.Model.Responses {
-    public class RelationshipResponse : IResponse {
+namespace InstaSharp.Models.Responses {
+    public class LocationResponse : IResponse {
 
         public string Json { get; set; }
 
         [JsonMapping("meta", JsonMapping.MappingType.Class)]
-        public Meta Meta { get; set; }
+        public Models.Meta Meta { get; set; }
         [JsonMapping("data", JsonMapping.MappingType.Class)]
-        public Relationship Data { get; set; }
+        public Location Data { get; set; }
     }
 }

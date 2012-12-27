@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints {
     public class Comments : InstagramAPI {
 
+        /// <summary>
+        /// Comments Endpoints
+        /// </summary>
+        /// <param name="config">An instance of the InstagramConfig class.</param>
+        /// <param name="authInfo">An instance of the AuthInfo class.</param>
         public Comments(InstagramConfig config, AuthInfo authInfo) :
             base("/media/", config, authInfo) { }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InstaSharp.Model {
+namespace InstaSharp.Models {
     public class Location {
         [JsonMapping("id", JsonMapping.MappingType.Primitive)]
         public int Id { get; set; }

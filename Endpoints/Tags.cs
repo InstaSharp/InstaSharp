@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints
 {
     public class Tags : InstaSharp.Endpoints.InstagramAPI {
         
         /// <summary>
-        /// The Tags endpoint. None of its methods require authentication.
+        /// Tag Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class</param>
         public Tags(InstagramConfig config)
@@ -38,18 +38,6 @@ namespace InstaSharp.Endpoints
         public string GetJson(string tagName) {
             string uri = string.Format(base.Uri + "{0}?client_id={1}", tagName, InstagramConfig.ClientId);
             return HttpClient.GET(uri);
-        }
-
-        /// <summary>
-        /// Get a list of recently tagged media. Note that this media is ordered by when the media was tagged with this tag, rather than the order it was posted. Use the max_tag_id and min_tag_id parameters in the pagination response to paginate through these objects.
-        /// </summary>
-        /// <para>
-        /// <c>Requires Authentication: False</c>
-        /// </para>
-        /// <param name="tagName">Return information about this tag.</param>
-        /// <returns>MediasResponse</returns>
-        public MediasResponse Recent(string tagName) {
-            return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(tagName, null, null));
         }
 
         /// <summary>

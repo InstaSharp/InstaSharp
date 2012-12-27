@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints {
     public class Likes : InstagramAPI {
 
+        /// <summary>
+        /// Likes Endpoints
+        /// </summary>
+        /// <param name="config">An instance of the InstagramConfig class.</param>
+        /// <param name="auth">An instance of the AuthInfo class.</param>
         public Likes(InstagramConfig config, AuthInfo auth)
             : base("/media/", config, auth) { }
 
@@ -20,7 +25,7 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media about which to retrieve information.</param>
-        /// <returns>Users Response</returns>
+        /// <returns>UsersResponse</returns>
         public UsersResponse Get(string mediaId) {
             return (UsersResponse)Mapper.Map<UsersResponse>(GetJson(mediaId));
         }

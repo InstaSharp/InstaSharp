@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints {
     public class Locations : InstagramAPI {
         
         /// <summary>
-        /// The Locations endpoint
+        /// Locations Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstaGram config class</param>
         /// <param name="auth">Optional: An instance of the AuthInfo class</param>
         public Locations(InstagramConfig config, AuthInfo auth = null) : base("/locations/", config, auth) { }
 
+        /// <summary>
+        /// The versions of the Foursquare API
+        /// </summary>
         public enum FoursquareVersion {
-            one,
-            two
+            One,
+            Two
         }
 
         /// <summary>
@@ -50,12 +53,20 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication: False</c>
         /// </para>
         /// </summary>
-        /// <param name="locationId"></param>
-        /// <returns></returns>
+        /// <param name="locationId">The id of the location about which to retrieve information.</param>
+        /// <returns>MediasResponse</returns>
         public MediasResponse Recent(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
             return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(locationId));
         }
 
+        /// <summary>
+        /// Get a list of recent media objects from a given location.
+        /// <para>
+        /// <c>Requires Authentication: False</c>
+        /// </para>
+        /// </summary>
+        /// <param name="locationId">The id of the location about which to retrieve information.</param>
+        /// <returns>String</returns>
         public string RecentJson(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
             base.FormatUri(string.Format("{0}/media/recent/", locationId));
 
@@ -100,10 +111,10 @@ namespace InstaSharp.Endpoints {
 
             if (foursquare_version != null) {
                 switch (foursquare_version) {
-                    case FoursquareVersion.one:
+                    case FoursquareVersion.One:
                         base.Uri.AppendFormat("&foursquare_id={0}", foursquare_id);
                         break;
-                    case FoursquareVersion.two:
+                    case FoursquareVersion.Two:
                         base.Uri.AppendFormat("&foursquare_id={0}" + foursquare_id);
                         break;
                     default:

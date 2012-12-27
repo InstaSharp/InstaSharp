@@ -41,15 +41,15 @@ namespace InstaSharp {
 
                 Array.ForEach(instance.GetType().GetProperties(), prop => {
 
-                    var attribute = prop.GetCustomAttributes(typeof(Model.JsonMapping), false);
+                    var attribute = prop.GetCustomAttributes(typeof(Models.JsonMapping), false);
 
                     if (attribute.Length > 0) {
                         var propertyType = prop.PropertyType;
-                        var mapsTo = ((Model.JsonMapping)attribute[0]).MapsTo;
-                        var mappingType = ((Model.JsonMapping)attribute[0]).MapType;
+                        var mapsTo = ((Models.JsonMapping)attribute[0]).MapsTo;
+                        var mappingType = ((Models.JsonMapping)attribute[0]).MapType;
 
                         switch (mappingType) {
-                            case Model.JsonMapping.MappingType.Class:
+                            case Models.JsonMapping.MappingType.Class:
                                 if (json[mapsTo] != null) {
                                     if (json[mapsTo].HasValues) {
                                         var obj = Map(propertyType, (JObject)json[mapsTo]);
@@ -57,7 +57,7 @@ namespace InstaSharp {
                                     }
                                 }
                                 break;
-                            case Model.JsonMapping.MappingType.Collection:
+                            case Models.JsonMapping.MappingType.Collection:
                                 var col = Map(propertyType, (JArray)json[mapsTo]);
                                 prop.SetValue(instance, col, null);
                                 break;

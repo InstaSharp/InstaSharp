@@ -13,22 +13,22 @@ namespace InstaSharp {
         JavaScriptSerializer _serializer;
 
         public enum ResponseType {
-            code,
-            token
+            Code,
+            Token
         }
 
         public enum Scope {
-            basic,
-            comments,
-            relationships,
-            likes
+            Basic,
+            Comments,
+            Relationships,
+            Likes
         }
 
         public Auth(InstagramConfig config) {
             _config = config;
         }
 
-        public static string AuthLink(string instagramOAuthURI, string clientId, string callbackURI, List<Scope> scopes, ResponseType responseType = ResponseType.code) {
+        public static string AuthLink(string instagramOAuthURI, string clientId, string callbackURI, List<Scope> scopes, ResponseType responseType = ResponseType.Code) {
             StringBuilder scope = new StringBuilder();
             scopes.ForEach(s => {
                 if (scope.Length > 0) scope.Append("+");

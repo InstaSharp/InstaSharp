@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InstaSharp.Model {
+namespace InstaSharp.Models {
     public class Meta {
         [JsonMapping("code", JsonMapping.MappingType.Primitive)]
         public int Code { get; set; }

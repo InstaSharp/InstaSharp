@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints {
 
     public class Relationships : InstagramAPI {
 
         public enum Action {
-            none,
-            follow,
-            unfollow,
-            block,
-            unblock,
-            approve,
-            deny
+            Follow,
+            Unfollow,
+            Block,
+            Unblock,
+            Approve,
+            Deny
         }
 
         /// <summary>
-        /// The Relationships endpoint.  All calls on this endpoint require authentication.
+        /// Relationships Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="authInfo">An instance of the AuthInfo class.</param>
@@ -118,22 +117,6 @@ namespace InstaSharp.Endpoints {
         }
 
         /// <summary>
-        /// Get information about a relationship to another user.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The user id about which to get relationship information.</param>
-        /// <param name="action">One of Action enum.</param>
-        /// <returns>RelationshipResponse</returns>
-        public RelationshipResponse Relationship(int userId) {
-            return (RelationshipResponse)Mapper.Map<RelationshipResponse>(RelationshipJson(userId));
-        }
-
-        /// <summary>
         /// Modify the relationship between the current user and the target user.
         /// <para>
         /// <c>Requires Authentication:</c> True
@@ -145,7 +128,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="userId">The user id about which to get relationship information.</param>
         /// <param name="action">One of Action enum.</param>
         /// <returns>RelationshipResponse</returns>
-        public RelationshipResponse Relationship(int userId, Action? action = null) {
+        public RelationshipResponse Relationship(int userId, Action action) {
             return (RelationshipResponse)Mapper.Map<RelationshipResponse>(RelationshipJson(userId, action));
         }
 
@@ -159,33 +142,12 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="userId">The user id about which to get relationship information.</param>
-        /// <returns>String</returns>
-        public string RelationshipJson(int userId) {
-            string uri = string.Format(base.Uri + "{0}/relationship?access_token={1}", userId, AuthInfo.Access_Token);
-            var parameters = new Dictionary<string, string>();
-
-            return HttpClient.GET(uri);
-        }
-
-        /// <summary>
-        /// Modify the relationship between the current user and the target user.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The user id about which to get relationship information.</param>
         /// <param name="action">One of Action enum.</param>
         /// <returns>String</returns>
-        public string RelationshipJson(int userId, Action? action = null) {
-            string uri = string.Format(base.Uri + "{0}/relationship?access_token={1}", userId, AuthInfo.Access_Token);
-            var parameters = new Dictionary<string, string>();
-            if (action != null) {
-                parameters.Add("action", action.ToString());
-            }
-            return HttpClient.POST(uri, parameters);
+        public string RelationshipJson(int userId, Action action) {
+            base.FormatUri(string.Format("{0}/relationship", userId));
+            var parameters = new Dictionary<string, string>() { { "action", action.ToString().ToLower() } };
+            return HttpClient.POST(base.Uri.ToString(), parameters);
         }
 
     }

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InstaSharp.Model.Responses;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints {
     public class Users : InstagramAPI {
 
         /// <summary>
-        /// The users endpoint for all methods.
+        /// User Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfiguration class</param>
         /// <param name="authInfo">An instance of the AuthInfo class</param>
@@ -20,10 +20,8 @@ namespace InstaSharp.Endpoints {
         /// <para>
         /// <c>Requires Authentication: False</c>
         /// </para>
-        /// <para>
-        /// <paramref name="userId"/>: The id of the user who's profile you want to retreive.
-        /// </para>
         /// </summary>
+        /// <paramref name="userId">The id of the user who's profile you want to retreive.</paramref>
         /// <returns>
         /// UserResponse
         /// </returns>
@@ -36,10 +34,8 @@ namespace InstaSharp.Endpoints {
         /// <para>
         /// <c>Requires Authentication: False</c>
         /// </para>
-        /// <para>
-        /// <paramref name="userId"/>: The id of the user who's profile you want to retreive.
-        /// </para>
         /// </summary>
+        /// <paramref name="userId">The id of the user who's profile you want to retreive.</paramref>
         /// <returns>
         /// String
         /// </returns>
@@ -66,19 +62,25 @@ namespace InstaSharp.Endpoints {
         /// <para>
         /// <c>Requires Authentication: True</c>
         /// </para>
-        /// <para>
-        /// <paramref name="maxId"/>: Return media earlier than this max_id.
-        /// </para>
-        /// <para>
-        /// <paramref name="count"/>: Count of media to return.
-        /// </para>
         /// </summary>
-        /// <returns>
+        /// <paramref name="maxId">Return media earlier than this max_id.</paramref>
+        /// <paramref name="count">Count of media to return.</paramref>
+        /// <returns>MediasResponse
         /// </returns>
         public MediasResponse Feed(string maxId = "", int? count = null) {
             return (MediasResponse)Mapper.Map<MediasResponse>(FeedJson(maxId, count));
         }
 
+        /// <summary>
+        /// See the authenticated user's feed.
+        /// <para>
+        /// <c>Requires Authentication: True</c>
+        /// </para>
+        /// </summary>
+        /// <paramref name="maxId">Return media earlier than this max_id.</paramref>
+        /// <paramref name="count">Count of media to return.</paramref>
+        /// <returns>String
+        /// </returns>
         private string FeedJson(string maxId, int? count) {
             base.FormatUri("self/feed");
 
@@ -89,30 +91,33 @@ namespace InstaSharp.Endpoints {
         }
 
         /// <summary>
-        /// Get the most recent media published by a user.
+        /// Get the most recent media published by a user. 
         /// <para>
         /// <c>Requires Authentication: True</c>
         /// </para>
-        /// <para>
-        /// <paramref name="maxId"/>: Return media earlier than this max_id.
-        /// </para>
-        /// <para>
-        /// <paramref name="minId"/>: Return media later than this min_id.
-        /// </para>
-        /// <para>
-        /// <paramref name="count"/>: Count of media to return.
-        /// </para>
-        /// <para>
-        /// <paramref name="minTimestamp"/>: Return media after this timestamp.
-        /// </para>
-        /// <para>
-        /// <paramref name="maxTimestamp"/>: Return media before this timestamp.
-        /// </para>
         /// </summary>
+        /// <param name="maxId">Return media earlier than this max_id.</param>
+        /// <param name="minId">Return media later than this min_id.</param>
+        /// <param name="count">Count of media to return.</param>
+        /// <param name="minTimestamp">Return media after this timestamp.</param>
+        /// <param name="maxTimestamp">Return media before this timestamp.</param>
+        /// <returns>MediasResponse</returns>
         public MediasResponse Recent(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
             return (MediasResponse)Mapper.Map<MediasResponse>(RecentJson(maxId, minId, count, minTimestamp, maxTimestamp));
         }
 
+        /// <summary>
+        /// Get the most recent media published by a user.
+        /// <para>
+        /// <c>Requires Authentication: True</c>
+        /// </para>
+        /// </summary>
+        /// <param name="maxId">Return media earlier than this max_id.</param>
+        /// <param name="minId">Return media later than this min_id.</param>
+        /// <param name="count">Count of media to return.</param>
+        /// <param name="minTimestamp">Return media after this timestamp.</param>
+        /// <param name="maxTimestamp">Return media before this timestamp.</param>
+        /// <returns>String</returns>
         public string RecentJson(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
             base.FormatUri(string.Format("{0}/media/recent", AuthInfo.User.Id));
 
@@ -159,9 +164,13 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication: False</c>
         /// </para>
         /// </summary>
-        public UsersResponse Search(string searchTerm) {
-            return (UsersResponse)Mapper.Map<UsersResponse>(SearchJson(searchTerm, 0));
+        /// <param name="searchTem">A query string.</param>
+        /// <param name="count">Number of users to return.</param>
+        /// <returns>UsersResponse</returns>
+        public UsersResponse Search(string searchTerm, int? count = null) {
+            return (UsersResponse)Mapper.Map<UsersResponse>(SearchJson(searchTerm, count));
         }
+
 
         /// <summary>
         /// Search for a user by name.
@@ -169,10 +178,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication: False</c>
         /// </para>
         /// </summary>
-        public UsersResponse Search(string searchTerm, int? count = null) {
-            return (UsersResponse)Mapper.Map<UsersResponse>(SearchJson(searchTerm, count));
-        }
-
+        /// <param name="searchTem">A query string.</param>
+        /// <param name="count">Number of users to return.</param>
+        /// <returns>String</returns>
         private string SearchJson(string searchTerm, int? count = null) {
             base.FormatUri("search");
             base.Uri.AppendFormat("&q={0}", searchTerm);

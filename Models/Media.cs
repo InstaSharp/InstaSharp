@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InstaSharp.Model {
+namespace InstaSharp.Models {
     public class Media {
 
         [JsonMapping("location", JsonMapping.MappingType.Class)]
-        public Model.Location Location { get; set; }
+        public Models.Location Location { get; set; }
         
         [JsonMapping("comments", JsonMapping.MappingType.Class)]
-        public Model.Comments Comments { get; set; }
+        public Models.Comments Comments { get; set; }
         
         [JsonMapping("caption", JsonMapping.MappingType.Primitive)]
         public string Caption { get; set; }

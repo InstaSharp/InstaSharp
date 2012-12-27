@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using InstaSharp.Endpoints;
 
 namespace InstaSharp.Tests {
     [TestClass]
@@ -40,7 +41,7 @@ namespace InstaSharp.Tests {
 
         [TestMethod, TestCategory("Relationships.Relationship")]
         public void Relationship() {
-            var result = _relationships.Relationship(22987123);
+            var result = _relationships.Relationship(22987123, Endpoints.Relationships.Action.Unfollow);
             Assert.IsTrue(result.Data != null);
         }
     }

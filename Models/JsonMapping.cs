@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InstaSharp.Model {
+namespace InstaSharp.Models {
     
     [AttributeUsage(AttributeTargets.All, AllowMultiple=false)]
     public class JsonMapping : System.Attribute {

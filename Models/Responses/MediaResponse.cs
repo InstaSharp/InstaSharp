@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InstaSharp.Model.Responses {
+namespace InstaSharp.Models.Responses {
     public class MediaResponse : IResponse {
 
         public string Json { get; set; }
