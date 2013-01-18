@@ -1,4 +1,4 @@
-﻿
+﻿#if DEBUG
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -25,7 +25,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Get")]
         public void Get_Id()
         {
-            var result = _users.Get(3);
+            var result = _users.Get(19854736);
             Assert.IsTrue(result.Data.Username.Length > 0, "Parameters: userId");
         }
 
@@ -96,3 +96,4 @@ namespace InstaSharp.Tests
     }
 }
 
+#endif

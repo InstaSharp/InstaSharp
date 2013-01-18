@@ -42,8 +42,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media on which to retrieve comments.</param>
         /// <returns>String</returns>
         public string GetJson(string mediaId) {
-            base.FormatUri(string.Format("{0}/comments", mediaId));
-            return HttpClient.GET(base.Uri.ToString());
+            var uri = base.FormatUri(string.Format("{0}/comments", mediaId));
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -78,9 +78,9 @@ namespace InstaSharp.Endpoints {
             var args = new Dictionary<string, string>();
             args.Add("text", comment);
 
-            string uri = string.Format(base.Uri + "{0}/comments?access_token={1}", mediaId, AuthInfo.Access_Token);
+            var uri = base.FormatUri(string.Format("{0}/comments", mediaId));
 
-            return HttpClient.POST(uri, args);
+            return HttpClient.POST(uri.ToString(), args);
         }
 
         /// <summary>
@@ -110,8 +110,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="commentId">The id of the comment to delete.</param>
         /// <returns>CommentResponse</returns>
         private string DeleteJson(string mediaId, string commentId) {
-            string uri = string.Format(base.Uri + "{0}/comments/{1}?access_token={2}", mediaId, commentId, AuthInfo.Access_Token);
-            return HttpClient.DELETE(uri);
+            var uri = base.FormatUri(string.Format("{0}/comments/{1}", mediaId, commentId));
+            return HttpClient.DELETE(uri.ToString());
         }
     }
 

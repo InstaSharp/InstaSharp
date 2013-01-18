@@ -42,8 +42,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media about which to retrieve information.</param>
         /// <returns>String</returns>
         public string GetJson(string mediaId) {
-            base.FormatUri(string.Format("{0}/likes", mediaId));
-            return HttpClient.GET(base.Uri.ToString());
+            var uri = base.FormatUri(string.Format("{0}/likes", mediaId));
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -73,8 +73,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media to create a like for.</param>
         /// <returns>String</returns>
         public string PostJson(string mediaId) {
-            base.FormatUri(string.Format("{0}/likes", mediaId));
-            return HttpClient.POST(base.Uri.ToString());
+            var uri = base.FormatUri(string.Format("{0}/likes", mediaId));
+            return HttpClient.POST(uri.ToString());
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media from wich to remove the like.</param>
         /// <returns>String</returns>
         public string DeleteJson(string mediaId) {
-            base.FormatUri(string.Format("{0}/likes", mediaId));
-            return HttpClient.DELETE(base.Uri.ToString());
+            var uri = base.FormatUri(string.Format("{0}/likes", mediaId));
+            return HttpClient.DELETE(uri.ToString());
         }
     }
 }

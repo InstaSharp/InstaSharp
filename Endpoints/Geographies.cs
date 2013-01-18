@@ -23,8 +23,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="count">Max number of media to return.</param>
         /// <param name="min_id">Return media before this min_id.</param>
         /// <returns>MediaResponse</returns>
-        public MediaResponse Recent(string mediaId, int? count = null, string min_id = "") {
-            return (MediaResponse)Mapper.Map<MediaResponse>(RecentJson(mediaId, count, min_id));
+        public MediaResponse Recent(int geoId, int? count = null, string min_id = "") {
+            return (MediaResponse)Mapper.Map<MediaResponse>(RecentJson(geoId, count, min_id));
         }
 
         /// <summary>
@@ -37,13 +37,13 @@ namespace InstaSharp.Endpoints {
         /// <param name="count">Max number of media to return.</param>
         /// <param name="min_id">Return media before this min_id.</param>
         /// <returns>String</returns>
-        public string RecentJson(string mediaId, int? count = null, string min_id = "") {
-            base.FormatUri(string.Format("{0}/media/recent", mediaId));
+        public string RecentJson(int geoId, int? count = null, string min_id = "") {
+            var uri = base.FormatUri(string.Format("{0}/media/recent", geoId));
 
-            if (count != null) base.Uri.AppendFormat("&count={0}", count);
-            if (!string.IsNullOrEmpty(min_id)) base.Uri.AppendFormat("&min_id={0}", min_id);
+            if (count != null) uri.AppendFormat("&count={0}", count);
+            if (!string.IsNullOrEmpty(min_id)) uri.AppendFormat("&min_id={0}", min_id);
 
-            return HttpClient.GET(base.Uri.ToString());
+            return HttpClient.GET(uri.ToString());
         }
     }
 }

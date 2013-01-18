@@ -8,20 +8,24 @@ namespace InstaSharp.Endpoints {
 
         public InstagramConfig InstagramConfig { get; private set; }
         public AuthInfo AuthInfo { get; private set; }
-        public StringBuilder Uri { get; set; }
+        public string Uri { get; set; }
 
         public InstagramAPI(string endpoint, InstagramConfig instagramConfig, AuthInfo authInfo = null) {
             InstagramConfig = instagramConfig;
             AuthInfo = authInfo ?? null;
-            Uri = new StringBuilder(InstagramConfig.APIURI + endpoint);
+            Uri = InstagramConfig.APIURI + endpoint;
         }
 
-        internal void FormatUri(string substitution = null) {
-            if (substitution != null) {
-                Uri.Append(substitution);
-            }
+        internal StringBuilder FormatUri(string substitution = null) {
+            var uri = new StringBuilder(Uri);
             
-            Uri.Append(AuthInfo == null ? "?client_id=" + InstagramConfig.ClientId : "?access_token=" + AuthInfo.Access_Token);
+            if (substitution != null) {
+                uri.Append(substitution);
+            }
+
+            string client_or_token = AuthInfo == null ? "?client_id=" + InstagramConfig.ClientId : "?access_token=" + AuthInfo.Access_Token;
+
+            return uri.Append(client_or_token);
         }
     }
 }

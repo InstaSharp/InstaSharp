@@ -65,11 +65,11 @@ namespace InstaSharp.Endpoints
         /// <param name="max_id">Return media after this max_id. If you don't want to use this parameter, use null.</param>
         /// <returns>String</returns>
         private string RecentJson(string tagName, string min_id = "", string max_id = "") {
-            string uri = string.Format(base.Uri + "{0}/media/recent?client_id={1}", tagName, InstagramConfig.ClientId);
-            if (!string.IsNullOrEmpty(min_id)) uri += "&min_tag_id=" + min_id;
-            if (!string.IsNullOrEmpty(max_id)) uri += "&max_tag_id=" + max_id;
+            var uri = base.FormatUri(string.Format("{0}/media/recent", tagName));
+            if (!string.IsNullOrEmpty(min_id)) uri.AppendFormat("&min_tag_id={0}", min_id);
+            if (!string.IsNullOrEmpty(max_id)) uri.AppendFormat("&max_tag_id={0}", max_id);
 
-            return HttpClient.GET(uri);
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace InstaSharp.Endpoints
         /// <param name="searchTerm">A valid tag name without a leading #. (eg. snowy, nofilter)</param>
         /// <returns>String</returns>
         public string SearchJson(string searchTerm) {
-            string uri = string.Format(base.Uri + "/search/?q={0}&client_id={1}", searchTerm, InstagramConfig.ClientId);
-            return HttpClient.GET(uri);
+            var uri = base.FormatUri(string.Format("/search/?q={0}", searchTerm));
+            return HttpClient.GET(uri.ToString());
         }
     }
 }

@@ -43,8 +43,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="locationId">The id of the location to retreive information for.</param>
         /// <returns>String</returns>
         public string GetJson(string locationId) {
-            base.FormatUri(locationId);
-            return HttpClient.GET(base.Uri.ToString());
+            var uri = base.FormatUri(locationId);
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -68,14 +68,14 @@ namespace InstaSharp.Endpoints {
         /// <param name="locationId">The id of the location about which to retrieve information.</param>
         /// <returns>String</returns>
         public string RecentJson(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
-            base.FormatUri(string.Format("{0}/media/recent/", locationId));
+            var uri = base.FormatUri(string.Format("{0}/media/recent/", locationId));
 
-            if (minTimestamp != null) base.Uri.AppendFormat("&min_timestamp={0}", ((DateTime)minTimestamp).ToUnixTimestamp());
-            if (maxTimestamp != null) base.Uri.AppendFormat("&max_timestamp={0}", ((DateTime)maxTimestamp).ToUnixTimestamp());
-            if (!string.IsNullOrEmpty(minId)) base.Uri.AppendFormat("&min_id={0}", minId);
-            if (!string.IsNullOrEmpty(maxId)) base.Uri.AppendFormat("&max_id={0}", maxId);
+            if (minTimestamp != null) uri.AppendFormat("&min_timestamp={0}", ((DateTime)minTimestamp).ToUnixTimestamp());
+            if (maxTimestamp != null) uri.AppendFormat("&max_timestamp={0}", ((DateTime)maxTimestamp).ToUnixTimestamp());
+            if (!string.IsNullOrEmpty(minId)) uri.AppendFormat("&min_id={0}", minId);
+            if (!string.IsNullOrEmpty(maxId)) uri.AppendFormat("&max_id={0}", maxId);
 
-            return HttpClient.GET(base.Uri.ToString());
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -107,26 +107,26 @@ namespace InstaSharp.Endpoints {
         /// <param name="foursquare_version">The version of the FourSquare ID  you are using.  Either version 1 or 2.</param>
         /// <returns>String</returns>
         private string SearchJson(double? latitude = null, double? longitude = null, double distance = 1000, string foursquare_id = "", FoursquareVersion? foursquare_version = null) {
-            base.FormatUri("search");
+            var uri = base.FormatUri("search");
 
             if (foursquare_version != null) {
                 switch (foursquare_version) {
                     case FoursquareVersion.One:
-                        base.Uri.AppendFormat("&foursquare_id={0}", foursquare_id);
+                        uri.AppendFormat("&foursquare_id={0}", foursquare_id);
                         break;
                     case FoursquareVersion.Two:
-                        base.Uri.AppendFormat("&foursquare_id={0}" + foursquare_id);
+                        uri.AppendFormat("&foursquare_id={0}" + foursquare_id);
                         break;
                     default:
                         break;
                 }
             } else {
-                base.Uri.AppendFormat("&lat={0}&lng={1}&distance={2}", latitude, longitude);
+                uri.AppendFormat("&lat={0}&lng={1}", latitude, longitude);
             }
 
-            base.Uri.AppendFormat("&distance={0}", distance);
+                uri.AppendFormat("&distance={0}", distance);
 
-            return HttpClient.GET(base.Uri.ToString());
+            return HttpClient.GET(uri.ToString());
         }
             
     }

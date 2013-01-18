@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#if DEBUG
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,10 +41,23 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Data.Count > 0);
         }
 
+        [TestMethod, TestCategory("Relationships.RequestedBy")]
+        public void RequestedBy() {
+            var result = _relationships.RequestedBy();
+            // TODO: How to test requests if there aren't any?
+            Assert.IsTrue(result.Meta.Code == 200);
+        }
+
         [TestMethod, TestCategory("Relationships.Relationship")]
         public void Relationship() {
-            var result = _relationships.Relationship(22987123, Endpoints.Relationships.Action.Unfollow);
-            Assert.IsTrue(result.Data != null);
+            // first follow Justin Beiber
+            var follow = _relationships.Relationship(19854736, Endpoints.Relationships.Action.Follow);
+            Assert.IsTrue(follow.Data.OutgoingStatus == "follows", "Failed on follow");
+            // now unfollow him
+            var unfollow = _relationships.Relationship(19854736, Endpoints.Relationships.Action.Unfollow);
+            Assert.IsTrue(unfollow.Data.OutgoingStatus == "none", "Failed on unfollow");
         }
     }
 }
+
+#endif

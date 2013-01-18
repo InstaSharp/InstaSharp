@@ -66,7 +66,7 @@ namespace InstaSharp {
                                     if (json[mapsTo] != null) {
                                         // special case for datetime because it comes in Unix format
                                         if (prop.PropertyType == typeof(DateTime))
-                                            prop.SetValue(instance, UnixTimeStampToDateTime(json[mapsTo].ToString()), null);
+                                            prop.SetValue(instance, json[mapsTo].ToString().ToDateTimeFromUnix(), null);
                                         else
                                             prop.SetValue(instance, Convert.ChangeType(json[mapsTo].ToString(), prop.PropertyType), null);
                                     }
@@ -93,14 +93,6 @@ namespace InstaSharp {
             }
 
             return result;
-        }
-
-        private static DateTime UnixTimeStampToDateTime(string unixTimeStamp) {
-            // Unix timestamp is seconds past epoch
-            double unixTime = Convert.ToDouble(unixTimeStamp);
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            dtDateTime = dtDateTime.AddSeconds(unixTime).ToLocalTime();
-            return dtDateTime;
         }
 
         private static void SetPropertyValue(PropertyInfo prop, object instance, object value) {

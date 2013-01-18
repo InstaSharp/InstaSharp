@@ -40,8 +40,8 @@ namespace InstaSharp.Endpoints {
         /// String
         /// </returns>
         private string GetJson(int? userId) {
-            base.FormatUri(userId == null ? base.AuthInfo.User.Id.ToString() : userId.ToString());
-            return HttpClient.GET(base.Uri.ToString());
+            var uri = base.FormatUri(userId == null ? base.AuthInfo.User.Id.ToString() : userId.ToString());
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -82,12 +82,12 @@ namespace InstaSharp.Endpoints {
         /// <returns>String
         /// </returns>
         private string FeedJson(string maxId, int? count) {
-            base.FormatUri("self/feed");
+            var uri = base.FormatUri("self/feed");
 
-            if (!string.IsNullOrEmpty(maxId)) base.Uri.AppendFormat("&max_id={0}", maxId);
-            if (count != null) base.Uri.AppendFormat("&count={0}", count);
+            if (!string.IsNullOrEmpty(maxId)) uri.AppendFormat("&max_id={0}", maxId);
+            if (count != null) uri.AppendFormat("&count={0}", count);
 
-            return HttpClient.GET(base.Uri.ToString());
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -119,15 +119,15 @@ namespace InstaSharp.Endpoints {
         /// <param name="maxTimestamp">Return media before this timestamp.</param>
         /// <returns>String</returns>
         public string RecentJson(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
-            base.FormatUri(string.Format("{0}/media/recent", AuthInfo.User.Id));
+            var uri = base.FormatUri(string.Format("{0}/media/recent", AuthInfo.User.Id));
 
-            if (!string.IsNullOrEmpty(maxId)) base.Uri.AppendFormat("&max_id={0}", maxId);
-            if (!string.IsNullOrEmpty(minId)) base.Uri.AppendFormat("&min_id={0}", minId);
-            if (count != null) base.Uri.AppendFormat("&count={0}", count);
-            if (minTimestamp != null) base.Uri.AppendFormat("&min_timestamp={0}", ((DateTime)minTimestamp).ToUnixTimestamp());
-            if (maxTimestamp != null) base.Uri.AppendFormat("&max_timestamp={1}" + ((DateTime)maxTimestamp).ToUnixTimestamp());
+            if (!string.IsNullOrEmpty(maxId)) uri.AppendFormat("&max_id={0}", maxId);
+            if (!string.IsNullOrEmpty(minId)) uri.AppendFormat("&min_id={0}", minId);
+            if (count != null) uri.AppendFormat("&count={0}", count);
+            if (minTimestamp != null) uri.AppendFormat("&min_timestamp={0}", ((DateTime)minTimestamp).ToUnixTimestamp());
+            if (maxTimestamp != null) uri.AppendFormat("&max_timestamp={1}" + ((DateTime)maxTimestamp).ToUnixTimestamp());
 
-            return HttpClient.GET(base.Uri.ToString());
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -150,12 +150,12 @@ namespace InstaSharp.Endpoints {
         /// <param name="count">Count of media to return.</param>
         /// <returns>String</returns>
         public string LikedJson(string max_like_id = "", int? count = 20) {
-            base.FormatUri("self/media/liked");
+            var uri = base.FormatUri("self/media/liked");
 
-            if (!string.IsNullOrEmpty(max_like_id)) base.Uri.AppendFormat("&max_like_id={0}", max_like_id);
-            if (count != null) base.Uri.AppendFormat("&count={0}", count);
+            if (!string.IsNullOrEmpty(max_like_id)) uri.AppendFormat("&max_like_id={0}", max_like_id);
+            if (count != null) uri.AppendFormat("&count={0}", count);
 
-            return HttpClient.GET(base.Uri.ToString());
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -182,10 +182,10 @@ namespace InstaSharp.Endpoints {
         /// <param name="count">Number of users to return.</param>
         /// <returns>String</returns>
         private string SearchJson(string searchTerm, int? count = null) {
-            base.FormatUri("search");
-            base.Uri.AppendFormat("&q={0}", searchTerm);
-            if (count != null) base.Uri.AppendFormat("&count={0}", count);
-            return HttpClient.GET(base.Uri.ToString());
+            var uri = base.FormatUri("search");
+            uri.AppendFormat("&q={0}", searchTerm);
+            if (count != null) uri.AppendFormat("&count={0}", count);
+            return HttpClient.GET(uri.ToString());
         }
     }
 }

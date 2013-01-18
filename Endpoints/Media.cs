@@ -36,8 +36,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media to retrieve</param>
         /// <returns>String</returns>
         public string GetJson(string mediaId) {
-            string uri = string.Format(base.Uri + "{0}?access_token={1}", mediaId, AuthInfo.Access_Token);
-            return HttpClient.GET(uri);
+            var uri = base.FormatUri(mediaId); 
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// <returns>String</returns>
         public string PopularJson() {
-            string uri = string.Format(base.Uri + "popular/?access_token={0}", AuthInfo.Access_Token);
-            return HttpClient.GET(uri);
+            var uri = base.FormatUri("popular");
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -92,13 +92,13 @@ namespace InstaSharp.Endpoints {
         /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
         /// <returns>String</returns>
         private string SearchJson(double? latitude = null, double? longitude = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, int distance = 1000) {
-            string uri = string.Format(base.Uri + "search?access_token={0}&distance={1}", AuthInfo.Access_Token, distance);
+            var uri = base.FormatUri("search");
+            uri.AppendFormat("&distance={0}", distance);
+            if (latitude != null || longitude != null) uri.AppendFormat("&lat={0}&lng={1}", latitude, longitude);
+            if (maxTimestamp != null) uri.AppendFormat("&max_timestamp={0}", ((DateTime)maxTimestamp).ToUnixTimestamp());
+            if (minTimestamp != null) uri.AppendFormat("&min_timestamp={0}", ((DateTime)minTimestamp).ToUnixTimestamp());
 
-            if (latitude != null || longitude != null) uri += string.Format("&lat={0}&lng={1}", latitude, longitude);
-            if (maxTimestamp != null) uri += "&max_timestamp=" + ((DateTime)maxTimestamp).ToUnixTimestamp();
-            if (minTimestamp != null) uri += "&min_timestamp=" + ((DateTime)minTimestamp).ToUnixTimestamp();
-
-            return HttpClient.GET(uri);
+            return HttpClient.GET(uri.ToString());
         }
     }
 }

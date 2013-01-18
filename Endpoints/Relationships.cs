@@ -52,8 +52,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="userId">The list of users that this user id is following.</param>
         /// <returns>String</returns>
         public string FollowsJson(int? userId = null) {
-            string uri = string.Format(base.Uri + "{0}/follows?client_id={1}", userId ?? AuthInfo.User.Id, InstagramConfig.ClientId);
-            return HttpClient.GET(uri);
+            var uri = base.FormatUri(string.Format("{0}/follows", userId ?? AuthInfo.User.Id));
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -83,8 +83,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="userId">The id of the user to get the followers of.</param>
         /// <returns>String</returns>
         public string FollowedByJson(int? userId = null) {
-            string uri = string.Format(base.Uri + "{0}/followed-by?client_id={1}", userId ?? AuthInfo.User.Id, InstagramConfig.ClientId);
-            return HttpClient.GET(uri);
+            var uri = base.FormatUri(string.Format("{0}/followed-by", userId ?? AuthInfo.User.Id));
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <returns>String</returns>
         public string RequestedByJson() {
-            string uri = string.Format(base.Uri + "/self/requested-by?access_token={0}", AuthInfo.Access_Token);
-            return HttpClient.GET(uri);
+            var uri = base.FormatUri("/self/requested-by");
+            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -145,9 +145,9 @@ namespace InstaSharp.Endpoints {
         /// <param name="action">One of Action enum.</param>
         /// <returns>String</returns>
         public string RelationshipJson(int userId, Action action) {
-            base.FormatUri(string.Format("{0}/relationship", userId));
+            var uri = base.FormatUri(string.Format("{0}/relationship", userId));
             var parameters = new Dictionary<string, string>() { { "action", action.ToString().ToLower() } };
-            return HttpClient.POST(base.Uri.ToString(), parameters);
+            return HttpClient.POST(uri.ToString(), parameters);
         }
 
     }
