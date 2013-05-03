@@ -12,7 +12,7 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="authInfo">An instance of the AuthInfo class.</param>
-        public Comments(InstagramConfig config, AuthInfo authInfo) :
+        public Comments(InstagramConfig config, OAuthResponse authInfo) :
             base("/media/", config, authInfo) { }
 
         /// <summary>

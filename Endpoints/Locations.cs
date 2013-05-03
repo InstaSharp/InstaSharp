@@ -12,7 +12,7 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="config">An instance of the InstaGram config class</param>
         /// <param name="auth">Optional: An instance of the AuthInfo class</param>
-        public Locations(InstagramConfig config, AuthInfo auth = null) : base("/locations/", config, auth) { }
+        public Locations(InstagramConfig config, OAuthResponse auth = null) : base("/locations/", config, auth) { }
 
         /// <summary>
         /// The versions of the Foursquare API

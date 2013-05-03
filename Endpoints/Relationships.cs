@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InstaSharp.Models.Responses;
+using RestSharp;
 
 namespace InstaSharp.Endpoints {
 
@@ -21,9 +22,9 @@ namespace InstaSharp.Endpoints {
         /// Relationships Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        /// <param name="authInfo">An instance of the AuthInfo class.</param>
-        public Relationships(InstagramConfig config, AuthInfo authInfo)
-            : base("/users/", config, authInfo) { }
+        /// <param name="oauthResponse">An instance of the OAuthResponse class.</param>
+        public Relationships(InstagramConfig config, OAuthResponse oauthResponse)
+            : base("/users/", config, oauthResponse) { }
 
         /// <summary>
         /// Get the list of users this user follows.
@@ -36,24 +37,10 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
         /// <returns>UsersResponse</returns>
-        public UsersResponse Follows(int? userId = null) {
-            return (UsersResponse)Mapper.Map<UsersResponse>(FollowsJson(userId));
-        }
-
-        /// <summary>
-        /// Get the list of users this user follows.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The list of users that this user id is following.</param>
-        /// <returns>String</returns>
-        public string FollowsJson(int? userId = null) {
-            var uri = base.FormatUri(string.Format("{0}/follows", userId ?? AuthInfo.User.Id));
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<UsersResponse> Follows(int? userId = null) {
+            var request = base.Request("{id}/follows");
+            request.AddUrlSegment("id", userId.HasValue ? userId.ToString() : base.OAuthResponse.User.Id.ToString());
+            return base.Client.Execute<UsersResponse>(request);
         }
 
         /// <summary>
@@ -83,7 +70,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="userId">The id of the user to get the followers of.</param>
         /// <returns>String</returns>
         public string FollowedByJson(int? userId = null) {
-            var uri = base.FormatUri(string.Format("{0}/followed-by", userId ?? AuthInfo.User.Id));
+            var uri = base.FormatUri(string.Format("{0}/followed-by", userId ?? OAuthResponse.User.Id));
             return HttpClient.GET(uri.ToString());
         }
 

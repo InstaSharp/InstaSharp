@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSharp", "InstaSharp.csproj", "{CD3EA37A-6C9D-4B74-A2A8-1483259FB1B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSharp.Samples.MVC", "..\instasharp-demo\InstaSharp.Samples.MVC.csproj", "{9B5F4359-4380-400D-A472-FB41B9700066}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,12 @@ Global
 		{CD3EA37A-6C9D-4B74-A2A8-1483259FB1B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD3EA37A-6C9D-4B74-A2A8-1483259FB1B8}.UnitTest|Any CPU.ActiveCfg = Release|Any CPU
 		{CD3EA37A-6C9D-4B74-A2A8-1483259FB1B8}.UnitTest|Any CPU.Build.0 = Release|Any CPU
+		{9B5F4359-4380-400D-A472-FB41B9700066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B5F4359-4380-400D-A472-FB41B9700066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B5F4359-4380-400D-A472-FB41B9700066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B5F4359-4380-400D-A472-FB41B9700066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B5F4359-4380-400D-A472-FB41B9700066}.UnitTest|Any CPU.ActiveCfg = Release|Any CPU
+		{9B5F4359-4380-400D-A472-FB41B9700066}.UnitTest|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

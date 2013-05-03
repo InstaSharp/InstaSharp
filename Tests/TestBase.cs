@@ -1,5 +1,6 @@
 ﻿#if DEBUG
 
+using InstaSharp.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace InstaSharp.Tests
 {
     public class TestBase
     {
-        public readonly AuthInfo auth = new AuthInfo();
+        public readonly OAuthResponse auth = new OAuthResponse();
         public readonly InstagramConfig config = new InstagramConfig();
 
         public TestBase()
@@ -20,7 +21,7 @@ namespace InstaSharp.Tests
 
             // dummy account data.  Kevin S no doubt.
             auth.Access_Token = "2849381.f59def8.1e89d635370f475d94e7512faa6fb9e0";
-            auth.User = new UserInfo();
+            auth.User = new Models.UserInfo();
             auth.User.Id = 22987123;
             auth.User.Username = "kevin";
         }

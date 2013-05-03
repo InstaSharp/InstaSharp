@@ -5,11 +5,8 @@ using System.Text;
 
 namespace InstaSharp.Models {
     public class Count {
-        [JsonMapping("media", JsonMapping.MappingType.Primitive)]
         public int Media { get; set; }
-        [JsonMapping("follows", JsonMapping.MappingType.Primitive)]
         public int Follows { get; set; }
-        [JsonMapping("followed_by", JsonMapping.MappingType.Primitive)]
         public int FollowedBy { get; set; }
     }
 }

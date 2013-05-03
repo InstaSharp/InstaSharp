@@ -20,13 +20,13 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Relationships.Follows")]
         public void Follows() {
             var result = _relationships.Follows();
-            Assert.IsTrue(result.Meta.Code == 200);
+            Assert.IsTrue(result.Data.Meta.Code == 200);
         }
 
         [TestMethod, TestCategory("Relationships.Follows")]
         public void Follows_Id() {
             var result = _relationships.Follows(auth.User.Id);
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.FollowedBy")]

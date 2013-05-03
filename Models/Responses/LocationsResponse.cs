@@ -5,12 +5,7 @@ using System.Text;
 
 namespace InstaSharp.Models.Responses {
     public class LocationsResponse : IResponse {
-
-        public string Json { get; set; }
-        
-        [JsonMapping("meta", JsonMapping.MappingType.Class)]
         public Models.Meta Meta { get; set; }
-        [JsonMapping("data", JsonMapping.MappingType.Collection)]
         public IList<Location> Data { get; set; }
     }
 }

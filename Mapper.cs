@@ -39,42 +39,42 @@ namespace InstaSharp {
 
                 var instance = Activator.CreateInstance(t);
 
-                Array.ForEach(instance.GetType().GetProperties(), prop => {
+                //Array.ForEach(instance.GetType().GetProperties(), prop => {
 
-                    var attribute = prop.GetCustomAttributes(typeof(Models.JsonMapping), false);
+                //    var attribute = prop.GetCustomAttributes(typeof(Models.JsonMapping), false);
 
-                    if (attribute.Length > 0) {
-                        var propertyType = prop.PropertyType;
-                        var mapsTo = ((Models.JsonMapping)attribute[0]).MapsTo;
-                        var mappingType = ((Models.JsonMapping)attribute[0]).MapType;
+                //    if (attribute.Length > 0) {
+                //        var propertyType = prop.PropertyType;
+                //        var mapsTo = ((Models.JsonMapping)attribute[0]).MapsTo;
+                //        var mappingType = ((Models.JsonMapping)attribute[0]).MapType;
 
-                        switch (mappingType) {
-                            case Models.JsonMapping.MappingType.Class:
-                                if (json[mapsTo] != null) {
-                                    if (json[mapsTo].HasValues) {
-                                        var obj = Map(propertyType, (JObject)json[mapsTo]);
-                                        prop.SetValue(instance, obj, null);
-                                    }
-                                }
-                                break;
-                            case Models.JsonMapping.MappingType.Collection:
-                                var col = Map(propertyType, (JArray)json[mapsTo]);
-                                prop.SetValue(instance, col, null);
-                                break;
-                            default:
-                                if (json != null) {
-                                    if (json[mapsTo] != null) {
-                                        // special case for datetime because it comes in Unix format
-                                        if (prop.PropertyType == typeof(DateTime))
-                                            prop.SetValue(instance, json[mapsTo].ToString().ToDateTimeFromUnix(), null);
-                                        else
-                                            prop.SetValue(instance, Convert.ChangeType(json[mapsTo].ToString(), prop.PropertyType), null);
-                                    }
-                                }
-                                break;
-                        }
-                    }
-                });
+                //        switch (mappingType) {
+                //            case Models.JsonMapping.MappingType.Class:
+                //                if (json[mapsTo] != null) {
+                //                    if (json[mapsTo].HasValues) {
+                //                        var obj = Map(propertyType, (JObject)json[mapsTo]);
+                //                        prop.SetValue(instance, obj, null);
+                //                    }
+                //                }
+                //                break;
+                //            case Models.JsonMapping.MappingType.Collection:
+                //                var col = Map(propertyType, (JArray)json[mapsTo]);
+                //                prop.SetValue(instance, col, null);
+                //                break;
+                //            default:
+                //                if (json != null) {
+                //                    if (json[mapsTo] != null) {
+                //                        // special case for datetime because it comes in Unix format
+                //                        if (prop.PropertyType == typeof(DateTime))
+                //                            prop.SetValue(instance, json[mapsTo].ToString().ToDateTimeFromUnix(), null);
+                //                        else
+                //                            prop.SetValue(instance, Convert.ChangeType(json[mapsTo].ToString(), prop.PropertyType), null);
+                //                    }
+                //                }
+                //                break;
+                //        }
+                //    }
+                //});
 
                 return instance;
         }

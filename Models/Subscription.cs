@@ -7,10 +7,10 @@ namespace InstaSharp.Models {
     public class Subscription {
 
         public enum Object {
-            Users,
-            Tags,
-            Locations,
-            Geographies
+            User,
+            Tag,
+            Location,
+            Geography
         }
 
         public enum Aspect {

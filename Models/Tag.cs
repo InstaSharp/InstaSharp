@@ -5,9 +5,7 @@ using System.Text;
 
 namespace InstaSharp.Models {
     public class Tag {
-        [JsonMapping("media_count", JsonMapping.MappingType.Primitive)]
         public int MediaCount { get; set; }
-        [JsonMapping("name", JsonMapping.MappingType.Primitive)]
         public string Name { get; set; }
     }
 }
