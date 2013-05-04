@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InstaSharp.Models.Responses;
+using RestSharp;
 
 namespace InstaSharp.Endpoints {
     public class Geographies : InstagramAPI {
@@ -22,28 +23,11 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media about which to retrieve data</param>
         /// <param name="count">Max number of media to return.</param>
         /// <param name="min_id">Return media before this min_id.</param>
-        /// <returns>MediaResponse</returns>
-        public MediaResponse Recent(int geoId, int? count = null, string min_id = "") {
-            return (MediaResponse)Mapper.Map<MediaResponse>(RecentJson(geoId, count, min_id));
-        }
-
-        /// <summary>
-        /// Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.
-        /// <para>
-        /// <c>Requires Authentication: </c>False
-        /// </para>
-        /// </summary>
-        /// <param name="mediaId">The id of the media about which to retrieve data</param>
-        /// <param name="count">Max number of media to return.</param>
-        /// <param name="min_id">Return media before this min_id.</param>
-        /// <returns>String</returns>
-        public string RecentJson(int geoId, int? count = null, string min_id = "") {
-            var uri = base.FormatUri(string.Format("{0}/media/recent", geoId));
-
-            if (count != null) uri.AppendFormat("&count={0}", count);
-            if (!string.IsNullOrEmpty(min_id)) uri.AppendFormat("&min_id={0}", min_id);
-
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<MediaResponse> Recent(int geoId, int? count = null, string min_id = "") {
+            var request = base.Request(string.Format("{0}/media/recent", geoId));
+            request.AddParameter("count", count);
+            request.AddParameter("min_id", min_id);
+            return base.Client.Execute<MediaResponse>(request);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Locations.Search")]
         public void Search() {
             var result = _locations.Search(36.166667, -86.783333, 2000);
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Data.Count > 0);
         }
     }
 }

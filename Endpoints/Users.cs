@@ -24,7 +24,7 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <paramref name="userId">The id of the user who's profile you want to retreive.</paramref>
         /// <returns>
-        /// UserResponse
+        /// IRestResponse With Data Of Type UserResponse
         /// </returns>
         public IRestResponse<UserResponse> Get(int? userId = null) {
             var request = base.Request("{id}");
@@ -41,7 +41,7 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <returns>
-        /// MediasResponse
+        /// IRestResponse With Data Of Type MediasResponse
         /// </returns>
         public IRestResponse<MediasResponse> Feed(string maxId = null, int? count = null) {
             var request = base.Request("self/feed");
@@ -84,6 +84,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication: True</c>
         /// </para>
         /// </summary>
+        /// <param name="max_like_id">Return media ealier than this max_like_id.</param>
+        /// <param name="count">Count of media to return.</param>
+        /// <returns>IRestResponse With Data Of Type MediasResponse</returns> 
         public IRestResponse<MediasResponse> Liked(string max_like_id = null, int? count = 20) {
             var request = base.Request("self/media/liked");
 
@@ -91,24 +94,6 @@ namespace InstaSharp.Endpoints {
             request.AddParameter("count", count);
 
             return base.Client.Execute<MediasResponse>(request);            
-        }
-
-        /// <summary>
-        /// See the authenticated user's list of media they've liked. Note that this list is ordered by the order in which the user liked the media. Private media is returned as long as the authenticated user has permission to view that media. Liked media lists are only available for the currently authenticated user.
-        /// <para>
-        /// <c>Requires Authentication: True</c>
-        /// </para>
-        /// </summary>
-        /// <param name="max_like_id">Return media liked before this id.</param>
-        /// <param name="count">Count of media to return.</param>
-        /// <returns>String</returns>
-        public string LikedJson(string max_like_id = "", int? count = 20) {
-            var uri = base.FormatUri("self/media/liked");
-
-            if (!string.IsNullOrEmpty(max_like_id)) uri.AppendFormat("&max_like_id={0}", max_like_id);
-            if (count != null) uri.AppendFormat("&count={0}", count);
-
-            return HttpClient.GET(uri.ToString());
         }
 
         /// <summary>
@@ -120,25 +105,13 @@ namespace InstaSharp.Endpoints {
         /// <param name="searchTem">A query string.</param>
         /// <param name="count">Number of users to return.</param>
         /// <returns>UsersResponse</returns>
-        public UsersResponse Search(string searchTerm, int? count = null) {
-            return (UsersResponse)Mapper.Map<UsersResponse>(SearchJson(searchTerm, count));
-        }
+        public IRestResponse<UsersResponse> Search(string searchTerm, int? count = null) {
+            var request = base.Request("search");
 
+            request.AddParameter("q", searchTerm);
+            request.AddParameter("count", count);
 
-        /// <summary>
-        /// Search for a user by name.
-        /// <para>
-        /// <c>Requires Authentication: False</c>
-        /// </para>
-        /// </summary>
-        /// <param name="searchTem">A query string.</param>
-        /// <param name="count">Number of users to return.</param>
-        /// <returns>String</returns>
-        private string SearchJson(string searchTerm, int? count = null) {
-            var uri = base.FormatUri("search");
-            uri.AppendFormat("&q={0}", searchTerm);
-            if (count != null) uri.AppendFormat("&count={0}", count);
-            return HttpClient.GET(uri.ToString());
+            return base.Client.Execute<UsersResponse>(request);
         }
     }
 }

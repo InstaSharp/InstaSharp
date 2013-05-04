@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InstaSharp.Models.Responses;
+using RestSharp;
 
 namespace InstaSharp.Endpoints {
     public class Likes : InstagramAPI {
@@ -25,25 +26,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media about which to retrieve information.</param>
-        /// <returns>UsersResponse</returns>
-        public UsersResponse Get(string mediaId) {
-            return (UsersResponse)Mapper.Map<UsersResponse>(GetJson(mediaId));
-        }
-
-        /// <summary>
-        /// Get a list of users who have liked this media.
-        /// <para>
-        /// <c>Requires Authentication: </c>True
-        /// </para>
-        /// <para>
-        /// <c>Required Scope: </c> likes
-        /// </para>
-        /// </summary>
-        /// <param name="mediaId">The id of the media about which to retrieve information.</param>
-        /// <returns>String</returns>
-        public string GetJson(string mediaId) {
-            var uri = base.FormatUri(string.Format("{0}/likes", mediaId));
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<UsersResponse> Get(string mediaId) {
+            var request = base.Request(string.Format("{0}/likes", mediaId));
+            return base.Client.Execute<UsersResponse>(request);
         }
 
         /// <summary>
@@ -57,24 +42,9 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="mediaId">The id of the media to create a like for.</param>
         /// <returns>LikesResponse</returns>
-        public LikesResponse Post(string mediaId) {
-            return (LikesResponse)Mapper.Map<LikesResponse>(PostJson(mediaId));
-        }
-
-        /// <summary>
-        /// Set a like on this media by the currently authenticated user.
-        /// <para>
-        /// <c>Requires Authentication: </c>True
-        /// </para>
-        /// <para>
-        /// <c>Required Scope: </c>likes
-        /// </para>
-        /// </summary>
-        /// <param name="mediaId">The id of the media to create a like for.</param>
-        /// <returns>String</returns>
-        public string PostJson(string mediaId) {
-            var uri = base.FormatUri(string.Format("{0}/likes", mediaId));
-            return HttpClient.POST(uri.ToString());
+        public IRestResponse<LikesResponse> Post(string mediaId) {
+            var request = base.Request(string.Format("{0}/likes", mediaId), Method.POST);
+            return base.Client.Execute<LikesResponse>(request);
         }
 
         /// <summary>
@@ -87,25 +57,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media from wich to remove the like.</param>
-        /// <returns>LikesResponse</returns>
-        public LikesResponse Delete(string mediaId) {
-            return (LikesResponse)Mapper.Map<LikesResponse>(DeleteJson(mediaId));
-        }
-
-        /// <summary>
-        /// Remove a like on this media by the currently authenticated user.
-        /// <para>
-        /// <c>Requires Authentication: </c>True
-        /// </para>
-        /// <para>
-        /// <c>Required Scope: </c>likes
-        /// </para>
-        /// </summary>
-        /// <param name="mediaId">The id of the media from wich to remove the like.</param>
-        /// <returns>String</returns>
-        public string DeleteJson(string mediaId) {
-            var uri = base.FormatUri(string.Format("{0}/likes", mediaId));
-            return HttpClient.DELETE(uri.ToString());
+        public IRestResponse<LikesResponse> Delete(string mediaId) {
+            var request = base.Request(string.Format("{0}/likes", mediaId), Method.DELETE);
+            return base.Client.Execute<LikesResponse>(request);
         }
     }
 }

@@ -6,6 +6,6 @@ using System.Text;
 namespace InstaSharp.Models.Responses {
     public class CommentsResponse : IResponse {
         public Models.Meta Meta { get; set; }
-        public IList<Models.Comments> Data { get; set; }
+        public List<Models.Comments> Data { get; set; }
     }
 }

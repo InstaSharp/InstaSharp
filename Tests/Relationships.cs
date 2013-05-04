@@ -32,30 +32,30 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Relationships.FollowedBy")]
         public void FollowedBy() {
             var result = _relationships.FollowedBy();
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.FollowedBy")]
         public void FollowedBy_Id() {
             var result = _relationships.FollowedBy(auth.User.Id);
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.RequestedBy")]
         public void RequestedBy() {
             var result = _relationships.RequestedBy();
             // TODO: How to test requests if there aren't any?
-            Assert.IsTrue(result.Meta.Code == 200);
+            Assert.IsTrue(result.Data.Meta.Code == 200);
         }
 
         [TestMethod, TestCategory("Relationships.Relationship")]
         public void Relationship() {
             // first follow Justin Beiber
             var follow = _relationships.Relationship(19854736, Endpoints.Relationships.Action.Follow);
-            Assert.IsTrue(follow.Data.OutgoingStatus == "follows", "Failed on follow");
+            Assert.IsTrue(follow.Data.Data.OutgoingStatus == "follows", "Failed on follow");
             // now unfollow him
             var unfollow = _relationships.Relationship(19854736, Endpoints.Relationships.Action.Unfollow);
-            Assert.IsTrue(unfollow.Data.OutgoingStatus == "none", "Failed on unfollow");
+            Assert.IsTrue(unfollow.Data.Data.OutgoingStatus == "none", "Failed on unfollow");
         }
     }
 }

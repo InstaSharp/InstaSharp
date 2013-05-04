@@ -36,7 +36,6 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
-        /// <returns>UsersResponse</returns>
         public IRestResponse<UsersResponse> Follows(int? userId = null) {
             var request = base.Request("{id}/follows");
             request.AddUrlSegment("id", userId.HasValue ? userId.ToString() : base.OAuthResponse.User.Id.ToString());
@@ -53,25 +52,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="userId">The id of the user to get the followers of.</param>
-        /// <returns>UsersResponse</returns>
-        public UsersResponse FollowedBy(int? userId = null) {
-            return (UsersResponse)Mapper.Map<UsersResponse>(FollowedByJson(userId));
-        }
-
-        /// <summary>
-        /// Get the list of users this user is followed by.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The id of the user to get the followers of.</param>
-        /// <returns>String</returns>
-        public string FollowedByJson(int? userId = null) {
-            var uri = base.FormatUri(string.Format("{0}/followed-by", userId ?? OAuthResponse.User.Id));
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<UsersResponse> FollowedBy(int? userId = null) {
+            var request = base.Request(string.Format("{0}/followed-by", userId.HasValue ? userId.ToString() : OAuthResponse.User.Id.ToString()));
+            return base.Client.Execute<UsersResponse>(request);
         }
 
         /// <summary>
@@ -83,24 +66,20 @@ namespace InstaSharp.Endpoints {
         /// <c>Required scope:</c> relationships
         /// </para>
         /// </summary>
-        /// <returns>UsersResponse</returns>
-        public UsersResponse RequestedBy() {
-            return (UsersResponse)Mapper.Map<UsersResponse>(RequestedByJson());
+        public IRestResponse<UsersResponse> RequestedBy() {
+            var request = base.Request("self/requested-by");
+            return base.Client.Execute<UsersResponse>(request);
         }
 
         /// <summary>
-        /// List the users who have requested this user's permission to follow.
+        /// Get information about a relationship to another user.
         /// <para>
         /// <c>Requires Authentication:</c> True
         /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
         /// </summary>
-        /// <returns>String</returns>
-        public string RequestedByJson() {
-            var uri = base.FormatUri("/self/requested-by");
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<RelationshipResponse> Relationship(int userId) {
+            var request = base.Request(string.Format("{0}/relationship", userId.ToString()));
+            return base.Client.Execute<RelationshipResponse>(request);
         }
 
         /// <summary>
@@ -114,28 +93,10 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="userId">The user id about which to get relationship information.</param>
         /// <param name="action">One of Action enum.</param>
-        /// <returns>RelationshipResponse</returns>
-        public RelationshipResponse Relationship(int userId, Action action) {
-            return (RelationshipResponse)Mapper.Map<RelationshipResponse>(RelationshipJson(userId, action));
+        public IRestResponse<RelationshipResponse> Relationship(int userId, Action action) {
+            var request = base.Request(string.Format("{0}/relationship", userId.ToString()), Method.POST);
+            request.AddParameter("action", action.ToString().ToLower());
+            return base.Client.Execute<RelationshipResponse>(request);
         }
-
-        /// <summary>
-        /// Modify the relationship between the current user and the target user.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The user id about which to get relationship information.</param>
-        /// <param name="action">One of Action enum.</param>
-        /// <returns>String</returns>
-        public string RelationshipJson(int userId, Action action) {
-            var uri = base.FormatUri(string.Format("{0}/relationship", userId));
-            var parameters = new Dictionary<string, string>() { { "action", action.ToString().ToLower() } };
-            return HttpClient.POST(uri.ToString(), parameters);
-        }
-
     }
 }

@@ -7,7 +7,7 @@ using System.Collections;
 namespace InstaSharp.Models {
     public class Like {
         public int Count { get; set; }
-        public IList<LikesData> Data { get; set; }
+        public List<LikesData> Data { get; set; }
     }
 
     public class LikesData {

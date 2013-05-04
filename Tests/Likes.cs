@@ -23,7 +23,7 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Likes.Get")]
         public void Get() {
             var result = _likes.Get("371269465633127413_6860189");
-            Assert.IsTrue(result.Meta.Code == 200);
+            Assert.IsTrue(result.Data.Meta.Code == 200);
         }
 
         [TestMethod, TestCategory("Likes.PostAndDelete")]

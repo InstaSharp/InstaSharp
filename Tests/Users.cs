@@ -89,7 +89,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Search")]
         public void Search() {
             var result = _users.Search("beiber");
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Liked")]

@@ -28,13 +28,13 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Media.Popular")]
         public void Popular() {
             var result = _media.Popular();
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Media.Search")]
         public void Search() {
             var result = _media.Search(36.166667, -86.783333, DateTime.Now, DateTime.Now.AddDays(-7), 2000);
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Data.Count > 0);
         }
     }
 }

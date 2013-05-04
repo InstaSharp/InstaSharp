@@ -15,7 +15,7 @@ namespace InstaSharp.Models {
         public Image Images { get; set; }
         public string Type { get; set; }
         public string Filter { get; set; }
-        public IList<string> Tags { get; set; }
+        public List<string> Tags { get; set; }
         public string Id { get; set; }
         public User User { get; set; }
     }

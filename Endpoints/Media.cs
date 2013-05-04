@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InstaSharp.Models.Responses;
+using RestSharp;
 
 namespace InstaSharp.Endpoints {
     public class Media : InstagramAPI {
@@ -22,22 +23,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media to retrieve</param>
-        /// <returns>MediaResponse</returns>
-        public MediaResponse Get(string mediaId) {
-            return (MediaResponse)Mapper.Map<MediaResponse>(GetJson(mediaId));
-        }
-
-        /// <summary>
-        /// Get information about a media object. Note: if you are authenticated, you will receive the user_has_liked key which quickly tells you whether the current user has liked this media item.
-        /// <para>
-        /// <c>Requires Authentication:</c> False
-        /// </para>
-        /// </summary>
-        /// <param name="mediaId">The id of the media to retrieve</param>
-        /// <returns>String</returns>
-        public string GetJson(string mediaId) {
-            var uri = base.FormatUri(mediaId); 
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<MediaResponse> Get(string mediaId) {
+            var request = base.Request(mediaId);
+            return base.Client.Execute<MediaResponse>(request);
         }
 
         /// <summary>
@@ -46,21 +34,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication:</c> False
         /// </para>
         /// </summary>
-        /// <returns>MediasResponse</returns>
-        public MediasResponse Popular() {
-            return (MediasResponse)Mapper.Map<MediasResponse>(PopularJson());
-        }
-
-        /// <summary>
-        /// Get a list of what media is most popular at the moment.
-        /// </summary>
-        /// <para>
-        /// <c>Requires Authentication:</c> False
-        /// </para>
-        /// <returns>String</returns>
-        public string PopularJson() {
-            var uri = base.FormatUri("popular");
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<MediasResponse> Popular() {
+            var request = base.Request("popular");
+            return base.Client.Execute<MediasResponse>(request);
         }
 
         /// <summary>
@@ -74,31 +50,14 @@ namespace InstaSharp.Endpoints {
         /// <param name="minTimestamp">All media returned will be taken later than this timestamp.</param>
         /// <param name="maxTimestamp">All media returned will be taken earlier than this timestamp.</param>
         /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
-        /// <returns>MediasResponse</returns>
-        public MediasResponse Search(double? latitude = null, double? longitude = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, int distance = 1000) {
-            return (MediasResponse)Mapper.Map<MediasResponse>(SearchJson(latitude, longitude, minTimestamp, maxTimestamp, distance));
-        }
-
-        /// <summary>
-        /// Search for media in a given area.
-        /// <para>
-        /// <c>Requires Authentication:</c> False
-        /// </para>
-        /// </summary>
-        /// <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
-        /// <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
-        /// <param name="minTimestamp">All media returned will be taken later than this timestamp.</param>
-        /// <param name="maxTimestamp">All media returned will be taken earlier than this timestamp.</param>
-        /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
-        /// <returns>String</returns>
-        private string SearchJson(double? latitude = null, double? longitude = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, int distance = 1000) {
-            var uri = base.FormatUri("search");
-            uri.AppendFormat("&distance={0}", distance);
-            if (latitude != null || longitude != null) uri.AppendFormat("&lat={0}&lng={1}", latitude, longitude);
-            if (maxTimestamp != null) uri.AppendFormat("&max_timestamp={0}", ((DateTime)maxTimestamp).ToUnixTimestamp());
-            if (minTimestamp != null) uri.AppendFormat("&min_timestamp={0}", ((DateTime)minTimestamp).ToUnixTimestamp());
-
-            return HttpClient.GET(uri.ToString());
+        public IRestResponse<MediasResponse> Search(double? latitude = null, double? longitude = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, int distance = 1000) {
+            var request = base.Request("search");
+            request.AddParameter("lat", latitude);
+            request.AddParameter("lng", longitude);
+            request.AddParameter("max_timestamp", ((DateTime)maxTimestamp).ToUnixTimestamp());
+            request.AddParameter("min_timestamp", ((DateTime)minTimestamp).ToUnixTimestamp());
+            request.AddParameter("distance", distance);
+            return base.Client.Execute<MediasResponse>(request);
         }
     }
 }

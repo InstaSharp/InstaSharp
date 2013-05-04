@@ -20,12 +20,12 @@ namespace InstaSharp.Endpoints {
             Client = new RestSharp.RestClient(InstagramConfig.APIURI + "/" + endpoint);
         }
 
-        internal Request Request(string fragment) {
-            return AddAuth(new Request(fragment));
+        internal Request Request(string fragment, Method method = Method.GET) {
+            return AddAuth(new Request(fragment, method));
         }
 
-        internal Request Request() {
-            return AddAuth(new Request());
+        internal Request Request(Method method = Method.GET) {
+            return AddAuth(new Request(method));
         }
 
         internal Request AddAuth(Request request) {

@@ -59,11 +59,10 @@
     <Compile Include="Endpoints\Relationships.cs" />
     <Compile Include="Endpoints\Tags.cs" />
     <Compile Include="Endpoints\Users.cs" />
-    <Compile Include="HttpClient.cs" />
+    <Compile Include="Models\Responses\TestResponse.cs" />
     <Compile Include="OAuth.cs" />
     <Compile Include="Config\InstagramConfig.cs" />
     <Compile Include="Models\UserInfo.cs" />
-    <Compile Include="Mapper.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Count.cs" />
     <Compile Include="Models\Image.cs" />
