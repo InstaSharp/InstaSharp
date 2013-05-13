@@ -6,20 +6,11 @@ using System.Text;
 namespace InstaSharp.Models {
     public class Subscription {
 
-        public enum Object {
-            User,
-            Tag,
-            Location,
-            Geography
-        }
-
-        public enum Aspect {
-            Media
-        }
-
-        public string Mode { get; set; }
-        public string Challenge { get; set; }
-        public string VerifyToken { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public string Object { get; set; }
+        public string Aspect { get; set; }
+        public string Callback_Url { get; set; }
 
     }
 }

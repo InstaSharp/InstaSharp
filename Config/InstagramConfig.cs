@@ -22,7 +22,7 @@ namespace InstaSharp {
             ClientSecret = clientSecret;
             RedirectURI = redirectURI;
             RealTimeAPI = realTimeAPI;
-
+            CallbackURI = callbackURI;
         }
 
         public InstagramConfig(string apiURI = "https://api.instagram.com/v1", 

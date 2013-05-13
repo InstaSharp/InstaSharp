@@ -21,7 +21,8 @@ namespace InstaSharp.Endpoints {
         }
 
         internal Request Request(string fragment, Method method = Method.GET) {
-            return AddAuth(new Request(fragment, method));
+            var request = new Request(fragment, method);
+            return AddAuth(request);
         }
 
         internal Request Request(Method method = Method.GET) {
@@ -36,18 +37,6 @@ namespace InstaSharp.Endpoints {
             }
 
             return request;
-        }
-
-        internal StringBuilder FormatUri(string substitution = null) {
-            var uri = new StringBuilder(Uri);
-            
-            if (substitution != null) {
-                uri.Append(substitution);
-            }
-
-            string client_or_token = OAuthResponse == null ? "?client_id=" + InstagramConfig.ClientId : "?access_token=" + OAuthResponse.Access_Token;
-
-            return uri.Append(client_or_token);
         }
     }
 }
