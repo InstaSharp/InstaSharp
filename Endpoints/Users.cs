@@ -26,10 +26,10 @@ namespace InstaSharp.Endpoints {
         /// <returns>
         /// IRestResponse With Data Of Type UserResponse
         /// </returns>
-        public IRestResponse<UserResponse> Get(int? userId = null) {
+        public IRestResponse<UserResponse> Get(string userId = null) {
             var request = base.Request("{id}");
  
-            request.AddUrlSegment("id", userId.HasValue ? userId.ToString() : base.OAuthResponse.User.Id.ToString());
+            request.AddUrlSegment("id", !string.IsNullOrEmpty(userId) ? userId.ToString() : base.OAuthResponse.User.Id.ToString());
              
             return Client.Execute<Models.Responses.UserResponse>(request);
         }
@@ -53,7 +53,7 @@ namespace InstaSharp.Endpoints {
         }
 
         /// <summary>
-        /// Get the most recent media published by a user. 
+        /// Get the most recent media published by the logged in user. 
         /// <para>
         /// <c>Requires Authentication: True</c>
         /// </para>
@@ -64,10 +64,37 @@ namespace InstaSharp.Endpoints {
         /// <param name="minTimestamp">Return media after this timestamp.</param>
         /// <param name="maxTimestamp">Return media before this timestamp.</param>
         /// <returns>IRestRequest With Data Of Type MediasResponse</returns>
-        public IRestResponse<MediasResponse> Recent(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
+        public IRestResponse<MediasResponse> RecentSelf(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
             var request = base.Request("{id}/media/recent");
 
             request.AddUrlSegment("id", OAuthResponse.User.Id.ToString());
+
+            if (!string.IsNullOrEmpty(maxId)) request.AddParameter("max_id", maxId);
+            if (!string.IsNullOrEmpty(minId)) request.AddParameter("min_id", minId);
+            if (count.HasValue) request.AddParameter("count", count);
+            if (minTimestamp.HasValue) request.AddParameter("min_timestamp", ((DateTime)minTimestamp).ToUnixTimestamp());
+            if (maxTimestamp.HasValue) request.AddParameter("max_timestamp", ((DateTime)maxTimestamp).ToUnixTimestamp());
+
+            return Client.Execute<MediasResponse>(request);
+        }
+
+        /// <summary>
+        /// Get the most recent media published by a user. 
+        /// <para>
+        /// <c>Requires Authentication: True</c>
+        /// </para>
+        /// </summary>
+        /// <param name="id">The id of the user.</param>
+        /// <param name="maxId">Return media earlier than this max_id.</param>
+        /// <param name="minId">Return media later than this min_id.</param>
+        /// <param name="count">Count of media to return.</param>
+        /// <param name="minTimestamp">Return media after this timestamp.</param>
+        /// <param name="maxTimestamp">Return media before this timestamp.</param>
+        /// <returns>IRestRequest With Data Of Type MediasResponse</returns>
+        public IRestResponse<MediasResponse> Recent(string id, string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
+            var request = base.Request("{id}/media/recent");
+
+            request.AddUrlSegment("id", id);
 
             if (!string.IsNullOrEmpty(maxId)) request.AddParameter("max_id", maxId);
             if (!string.IsNullOrEmpty(minId)) request.AddParameter("min_id", minId);

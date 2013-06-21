@@ -29,7 +29,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Get")]
         public void Get_Id()
         {
-            var result = _users.Get(19854736);
+            var result = _users.Get("19854736");
             Assert.IsTrue(result.Data.Data.Username.Length > 0, "Parameters: userId");
         }
 
@@ -56,7 +56,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Recent")]
         public void Recent()
         {
-            var result = _users.Recent();
+            var result = _users.RecentSelf();
             Assert.IsTrue(result.Data.Data.Count > 0);
         }
 
@@ -69,20 +69,20 @@ namespace InstaSharp.Tests
 
         [TestMethod, TestCategory("Users.Recent")]
         public void Recent_MinId() {
-            var result = _users.Recent(string.Empty, "142863708947821401_22987123");
+            var result = _users.RecentSelf(string.Empty, "142863708947821401_22987123");
             Assert.IsTrue(result.Data.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Recent")]
         public void Recent_MinId_Count() {
-            var result = _users.Recent(string.Empty, "142863708947821401_22987123", 3);
+            var result = _users.RecentSelf(string.Empty, "142863708947821401_22987123", 3);
             Assert.IsTrue(result.Data.Data.Count == 3);
         }
 
         [TestMethod, TestCategory("Users.Recent")]
         public void Recent_MaxId_Count()
         {
-            var result = _users.Recent("304848768082410173_2849381", string.Empty, 3);
+            var result = _users.RecentSelf("304848768082410173_2849381", string.Empty, 3);
             Assert.IsTrue(result.Data.Data.Count == 3);
         }
 

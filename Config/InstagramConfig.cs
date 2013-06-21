@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace InstaSharp {
+    [Serializable]
     public class InstagramConfig {
         public string APIURI { get; set; }
         public string OAuthURI { get; set; }
