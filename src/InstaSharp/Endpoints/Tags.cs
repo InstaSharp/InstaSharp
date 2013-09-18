@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
-using RestSharp;
+using PortableRest;
 
 namespace InstaSharp.Endpoints
 {
@@ -23,10 +24,10 @@ namespace InstaSharp.Endpoints
         /// <c>Requires Authentication: False</c>
         /// </para>
         /// <param name="tagName">Return information about this tag.</param>
-        public IRestResponse<TagResponse> Get(string tagName) {
+        public Task<TagResponse> Get(string tagName) {
             var request = base.Request("{tag}");
             request.AddUrlSegment("tag", tagName);
-            return base.Client.Execute<TagResponse>(request);
+            return base.Client.ExecuteAsync<TagResponse>(request);
         }
 
         /// <summary>
@@ -38,13 +39,13 @@ namespace InstaSharp.Endpoints
         /// <param name="tagName">Return information about this tag.</param>
         /// <param name="min_id">Return media before this min_id. If you don't want to use this parameter, use null.</param>
         /// <param name="max_id">Return media after this max_id. If you don't want to use this parameter, use null.</param>
-        public IRestResponse<MediasResponse> Recent(string tagName, string min_id = "", string max_id = "") {
+        public Task<MediasResponse> Recent(string tagName, string min_id = "", string max_id = "") {
             var request = base.Request("{tag}/media/recent");
             request.AddUrlSegment("tag", tagName);
             request.AddParameter("min_id", min_id);
             request.AddParameter("max_id", max_id);
-            
-            return base.Client.Execute<MediasResponse>(request);
+
+            return base.Client.ExecuteAsync<MediasResponse>(request);
         }
 
         /// <summary>
@@ -54,10 +55,10 @@ namespace InstaSharp.Endpoints
         /// <c>Requires Authentication: False</c>
         /// </para>
         /// <param name="searchTerm">A valid tag name without a leading #. (eg. snowy, nofilter)</param>
-        public IRestResponse<TagsResponse> Search(string searchTerm) {
+        public Task<TagsResponse> Search(string searchTerm) {
             var request = base.Request("search");
             request.AddParameter("q", searchTerm);
-            return base.Client.Execute<TagsResponse>(request);
+            return base.Client.ExecuteAsync<TagsResponse>(request);
         }
     }
 }

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
-using RestSharp;
+using PortableRest;
 
 namespace InstaSharp.Endpoints {
     public class Media : InstagramAPI {
@@ -23,9 +24,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media to retrieve</param>
-        public IRestResponse<MediaResponse> Get(string mediaId) {
+        public Task<MediaResponse> Get(string mediaId) {
             var request = base.Request(mediaId);
-            return base.Client.Execute<MediaResponse>(request);
+            return base.Client.ExecuteAsync<MediaResponse>(request);
         }
 
         /// <summary>
@@ -34,9 +35,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication:</c> False
         /// </para>
         /// </summary>
-        public IRestResponse<MediasResponse> Popular() {
+        public Task<MediasResponse> Popular() {
             var request = base.Request("popular");
-            return base.Client.Execute<MediasResponse>(request);
+            return base.Client.ExecuteAsync<MediasResponse>(request);
         }
 
         /// <summary>
@@ -50,14 +51,14 @@ namespace InstaSharp.Endpoints {
         /// <param name="minTimestamp">All media returned will be taken later than this timestamp.</param>
         /// <param name="maxTimestamp">All media returned will be taken earlier than this timestamp.</param>
         /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
-        public IRestResponse<MediasResponse> Search(double? latitude = null, double? longitude = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, int distance = 1000) {
+        public Task<MediasResponse> Search(double? latitude = null, double? longitude = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, int distance = 1000) {
             var request = base.Request("search");
             request.AddParameter("lat", latitude);
             request.AddParameter("lng", longitude);
             request.AddParameter("max_timestamp", ((DateTime)maxTimestamp).ToUnixTimestamp());
             request.AddParameter("min_timestamp", ((DateTime)minTimestamp).ToUnixTimestamp());
             request.AddParameter("distance", distance);
-            return base.Client.Execute<MediasResponse>(request);
+            return base.Client.ExecuteAsync<MediasResponse>(request);
         }
     }
 }

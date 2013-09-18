@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
-using RestSharp;
+using PortableRest;
 
 namespace InstaSharp.Endpoints {
 
@@ -36,10 +38,10 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
-        public IRestResponse<UsersResponse> Follows(int? userId = null) {
+        public Task<UsersResponse> Follows(int? userId = null) {
             var request = base.Request("{id}/follows");
             request.AddUrlSegment("id", userId.HasValue ? userId.ToString() : base.OAuthResponse.User.Id.ToString());
-            return base.Client.Execute<UsersResponse>(request);
+            return base.Client.ExecuteAsync<UsersResponse>(request);
         }
 
         /// <summary>
@@ -52,9 +54,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="userId">The id of the user to get the followers of.</param>
-        public IRestResponse<UsersResponse> FollowedBy(int? userId = null) {
+        public Task<UsersResponse> FollowedBy(int? userId = null) {
             var request = base.Request(string.Format("{0}/followed-by", userId.HasValue ? userId.ToString() : OAuthResponse.User.Id.ToString()));
-            return base.Client.Execute<UsersResponse>(request);
+            return base.Client.ExecuteAsync<UsersResponse>(request);
         }
 
         /// <summary>
@@ -66,9 +68,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Required scope:</c> relationships
         /// </para>
         /// </summary>
-        public IRestResponse<UsersResponse> RequestedBy() {
+        public Task<UsersResponse> RequestedBy() {
             var request = base.Request("self/requested-by");
-            return base.Client.Execute<UsersResponse>(request);
+            return base.Client.ExecuteAsync<UsersResponse>(request);
         }
 
         /// <summary>
@@ -77,9 +79,9 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication:</c> True
         /// </para>
         /// </summary>
-        public IRestResponse<RelationshipResponse> Relationship(int userId) {
+        public Task<RelationshipResponse> Relationship(int userId) {
             var request = base.Request(string.Format("{0}/relationship", userId.ToString()));
-            return base.Client.Execute<RelationshipResponse>(request);
+            return base.Client.ExecuteAsync<RelationshipResponse>(request);
         }
 
         /// <summary>
@@ -93,10 +95,10 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="userId">The user id about which to get relationship information.</param>
         /// <param name="action">One of Action enum.</param>
-        public IRestResponse<RelationshipResponse> Relationship(int userId, Action action) {
-            var request = base.Request(string.Format("{0}/relationship", userId.ToString()), Method.POST);
+        public Task<RelationshipResponse> Relationship(int userId, Action action) {
+            var request = base.Request(string.Format("{0}/relationship", userId.ToString()), HttpMethod.Post);
             request.AddParameter("action", action.ToString().ToLower());
-            return base.Client.Execute<RelationshipResponse>(request);
+            return base.Client.ExecuteAsync<RelationshipResponse>(request);
         }
     }
 }

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
-using RestSharp;
+using PortableRest;
 
 namespace InstaSharp.Endpoints {
     public class Comments : InstagramAPI {
@@ -27,9 +28,9 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="mediaId">The id of the media on which to retrieve comments.</param>
         /// <returns>CommentsResponse</returns>
-        public IRestResponse<CommentsResponse> Get(string mediaId) {
+        public Task Get(string mediaId) {
             var request = base.Request(string.Format("{0}/comments", mediaId));
-            return base.Client.Execute<CommentsResponse>(request);
+            return base.Client.ExecuteAsync<CommentsResponse>(request);
         }
 
         /// <summary>
@@ -44,10 +45,10 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media on which to post a comment.</param>
         /// <param name="comments">Text to post as a comment on the media as specified in media-id.</param>
         /// <returns>CommentsResponse</returns>
-        public IRestResponse<CommentResponse> Post(string mediaId, string comment) {
+        public Task<CommentResponse> Post(string mediaId, string comment) {
             var request = base.Request(string.Format("{0}/comments", mediaId));
             request.AddParameter("text", comment);
-            return base.Client.Execute<CommentResponse>(request);
+            return base.Client.ExecuteAsync<CommentResponse>(request);
         }
 
         /// <summary>
@@ -61,9 +62,9 @@ namespace InstaSharp.Endpoints {
         /// <param name="mediaId">The id of the media from which to delete the comment.</param>
         /// <param name="commentId">The id of the comment to delete.</param>
         /// <returns>CommentResponse</returns>
-        public IRestResponse<CommentResponse> Delete(string mediaId, string commentId) {
+        public Task<CommentResponse> Delete(string mediaId, string commentId) {
             var request = base.Request(string.Format("{0}/comments/{1}", mediaId, commentId));
-            return base.Client.Execute<CommentResponse>(request);
+            return base.Client.ExecuteAsync<CommentResponse>(request);
         }
     }
 

@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models;
-using RestSharp;
+using PortableRest;
 using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Endpoints
 {
     public class Subscription
     {
-        public enum Object {
+        public enum Object
+        {
             User,
             Tag,
             Location,
             Geography
         }
 
-        public enum Aspect {
+        public enum Aspect
+        {
             Media
         }
 
@@ -28,15 +32,16 @@ namespace InstaSharp.Endpoints
         public Subscription(InstagramConfig config)
         {
             _config = config;
-            _client = new RestClient(config.RealTimeAPI);
+            _client = new RestClient { BaseUrl = config.RealTimeAPI };
         }
 
-        public IRestResponse<SubscriptionsResponse> Create(Object type, Aspect aspect)  {
+        public Task<SubscriptionsResponse> Create(Object type, Aspect aspect)
+        {
 
             // create a new guid that uniquely identifies this subscription request
             var _verifyToken = Guid.NewGuid().ToString();
-            var request = new RestRequest(Method.POST);
-            
+            var request = new RestRequest { Method = HttpMethod.Post };
+
             request.AddParameter("client_id", _config.ClientId);
             request.AddParameter("client_secret", _config.ClientSecret);
             request.AddParameter("object", type.ToString().ToLower());
@@ -44,7 +49,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("verify_token", _verifyToken);
             request.AddParameter("callback_url", _config.CallbackURI);
 
-            return _client.Execute<SubscriptionsResponse>(request);
+            return _client.ExecuteAsync<SubscriptionsResponse>(request);
         }
     }
 }

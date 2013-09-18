@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
-using RestSharp;
+using PortableRest;
 
 namespace InstaSharp.Endpoints {
     public class Likes : InstagramAPI {
@@ -26,9 +28,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media about which to retrieve information.</param>
-        public IRestResponse<UsersResponse> Get(string mediaId) {
+        public Task<UsersResponse> Get(string mediaId) {
             var request = base.Request(string.Format("{0}/likes", mediaId));
-            return base.Client.Execute<UsersResponse>(request);
+            return base.Client.ExecuteAsync<UsersResponse>(request);
         }
 
         /// <summary>
@@ -42,9 +44,9 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="mediaId">The id of the media to create a like for.</param>
         /// <returns>LikesResponse</returns>
-        public IRestResponse<LikesResponse> Post(string mediaId) {
-            var request = base.Request(string.Format("{0}/likes", mediaId), Method.POST);
-            return base.Client.Execute<LikesResponse>(request);
+        public Task Post(string mediaId) {
+            var request = base.Request(string.Format("{0}/likes", mediaId), HttpMethod.Post);
+            return base.Client.ExecuteAsync<LikesResponse>(request);
         }
 
         /// <summary>
@@ -57,9 +59,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media from wich to remove the like.</param>
-        public IRestResponse<LikesResponse> Delete(string mediaId) {
-            var request = base.Request(string.Format("{0}/likes", mediaId), Method.DELETE);
-            return base.Client.Execute<LikesResponse>(request);
+        public Task<LikesResponse> Delete(string mediaId) {
+            var request = base.Request(string.Format("{0}/likes", mediaId), HttpMethod.Delete);
+            return base.Client.ExecuteAsync<LikesResponse>(request);
         }
     }
 }

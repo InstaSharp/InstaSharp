@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
-using RestSharp;
+using PortableRest;
 
 namespace InstaSharp.Endpoints {
     public class Users : InstagramAPI {
@@ -26,12 +27,12 @@ namespace InstaSharp.Endpoints {
         /// <returns>
         /// IRestResponse With Data Of Type UserResponse
         /// </returns>
-        public IRestResponse<UserResponse> Get(string userId = null) {
+        public Task<UserResponse> Get(string userId = null) {
             var request = base.Request("{id}");
  
             request.AddUrlSegment("id", !string.IsNullOrEmpty(userId) ? userId.ToString() : base.OAuthResponse.User.Id.ToString());
-             
-            return Client.Execute<Models.Responses.UserResponse>(request);
+
+            return Client.ExecuteAsync<UserResponse>(request);
         }
 
         /// <summary>
@@ -43,13 +44,13 @@ namespace InstaSharp.Endpoints {
         /// <returns>
         /// IRestResponse With Data Of Type MediasResponse
         /// </returns>
-        public IRestResponse<MediasResponse> Feed(string maxId = null, int? count = null) {
+        public Task<MediasResponse> Feed(string maxId = null, int? count = null) {
             var request = base.Request("self/feed");
 
             request.AddParameter("max_id", maxId);
             request.AddParameter("count", count);
 
-            return Client.Execute<MediasResponse>(request);
+            return Client.ExecuteAsync<MediasResponse>(request);
         }
 
         /// <summary>
@@ -64,7 +65,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="minTimestamp">Return media after this timestamp.</param>
         /// <param name="maxTimestamp">Return media before this timestamp.</param>
         /// <returns>IRestRequest With Data Of Type MediasResponse</returns>
-        public IRestResponse<MediasResponse> RecentSelf(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
+        public Task<MediasResponse> RecentSelf(string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null)
+        {
             var request = base.Request("{id}/media/recent");
 
             request.AddUrlSegment("id", OAuthResponse.User.Id.ToString());
@@ -75,7 +77,7 @@ namespace InstaSharp.Endpoints {
             if (minTimestamp.HasValue) request.AddParameter("min_timestamp", ((DateTime)minTimestamp).ToUnixTimestamp());
             if (maxTimestamp.HasValue) request.AddParameter("max_timestamp", ((DateTime)maxTimestamp).ToUnixTimestamp());
 
-            return Client.Execute<MediasResponse>(request);
+            return Client.ExecuteAsync<MediasResponse>(request);
         }
 
         /// <summary>
@@ -91,7 +93,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="minTimestamp">Return media after this timestamp.</param>
         /// <param name="maxTimestamp">Return media before this timestamp.</param>
         /// <returns>IRestRequest With Data Of Type MediasResponse</returns>
-        public IRestResponse<MediasResponse> Recent(string id, string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null) {
+        public Task<MediasResponse> Recent(string id, string maxId = "", string minId = "", int? count = null, DateTime? minTimestamp = null, DateTime? maxTimestamp = null)
+        {
             var request = base.Request("{id}/media/recent");
 
             request.AddUrlSegment("id", id);
@@ -102,7 +105,7 @@ namespace InstaSharp.Endpoints {
             if (minTimestamp.HasValue) request.AddParameter("min_timestamp", ((DateTime)minTimestamp).ToUnixTimestamp());
             if (maxTimestamp.HasValue) request.AddParameter("max_timestamp", ((DateTime)maxTimestamp).ToUnixTimestamp());
 
-            return Client.Execute<MediasResponse>(request);
+            return Client.ExecuteAsync<MediasResponse>(request);
         }
 
         /// <summary>
@@ -114,13 +117,14 @@ namespace InstaSharp.Endpoints {
         /// <param name="max_like_id">Return media ealier than this max_like_id.</param>
         /// <param name="count">Count of media to return.</param>
         /// <returns>IRestResponse With Data Of Type MediasResponse</returns> 
-        public IRestResponse<MediasResponse> Liked(string max_like_id = null, int? count = 20) {
+        public Task<MediasResponse> Liked(string max_like_id = null, int? count = 20)
+        {
             var request = base.Request("self/media/liked");
 
             request.AddParameter("max_like_id", max_like_id);
             request.AddParameter("count", count);
 
-            return base.Client.Execute<MediasResponse>(request);            
+            return base.Client.ExecuteAsync<MediasResponse>(request);            
         }
 
         /// <summary>
@@ -132,13 +136,13 @@ namespace InstaSharp.Endpoints {
         /// <param name="searchTem">A query string.</param>
         /// <param name="count">Number of users to return.</param>
         /// <returns>UsersResponse</returns>
-        public IRestResponse<UsersResponse> Search(string searchTerm, int? count = null) {
+        public Task<UsersResponse> Search(string searchTerm, int? count = null) {
             var request = base.Request("search");
 
             request.AddParameter("q", searchTerm);
             request.AddParameter("count", count);
 
-            return base.Client.Execute<UsersResponse>(request);
+            return base.Client.ExecuteAsync<UsersResponse>(request);
         }
     }
 }

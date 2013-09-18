@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
-using RestSharp;
+using PortableRest;
 
 namespace InstaSharp.Endpoints {
     public class Locations : InstagramAPI {
@@ -30,9 +31,9 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="locationId">The id of the location to retreive information for.</param>
-        public IRestResponse<LocationResponse> Get(string locationId) {
+        public Task<LocationResponse> Get(string locationId) {
             var request = base.Request(locationId);
-            return base.Client.Execute<LocationResponse>(request);
+            return base.Client.ExecuteAsync<LocationResponse>(request);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="locationId">The id of the location about which to retrieve information.</param>
-        public IRestResponse<MediasResponse> Recent(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
+        public Task Recent(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
             var request = base.Request(string.Format("{0}/media/recent", locationId));
 
             request.AddParameter("min_timestamp", minTimestamp);
@@ -50,7 +51,7 @@ namespace InstaSharp.Endpoints {
             request.AddParameter("min_id", minId);
             request.AddParameter("max_id", maxId);
 
-            return base.Client.Execute<MediasResponse>(request);
+            return base.Client.ExecuteAsync<MediasResponse>(request);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="distance">Default is 1000m (distance=1000), max distance is 5000.</param>
         /// <param name="foursquare_id">Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.</param>
         /// <param name="foursquare_version">The version of the FourSquare ID  you are using.  Either version 1 or 2.</param>
-        public IRestResponse<LocationsResponse> Search(double? latitude = null, double? longitude = null, double distance = 1000, string foursquare_id = "", FoursquareVersion? foursquare_version = null) {
+        public Task<LocationsResponse> Search(double? latitude = null, double? longitude = null, double distance = 1000, string foursquare_id = "", FoursquareVersion? foursquare_version = null) {
             var request = base.Request("search");
 
             if (foursquare_version != null) {
@@ -85,7 +86,7 @@ namespace InstaSharp.Endpoints {
 
             request.AddParameter("distance", distance);
 
-            return base.Client.Execute<LocationsResponse>(request);
+            return base.Client.ExecuteAsync<LocationsResponse>(request);
         }
             
     }
