@@ -20,7 +20,7 @@ namespace InstaSharp {
 
 namespace System
 {
-    public class SerializableAttribute : Attribute
+    internal class SerializableAttribute : Attribute
     {
     }
 }
@@ -28,7 +28,7 @@ namespace System
 namespace System.Runtime.InteropServices
 {
     [AttributeUsageAttribute(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Interface | AttributeTargets.Delegate, Inherited = false)]
-    public class ComVisibleAttribute : Attribute
+    internal class ComVisibleAttribute : Attribute
     {
         public ComVisibleAttribute(bool visible)
         {
@@ -37,7 +37,7 @@ namespace System.Runtime.InteropServices
     }
 
     [AttributeUsageAttribute(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Delegate, Inherited = false)]
-    public sealed class GuidAttribute : Attribute
+    internal sealed class GuidAttribute : Attribute
     {
         public GuidAttribute(string guid)
         {

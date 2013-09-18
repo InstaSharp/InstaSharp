@@ -1,25 +1,19 @@
-﻿#if DEBUG
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
     [TestClass]
     public class Tags : TestBase {
 
-        readonly Endpoints.Tags _tags;
+        readonly Endpoints.Tags tags;
 
         public Tags() {
-            _tags = new Endpoints.Tags(base.config);
+            tags = new Endpoints.Tags(Config);
         }
 
         [TestMethod, TestCategory("Tags.Get")]
-        public void Get() {
-            var result = _tags.Get("beiber");
-            Assert.IsTrue(result.Data.Data.Name == "beiber");
+        public async void Get() {
+            var result = await tags.Get("beiber");
+            Assert.IsTrue(result.Data.Name == "beiber");
         }
 
         //[TestMethod, TestCategory("Tags.Recent")]
@@ -42,5 +36,3 @@ namespace InstaSharp.Tests {
     
     }
 }
-
-#endif

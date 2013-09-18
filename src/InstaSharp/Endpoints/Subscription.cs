@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using InstaSharp.Models;
+﻿using InstaSharp.Models.Responses;
 using PortableRest;
-using InstaSharp.Models.Responses;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
@@ -25,31 +21,29 @@ namespace InstaSharp.Endpoints
             Media
         }
 
-        private InstagramConfig _config;
-        private RestClient _client;
-        private string _verifyToken;
+        private readonly InstagramConfig config;
+        private readonly RestClient client;
 
         public Subscription(InstagramConfig config)
         {
-            _config = config;
-            _client = new RestClient { BaseUrl = config.RealTimeAPI };
+            this.config = config;
+            client = new RestClient { BaseUrl = config.RealTimeAPI };
         }
 
         public Task<SubscriptionsResponse> Create(Object type, Aspect aspect)
         {
-
             // create a new guid that uniquely identifies this subscription request
-            var _verifyToken = Guid.NewGuid().ToString();
+            var verifyToken = Guid.NewGuid().ToString();
             var request = new RestRequest { Method = HttpMethod.Post };
 
-            request.AddParameter("client_id", _config.ClientId);
-            request.AddParameter("client_secret", _config.ClientSecret);
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("object", type.ToString().ToLower());
             request.AddParameter("aspect", aspect.ToString().ToLower());
-            request.AddParameter("verify_token", _verifyToken);
-            request.AddParameter("callback_url", _config.CallbackURI);
+            request.AddParameter("verify_token", verifyToken);
+            request.AddParameter("callback_url", config.CallbackURI);
 
-            return _client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
     }
 }

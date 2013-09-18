@@ -1,103 +1,102 @@
-﻿#if DEBUG
-
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
-using InstaSharp.Models.Responses;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
 {
     [TestClass]
     public class Users : TestBase
     {
-        readonly Endpoints.Users _users;
+        readonly Endpoints.Users users;
 
-        public Users() : base() {
-            _users = new Endpoints.Users(base.config, base.auth);
+        public Users()
+        {
+            users = new Endpoints.Users(Config, Auth);
         }
 
         [TestMethod, TestCategory("Users.Get")]
-        public void Get()
+        public async void Get()
         {
-            var result = _users.Get();
+            var result = await users.Get();
 
             // serialize the response to 
 
-            Assert.IsNotNull(result.Data);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod, TestCategory("Users.Get")]
-        public void Get_Id()
+        public async void Get_Id()
         {
-            var result = _users.Get("19854736");
-            Assert.IsTrue(result.Data.Data.Username.Length > 0, "Parameters: userId");
+            var result = await users.Get("19854736");
+            Assert.IsTrue(result.Data.Username.Length > 0, "Parameters: userId");
         }
 
         [TestMethod, TestCategory("Users.Feed")]
-        public void Feed()
+        public async void Feed()
         {
-            var result = _users.Feed();
-            Assert.IsTrue(result.Data.Data.Count > 0);
+            var result = await users.Feed();
+            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Feed")]
-        public void Feed_MaxId() {
-            var result = _users.Feed(null, 10);
-            Assert.IsTrue(result.Data.Data.Count > 0, "Parameters: Count");
+        public async void Feed_MaxId()
+        {
+            var result = await users.Feed(null, 10);
+            Assert.IsTrue(result.Data.Count > 0, "Parameters: Count");
         }
 
         [TestMethod, TestCategory("Users.Feed")]
-        public void Feed_MaxId_Count()
+        public async void Feed_MaxId_Count()
         {
-            var result = _users.Feed("347882407661562162_319505", 10);
-            Assert.IsTrue(result.Data.Data.Count > 0, "Parameters: MaxId, Count");
+            var result = await users.Feed("347882407661562162_319505", 10);
+            Assert.IsTrue(result.Data.Count > 0, "Parameters: MaxId, Count");
         }
 
         [TestMethod, TestCategory("Users.Recent")]
-        public void Recent()
+        public async void Recent()
         {
-            var result = _users.RecentSelf();
-            Assert.IsTrue(result.Data.Data.Count > 0);
+            var result = await users.RecentSelf();
+            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Recent")]
-        public void Recent_MaxId()
+        public async void Recent_MaxId()
         {
-            var result = _users.Recent("304848768082410173_2849381");
-            Assert.IsTrue(result.Data.Data.Count > 0);
+            var result = await users.Recent("304848768082410173_2849381");
+            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Recent")]
-        public void Recent_MinId() {
-            var result = _users.RecentSelf(string.Empty, "142863708947821401_22987123");
-            Assert.IsTrue(result.Data.Data.Count > 0);
-        }
-
-        [TestMethod, TestCategory("Users.Recent")]
-        public void Recent_MinId_Count() {
-            var result = _users.RecentSelf(string.Empty, "142863708947821401_22987123", 3);
-            Assert.IsTrue(result.Data.Data.Count == 3);
-        }
-
-        [TestMethod, TestCategory("Users.Recent")]
-        public void Recent_MaxId_Count()
+        public async void Recent_MinId()
         {
-            var result = _users.RecentSelf("304848768082410173_2849381", string.Empty, 3);
-            Assert.IsTrue(result.Data.Data.Count == 3);
+            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123");
+            Assert.IsTrue(result.Data.Count > 0);
+        }
+
+        [TestMethod, TestCategory("Users.Recent")]
+        public async void Recent_MinId_Count()
+        {
+            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123", 3);
+            Assert.IsTrue(result.Data.Count == 3);
+        }
+
+        [TestMethod, TestCategory("Users.Recent")]
+        public async void Recent_MaxId_Count()
+        {
+            var result = await users.RecentSelf("304848768082410173_2849381", string.Empty, 3);
+            Assert.IsTrue(result.Data.Count == 3);
         }
 
         [TestMethod, TestCategory("Users.Search")]
-        public void Search() {
-            var result = _users.Search("beiber");
-            Assert.IsTrue(result.Data.Data.Count > 0);
+        public async void Search()
+        {
+            var result = await users.Search("beiber");
+            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Liked")]
-        public void Liked() {
-            var result = _users.Liked();
-            Assert.IsTrue(result.Data.Meta.Code == 200);
+        public async void Liked()
+        {
+            var result = await users.Liked();
+            Assert.IsTrue(result.Meta.Code == 200);
         }
     }
 }
-
-#endif

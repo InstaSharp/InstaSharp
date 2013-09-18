@@ -43,7 +43,7 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="locationId">The id of the location about which to retrieve information.</param>
-        public Task Recent(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
+        public Task<MediasResponse> Recent(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
             var request = base.Request(string.Format("{0}/media/recent", locationId));
 
             request.AddParameter("min_timestamp", minTimestamp);

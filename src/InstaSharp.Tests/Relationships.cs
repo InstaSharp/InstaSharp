@@ -1,63 +1,55 @@
-﻿#if DEBUG
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Newtonsoft.Json;
-using InstaSharp.Endpoints;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
     [TestClass]
     public class Relationships : TestBase {
-        readonly Endpoints.Relationships _relationships;
+        readonly Endpoints.Relationships relationships;
 
         public Relationships() {
-            _relationships = new Endpoints.Relationships(config, auth);
+            relationships = new Endpoints.Relationships(Config, Auth);
         }
 
         [TestMethod, TestCategory("Relationships.Follows")]
-        public void Follows() {
-            var result = _relationships.Follows();
-            Assert.IsTrue(result.Data.Meta.Code == 200);
+        public async void Follows() {
+            var result = await relationships.Follows();
+            Assert.IsTrue(result.Meta.Code == 200);
         }
 
         [TestMethod, TestCategory("Relationships.Follows")]
-        public void Follows_Id() {
-            var result = _relationships.Follows(auth.User.Id);
-            Assert.IsTrue(result.Data.Data.Count > 0);
+        public async void Follows_Id() {
+            var result = await relationships.Follows(Auth.User.Id);
+            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.FollowedBy")]
-        public void FollowedBy() {
-            var result = _relationships.FollowedBy();
-            Assert.IsTrue(result.Data.Data.Count > 0);
+        public async void FollowedBy() {
+            var result = await relationships.FollowedBy();
+            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.FollowedBy")]
-        public void FollowedBy_Id() {
-            var result = _relationships.FollowedBy(auth.User.Id);
-            Assert.IsTrue(result.Data.Data.Count > 0);
+        public async void FollowedBy_Id()
+        {
+            var result = await relationships.FollowedBy(Auth.User.Id);
+            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.RequestedBy")]
-        public void RequestedBy() {
-            var result = _relationships.RequestedBy();
+        public async void RequestedBy()
+        {
+            var result = await relationships.RequestedBy();
             // TODO: How to test requests if there aren't any?
-            Assert.IsTrue(result.Data.Meta.Code == 200);
+            Assert.IsTrue(result.Meta.Code == 200);
         }
 
         [TestMethod, TestCategory("Relationships.Relationship")]
-        public void Relationship() {
+        public async void Relationship() {
             // first follow Justin Beiber
-            var follow = _relationships.Relationship(19854736, Endpoints.Relationships.Action.Follow);
-            Assert.IsTrue(follow.Data.Data.OutgoingStatus == "follows", "Failed on follow");
+            var follow = await relationships.Relationship(19854736, Endpoints.Relationships.Action.Follow);
+            Assert.IsTrue(follow.Data.OutgoingStatus == "follows", "Failed on follow");
             // now unfollow him
-            var unfollow = _relationships.Relationship(19854736, Endpoints.Relationships.Action.Unfollow);
-            Assert.IsTrue(unfollow.Data.Data.OutgoingStatus == "none", "Failed on unfollow");
+            var unfollow = await relationships.Relationship(19854736, Endpoints.Relationships.Action.Unfollow);
+            Assert.IsTrue(unfollow.Data.OutgoingStatus == "none", "Failed on unfollow");
         }
     }
 }
-
-#endif

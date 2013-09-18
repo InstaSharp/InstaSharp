@@ -1,21 +1,14 @@
-﻿#if DEBUG
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Newtonsoft.Json;
-using InstaSharp.Endpoints;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
    
     [TestClass]
     public class Geographies : TestBase {
-        readonly Endpoints.Geographies _geographies;
+        readonly Endpoints.Geographies geographies;
 
-        public Geographies() : base() {
-            _geographies = new Endpoints.Geographies(base.config);
+        public Geographies()
+        {
+            geographies = new Endpoints.Geographies(Config);
         }
 
         // gotta get the realtime subscriptions working first...
@@ -26,5 +19,3 @@ namespace InstaSharp.Tests {
         }*/
     }
 }
-
-#endif
