@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
     [TestClass]
@@ -11,7 +12,8 @@ namespace InstaSharp.Tests {
         }
 
         [TestMethod, TestCategory("Tags.Get")]
-        public async void Get() {
+        public async Task Get()
+        {
             var result = await tags.Get("beiber");
             Assert.IsTrue(result.Data.Name == "beiber");
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
     [TestClass]
@@ -10,7 +11,8 @@ namespace InstaSharp.Tests {
         }
 
         [TestMethod, TestCategory("Comments.Get")]
-        public async void Get() {
+        public async Task Get()
+        {
             Assert.IsTrue((await comments.Get("371269465633127413_6860189")).Data.Count > 0);
         }
 

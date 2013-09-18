@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
 
@@ -12,20 +13,21 @@ namespace InstaSharp.Tests {
         }
 
         [TestMethod, TestCategory("Locations.Get")]
-        public async void Get() {
+        public async Task Get()
+        {
             var result = await locations.Get("1");
             Assert.IsTrue(result != null);
         }
 
         [TestMethod, TestCategory("Locations.Recent")]
-        public async void Recent()
+        public async Task Recent()
         {
             var result = await locations.Recent("1");
             Assert.IsTrue(result != null);
         }
 
         [TestMethod, TestCategory("Locations.Search")]
-        public async void Search()
+        public async Task Search()
         {
             var result = await locations.Search(36.166667, -86.783333, 2000);
             Assert.IsTrue(result.Data.Count > 0);

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
     [TestClass]
@@ -10,32 +11,35 @@ namespace InstaSharp.Tests {
         }
 
         [TestMethod, TestCategory("Relationships.Follows")]
-        public async void Follows() {
+        public async Task Follows()
+        {
             var result = await relationships.Follows();
             Assert.IsTrue(result.Meta.Code == 200);
         }
 
         [TestMethod, TestCategory("Relationships.Follows")]
-        public async void Follows_Id() {
+        public async Task Follows_Id()
+        {
             var result = await relationships.Follows(Auth.User.Id);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.FollowedBy")]
-        public async void FollowedBy() {
+        public async Task FollowedBy()
+        {
             var result = await relationships.FollowedBy();
             Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.FollowedBy")]
-        public async void FollowedBy_Id()
+        public async Task FollowedBy_Id()
         {
             var result = await relationships.FollowedBy(Auth.User.Id);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.RequestedBy")]
-        public async void RequestedBy()
+        public async Task RequestedBy()
         {
             var result = await relationships.RequestedBy();
             // TODO: How to test requests if there aren't any?
@@ -43,7 +47,8 @@ namespace InstaSharp.Tests {
         }
 
         [TestMethod, TestCategory("Relationships.Relationship")]
-        public async void Relationship() {
+        public async Task Relationship()
+        {
             // first follow Justin Beiber
             var follow = await relationships.Relationship(19854736, Endpoints.Relationships.Action.Follow);
             Assert.IsTrue(follow.Data.OutgoingStatus == "follows", "Failed on follow");

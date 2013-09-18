@@ -44,7 +44,7 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="mediaId">The id of the media to create a like for.</param>
         /// <returns>LikesResponse</returns>
-        public Task Post(string mediaId) {
+        public Task<LikesResponse> Post(string mediaId) {
             var request = base.Request(string.Format("{0}/likes", mediaId), HttpMethod.Post);
             return base.Client.ExecuteAsync<LikesResponse>(request);
         }
