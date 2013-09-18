@@ -7,5 +7,6 @@ namespace InstaSharp.Models {
     public class Pagination {
         public string NextUrl { get; set; }
         public string NextMaxId { get; set; }
+        public string NextMinId { get; set; }
     }
 }
