@@ -1,5 +1,5 @@
-﻿using InstaSharp.Models.Responses;
-using PortableRest;
+﻿using InstaSharp.Extensions;
+using InstaSharp.Models.Responses;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -22,19 +22,19 @@ namespace InstaSharp.Endpoints
         }
 
         private readonly InstagramConfig config;
-        private readonly RestClient client;
+        private readonly HttpClient client;
 
         public Subscription(InstagramConfig config)
         {
             this.config = config;
-            client = new RestClient { BaseUrl = config.RealTimeAPI };
+            client = new HttpClient {BaseAddress = new Uri(config.RealTimeAPI)};
         }
 
         public Task<SubscriptionsResponse> Create(Object type, Aspect aspect)
         {
             // create a new guid that uniquely identifies this subscription request
             var verifyToken = Guid.NewGuid().ToString();
-            var request = new RestRequest { Method = HttpMethod.Post };
+            var request = new HttpRequestMessage {Method = HttpMethod.Post};
 
             request.AddParameter("client_id", config.ClientId);
             request.AddParameter("client_secret", config.ClientSecret);

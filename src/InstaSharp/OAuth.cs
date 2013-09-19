@@ -1,11 +1,10 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
-using PortableRest;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace InstaSharp
 {
@@ -57,8 +56,8 @@ namespace InstaSharp
 
         public Task<OAuthResponse> RequestToken(string code)
         {
-            RestClient client = new RestClient { BaseUrl = _config.OAuthURI };
-            RestRequest request = new RestRequest("/access_token", HttpMethod.Post);
+            HttpClient client = new HttpClient { BaseAddress = new Uri(_config.OAuthURI) };
+            var request = new HttpRequestMessage(HttpMethod.Post, "access_token");
 
             request.AddParameter("client_id", _config.ClientId);
             request.AddParameter("client_secret", _config.ClientSecret);

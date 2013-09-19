@@ -15,8 +15,8 @@ namespace InstaSharp {
         public string CallbackURI { get; set; }
 
         public InstagramConfig(string clientId, string clientSecret, string redirectURI, string callbackURI,
-            string apiURI = "https://api.instagram.com/v1", string oauthURI = "https://api.instagram.com/oauth",
-            string realTimeAPI = "https://api.instagram.com/v1/subscriptions") {
+            string apiURI = "https://api.instagram.com/v1/", string oauthURI = "https://api.instagram.com/oauth/",
+            string realTimeAPI = "https://api.instagram.com/v1/subscriptions/") {
             APIURI = apiURI;
             OAuthURI = oauthURI;
             ClientId = clientId;
@@ -26,8 +26,8 @@ namespace InstaSharp {
             CallbackURI = callbackURI;
         }
 
-        public InstagramConfig(string apiURI = "https://api.instagram.com/v1", 
-            string oauthURI = "https://api.instagram.com/oauth", string realTimeAPI = "https://api.instagram.com/v1/subscriptions")
+        public InstagramConfig(string apiURI = "https://api.instagram.com/v1/", 
+            string oauthURI = "https://api.instagram.com/oauth/", string realTimeAPI = "https://api.instagram.com/v1/subscriptions/")
         {
             APIURI = apiURI;
             OAuthURI = oauthURI;
@@ -36,7 +36,7 @@ namespace InstaSharp {
 
         public InstagramConfig()
         {
-            APIURI = "https://api.instagram.com/v1";
+            APIURI = "https://api.instagram.com/v1/";
         }
     }
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InstaSharp.Extensions;
+﻿using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
-using PortableRest;
+using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
     public class Geographies : InstagramAPI {

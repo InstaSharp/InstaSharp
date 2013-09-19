@@ -1,53 +1,44 @@
-﻿using System.Net.Http;
+﻿using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
-using PortableRest;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net;
+using System.Net.Http;
 
 namespace InstaSharp.Endpoints
 {
     public class InstagramAPI
     {
-
         public InstagramConfig InstagramConfig { get; private set; }
         public OAuthResponse OAuthResponse { get; private set; }
-        public string Uri { get; set; }
-        public RestClient Client { get; set; }
+        public HttpClient Client { get; set; }
 
         public InstagramAPI(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse = null)
         {
             InstagramConfig = instagramConfig;
-            OAuthResponse = oauthResponse ?? null;
-            Uri = InstagramConfig.APIURI + endpoint;
-            Client = new RestClient() { BaseUrl = InstagramConfig.APIURI + "/" + endpoint };
+            OAuthResponse = oauthResponse;
+
+            var handler = new HttpClientHandler();
+            if (handler.SupportsAutomaticDecompression)
+            {
+                handler.AutomaticDecompression = DecompressionMethods.GZip |
+                                                 DecompressionMethods.Deflate;
+            }
+
+            Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.APIURI), endpoint) };
         }
 
-        //TODO refactor overloads
-        internal Request Request(string fragment, HttpMethod method)
+        internal HttpRequestMessage Request(string fragment, HttpMethod method)
         {
-            var request = new Request(fragment, method);
+            var request = new HttpRequestMessage(method, new Uri(Client.BaseAddress, fragment));
             return AddAuth(request);
         }
 
-        internal Request Request(HttpMethod method)
+        internal HttpRequestMessage Request(string fragment)
         {
-            return AddAuth(new Request(method));
+            return Request(fragment, HttpMethod.Get);
         }
 
-        internal Request Request(string fragment)
-        {
-            var request = new Request(fragment, HttpMethod.Get);
-            return AddAuth(request);
-        }
-
-        internal Request Request()
-        {
-            return AddAuth(new Request());
-        }
-
-        internal Request AddAuth(Request request)
+        private HttpRequestMessage AddAuth(HttpRequestMessage request)
         {
             if (OAuthResponse == null)
             {
