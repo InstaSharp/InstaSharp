@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using PortableRest;
 
@@ -13,7 +14,7 @@ namespace InstaSharp.Endpoints {
         /// Geographies Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        public Geographies(InstagramConfig config) : base("/geographies/", config) {}
+        public Geographies(InstagramConfig config) : base("geographies/", config) {}
 
         /// <summary>
         /// Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using PortableRest;
 
@@ -16,7 +17,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="auth">An instance of the AuthInfo class.</param>
         public Likes(InstagramConfig config, OAuthResponse auth)
-            : base("/media/", config, auth) { }
+            : base("media/", config, auth) { }
 
         /// <summary>
         /// Get a list of users who have liked this media.

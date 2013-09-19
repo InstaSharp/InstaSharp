@@ -1,4 +1,5 @@
-﻿using InstaSharp.Models.Responses;
+﻿using InstaSharp.Extensions;
+using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
@@ -10,7 +11,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="authInfo">An instance of the AuthInfo class.</param>
         public Comments(InstagramConfig config, OAuthResponse authInfo) :
-            base("/media/", config, authInfo) { }
+            base("media/", config, authInfo) { }
 
         /// <summary>
         /// Get a full list of comments on a media.

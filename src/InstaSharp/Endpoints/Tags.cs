@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using PortableRest;
 
@@ -15,7 +16,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class</param>
         public Tags(InstagramConfig config)
-            : base("/tags/", config) { }
+            : base("tags/", config) { }
 
         /// <summary>
         /// Get information about a tag object.

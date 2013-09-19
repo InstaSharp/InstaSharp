@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using PortableRest;
 
@@ -15,7 +16,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="auth">An instance of the AuthInfo class.</param>
         public Media(InstagramConfig config, OAuthResponse auth = null)
-            : base("/media/", config, auth) { }
+            : base("media/", config, auth) { }
 
         /// <summary>
         /// Get information about a media object. Note: if you are authenticated, you will receive the user_has_liked key which quickly tells you whether the current user has liked this media item.

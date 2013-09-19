@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using PortableRest;
 
@@ -26,7 +27,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="oauthResponse">An instance of the OAuthResponse class.</param>
         public Relationships(InstagramConfig config, OAuthResponse oauthResponse)
-            : base("/users/", config, oauthResponse) { }
+            : base("users/", config, oauthResponse) { }
 
         /// <summary>
         /// Get the list of users this user follows.
