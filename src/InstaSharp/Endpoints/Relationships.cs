@@ -1,4 +1,5 @@
-﻿using InstaSharp.Extensions;
+﻿using System.Collections.Generic;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -93,7 +94,7 @@ namespace InstaSharp.Endpoints {
         /// <param name="action">One of Action enum.</param>
         public Task<RelationshipResponse> Relationship(int userId, Action action) {
             var request = base.Request(string.Format("{0}/relationship", userId.ToString()), HttpMethod.Post);
-            request.AddParameter("action", action.ToString().ToLower());
+            request.Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("action", action.ToString().ToLower()) });
             return base.Client.ExecuteAsync<RelationshipResponse>(request);
         }
     }

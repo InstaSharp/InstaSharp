@@ -15,7 +15,10 @@ namespace InstaSharp.Extensions
         {
             HttpResponseMessage response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+            
+            string resultData = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<T>(resultData);
         }
     }
 }

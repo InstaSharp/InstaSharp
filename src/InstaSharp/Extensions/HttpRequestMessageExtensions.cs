@@ -1,28 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 
 namespace InstaSharp.Extensions
 {
     public static class HttpRequestMessageExtensions
     {
-        public static void AddParameter(this HttpRequestMessage request, string key, object value)
+        public static void AddParameter(this HttpRequestMessage request, string key, IFormattable value)
         {
-            var uriBuilder = new UriBuilder(request.RequestUri);
+            if (value != null)
+            {
+                request.AddParameter(key, value.ToString(null, CultureInfo.InvariantCulture));
+            }
+        }
+        public static void AddParameter(this HttpRequestMessage request, string key, string value)
+        {
+            if (value != null)
+            {
+                var uriBuilder = new UriBuilder(request.RequestUri);
 
-            string queryToAppend = key.UrlEncode() + "=" + value.ToString().UrlEncode();
+                string queryToAppend = key.UrlEncode() + "=" + value.UrlEncode();
 
-            if (uriBuilder.Query.Length > 1)
-                uriBuilder.Query = uriBuilder.Query.Substring(1) + "&" + queryToAppend;
-            else
-                uriBuilder.Query = queryToAppend;
+                if (uriBuilder.Query.Length > 1)
+                    uriBuilder.Query = uriBuilder.Query.Substring(1) + "&" + queryToAppend;
+                else
+                    uriBuilder.Query = queryToAppend;
 
-            request.RequestUri = uriBuilder.Uri;
+                request.RequestUri = uriBuilder.Uri;
+            }
         }
 
         public static void AddUrlSegment(this HttpRequestMessage request, string key, string value)
         {
             var uriBuilder = new UriBuilder(request.RequestUri);
-            uriBuilder.Path = uriBuilder.Path.Replace("{" + key + "}", Uri.EscapeUriString(value));
+            uriBuilder.Path = uriBuilder.Path.Replace("%7B" + key + "%7D", Uri.EscapeUriString(value));
             request.RequestUri = uriBuilder.Uri;
         }
     }
