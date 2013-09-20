@@ -16,7 +16,7 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Media.Get")]
         public async Task Get()
         {
-            var result = await media.Get("371269465633127413_6860189");
+            var result = await media.Get("555");
             Assert.IsTrue(result.Data != null);
         }
 
@@ -30,7 +30,7 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Media.Search")]
         public async Task Search()
         {
-            var result = await media.Search(36.166667, -86.783333, DateTime.Now, DateTime.Now.AddDays(-7), 2000);
+            var result = await media.Search(36.166667, -86.783333, DateTime.Now.AddDays(-7), DateTime.Now.AddDays(-6), 2000);
             Assert.IsTrue(result.Data.Count > 0);
         }
     }

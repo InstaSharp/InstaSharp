@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
@@ -49,11 +50,10 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Relationships.Relationship")]
         public async Task Relationship()
         {
-            // first follow Justin Beiber
-            var follow = await relationships.Relationship(19854736, Endpoints.Relationships.Action.Follow);
+            var follow = await relationships.Relationship(3, Endpoints.Relationships.Action.Follow);
             Assert.IsTrue(follow.Data.OutgoingStatus == "follows", "Failed on follow");
-            // now unfollow him
-            var unfollow = await relationships.Relationship(19854736, Endpoints.Relationships.Action.Unfollow);
+
+            var unfollow = await relationships.Relationship(3, Endpoints.Relationships.Action.Unfollow);
             Assert.IsTrue(unfollow.Data.OutgoingStatus == "none", "Failed on unfollow");
         }
     }

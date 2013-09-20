@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
@@ -47,8 +48,10 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Feed")]
         public async Task Feed_MaxId_Count()
         {
-            var result = await users.Feed("347882407661562162_319505", 10);
-            Assert.IsTrue(result.Data.Count > 0, "Parameters: MaxId, Count");
+            var normalResult = await users.Feed();
+
+            var result = await users.Feed(normalResult.Data.First().Id, 1);
+            Assert.IsTrue(result.Data.First().Id == normalResult.Data.Skip(1).First().Id, "Parameters: MaxId, Count");
         }
 
         [TestMethod, TestCategory("Users.Recent")]
@@ -61,7 +64,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Recent")]
         public async Task Recent_MaxId()
         {
-            var result = await users.Recent("304848768082410173_2849381");
+            var result = await users.Recent("3");
             Assert.IsTrue(result.Data.Count > 0);
         }
 
@@ -82,7 +85,9 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Recent")]
         public async Task Recent_MaxId_Count()
         {
-            var result = await users.RecentSelf("304848768082410173_2849381", string.Empty, 3);
+            var normalResult = await users.Feed();
+
+            var result = await users.RecentSelf(normalResult.Data.First().Id, string.Empty, 3);
             Assert.IsTrue(result.Data.Count == 3);
         }
 
