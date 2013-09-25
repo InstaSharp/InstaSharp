@@ -1,4 +1,6 @@
-﻿using InstaSharp.Extensions;
+﻿using System.Collections.Generic;
+using System.Net.Http;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
 
@@ -42,8 +44,8 @@ namespace InstaSharp.Endpoints {
         /// <param name="comment">Text to post as a comment on the media as specified in media-id.</param>
         /// <returns>CommentsResponse</returns>
         public Task<CommentResponse> Post(string mediaId, string comment) {
-            var request = Request(string.Format("{0}/comments", mediaId));
-            request.AddParameter("text", comment);
+            var request = Request(string.Format("{0}/comments", mediaId), HttpMethod.Post);
+            request.Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("text", comment) });
             return Client.ExecuteAsync<CommentResponse>(request);
         }
 

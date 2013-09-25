@@ -16,7 +16,7 @@ namespace InstaSharp.Extensions
         }
         public static void AddParameter(this HttpRequestMessage request, string key, string value)
         {
-            if (value != null)
+            if (string.IsNullOrWhiteSpace(value) == false)
             {
                 var uriBuilder = new UriBuilder(request.RequestUri);
 

@@ -40,6 +40,10 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="locationId">The id of the location about which to retrieve information.</param>
+        /// <param name="minTimestamp">Return media after this UNIX timestamp</param>
+        /// <param name="maxTimestamp">Return media before this UNIX timestamp</param>
+        /// <param name="minId">Return media before this min_id</param>
+        /// <param name="maxId">Return media after this max_id</param>
         public Task<MediasResponse> Recent(string locationId, DateTime? minTimestamp = null, DateTime? maxTimestamp = null, string minId = "", string maxId = "") {
             var request = base.Request(string.Format("{0}/media/recent", locationId));
 
@@ -60,18 +64,23 @@ namespace InstaSharp.Endpoints {
         /// <param name="latitude">Latitude of the center search coordinate. If used, lng is required.</param>
         /// <param name="longitude">Longitude of the center search coordinate. If used, lat is required.</param>
         /// <param name="distance">Default is 1000m (distance=1000), max distance is 5000.</param>
-        /// <param name="foursquare_id">Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.</param>
-        /// <param name="foursquare_version">The version of the FourSquare ID  you are using.  Either version 1 or 2.</param>
-        public Task<LocationsResponse> Search(double? latitude = null, double? longitude = null, double distance = 1000, string foursquare_id = "", FoursquareVersion? foursquare_version = null) {
+        /// <param name="foursquareId">Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.</param>
+        /// <param name="foursquareVersion">The version of the FourSquare ID  you are using.  Either version 1 or 2.</param>
+        public Task<LocationsResponse> Search(double? latitude = null, double? longitude = null, double distance = 1000, string foursquareId = null, FoursquareVersion? foursquareVersion = null) {
             var request = base.Request("search");
 
-            if (foursquare_version != null) {
-                switch (foursquare_version) {
+            if (foursquareId != null && foursquareVersion == null)
+            {
+                throw new ArgumentNullException("foursquareVersion", "You should specify FoursquareVersion when using FoursquareId");
+            }
+
+            if (foursquareVersion != null) {
+                switch (foursquareVersion) {
                     case FoursquareVersion.One:
-                        request.AddParameter("foursquare_id", foursquare_id);
+                        request.AddParameter("foursquare_id", foursquareId);
                         break;
                     case FoursquareVersion.Two:
-                        request.AddParameter("foursquare_id", foursquare_id);
+                        request.AddParameter("foursquare_v2_id", foursquareId);
                         break;
                     default:
                         break;
