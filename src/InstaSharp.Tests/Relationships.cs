@@ -50,6 +50,14 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Relationships.Relationship")]
         public async Task Relationship()
         {
+            var follow = await relationships.Relationship(3);
+            Assert.AreEqual(follow.Data.OutgoingStatus, "none");
+            Assert.AreEqual(follow.Data.IncomingStatus, "none");
+        }
+
+        [TestMethod, TestCategory("Relationships.Relationship")]
+        public async Task RelationshipAction()
+        {
             var follow = await relationships.Relationship(3, Endpoints.Relationships.Action.Follow);
             Assert.IsTrue(follow.Data.OutgoingStatus == "follows", "Failed on follow");
 

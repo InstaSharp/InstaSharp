@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
@@ -18,23 +19,28 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Data.Name == "beiber");
         }
 
-        //[TestMethod, TestCategory("Tags.Recent")]
-        //public void Recent() {
-        //    var result = _tags.Recent("beiber");
-        //    Assert.IsTrue(result.Data.Data.Count > 0);
-        //}
+        [TestMethod, TestCategory("Tags.Recent")]
+        public async Task Recent()
+        {
+            var result = await tags.Recent("csharp");
+            Assert.IsTrue(result.Data.Count > 0);
+        }
 
-        //[TestMethod, TestCategory("Tags.Recent")]
-        //public void Recent_MinId() {
-        //    var result = _tags.Recent("beiber", "1356386164843", null);
-        //    Assert.IsTrue(result.Data.Data.Count > 0);
-        //}
+        [TestMethod, TestCategory("Tags.Recent")]
+        public async Task Recent_MinId()
+        {
+            var result = await tags.Recent("csharp");
+            result = await tags.Recent("csharp", result.Pagination.NextMinId, null);
+            Assert.IsTrue(result.Data.Count == 0);
+        }
 
-        //[TestMethod, TestCategory("Tags.Recent")]
-        //public void Recent_MaxId() {
-        //    var result = _tags.Recent("beiber", null, "1356386164843");
-        //    Assert.IsTrue(result.Data.Data.Count > 0);
-        //}
+        [TestMethod, TestCategory("Tags.Recent")]
+        public async Task Recent_MaxId()
+        {
+            var result = await tags.Recent("csharp");
+            result = await tags.Recent("csharp", null, result.Pagination.NextMaxId);
+            Assert.IsTrue(result.Data.Count > 0);
+        }
     
     }
 }

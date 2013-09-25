@@ -17,10 +17,11 @@ namespace InstaSharp.Tests {
         }
 
         // Gotta come back to this one because commenting is white-list only now via API
-        /*[TestMethod, TestCategory("Comments.Post")]
-        public void Post() {
-            
-            Assert.IsTrue(_comments.Post("371269465633127413_6860189", "I have beiber fever").Meta.Code == 200);
+        /*[TestMethod, TestCategory("Comments")]
+        public async Task Post()
+        {
+            var postComment = await comments.Post("555", "Api Test");
+            Assert.AreEqual(postComment.Meta.Code, 200);
         }*/
     }
 }
