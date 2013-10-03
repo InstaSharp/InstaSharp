@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace InstaSharp.Models.Responses {
     public class CommentsResponse : IResponse {
         public Models.Meta Meta { get; set; }
-        public List<Models.Comments> Data { get; set; }
+        public List<Comment> Data { get; set; }
     }
 }
