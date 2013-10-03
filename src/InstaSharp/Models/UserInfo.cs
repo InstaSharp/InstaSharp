@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace InstaSharp.Models {
     [Serializable]
     public class UserInfo {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string Full_Name { get; set; }
-        public string Profile_Picture { get; set; }
+        [JsonProperty("full_name")]
+        public string FullName { get; set; }
+        [JsonProperty("profile_picture")]
+        public string ProfilePicture { get; set; }
     }
 }
