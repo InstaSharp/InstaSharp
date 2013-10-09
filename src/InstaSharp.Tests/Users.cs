@@ -41,7 +41,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Feed")]
         public async Task Feed_MaxId()
         {
-            var result = await users.Feed(null, 10);
+            var result = await users.Feed(null, null, 10);
             Assert.IsTrue(result.Data.Count > 0, "Parameters: Count");
         }
 
@@ -50,7 +50,7 @@ namespace InstaSharp.Tests
         {
             var normalResult = await users.Feed();
 
-            var result = await users.Feed(normalResult.Data.First().Id, 1);
+            var result = await users.Feed(normalResult.Data.First().Id, null, 1);
             Assert.IsTrue(result.Data.First().Id == normalResult.Data.Skip(1).First().Id, "Parameters: MaxId, Count");
         }
 

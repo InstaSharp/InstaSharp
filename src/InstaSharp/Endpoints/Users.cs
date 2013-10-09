@@ -41,10 +41,12 @@ namespace InstaSharp.Endpoints {
         /// <returns>
         /// IRestResponse With Data Of Type MediasResponse
         /// </returns>
-        public Task<MediasResponse> Feed(string maxId = null, int? count = null) {
+        public Task<MediasResponse> Feed(string maxId = null, string minId = null, int? count = null)
+        {
             var request = base.Request("self/feed");
 
             request.AddParameter("max_id", maxId);
+            request.AddParameter("min_id", minId);
             request.AddParameter("count", count);
 
             return Client.ExecuteAsync<MediasResponse>(request);
