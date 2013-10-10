@@ -17,7 +17,7 @@ New Features:
 -Converted to Portable Class Library
 -Removed RestSharp in favor of HttpClient
 -All calls are async
--Support for .NET 4, .NET 4.5, Silverlight 5, WP8, Windows Store 8</releaseNotes>
+-Support for .NET 4.0.3, .NET 4.5, Silverlight 5, WP8, Windows Store 8</releaseNotes>
         <copyright>Copyright 2013</copyright>
         <tags>Instagram REST API</tags>
         <dependencies>
