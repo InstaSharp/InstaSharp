@@ -3,7 +3,7 @@ using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
-    public class Geographies : InstagramAPI {
+    public class Geographies : InstagramApi {
 
         /// <summary>
         /// Geographies Endpoints

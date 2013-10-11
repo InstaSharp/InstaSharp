@@ -5,7 +5,7 @@ using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
-    public class Comments : InstagramAPI {
+    public class Comments : InstagramApi {
 
         /// <summary>
         /// Comments Endpoints

@@ -37,7 +37,7 @@
     <Compile Include="Endpoints\Geographies.cs" />
     <Compile Include="Endpoints\Likes.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Endpoints\InstagramAPI.cs" />
+    <Compile Include="Endpoints\InstagramApi.cs" />
     <Compile Include="Endpoints\Locations.cs" />
     <Compile Include="Endpoints\Media.cs" />
     <Compile Include="Endpoints\Relationships.cs" />
