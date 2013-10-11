@@ -27,7 +27,7 @@ namespace InstaSharp.Endpoints
         public Subscription(InstagramConfig config)
         {
             this.config = config;
-            client = new HttpClient {BaseAddress = new Uri(config.RealTimeAPI)};
+            client = new HttpClient {BaseAddress = new Uri(config.RealTimeApi)};
         }
 
         public Task<SubscriptionsResponse> Create(Object type, Aspect aspect)
@@ -41,7 +41,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("object", type.ToString().ToLower());
             request.AddParameter("aspect", aspect.ToString().ToLower());
             request.AddParameter("verify_token", verifyToken);
-            request.AddParameter("callback_url", config.CallbackURI);
+            request.AddParameter("callback_url", config.CallbackUri);
 
             return client.ExecuteAsync<SubscriptionsResponse>(request);
         }

@@ -24,7 +24,7 @@ namespace InstaSharp.Endpoints
                                                  DecompressionMethods.Deflate;
             }
 
-            Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.APIURI), endpoint) };
+            Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.ApiUri), endpoint) };
         }
 
         internal HttpRequestMessage Request(string fragment, HttpMethod method)

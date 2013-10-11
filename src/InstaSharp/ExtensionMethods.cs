@@ -1,11 +1,4 @@
-﻿namespace System
-{
-    internal class SerializableAttribute : Attribute
-    {
-    }
-}
-
-namespace System.Runtime.InteropServices
+﻿namespace System.Runtime.InteropServices
 {
     [AttributeUsageAttribute(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Interface | AttributeTargets.Delegate, Inherited = false)]
     internal class ComVisibleAttribute : Attribute

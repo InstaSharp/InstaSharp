@@ -1,7 +1,6 @@
 ﻿using System;
 
 namespace InstaSharp.Models {
-    [Serializable]
     public class User : UserInfo
     {
         public string Bio { get; set; }

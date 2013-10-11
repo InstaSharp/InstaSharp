@@ -55,7 +55,7 @@
     <Compile Include="Models\Responses\SubscriptionsResponse.cs" />
     <Compile Include="Models\Responses\TestResponse.cs" />
     <Compile Include="OAuth.cs" />
-    <Compile Include="Config\InstagramConfig.cs" />
+    <Compile Include="InstagramConfig.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Count.cs" />
