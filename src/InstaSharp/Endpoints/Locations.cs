@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
-    public class Locations : InstagramAPI {
+    public class Locations : InstagramApi {
         
         /// <summary>
         /// Locations Endpoints

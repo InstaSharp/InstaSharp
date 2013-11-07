@@ -37,7 +37,7 @@
     <Compile Include="Endpoints\Geographies.cs" />
     <Compile Include="Endpoints\Likes.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Endpoints\InstagramAPI.cs" />
+    <Compile Include="Endpoints\InstagramApi.cs" />
     <Compile Include="Endpoints\Locations.cs" />
     <Compile Include="Endpoints\Media.cs" />
     <Compile Include="Endpoints\Relationships.cs" />
@@ -55,7 +55,7 @@
     <Compile Include="Models\Responses\SubscriptionsResponse.cs" />
     <Compile Include="Models\Responses\TestResponse.cs" />
     <Compile Include="OAuth.cs" />
-    <Compile Include="Config\InstagramConfig.cs" />
+    <Compile Include="InstagramConfig.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Count.cs" />

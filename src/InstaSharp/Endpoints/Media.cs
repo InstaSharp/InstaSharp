@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
-    public class Media : InstagramAPI {
+    public class Media : InstagramApi {
 
         /// <summary>
         /// Media Endpoints

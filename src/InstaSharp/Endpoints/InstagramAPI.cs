@@ -6,13 +6,13 @@ using System.Net.Http;
 
 namespace InstaSharp.Endpoints
 {
-    public class InstagramAPI
+    public class InstagramApi
     {
         public InstagramConfig InstagramConfig { get; private set; }
         public OAuthResponse OAuthResponse { get; private set; }
         public HttpClient Client { get; set; }
 
-        public InstagramAPI(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse = null)
+        public InstagramApi(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse = null)
         {
             InstagramConfig = instagramConfig;
             OAuthResponse = oauthResponse;
@@ -24,7 +24,7 @@ namespace InstaSharp.Endpoints
                                                  DecompressionMethods.Deflate;
             }
 
-            Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.APIURI), endpoint) };
+            Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.ApiUri), endpoint) };
         }
 
         internal HttpRequestMessage Request(string fragment, HttpMethod method)

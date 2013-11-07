@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
 
-    public class Relationships : InstagramAPI {
+    public class Relationships : InstagramApi {
 
         public enum Action {
             Follow,

@@ -10,8 +10,7 @@ namespace InstaSharp
 {
     public class OAuth
     {
-
-        InstagramConfig _config;
+        private readonly InstagramConfig config;
 
         public enum ResponseType
         {
@@ -29,10 +28,10 @@ namespace InstaSharp
 
         public OAuth(InstagramConfig config)
         {
-            _config = config;
+            this.config = config;
         }
 
-        public static string AuthLink(string instagramOAuthURI, string clientId, string callbackURI, List<Scope> scopes, ResponseType responseType = ResponseType.Token)
+        public static string AuthLink(string instagramOAuthUri, string clientId, string callbackUri, List<Scope> scopes, ResponseType responseType = ResponseType.Token)
         {
             StringBuilder scope = new StringBuilder();
 
@@ -46,9 +45,9 @@ namespace InstaSharp
             }
 
             return string.Format("{0}?client_id={1}&redirect_uri={2}&response_type={3}&scope={4}", new object[] {
-                instagramOAuthURI.ToLower(),
+                instagramOAuthUri.ToLower(),
                 clientId.ToLower(), 
-                callbackURI.ToLower(), 
+                callbackUri.ToLower(), 
                 responseType,
                 scope.ToString().ToLower()
             });
@@ -56,13 +55,13 @@ namespace InstaSharp
 
         public Task<OAuthResponse> RequestToken(string code)
         {
-            HttpClient client = new HttpClient { BaseAddress = new Uri(_config.OAuthURI) };
+            HttpClient client = new HttpClient { BaseAddress = new Uri(config.OAuthUri) };
             var request = new HttpRequestMessage(HttpMethod.Post, "access_token");
 
-            request.AddParameter("client_id", _config.ClientId);
-            request.AddParameter("client_secret", _config.ClientSecret);
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("grant_type", "authorization_code");
-            request.AddParameter("redirect_uri", _config.RedirectURI);
+            request.AddParameter("redirect_uri", config.RedirectUri);
             request.AddParameter("code", code);
 
             return client.ExecuteAsync<OAuthResponse>(request);

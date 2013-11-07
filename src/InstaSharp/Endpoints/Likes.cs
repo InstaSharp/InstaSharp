@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
-    public class Likes : InstagramAPI {
+    public class Likes : InstagramApi {
 
         /// <summary>
         /// Likes Endpoints
