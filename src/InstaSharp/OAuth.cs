@@ -56,7 +56,7 @@ namespace InstaSharp
         public Task<OAuthResponse> RequestToken(string code)
         {
             HttpClient client = new HttpClient { BaseAddress = new Uri(config.OAuthUri) };
-            var request = new HttpRequestMessage(HttpMethod.Post, "access_token");
+            var request = new HttpRequestMessage(HttpMethod.Post, new Uri(client.BaseAddress, "access_token"));
 
             request.AddParameter("client_id", config.ClientId);
             request.AddParameter("client_secret", config.ClientSecret);
