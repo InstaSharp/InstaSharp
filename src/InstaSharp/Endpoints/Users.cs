@@ -10,9 +10,9 @@ namespace InstaSharp.Endpoints {
         /// User Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfiguration class</param>
-        /// <param name="OAuthResponse">An instance of the AuthInfo class</param>
-        public Users(InstagramConfig config, OAuthResponse OAuthResponse = null)
-            : base("users/", config, OAuthResponse) { }
+        /// <param name="auth">An instance of the OAuthResponse class.</param>
+        public Users(InstagramConfig config, OAuthResponse auth = null)
+            : base("users/", config, auth) { }
 
         /// <summary>
         /// Get basic information about a user.

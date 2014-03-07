@@ -10,7 +10,7 @@ namespace InstaSharp.Endpoints {
         /// Likes Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        /// <param name="auth">An instance of the AuthInfo class.</param>
+        /// <param name="auth">An instance of the OAuthResponse class.</param>
         public Likes(InstagramConfig config, OAuthResponse auth)
             : base("media/", config, auth) { }
 
