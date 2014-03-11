@@ -19,6 +19,13 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Data.Name == "beiber");
         }
 
+        [TestMethod, TestCategory("Tags.Search")]
+        public async Task Search()
+        {
+            var result = await tags.Search("Cats");
+            Assert.IsTrue(result.Data.Any());
+        }
+
         [TestMethod, TestCategory("Tags.Recent")]
         public async Task Recent()
         {
