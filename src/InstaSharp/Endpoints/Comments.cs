@@ -11,9 +11,9 @@ namespace InstaSharp.Endpoints {
         /// Comments Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        /// <param name="authInfo">An instance of the AuthInfo class.</param>
-        public Comments(InstagramConfig config, OAuthResponse authInfo) :
-            base("media/", config, authInfo) { }
+        /// <param name="auth">An instance of the OAuthResponse class.</param>
+        public Comments(InstagramConfig config, OAuthResponse auth) :
+            base("media/", config, auth) { }
 
         /// <summary>
         /// Get a full list of comments on a media.

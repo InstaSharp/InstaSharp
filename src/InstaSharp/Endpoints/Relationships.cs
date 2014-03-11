@@ -21,9 +21,9 @@ namespace InstaSharp.Endpoints {
         /// Relationships Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        /// <param name="oauthResponse">An instance of the OAuthResponse class.</param>
-        public Relationships(InstagramConfig config, OAuthResponse oauthResponse)
-            : base("users/", config, oauthResponse) { }
+        /// <param name="auth">An instance of the OAuthResponse class.</param>
+        public Relationships(InstagramConfig config, OAuthResponse auth)
+            : base("users/", config, auth) { }
 
         /// <summary>
         /// Get the list of users this user follows.
