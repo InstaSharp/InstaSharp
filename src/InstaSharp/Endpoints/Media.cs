@@ -10,7 +10,7 @@ namespace InstaSharp.Endpoints {
         /// Media Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        /// <param name="auth">An instance of the AuthInfo class.</param>
+        /// <param name="auth">An instance of the OAuthResponse class.</param>
         public Media(InstagramConfig config, OAuthResponse auth = null)
             : base("media/", config, auth) { }
 
