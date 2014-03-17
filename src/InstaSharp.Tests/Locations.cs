@@ -31,7 +31,7 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Locations.Search")]
         public async Task Search()
         {
-            var result = await locations.Search(36.166667, -86.783333, 2000);
+            var result = await locations.Search(36.100000, -86.783333, 2000);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
