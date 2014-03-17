@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
 
 namespace InstaSharp.Models {
-    public class Image {
+    public class Video {
 
         [JsonProperty("low_resolution")]
         public Resolution LowResolution { get; set; }
-
-        public Resolution Thumbnail { get; set; }
         
         [JsonProperty("standard_resolution")]
         public Resolution StandardResolution { get; set; }
