@@ -20,6 +20,15 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Data != null);
         }
 
+        [TestMethod, TestCategory("Media.Get")]
+        public async Task GetVideo()
+        {
+            var result = await media.Get("673935902211830157_3808579");
+            Assert.IsTrue(result.Data != null);
+            Assert.IsTrue(result.Data.Videos != null);
+            Assert.IsTrue(result.Data.Videos.LowResolution != null);
+        }
+
         [TestMethod, TestCategory("Media.Popular")]
         public async Task Popular()
         {

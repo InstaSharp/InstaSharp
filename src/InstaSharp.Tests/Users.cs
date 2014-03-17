@@ -27,8 +27,8 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Get")]
         public async Task Get_Id()
         {
-            var result = await users.Get("19854736");
-            Assert.IsTrue(result.Data.Username.Length > 0, "Parameters: userId");
+            var result = await users.Get("3808579");
+            Assert.IsTrue(result.Data.Username == "nasagoddard", "Parameters: userId");
         }
 
         [TestMethod, TestCategory("Users.Feed")]
