@@ -14,6 +14,7 @@ namespace InstaSharp.Models {
         [JsonProperty("created_time"), JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime CreatedTime { get; set; }
         public Image Images { get; set; }
+        public Video Videos { get; set; }
         public string Type { get; set; }
         public string Filter { get; set; }
         public List<string> Tags { get; set; }
