@@ -8,7 +8,9 @@ namespace InstaSharp.Models {
         public Location Location { get; set; }
         public Comments Comments { get; set; }
         public Caption Caption { get; set; }
-        public bool UserHasLiked { get; set; }
+
+        [JsonProperty("user_has_liked")]
+        public bool? UserHasLiked { get; set; }
         public string Link { get; set; }
         public Likes Likes { get; set; }
         [JsonProperty("created_time"), JsonConverter(typeof(UnixDateTimeConverter))]

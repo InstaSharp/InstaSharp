@@ -29,6 +29,28 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Data.Videos.LowResolution != null);
         }
 
+        [TestMethod, TestCategory("Media.Get")]
+        public async Task UserHasLikedTrue()
+        {
+            var result = await media.Get("678356698367783034_3808579");
+            Assert.IsTrue(result.Data.UserHasLiked.Value);
+        }
+
+        [TestMethod, TestCategory("Media.Get")]
+        public async Task UserHasLikedFalse()
+        {
+            var result = await media.Get("678318766466527577_3808579");
+            Assert.IsFalse(result.Data.UserHasLiked.Value);
+        }
+
+        [TestMethod, TestCategory("Media.Get")]
+        public async Task UserHasLikedNull()
+        {
+            var media = new Endpoints.Media(Config);
+            var result = await media.Get("678318766466527577_3808579");
+            Assert.IsNull(result.Data.UserHasLiked);
+        }
+
         [TestMethod, TestCategory("Media.Popular")]
         public async Task Popular()
         {
