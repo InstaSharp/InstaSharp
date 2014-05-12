@@ -32,6 +32,13 @@ namespace InstaSharp.Endpoints {
             return Client.ExecuteAsync<UserResponse>(request);
         }
 
+        public Task<UserResponse> GetSelf()
+        {
+            var request = base.Request("self");
+
+            return Client.ExecuteAsync<UserResponse>(request);
+        }
+
         /// <summary>
         /// See the authenticated user's feed.
         /// <para>
