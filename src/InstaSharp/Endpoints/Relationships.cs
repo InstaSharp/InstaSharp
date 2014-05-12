@@ -51,8 +51,12 @@ namespace InstaSharp.Endpoints {
         /// </para>
         /// </summary>
         /// <param name="userId">The id of the user to get the followers of.</param>
-        public Task<UsersResponse> FollowedBy(int? userId = null) {
+        public Task<UsersResponse> FollowedBy(int? userId = null, string cursor = null) {
             var request = base.Request(string.Format("{0}/followed-by", userId.HasValue ? userId.ToString() : OAuthResponse.User.Id.ToString()));
+            if (cursor != null)
+            {
+                request.AddParameter("cursor", cursor);
+            }
             return base.Client.ExecuteAsync<UsersResponse>(request);
         }
 
