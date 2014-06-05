@@ -25,6 +25,15 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Data.Count > 0);
         }
 
+        [TestMethod, TestCategory("Relationships.Follows")]
+        public async Task Follows_NextCursor()
+        {
+            //This test will fail if testing with an account with less than one page of follows
+            var result = await relationships.Follows();
+            result = await relationships.Follows(null, result.Pagination.NextCursor);
+            Assert.IsTrue(result.Data.Count > 0);
+        }
+
         [TestMethod, TestCategory("Relationships.FollowedBy")]
         public async Task FollowedBy()
         {
@@ -36,6 +45,15 @@ namespace InstaSharp.Tests {
         public async Task FollowedBy_Id()
         {
             var result = await relationships.FollowedBy(Auth.User.Id);
+            Assert.IsTrue(result.Data.Count > 0);
+        }
+
+        [TestMethod, TestCategory("Relationships.FollowedBy")]
+        public async Task FollowedBy_NextCursor()
+        {
+            //This test will fail if testing with an account with less than one page of followers
+            var result = await relationships.FollowedBy();
+            result = await relationships.FollowedBy(null, result.Pagination.NextCursor);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
