@@ -31,6 +31,13 @@ namespace InstaSharp.Tests
             Assert.IsTrue(result.Data.Username == "nasagoddard", "Parameters: userId");
         }
 
+        [TestMethod, TestCategory("Users.Get")]
+        public async Task Get_Self()
+        {
+            var result = await users.GetSelf();
+            Assert.IsNotNull(result);
+        }
+
         [TestMethod, TestCategory("Users.Feed")]
         public async Task Feed()
         {
