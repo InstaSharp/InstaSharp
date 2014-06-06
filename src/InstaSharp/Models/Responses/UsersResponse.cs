@@ -7,5 +7,6 @@ namespace InstaSharp.Models.Responses {
     public class UsersResponse : IResponse {
         public Models.Meta Meta { get; set; }
         public List<Models.User> Data { get; set; }
+        public Pagination Pagination { get; set; }
     }
 }
