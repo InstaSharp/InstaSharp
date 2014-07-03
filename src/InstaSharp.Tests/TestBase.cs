@@ -10,13 +10,12 @@ namespace InstaSharp.Tests
         public TestBase()
         {
             // test account client id
-            Config.ClientId = "4e0171f9fcfc4015bb6300ed91fbf719";
+            Config.ClientId = "554dfe9286994bbe98417d8dc7b69a24";
 
-            // dummy account data.  Kevin S no doubt.
-            Auth.Access_Token = "2849381.f59def8.1e89d635370f475d94e7512faa6fb9e0";
+            // dummy account data. InstaSharpTest
+            Auth.Access_Token = "1415228826.554dfe9.502432355f084ea581b679a2f94bb350";
             Auth.User = new Models.UserInfo();
-            Auth.User.Id = 22987123;
-            Auth.User.Username = "kevin";
+            Auth.User.Id = 1415228826;
         }
     }
 }

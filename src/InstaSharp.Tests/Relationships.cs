@@ -30,7 +30,7 @@ namespace InstaSharp.Tests {
         {
             //This test will fail if testing with an account with less than one page of follows
             var result = await relationships.Follows();
-            result = await relationships.Follows(null, result.Pagination.NextCursor);
+            result = await relationships.Follows(457273003/*ffujiy*/, result.Pagination.NextCursor);
             Assert.IsTrue(result.Data.Count > 0);
         }
 

@@ -32,7 +32,7 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Media.Get")]
         public async Task UserHasLikedTrue()
         {
-            var result = await media.Get("678356698367783034_3808579");
+            var result = await media.Get("3_3");
             Assert.IsTrue(result.Data.UserHasLiked.Value);
         }
 
