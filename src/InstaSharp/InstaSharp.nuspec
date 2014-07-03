@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>InstaSharp</id>
-        <version>2.0.0-beta3</version>
+        <version>2.0.0-beta4</version>
         <title>InstaSharp</title>
         <authors>Burke Holland,Felipe Fujiy</authors>
         <owners>Burke Holland,Felipe Fujiy</owners>
@@ -21,10 +21,10 @@ New Features:
         <copyright>Copyright 2013</copyright>
         <tags>Instagram REST API</tags>
         <dependencies>
-            <dependency id="Newtonsoft.Json" version="5.0.6" />
-            <dependency id="Microsoft.Bcl" version="1.1.6" />
-            <dependency id="Microsoft.Bcl.Async" version="1.0.165" />
-            <dependency id="Microsoft.Net.Http" version="2.2.18" />
+            <dependency id="Newtonsoft.Json" version="6.0.3" />
+            <dependency id="Microsoft.Bcl" version="1.1.9" />
+            <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+            <dependency id="Microsoft.Net.Http" version="2.2.22" />
         </dependencies>
     </metadata>
     <files>
