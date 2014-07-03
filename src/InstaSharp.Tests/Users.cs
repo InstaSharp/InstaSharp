@@ -85,7 +85,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Recent")]
         public async Task Recent_MinId_Count()
         {
-            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123", 3);
+            var result = await users.RecentSelf(null, null, 3);
             Assert.IsTrue(result.Data.Count == 3);
         }
 

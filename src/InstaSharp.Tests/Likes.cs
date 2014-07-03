@@ -23,8 +23,8 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Likes.PostAndDelete")]
         public async Task PostAndDelete()
         {
-            await likes.Post("555");
-            await likes.Delete("555");
+            await likes.Post("649561442972790953_457273003");
+            await likes.Delete("649561442972790953_457273003");
         }
     }
 }
