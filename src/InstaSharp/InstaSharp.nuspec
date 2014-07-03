@@ -28,6 +28,6 @@ New Features:
         </dependencies>
     </metadata>
     <files>
-        <file src="..\bin\Release\InstaSharp.dll" target="lib\portable-net403+sl5+wp8+win8\InstaSharp.dll" />
+        <file src="bin\Release\InstaSharp.dll" target="lib\portable-net403+sl5+wp8+win8\InstaSharp.dll" />
     </files>
 </package>
