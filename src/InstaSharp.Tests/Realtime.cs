@@ -1,19 +1,32 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
+using InstaSharp.Endpoints;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
 {
     [TestClass]
     public class Realtime : TestBase
     {
-        readonly Endpoints.Subscription _realtime;
+        readonly Subscription _realtime;
 
-        public Realtime() {
-            //_realtime = new Endpoints.Subscription(base.config);
+        public Realtime()
+        {
+            _realtime = new Subscription(base.Config);
         }
 
         [TestMethod]
-        public void Subscribe() {
-            // _realtime.Create(Object.User, InstaSharp.Endpoints.Subscription.Aspect.Media);
+        public  void SubscribeTag()
+        {
+            var result = _realtime.Create(Subscription.Object.Tag, Subscription.Aspect.Media, "csharp");
+            Assert.AreEqual(result.Status, TaskStatus.WaitingForActivation);// This is where Instagram tries to call your callback
+        }
+
+        [TestMethod]
+        public void SubscribeUser()
+        {
+            var result = _realtime.Create(Subscription.Object.User, Subscription.Aspect.Media, "joeb");
+            Assert.AreEqual(result.Status, TaskStatus.WaitingForActivation);// This is where Instagram tries to call your callback
         }
     }
 }
