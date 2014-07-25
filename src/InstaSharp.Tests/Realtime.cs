@@ -14,19 +14,21 @@ namespace InstaSharp.Tests
         {
             _realtime = new Subscription(base.Config);
         }
-
+        
         [TestMethod]
-        public  void SubscribeTag()
+        public async Task SubscribeTag()
         {
-            var result = _realtime.Create(Subscription.Object.Tag, Subscription.Aspect.Media, "csharp");
-            Assert.AreEqual(result.Status, TaskStatus.WaitingForActivation);// This is where Instagram tries to call your callback
+            var result = await _realtime.Create(Subscription.Object.Tag, Subscription.Aspect.Media, "csharp");
+            Assert.AreEqual(result.Meta.Code, TaskStatus.WaitingForActivation);// This is where Instagram tries to call your callback
         }
 
         [TestMethod]
-        public void SubscribeUser()
+        public async Task SubscribeUser()
         {
-            var result = _realtime.Create(Subscription.Object.User, Subscription.Aspect.Media, "joeb");
-            Assert.AreEqual(result.Status, TaskStatus.WaitingForActivation);// This is where Instagram tries to call your callback
+            var result = await _realtime.Create(Subscription.Object.User, Subscription.Aspect.Media, "joebloggs");
+            Assert.AreEqual(result.Meta.Code, TaskStatus.WaitingForActivation);// This is where Instagram tries to call your callback
         }
+
+        //TODO: Create tests for remove methods
     }
 }

@@ -36,7 +36,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="type"></param>
         /// <param name="aspect"></param>
-        /// <param name="objectId">If this is required, i.e. if <see cref="type"/> is<see cref="Object.Tag"/></param>
+        /// <param name="objectId">This is required, i.e. if <see cref="type"/> is<see cref="Object.Tag"/> or <see cref="Object.Location"/></param>
         /// <param name="verifyToken"></param>
         /// <returns></returns>
         public Task<SubscriptionsResponse> Create(Object type, Aspect aspect, String objectId = null, String verifyToken = null)
@@ -62,17 +62,6 @@ namespace InstaSharp.Endpoints
             {
                 Content = new FormUrlEncodedContent(postParams)
             };
-
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
-        }
-
-        public Task<SubscriptionsResponse> Remove(string id)
-        {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete };
-
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
-            request.AddParameter("id", id);
 
             return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
