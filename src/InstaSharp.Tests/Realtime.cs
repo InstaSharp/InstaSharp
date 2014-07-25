@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using InstaSharp.Endpoints;
-using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
@@ -14,7 +12,7 @@ namespace InstaSharp.Tests
 
         public Realtime()
         {
-            _realtime = new Subscription(base.Config);
+           _realtime = new Subscription(base.Config);
         }
 
         [TestMethod]
@@ -45,11 +43,11 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod]
-        public async Task RemoveUser()
+        public async Task UnsubscribeUser()
         {
             try
             {
-               await _realtime.Remove("joebloggs");
+                await _realtime.UnsubscribeUser("joebloggs");
             }
             catch (Exception exception) // This method will fail unless the full unpubsubhub challenge has been completed
             {
@@ -63,7 +61,20 @@ namespace InstaSharp.Tests
         {
             try
             {
-                var result = await _realtime.Remove(Subscription.Object.Tag);
+                var result = await _realtime.RemoveSubscription(Subscription.Object.Tag);
+            }
+            catch (Exception exception) // This method will fail unless the full unpubsubhub challenge has been completed
+            {
+                Assert.AreEqual("Response status code does not indicate success: 400 (BAD REQUEST).", exception.Message);
+            }
+        }
+
+        [TestMethod]
+        public async Task RemoveAllSubscriptions()
+        {
+            try
+            {
+                var result = await _realtime.RemoveAllSubscriptions();
             }
             catch (Exception exception) // This method will fail unless the full unpubsubhub challenge has been completed
             {

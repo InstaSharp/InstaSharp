@@ -71,7 +71,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="id">The subscription id</param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> Remove(string id)
+        public Task<SubscriptionsResponse> UnsubscribeUser(string id)
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
@@ -87,7 +87,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> Remove(Object type)
+        public Task<SubscriptionsResponse> RemoveSubscription(Object type)
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
@@ -102,7 +102,7 @@ namespace InstaSharp.Endpoints
         /// Removes all subscriptions
         /// </summary>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> RemoveAll()
+        public Task<SubscriptionsResponse> RemoveAllSubscriptions()
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
