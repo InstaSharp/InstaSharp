@@ -1,4 +1,5 @@
 ﻿using InstaSharp.Models.Responses;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
 {
@@ -16,6 +17,12 @@ namespace InstaSharp.Tests
             Auth.Access_Token = "1415228826.554dfe9.502432355f084ea581b679a2f94bb350";
             Auth.User = new Models.UserInfo();
             Auth.User.Id = 1415228826;
+        }
+        protected static void AssertMissingClientSecretUrlParameter(IResponse result)
+        {
+            Assert.AreEqual(400, result.Meta.Code);
+            Assert.AreEqual("Missing client_secret URL parameter.", result.Meta.ErrorMessage);
+            Assert.AreEqual("OAuthClientException", result.Meta.ErrorType);
         }
     }
 }

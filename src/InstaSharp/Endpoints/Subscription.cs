@@ -63,7 +63,7 @@ namespace InstaSharp.Endpoints
                 Content = new FormUrlEncodedContent(postParams)
             };
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("id", id);
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("object", type.ToString().ToLower());
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -110,7 +110,21 @@ namespace InstaSharp.Endpoints
             request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("object", "all");
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
+        }
+
+        /// <summary>
+        /// Lists all subscriptions
+        /// </summary>
+        /// <returns></returns>
+        public Task<SubscriptionsResponse> ListAllSubscriptions()
+        {
+            var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = client.BaseAddress };
+
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
+
+            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
         }
     }
 }
