@@ -66,5 +66,51 @@ namespace InstaSharp.Endpoints
             return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
+        /// <summary>
+        /// Deletes a subscription by subscription id
+        /// </summary>
+        /// <param name="id">The subscription id</param>
+        /// <returns></returns>
+        public Task<SubscriptionsResponse> Remove(string id)
+        {
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
+
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
+            request.AddParameter("id", id);
+
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
+        }
+
+        /// <summary>
+        /// Deletes a subscription by type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public Task<SubscriptionsResponse> Remove(Object type)
+        {
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
+
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
+            request.AddParameter("object", type.ToString().ToLower());
+
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
+        }
+
+        /// <summary>
+        /// Removes all subscriptions
+        /// </summary>
+        /// <returns></returns>
+        public Task<SubscriptionsResponse> RemoveAll()
+        {
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
+
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
+            request.AddParameter("object", "all");
+
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
+        }
     }
 }

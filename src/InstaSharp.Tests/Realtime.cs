@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using InstaSharp.Endpoints;
+using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
@@ -43,6 +44,31 @@ namespace InstaSharp.Tests
             }
         }
 
-        //TODO: Create tests for remove methods
+        [TestMethod]
+        public async Task RemoveUser()
+        {
+            try
+            {
+               await _realtime.Remove("joebloggs");
+            }
+            catch (Exception exception) // This method will fail unless the full unpubsubhub challenge has been completed
+            {
+                Assert.AreEqual("Response status code does not indicate success: 400 (BAD REQUEST).", exception.Message);
+            }
+        }
+
+
+        [TestMethod]
+        public async Task RemoveSubscriptionByObjectType()
+        {
+            try
+            {
+                var result = await _realtime.Remove(Subscription.Object.Tag);
+            }
+            catch (Exception exception) // This method will fail unless the full unpubsubhub challenge has been completed
+            {
+                Assert.AreEqual("Response status code does not indicate success: 400 (BAD REQUEST).", exception.Message);
+            }
+        }
     }
 }
