@@ -53,7 +53,7 @@ namespace InstaSharp.Endpoints
                 new KeyValuePair<string, string>("callback_url", config.CallbackUri)
             };
 
-            if (type == Object.Tag && objectId != null)
+            if (type == Object.Tag || type == Object.Location && objectId != null)
             {
                 postParams.Add(new KeyValuePair<string, string>("object_id", objectId.ToLower()));
             }
@@ -65,5 +65,6 @@ namespace InstaSharp.Endpoints
 
             return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
+
     }
 }
