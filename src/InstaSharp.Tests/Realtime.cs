@@ -21,8 +21,7 @@ namespace InstaSharp.Tests
         {
             try
             {
-                var result = await _realtime.Create(Subscription.Object.Tag, Subscription.Aspect.Media, "csharp");
-                Assert.AreEqual(result.Meta.Code, TaskStatus.WaitingForActivation);
+                await _realtime.Create(Subscription.Object.Tag, Subscription.Aspect.Media, "csharp");
                 // This is where Instagram tries to call your callback, without implementing the pubhubsub implementatin that authenticates, it will fail
             }
             catch (Exception exception)
@@ -36,8 +35,7 @@ namespace InstaSharp.Tests
         {
             try
             {
-                var result = await _realtime.Create(Subscription.Object.User, Subscription.Aspect.Media, "joebloggs");
-                Assert.AreEqual(result.Meta.Code, TaskStatus.WaitingForActivation);// This is where Instagram tries to call your callback
+                await _realtime.Create(Subscription.Object.User, Subscription.Aspect.Media, "joebloggs");
             }
             catch (Exception exception)
             {
