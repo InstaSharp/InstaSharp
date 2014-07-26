@@ -1,5 +1,4 @@
-﻿using InstaSharp.Models.Responses;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -7,7 +6,7 @@ namespace InstaSharp.Extensions
 {
     public static class HttpClientExtensions
     {
-        public static async Task<T> ExecuteAsync<T>(this HttpClient client, HttpRequestMessage request) where T : Response
+        public static async Task<T> ExecuteAsync<T>(this HttpClient client, HttpRequestMessage request)
         {
             HttpResponseMessage response = await client.SendAsync(request);
 
