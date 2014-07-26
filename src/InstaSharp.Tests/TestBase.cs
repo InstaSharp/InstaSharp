@@ -18,7 +18,7 @@ namespace InstaSharp.Tests
             Auth.User = new Models.UserInfo();
             Auth.User.Id = 1415228826;
         }
-        protected static void AssertMissingClientSecretUrlParameter(IResponse result)
+        protected static void AssertMissingClientSecretUrlParameter(Response result)
         {
             Assert.AreEqual(400, result.Meta.Code);
             Assert.AreEqual("Missing client_secret URL parameter.", result.Meta.ErrorMessage);

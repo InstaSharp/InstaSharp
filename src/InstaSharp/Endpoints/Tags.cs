@@ -64,7 +64,7 @@ namespace InstaSharp.Endpoints
         /// <param name="max_tag_id">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="maxPageCount">the number of pages at which you wish to stop returning data. Otherwise it keeps going until the end. Be warned, you could quickly use your daily limit</param>
         /// <returns>a response object containing a list of the media responses and the last returned Meta code</returns>
-        public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string min_tag_id = "", string max_tag_id = "", uint? maxPageCount = null)
+        public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string min_tag_id = "", string max_tag_id = "", int? maxPageCount = null)
         {
             var response = new TagsMultiplePagesResponse();
             if (maxPageCount == 0)
