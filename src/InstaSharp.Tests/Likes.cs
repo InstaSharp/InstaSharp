@@ -20,12 +20,11 @@ namespace InstaSharp.Tests {
             Assert.IsTrue(result.Meta.Code == 200);
         }
 
-        // This test only works the first time
-        //[TestMethod, TestCategory("Likes.PostAndDelete")]
-        //public async Task PostAndDelete()
-        //{
-        //    await likes.Post("649561442972790953_457273003");
-        //    await likes.Delete("649561442972790953_457273003");
-        //}
+        [TestMethod, TestCategory("Likes.PostAndDelete")]
+        public async Task PostAndDelete()
+        {
+            await likes.Post("649561442972790953_457273003");
+            await likes.Delete("649561442972790953_457273003");
+        }
     }
 }
