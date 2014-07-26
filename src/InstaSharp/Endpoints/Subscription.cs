@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using InstaSharp.Extensions;
+﻿using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -63,7 +63,7 @@ namespace InstaSharp.Endpoints
                 Content = new FormUrlEncodedContent(postParams)
             };
 
-            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("id", id);
 
-            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("object", type.ToString().ToLower());
 
-            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("client_secret", config.ClientSecret);
             request.AddParameter("object", "all");
 
-            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace InstaSharp.Endpoints
             request.AddParameter("client_id", config.ClientId);
             request.AddParameter("client_secret", config.ClientSecret);
 
-            return client.ExecuteAsyncWithMeta<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
     }
 }
