@@ -16,6 +16,6 @@ namespace InstaSharp.Models.Responses
         /// <summary>
         /// The number of pages in total which were returned
         /// </summary>
-        public uint PageCount { get; set; }
+        public int PageCount { get; set; }
     }
 }
