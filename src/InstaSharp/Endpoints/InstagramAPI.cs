@@ -9,8 +9,10 @@ namespace InstaSharp.Endpoints
     public class InstagramApi
     {
         public InstagramConfig InstagramConfig { get; private set; }
+
         public OAuthResponse OAuthResponse { get; private set; }
-        public HttpClient Client { get; set; }
+
+        internal HttpClient Client { get; private set; }
 
         public InstagramApi(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse = null)
         {

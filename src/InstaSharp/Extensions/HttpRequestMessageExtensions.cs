@@ -5,7 +5,7 @@ using System.Net.Http;
 
 namespace InstaSharp.Extensions
 {
-    public static class HttpRequestMessageExtensions
+    internal static class HttpRequestMessageExtensions
     {
         public static void AddParameter(this HttpRequestMessage request, string key, IFormattable value)
         {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Extensions
 {
-    public static class HttpClientExtensions
+    internal static class HttpClientExtensions
     {
         public static async Task<T> ExecuteAsync<T>(this HttpClient client, HttpRequestMessage request)
         {
