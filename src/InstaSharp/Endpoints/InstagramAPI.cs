@@ -27,6 +27,14 @@ namespace InstaSharp.Endpoints
             Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.ApiUri), endpoint) };
         }
 
+        protected void AssertIsAuthenticated()
+        {
+            if (OAuthResponse == null || OAuthResponse.User == null)
+            {
+                throw new InvalidOperationException("You are not authenticated");
+            }
+        }
+
         internal HttpRequestMessage Request(string fragment, HttpMethod method)
         {
             var request = new HttpRequestMessage(method, new Uri(Client.BaseAddress, fragment));
