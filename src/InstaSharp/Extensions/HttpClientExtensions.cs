@@ -15,9 +15,23 @@ namespace InstaSharp.Extensions
         {
             HttpResponseMessage response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            
+
             string resultData = await response.Content.ReadAsStringAsync();
 
+            return JsonConvert.DeserializeObject<T>(resultData);
+        }
+
+        /// <summary>
+        /// Executes async, casts result to <see cref="IResponse"/> on failure preserving meta data error response
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="client"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public static async Task<T> ExecuteAsyncWithMeta<T>(this HttpClient client, HttpRequestMessage request) where T : IResponse
+        {
+            var response = await client.SendAsync(request);
+            var resultData = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(resultData);
         }
     }

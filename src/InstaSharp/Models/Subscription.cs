@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace InstaSharp.Models {
     public class Subscription {
@@ -11,6 +9,9 @@ namespace InstaSharp.Models {
         public string Object { get; set; }
         public string Aspect { get; set; }
         public string Callback_Url { get; set; }
+ 
+        [JsonProperty("Object_Id")]
+        public String ObjectId { get; set; }
 
     }
 }

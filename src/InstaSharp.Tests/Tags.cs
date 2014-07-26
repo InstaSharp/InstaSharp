@@ -2,13 +2,16 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace InstaSharp.Tests {
+namespace InstaSharp.Tests
+{
     [TestClass]
-    public class Tags : TestBase {
+    public class Tags : TestBase
+    {
 
         readonly Endpoints.Tags tags;
 
-        public Tags() {
+        public Tags()
+        {
             tags = new Endpoints.Tags(Config);
         }
 
@@ -48,6 +51,12 @@ namespace InstaSharp.Tests {
             result = await tags.Recent("csharp", null, result.Pagination.NextMaxId);
             Assert.IsTrue(result.Data.Count > 0);
         }
-    
+
+        [TestMethod, TestCategory("Tags.Recent")]
+        public async Task RecentMultiplePages()
+        {
+            var result = await tags.RecentMultiplePages("csharp", null, null, 3);
+            Assert.IsTrue(result.Data.Any());
+        }
     }
 }
