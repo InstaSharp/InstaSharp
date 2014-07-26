@@ -56,7 +56,6 @@
     <Compile Include="Models\Video.cs" />
     <Compile Include="Models\Realtime.cs" />
     <Compile Include="Models\Responses\SubscriptionsResponse.cs" />
-    <Compile Include="Models\Responses\TestResponse.cs" />
     <Compile Include="OAuth.cs" />
     <Compile Include="InstagramConfig.cs" />
     <Compile Include="Models\UserInfo.cs" />

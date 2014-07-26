@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace InstaSharp.Models.Responses {
-    public class TagsResponse : IResponse {
-        public Models.Meta Meta { get; set; }
+namespace InstaSharp.Models.Responses
+{
+    public class TagsResponse : Response
+    {
         public List<Tag> Data { get; set; }
     }
 }

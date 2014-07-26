@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace InstaSharp.Models.Responses {
-    public class UsersResponse : IResponse {
-        public Models.Meta Meta { get; set; }
-        public List<Models.User> Data { get; set; }
+namespace InstaSharp.Models.Responses
+{
+    public class UsersResponse : Response
+    {
+        public List<User> Data { get; set; }
+
         public Pagination Pagination { get; set; }
     }
 }

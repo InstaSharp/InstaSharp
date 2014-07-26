@@ -28,7 +28,7 @@ namespace InstaSharp.Extensions
         /// <param name="client"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static async Task<T> ExecuteAsyncWithMeta<T>(this HttpClient client, HttpRequestMessage request) where T : IResponse
+        public static async Task<T> ExecuteAsyncWithMeta<T>(this HttpClient client, HttpRequestMessage request) where T : Response
         {
             var response = await client.SendAsync(request);
             var resultData = await response.Content.ReadAsStringAsync();
