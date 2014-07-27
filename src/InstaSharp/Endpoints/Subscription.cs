@@ -170,7 +170,7 @@ namespace InstaSharp.Endpoints
             {
                 var mostRecentMediaIdForTagName = _realTimeMediaUpdateCache.MostRecentMediaTagId(tagName);
                 var query = mostRecentMediaIdForTagName != null ? tags.RecentMultiplePages(tagName, mostRecentMediaIdForTagName, null, maxPageCount, mostRecentMediaIdForTagName)
-                                                                : tags.RecentMultiplePages(tagName, minTagId: null, maxTagId: null, maxPageCount: maxPageCount);
+                                                                : tags.RecentMultiplePages(tagName,  null,  null, maxPageCount);
                 var mediasResponse = await query;
                 if (mediasResponse.Meta.Code != (int) HttpStatusCode.OK || !mediasResponse.Data.Any() )
                 {

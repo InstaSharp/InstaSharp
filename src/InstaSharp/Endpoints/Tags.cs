@@ -80,10 +80,12 @@ namespace InstaSharp.Endpoints
             var results = await Recent(tagName, minTagId, maxTagId, 100);
             response.PageCount = 1;
             var idFound = CropDataIfIdFound(results.Data, stopatMediaId);
+            response.Data.AddRange(results.Data);
+
             if (idFound)
             {
-                response.Data.AddRange(results.Data);
                 response.PaginationNextMaxId = results.Pagination.NextMaxId;
+                response.Meta = results.Meta;
                 return response;
             }
 
@@ -93,16 +95,15 @@ namespace InstaSharp.Endpoints
                                     && results.Pagination.NextMaxId != null
                                     && results.Data != null
                                     && response.PageCount < maxPageCount
-                                    && (stopatMediaId != null && !idFound)) //results.Pagination.NextMaxId
+                                    && !(stopatMediaId != null && idFound)) //results.Pagination.NextMaxId
             {
-                response.Data.AddRange(results.Data);
-
                 results = await Recent(tagName, null, results.Pagination.NextMaxId, 100);
                 if (results.Meta.Code != (int)HttpStatusCode.OK || results.Data == null || results.Data.Count <= 0)
                 {
                     break;
                 }
                 idFound = CropDataIfIdFound(results.Data, stopatMediaId);
+                response.Data.AddRange(results.Data);
                 response.PageCount++;
             }
             if (results.Pagination != null)
@@ -113,25 +114,26 @@ namespace InstaSharp.Endpoints
             return response;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="stopatMediaId">The media id without the _user suffix</param>
+        /// <returns></returns>
         private static bool CropDataIfIdFound(List<Models.Media> data, string stopatMediaId)
         {
             if (stopatMediaId == null)
             {
                 return false;
             }
+           // var idWithoutUser = ExtractIdWithoutUser(stopatMediaId);
             var item = data.FirstOrDefault(x => x.Id == stopatMediaId);
-            return TrimLastAfterItem(data, item);
+            return data.TrimLastAfterItem(item);
         }
 
-        private static bool TrimLastAfterItem<T>(List<T> data, T item) where T : class
+        public static string ExtractIdWithoutUser(string fullId)
         {
-            if (item == null)
-            {
-                return false;
-            }
-            var indexOf = data.IndexOf(item);
-            data.RemoveRange(indexOf, data.Count - indexOf);
-            return true;
+            return fullId.Substring(0, fullId.IndexOf('_'));
         }
 
         /// <summary>
