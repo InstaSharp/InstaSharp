@@ -53,7 +53,7 @@
     <Compile Include="Models\Resolution.cs" />
     <Compile Include="Models\Responses\TagsMultiplePagesResponse.cs" />
     <Compile Include="Models\Video.cs" />
-    <Compile Include="Models\Realtime.cs" />
+    <Compile Include="Models\RealtimeUpdateItem.cs" />
     <Compile Include="Models\Responses\SubscriptionsResponse.cs" />
     <Compile Include="OAuth.cs" />
     <Compile Include="InstagramConfig.cs" />

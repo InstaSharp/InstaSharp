@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using InstaSharp.Endpoints;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,7 +16,7 @@ namespace InstaSharp.Tests
         {
             _realtime = new Subscription(base.Config);
         }
-      
+
         [TestMethod]
         public async Task SubscribeTag_WithNoClientSecret()
         {
@@ -56,6 +59,34 @@ namespace InstaSharp.Tests
         {
             var result = await _realtime.ListAllSubscriptions();
             AssertMissingClientSecretUrlParameter(result);
+        }
+
+        [TestMethod]
+        public void DeserializeRealTimeUpdateData()
+        {
+            const string input = @"[{ 
+                 ""subscription_id"": ""1"",
+                 ""object"": ""user"",
+                 ""object_id"": ""1234"",
+                 ""changed_aspect"": ""media"",
+                 ""time"": 1297286541
+             },
+             {
+                 ""subscription_id"": ""2"",
+                 ""object"": ""tag"",
+                 ""object_id"": ""nofilter"",
+                 ""changed_aspect"": ""media"",
+                 ""time"": 1297286541
+             }]";
+
+            var result = _realtime.DeserializeUpdatedMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(input)));
+
+            Assert.AreEqual(2, result.Count());
+            var firstItem = result.First();
+            Assert.AreEqual(1, firstItem.SubScriptionId);
+            Assert.AreEqual("user", firstItem.Object);
+            Assert.AreEqual("media", firstItem.ChangedAspect);
+            Assert.AreEqual("1297286541", result.First().Time);
         }
     }
 }

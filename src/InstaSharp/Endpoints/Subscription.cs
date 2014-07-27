@@ -1,9 +1,14 @@
-﻿using InstaSharp.Extensions;
+﻿using System.Collections;
+using System.IO;
+using System.Linq;
+using InstaSharp.Extensions;
+using InstaSharp.Models;
 using InstaSharp.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace InstaSharp.Endpoints
 {
@@ -27,7 +32,7 @@ namespace InstaSharp.Endpoints
 
         public Subscription(InstagramConfig config)
         {
-            this._config = config;
+            _config = config;
             _client = new HttpClient { BaseAddress = new Uri(config.RealTimeApi) };
         }
         private void AddClientCredentialParameters(HttpRequestMessage request)
@@ -86,8 +91,6 @@ namespace InstaSharp.Endpoints
             return _client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
-       
-
         /// <summary>
         /// Deletes a subscription by type
         /// </summary>
@@ -127,6 +130,14 @@ namespace InstaSharp.Endpoints
             AddClientCredentialParameters(request);
 
             return _client.ExecuteAsync<SubscriptionsResponse>(request);
+        }
+
+        public List<RealtimeUpdateItem> DeserializeUpdatedMediaItems(Stream updatedMediaItems)
+        {
+            using (var str = new StreamReader(updatedMediaItems))
+            {
+                return JsonConvert.DeserializeObject<IEnumerable<RealtimeUpdateItem>>(str.ReadToEnd()).ToList();
+            }
         }
     }
 }
