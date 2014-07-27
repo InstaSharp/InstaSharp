@@ -98,11 +98,13 @@ namespace InstaSharp.Tests
         {
             String tagName = null;
             String lastId = null;
+
             var result = await _realtime.GetUpdatedTagMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(RealTimeUpdateJson)), 2, (t, l) =>
                     {
                         tagName = t;
                         lastId = l;
                     });
+
             Assert.IsNotNull(tagName);
             Assert.IsNotNull(lastId);
             Assert.AreEqual(result.TagMedia.First().Value.Last().Id, lastId);

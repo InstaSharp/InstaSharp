@@ -158,7 +158,8 @@ namespace InstaSharp.Endpoints
         /// <param name="maxPageCount">set a reasonable limit on how much will be pulled back</param>
         /// <param name="tagIdPersisterCallback">This callback is invoked with the tag name and the most recent id</param>
         /// <returns></returns>
-        /// remarks>See http://stackoverflow.com/questions/18589445/instagram-realtime-api-does-not-return-content-ids#</remarks>
+        /// <remarks>See http://stackoverflow.com/questions/18589445/instagram-realtime-api-does-not-return-content-ids# </remarks>
+        /// <remarks>see http://stackoverflow.com/questions/20625173/how-does-instagrams-get-tags-tag-media-recent-pagination-actually-work?rq=1 </remarks>
         public async Task<UpdatedRealTimeItems> GetUpdatedTagMediaItems(Stream updatedMediaItems, int maxPageCount = 2, Action<string, string> tagIdPersisterCallback = null)
         {
             var result = new UpdatedRealTimeItems();
@@ -168,14 +169,14 @@ namespace InstaSharp.Endpoints
             foreach (var tagName in newMediaItems.Where(x => x.ObjectId != null && x.Object == "tag").Select(x => x.ObjectId)) //InstaSharp.Endpoints.Subscription.Object.Tag.ToString().ToLower()
             {
                 var mostRecentMediaIdForTagName = _realTimeMediaUpdateCache.MostRecentMediaTagId(tagName);
-                var query = mostRecentMediaIdForTagName != null ? tags.RecentMultiplePages(tagName, mostRecentMediaIdForTagName, null, maxPageCount)
-                                                                : tags.RecentMultiplePages(tagName, null, null, maxPageCount);
+                var query = mostRecentMediaIdForTagName != null ? tags.RecentMultiplePages(tagName, mostRecentMediaIdForTagName, null, maxPageCount, mostRecentMediaIdForTagName)
+                                                                : tags.RecentMultiplePages(tagName, minTagId: null, maxTagId: null, maxPageCount: maxPageCount);
                 var mediasResponse = await query;
-                if (mediasResponse.Meta.Code != (int) HttpStatusCode.OK || !mediasResponse.Data.Any())
+                if (mediasResponse.Meta.Code != (int) HttpStatusCode.OK || !mediasResponse.Data.Any() )
                 {
                     continue;
                 }
-                var lastId = mediasResponse.Data.Last().Id;
+                var lastId = mediasResponse.Data.First().Id;// the first one is the newest
                 if (lastId != null)
                 {
                     _realTimeMediaUpdateCache.MostRecentMediaTagIdsAddOrUpdate(tagName, lastId);
