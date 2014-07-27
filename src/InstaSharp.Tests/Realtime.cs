@@ -91,7 +91,7 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod]
-        public async void GetUpdatedTagMediaItems()
+        public async Task GetUpdatedTagMediaItems()
         {
             String tagName = null;
             String lastId = null;

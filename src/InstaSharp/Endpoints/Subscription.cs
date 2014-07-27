@@ -167,10 +167,9 @@ namespace InstaSharp.Endpoints
             var tags = new Tags(_config);
             foreach (var tagName in newMediaItems.Where(x => x.ObjectId != null && x.Object == "tag").Select(x => x.ObjectId)) //InstaSharp.Endpoints.Subscription.Object.Tag.ToString().ToLower()
             {
-                string mostRecentMediaIdForTagName;
-                _realTimeMediaUpdateCache.MostRecentMediaTagIds.TryGetValue(tagName, out mostRecentMediaIdForTagName);
-
-                var query = mostRecentMediaIdForTagName != null ? tags.RecentMultiplePages(tagName, mostRecentMediaIdForTagName, null, maxPageCount) : tags.RecentMultiplePages(tagName);
+                string mostRecentMediaIdForTagName = _realTimeMediaUpdateCache.MostRecentMediaTagId(tagName);
+                var query = mostRecentMediaIdForTagName != null ? tags.RecentMultiplePages(tagName, mostRecentMediaIdForTagName, null, maxPageCount)
+                                                                : tags.RecentMultiplePages(tagName, null, null, maxPageCount);
                 var mediasResponse = await query;
                 if (mediasResponse.Meta.Code == (int)HttpStatusCode.OK)
                 {

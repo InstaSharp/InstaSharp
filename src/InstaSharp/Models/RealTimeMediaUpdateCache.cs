@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using InstaSharp.Extensions;
 
 namespace InstaSharp.Models
 {
@@ -15,5 +16,16 @@ namespace InstaSharp.Models
         public Dictionary<string, string> MostRecentMediaTagIds;
 
         //TODO: Can be extended to hold caches for Locations etc
+        public string MostRecentMediaTagId(string tagName)
+        {
+            string mostRecentMediaIdForTagName;
+            MostRecentMediaTagIds.TryGetValue(tagName, out mostRecentMediaIdForTagName);
+            return mostRecentMediaIdForTagName;
+        }
+
+        public void MostRecentMediaTagIdsAddOrUpdate(string tagName, string lastId)
+        {
+            MostRecentMediaTagIds.CreateNewOrUpdateExisting(tagName, lastId);
+        }
     }
 }
