@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
 
@@ -16,19 +15,16 @@ namespace InstaSharp.Extensions
         }
         public static void AddParameter(this HttpRequestMessage request, string key, string value)
         {
-            if (string.IsNullOrWhiteSpace(value) == false)
+            if (string.IsNullOrWhiteSpace(value))
             {
-                var uriBuilder = new UriBuilder(request.RequestUri);
-
-                string queryToAppend = key.UrlEncode() + "=" + value.UrlEncode();
-
-                if (uriBuilder.Query.Length > 1)
-                    uriBuilder.Query = uriBuilder.Query.Substring(1) + "&" + queryToAppend;
-                else
-                    uriBuilder.Query = queryToAppend;
-
-                request.RequestUri = uriBuilder.Uri;
+                return;
             }
+            var uriBuilder = new UriBuilder(request.RequestUri);
+            var queryToAppend = key.UrlEncode() + "=" + value.UrlEncode();
+            uriBuilder.Query = uriBuilder.Query.Length > 1? uriBuilder.Query.Substring(1) + "&" + queryToAppend
+                                                          : queryToAppend;
+
+            request.RequestUri = uriBuilder.Uri;
         }
 
         public static void AddUrlSegment(this HttpRequestMessage request, string key, string value)

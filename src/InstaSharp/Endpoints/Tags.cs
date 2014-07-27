@@ -37,10 +37,10 @@ namespace InstaSharp.Endpoints
         /// <c>Requires Authentication: False</c>
         /// </para>
         /// <param name="tagName">Return information about this tag.</param>
-        /// <param name="min_tag_id">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
-        /// <param name="max_tag_id">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
+        /// <param name="minTagId">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
+        /// <param name="maxTagId">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="count">Count of tagged media to return. Will still be governed by Instagram's enforced limit.</param>
-        public Task<MediasResponse> Recent(string tagName, string min_tag_id = "", string max_tag_id = "", int? count = null)
+        public Task<MediasResponse> Recent(string tagName, string minTagId = "", string maxTagId = "", int? count = null)
         {
             var request = base.Request("{tag}/media/recent");
             request.AddUrlSegment("tag", tagName);
@@ -50,8 +50,8 @@ namespace InstaSharp.Endpoints
                 request.AddParameter("count", count.Value);
             }
 
-            request.AddParameter("min_tag_id", min_tag_id);
-            request.AddParameter("max_tag_id", max_tag_id);
+            request.AddParameter("min_tag_id", minTagId);
+            request.AddParameter("max_tag_id", maxTagId);
 
             return base.Client.ExecuteAsync<MediasResponse>(request);
         }
@@ -60,11 +60,11 @@ namespace InstaSharp.Endpoints
         /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit
         /// </summary>
         /// <param name="tagName">Return information about this tag.</param>
-        /// <param name="min_tag_id">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
-        /// <param name="max_tag_id">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
+        /// <param name="minTagId">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
+        /// <param name="maxTagId">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="maxPageCount">the number of pages at which you wish to stop returning data. Otherwise it keeps going until the end. Be warned, you could quickly use your daily limit</param>
         /// <returns>a response object containing a list of the media responses and the last returned Meta code</returns>
-        public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string min_tag_id = "", string max_tag_id = "", int? maxPageCount = null)
+        public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string minTagId = "", string maxTagId = "", int? maxPageCount = null)
         {
             var response = new TagsMultiplePagesResponse();
             if (maxPageCount == 0)
@@ -72,7 +72,7 @@ namespace InstaSharp.Endpoints
                 return response;
             }
 
-            var results = await Recent(tagName, min_tag_id, max_tag_id, 100);
+            var results = await Recent(tagName, minTagId, maxTagId, 100);
             response.PageCount = 1;
 
             while (results.Meta.Code == (int)HttpStatusCode.OK && results.Pagination != null && results.Pagination.NextMaxId != null && results.Data != null && response.PageCount < maxPageCount)

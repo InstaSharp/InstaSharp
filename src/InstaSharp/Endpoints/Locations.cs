@@ -83,8 +83,6 @@ namespace InstaSharp.Endpoints {
                     case FoursquareVersion.Two:
                         request.AddParameter("foursquare_v2_id", foursquareId);
                         break;
-                    default:
-                        break;
                 }
             } else {
                 request.AddParameter("lat", latitude);

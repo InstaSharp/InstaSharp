@@ -22,13 +22,18 @@ namespace InstaSharp.Endpoints
             Media
         }
 
-        private readonly InstagramConfig config;
-        private readonly HttpClient client;
+        private readonly InstagramConfig _config;
+        private readonly HttpClient _client;
 
         public Subscription(InstagramConfig config)
         {
-            this.config = config;
-            client = new HttpClient { BaseAddress = new Uri(config.RealTimeApi) };
+            this._config = config;
+            _client = new HttpClient { BaseAddress = new Uri(config.RealTimeApi) };
+        }
+        private void AddClientCredentialParameters(HttpRequestMessage request)
+        {
+            request.AddParameter("client_id", _config.ClientId);
+            request.AddParameter("client_secret", _config.ClientSecret);
         }
 
         /// <summary>
@@ -45,12 +50,12 @@ namespace InstaSharp.Endpoints
             verifyToken = String.IsNullOrWhiteSpace(verifyToken) ? Guid.NewGuid().ToString() : verifyToken;
             var postParams = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("client_id", config.ClientId),
-                new KeyValuePair<string, string>("client_secret", config.ClientSecret),
+                new KeyValuePair<string, string>("client_id", _config.ClientId),
+                new KeyValuePair<string, string>("client_secret", _config.ClientSecret),
                 new KeyValuePair<string, string>("object", type.ToString().ToLower()),
                 new KeyValuePair<string, string>("aspect", aspect.ToString().ToLower()),
                 new KeyValuePair<string, string>("verify_token", verifyToken),
-                new KeyValuePair<string, string>("callback_url", config.CallbackUri)
+                new KeyValuePair<string, string>("callback_url", _config.CallbackUri)
             };
 
             if ((type == Object.Tag || type == Object.Location) && objectId != null)
@@ -58,12 +63,12 @@ namespace InstaSharp.Endpoints
                 postParams.Add(new KeyValuePair<string, string>("object_id", objectId.ToLower()));
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Post, client.BaseAddress)
+            var request = new HttpRequestMessage(HttpMethod.Post, _client.BaseAddress)
             {
                 Content = new FormUrlEncodedContent(postParams)
             };
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return _client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -73,14 +78,15 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> UnsubscribeUser(string id)
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = _client.BaseAddress };
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
+            AddClientCredentialParameters(request);
             request.AddParameter("id", id);
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return _client.ExecuteAsync<SubscriptionsResponse>(request);
         }
+
+       
 
         /// <summary>
         /// Deletes a subscription by type
@@ -89,13 +95,12 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> RemoveSubscription(Object type)
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = _client.BaseAddress };
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
+            AddClientCredentialParameters(request);
             request.AddParameter("object", type.ToString().ToLower());
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return _client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -104,13 +109,12 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> RemoveAllSubscriptions()
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = _client.BaseAddress };
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
+            AddClientCredentialParameters(request);
             request.AddParameter("object", "all");
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return _client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -119,12 +123,10 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> ListAllSubscriptions()
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = _client.BaseAddress };
+            AddClientCredentialParameters(request);
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
-
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return _client.ExecuteAsync<SubscriptionsResponse>(request);
         }
     }
 }
