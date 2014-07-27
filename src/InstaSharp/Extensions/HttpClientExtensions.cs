@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using InstaSharp.Models.Responses;
 using Newtonsoft.Json;
@@ -22,7 +18,7 @@ namespace InstaSharp.Extensions
         }
 
         /// <summary>
-        /// Executes async, casts result to <see cref="IResponse"/> on failure preserving meta data error response
+        /// Executes async, casts result to <see cref="Response"/> on failure preserving meta data error response
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="client"></param>
