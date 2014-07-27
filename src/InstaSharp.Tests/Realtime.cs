@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,21 @@ namespace InstaSharp.Tests
     public class Realtime : TestBase
     {
         readonly Subscription _realtime;
+
+        const string RealTimeUpdateJson = @"[{ 
+                 ""subscription_id"": ""1"",
+                 ""object"": ""user"",
+                 ""object_id"": ""1234"",
+                 ""changed_aspect"": ""media"",
+                 ""time"": 1297286541
+             },
+             {
+                 ""subscription_id"": ""2"",
+                 ""object"": ""tag"",
+                 ""object_id"": ""csharp"",
+                 ""changed_aspect"": ""media"",
+                 ""time"": 1297286541
+             }]";
 
         public Realtime()
         {
@@ -64,22 +80,7 @@ namespace InstaSharp.Tests
         [TestMethod]
         public void DeserializeRealTimeUpdateData()
         {
-            const string input = @"[{ 
-                 ""subscription_id"": ""1"",
-                 ""object"": ""user"",
-                 ""object_id"": ""1234"",
-                 ""changed_aspect"": ""media"",
-                 ""time"": 1297286541
-             },
-             {
-                 ""subscription_id"": ""2"",
-                 ""object"": ""tag"",
-                 ""object_id"": ""nofilter"",
-                 ""changed_aspect"": ""media"",
-                 ""time"": 1297286541
-             }]";
-
-            var result = _realtime.DeserializeUpdatedMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(input)));
+            var result = _realtime.DeserializeUpdatedMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(RealTimeUpdateJson)));
 
             Assert.AreEqual(2, result.Count());
             var firstItem = result.First();
@@ -87,6 +88,23 @@ namespace InstaSharp.Tests
             Assert.AreEqual("user", firstItem.Object);
             Assert.AreEqual("media", firstItem.ChangedAspect);
             Assert.AreEqual("1297286541", result.First().Time);
+        }
+
+        [TestMethod]
+        public async void GetUpdatedTagMediaItems()
+        {
+            String tagName = null;
+            String lastId = null;
+            var result =
+                await
+                    _realtime.GetUpdatedTagMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(RealTimeUpdateJson)), 2, (t, l) =>
+                    {
+                        tagName = t;
+                        lastId = l;
+                    });
+            Assert.IsNotNull(tagName);
+            Assert.IsNotNull(lastId);
+            Assert.AreEqual(true, result.Tags.Any());
         }
     }
 }
