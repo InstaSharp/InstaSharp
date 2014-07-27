@@ -85,6 +85,10 @@ namespace InstaSharp.Endpoints
                 }
                 response.PageCount++;
             }
+            if (results.Pagination != null) ///hmmmm
+            {
+                response.PaginationNextMaxId = results.Pagination.NextMaxId;
+            }
             response.Meta = results.Meta;
             return response;
         }

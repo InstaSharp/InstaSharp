@@ -95,16 +95,19 @@ namespace InstaSharp.Tests
         {
             String tagName = null;
             String lastId = null;
-            var result =
-                await
-                    _realtime.GetUpdatedTagMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(RealTimeUpdateJson)), 2, (t, l) =>
+            var result =await _realtime.GetUpdatedTagMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(RealTimeUpdateJson)), 2, (t, l) =>
                     {
                         tagName = t;
                         lastId = l;
                     });
             Assert.IsNotNull(tagName);
             Assert.IsNotNull(lastId);
-            Assert.AreEqual(true, result.Tags.Any());
+            Assert.AreEqual(result.TagMedia.First().Value.Last().Id, lastId);
+            Assert.AreEqual(1, result.TagMedia.Count()); // only the 'tag' item types should be returned, of which there is one ('csharp')
+            Assert.AreEqual(true, result.TagMedia.First().Value.Any()); // we should have some nedia objects in there 
+
+            var result2 = await _realtime.GetUpdatedTagMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(RealTimeUpdateJson))); 
+            Assert.AreEqual(result2.TagMedia.First().Value.Last().Id, lastId);
         }
     }
 }

@@ -6,13 +6,13 @@ namespace InstaSharp.Models
     {
         public UpdatedRealTimeItems()
         {
-            Tags = new Dictionary<string, List<Media>>();
+            TagMedia = new Dictionary<string, List<Media>>();
         }
-        public Dictionary<string, List<Media>> Tags { get; private set; }
+        public Dictionary<string, List<Media>> TagMedia { get; private set; }
 
         public void AddTag(string tagName, List<Media> media)
         {
-            Tags.Add(tagName, media);
+            TagMedia.Add(tagName, media);
         }
     }
 }
