@@ -9,8 +9,10 @@ namespace InstaSharp.Endpoints
     public class InstagramApi
     {
         public InstagramConfig InstagramConfig { get; private set; }
+
         public OAuthResponse OAuthResponse { get; private set; }
-        public HttpClient Client { get; set; }
+
+        internal HttpClient Client { get; private set; }
 
         public InstagramApi(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse = null)
         {
@@ -25,6 +27,14 @@ namespace InstaSharp.Endpoints
             }
 
             Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.ApiUri), endpoint) };
+        }
+
+        protected void AssertIsAuthenticated()
+        {
+            if (OAuthResponse == null || OAuthResponse.User == null)
+            {
+                throw new InvalidOperationException("You are not authenticated");
+            }
         }
 
         internal HttpRequestMessage Request(string fragment, HttpMethod method)

@@ -41,7 +41,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Feed")]
         public async Task Feed()
         {
-            var result = await users.Feed();
+            var result = await users.Feed(null, null, null);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
@@ -55,7 +55,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Feed")]
         public async Task Feed_MaxId_Count()
         {
-            var normalResult = await users.Feed();
+            var normalResult = await users.Feed(null, null, null);
 
             var result = await users.Feed(normalResult.Data.First().Id, null, 1);
             Assert.IsTrue(result.Data.First().Id == normalResult.Data.Skip(1).First().Id, "Parameters: MaxId, Count");
@@ -78,38 +78,42 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Recent")]
         public async Task Recent_MinId()
         {
-            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123");
+            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123", null, null, null);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Recent")]
         public async Task Recent_MinId_Count()
         {
-            var result = await users.RecentSelf(null, null, 3);
-            Assert.IsTrue(result.Data.Count == 3);
+            const int count = 3;
+
+            var result = await users.RecentSelf(null, null, count, null, null);
+            Assert.AreEqual(count, result.Data.Count);
         }
 
         [TestMethod, TestCategory("Users.Recent")]
         public async Task Recent_MaxId_Count()
         {
-            var normalResult = await users.Feed();
+            var normalResult = await users.Feed(null, null, null);
 
-            var result = await users.RecentSelf(normalResult.Data.First().Id, string.Empty, 3);
-            Assert.IsTrue(result.Data.Count == 3);
+            const int count = 3;
+
+            var result = await users.RecentSelf(normalResult.Data.First().Id, string.Empty, count, null, null);
+            Assert.AreEqual(count, result.Data.Count);
         }
 
         [TestMethod, TestCategory("Users.Search")]
         public async Task Search()
         {
-            var result = await users.Search("beiber");
+            var result = await users.Search("beiber", null);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Users.Liked")]
         public async Task Liked()
         {
-            var result = await users.Liked();
-            Assert.IsTrue(result.Meta.Code == 200);
+            var result = await users.Liked(null, null);
+            Assert.AreEqual(200, result.Meta.Code);
         }
     }
 }

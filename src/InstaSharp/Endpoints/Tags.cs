@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Net;
 using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
-    public class Tags : InstaSharp.Endpoints.InstagramApi
+    public class Tags : InstagramApi
     {
 
         /// <summary>
@@ -69,17 +69,17 @@ namespace InstaSharp.Endpoints
             var response = new TagsMultiplePagesResponse();
             if (maxPageCount == 0)
             {
-                return response; 
+                return response;
             }
 
             var results = await Recent(tagName, min_tag_id, max_tag_id, 100);
             response.PageCount = 1;
 
-            while (results.Meta.Code == 200 && results.Pagination != null && results.Pagination.NextMaxId != null && results.Data != null && response.PageCount < maxPageCount)
+            while (results.Meta.Code == (int)HttpStatusCode.OK && results.Pagination != null && results.Pagination.NextMaxId != null && results.Data != null && response.PageCount < maxPageCount)
             {
                 response.Data.AddRange(results.Data);
                 results = await Recent(tagName, null, results.Pagination.NextMaxId, 100);
-                if (results.Meta.Code != 200 || results.Data == null || results.Data.Count <= 0)
+                if (results.Meta.Code != (int)HttpStatusCode.OK || results.Data == null || results.Data.Count <= 0)
                 {
                     break;
                 }
