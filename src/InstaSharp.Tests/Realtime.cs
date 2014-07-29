@@ -3,7 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using Subscription = InstaSharp.Endpoints.Subscription;
 
 namespace InstaSharp.Tests
@@ -28,6 +30,29 @@ namespace InstaSharp.Tests
                  ""time"": 1297286541
              }]";
 
+        private const string SubscriptionCreateResponse = @"
+            {
+                ""meta"": {
+                    ""code"": 200
+                },
+                ""data"": [
+                    {
+                        ""id"": ""1"",
+                        ""type"": ""subscribe"",
+                        ""object"": ""user"",
+                        ""aspect"": ""media"",
+                        ""callback_url"": ""http://your-callback.com/url/""
+                    },
+                    {
+                        ""id"": ""2"",
+                        ""type"": ""subscription"",
+                        ""object"": ""location"",
+                        ""object_id"": ""2345"",
+                        ""aspect"": ""media"",
+                        ""callback_url"": ""http://your-callback.com/url/""
+                    }
+                ]
+            }";
         public Realtime()
         {
             _realtime = new Subscription(base.Config);
@@ -41,6 +66,17 @@ namespace InstaSharp.Tests
             AssertMissingClientSecretUrlParameter(result);
             // This is where Instagram tries to call your callback, without implementing the pubhubsub implementatin that authenticates, it will fail
         }
+
+        [TestCategory("Subscribe.Create")]
+        [TestMethod]
+        public async Task CanDeserializeSubscriptionResponse()
+        {
+            var result = JsonConvert.DeserializeObject<SubscriptionsResponse>(SubscriptionCreateResponse);
+            Assert.AreEqual(200, result.Meta);
+            Assert.AreEqual(2, result.Data.Count);
+        }
+
+
         [TestCategory("Subscribe.Create")]
         [TestMethod]
         public async Task SubscribeUser_WithNoClientSecret()
@@ -118,7 +154,7 @@ namespace InstaSharp.Tests
             Assert.AreEqual(true, result.TagMedia.First().Value.Any()); // we should have some media objects in there 
 
             //var result2 = await _realtime.GetUpdatedTagMediaItems(new MemoryStream(Encoding.UTF8.GetBytes(RealTimeUpdateJson)));
-          //  Assert.AreEqual(result2.TagMedia.First().Value.Last().Id, lastId);
+            //  Assert.AreEqual(result2.TagMedia.First().Value.Last().Id, lastId);
         }
     }
 }
