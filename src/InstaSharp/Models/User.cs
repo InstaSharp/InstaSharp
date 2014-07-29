@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace InstaSharp.Models {
     public class User : UserInfo
     {

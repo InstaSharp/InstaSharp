@@ -69,7 +69,7 @@
     <Compile Include="Models\Relationship.cs" />
     <Compile Include="Models\Responses\CommentsResponse.cs" />
     <Compile Include="Models\Responses\CommentResponse.cs" />
-    <Compile Include="Models\Responses\IResponse.cs" />
+    <Compile Include="Models\Responses\Response.cs" />
     <Compile Include="Models\Responses\MediasResponse.cs" />
     <Compile Include="Models\Responses\LikesResponse.cs" />
     <Compile Include="Models\Responses\LocationResponse.cs" />
