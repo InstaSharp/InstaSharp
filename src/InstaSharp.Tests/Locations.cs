@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
 
@@ -38,26 +37,9 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Locations")]
         public async Task SearchFourSquareV2()
         {
-            var result = await locations.Search(36.166667, -86.783333, 2000, "40b52f80f964a52052001fe3", Endpoints.Locations.FoursquareVersion.Two);
+            var result = await locations.Search("40b52f80f964a52052001fe3", Endpoints.Locations.FoursquareVersion.Two);
             Assert.AreEqual(result.Data.Count, 1);
             Assert.AreEqual(result.Data.Single().Name, "Microsoft");
-        }
-
-        [TestMethod, TestCategory("Locations")]
-        public async Task ThrowIfPassFoursquareIdAndNotVersion()
-        {
-            try
-            {
-                var result = await locations.Search(36.166667, -86.783333, 2000, "40b52f80f964a52052001fe3");
-                throw new Exception("Should throw before this");
-            }
-            catch (ArgumentNullException ex)
-            {
-                if (ex.ParamName != "foursquareVersion")
-                {
-                    throw;
-                }
-            }
         }
     }
 }
