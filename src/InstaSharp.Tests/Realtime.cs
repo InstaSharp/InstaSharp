@@ -30,6 +30,9 @@ namespace InstaSharp.Tests
                  ""time"": 1297286541
              }]";
 
+        /// <summary>
+        /// This is what the instagram docuomentation says, which is wrong, it doesnt contain a list
+        /// </summary>
         private const string SubscriptionCreateResponse = @"
             {
                 ""meta"": {
@@ -53,6 +56,12 @@ namespace InstaSharp.Tests
                     }
                 ]
             }";
+
+        /// <summary>
+        /// This is an actual response
+        /// </summary>
+        private const string SubscriptionCreateResponseREAL = @"{""meta"":{""code"":200},""data"":{""object"":""tag"",""object_id"":""fdsfsdf"",""aspect"":""media"",""callback_url"":""http:\/\/86.146.99.110\/api\/instagram\/"",""type"":""subscription"",""id"":""9580368""}}";
+
         public Realtime()
         {
             _realtime = new Subscription(base.Config);
@@ -69,13 +78,12 @@ namespace InstaSharp.Tests
 
         [TestCategory("Subscribe.Create")]
         [TestMethod]
-        public async Task CanDeserializeSubscriptionResponse()
+        public void CanDeserializeSubscriptionResponse()
         {
-            var result = JsonConvert.DeserializeObject<SubscriptionsResponse>(SubscriptionCreateResponse);
-            Assert.AreEqual(200, result.Meta);
-            Assert.AreEqual(2, result.Data.Count);
+            var result = JsonConvert.DeserializeObject<SubscriptionsResponse>(SubscriptionCreateResponseREAL);
+            Assert.AreEqual(200, result.Meta.Code);
+            Assert.AreEqual(9580368, result.Data.Id);
         }
-
 
         [TestCategory("Subscribe.Create")]
         [TestMethod]
