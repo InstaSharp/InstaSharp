@@ -53,7 +53,7 @@ namespace InstaSharp.Tests {
         {
             //This test will fail if testing with an account with less than one page of followers
             var result = await relationships.FollowedBy();
-            result = await relationships.FollowedBy(null, result.Pagination.NextCursor);
+            result = await relationships.FollowedBy(Auth.User.Id, result.Pagination.NextCursor);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
@@ -61,7 +61,7 @@ namespace InstaSharp.Tests {
         public async Task RequestedBy()
         {
             var result = await relationships.RequestedBy();
-            // TODO: How to test requests if there aren't any?
+
             Assert.IsTrue(result.Meta.Code == 200);
         }
 
