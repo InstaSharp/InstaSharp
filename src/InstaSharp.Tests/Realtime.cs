@@ -31,7 +31,7 @@ namespace InstaSharp.Tests
              }]";
 
         /// <summary>
-        /// This is what the instagram docuomentation says, which is wrong, it doesnt contain a list
+        /// This is what the instagram docuomentation says (http://instagram.com/developer/realtime/), which is WRONG!, it doesn't contain an array
         /// </summary>
         private const string SubscriptionCreateResponse = @"
             {
