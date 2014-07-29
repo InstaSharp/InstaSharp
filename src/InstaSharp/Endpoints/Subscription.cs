@@ -75,7 +75,7 @@ namespace InstaSharp.Endpoints
                 postParams.Add(new KeyValuePair<string, string>("object_id", objectId.ToLower()));
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Post, _client.BaseAddress)
+            var request = new HttpRequestMessage(HttpMethod.Post, client.BaseAddress)
             {
                 Content = new FormUrlEncodedContent(postParams)
             };
