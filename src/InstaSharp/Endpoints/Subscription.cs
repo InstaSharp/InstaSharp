@@ -29,23 +29,23 @@ namespace InstaSharp.Endpoints
 
         public static class ResponseError
         {
-            public static String ApiSubscriptionError = "APISubscriptionError"; // code 400, could be cuased by incorrect CallbackUri
+            public static String ApiSubscriptionError = "APISubscriptionError"; // code 400, could be caused by incorrect CallbackUri
         }
 
-        private readonly InstagramConfig _config;
-        private readonly HttpClient _client;
+        private readonly InstagramConfig config;
+        private readonly HttpClient client;
         private static RealTimeMediaUpdateCache _realTimeMediaUpdateCache;
 
         public Subscription(InstagramConfig config, RealTimeMediaUpdateCache realTimeMediaUpdateCache = null)
         {
-            _config = config;
-            _client = new HttpClient { BaseAddress = new Uri(config.RealTimeApi) };
+            this.config = config;
+            client = new HttpClient { BaseAddress = new Uri(config.RealTimeApi) };
             _realTimeMediaUpdateCache = realTimeMediaUpdateCache ?? new RealTimeMediaUpdateCache();
         }
         private void AddClientCredentialParameters(HttpRequestMessage request)
         {
-            request.AddParameter("client_id", _config.ClientId);
-            request.AddParameter("client_secret", _config.ClientSecret);
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
         }
 
         /// <summary>
@@ -62,12 +62,12 @@ namespace InstaSharp.Endpoints
             verifyToken = String.IsNullOrWhiteSpace(verifyToken) ? Guid.NewGuid().ToString() : verifyToken;
             var postParams = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("client_id", _config.ClientId),
-                new KeyValuePair<string, string>("client_secret", _config.ClientSecret),
+                new KeyValuePair<string, string>("client_id", config.ClientId),
+                new KeyValuePair<string, string>("client_secret", config.ClientSecret),
                 new KeyValuePair<string, string>("object", type.ToString().ToLower()),
                 new KeyValuePair<string, string>("aspect", aspect.ToString().ToLower()),
                 new KeyValuePair<string, string>("verify_token", verifyToken),
-                new KeyValuePair<string, string>("callback_url", _config.CallbackUri)
+                new KeyValuePair<string, string>("callback_url",config.CallbackUri)
             };
 
             if ((type == Object.Tag || type == Object.Location) && objectId != null)
@@ -80,7 +80,7 @@ namespace InstaSharp.Endpoints
                 Content = new FormUrlEncodedContent(postParams)
             };
 
-            return _client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -90,12 +90,12 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> UnsubscribeUser(string id)
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = _client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri =client.BaseAddress };
 
             AddClientCredentialParameters(request);
             request.AddParameter("id", id);
 
-            return _client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -105,12 +105,12 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> RemoveSubscription(Object type)
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = _client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
             AddClientCredentialParameters(request);
             request.AddParameter("object", type.ToString().ToLower());
 
-            return _client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -119,12 +119,12 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> RemoveAllSubscriptions()
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = _client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
             AddClientCredentialParameters(request);
             request.AddParameter("object", "all");
 
-            return _client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -133,10 +133,10 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<SubscriptionsResponse> ListAllSubscriptions()
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = _client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = client.BaseAddress };
             AddClientCredentialParameters(request);
 
-            return _client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionsResponse>(request);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace InstaSharp.Endpoints
             var result = new UpdatedRealTimeItems();
             var newMediaItems = DeserializeUpdatedMediaItems(updatedMediaItems);
 
-            var tags = new Tags(_config);
+            var tags = new Tags(config);
             foreach (var tagName in newMediaItems.Where(x => x.ObjectId != null && x.Object == "tag").Select(x => x.ObjectId)) //InstaSharp.Endpoints.Subscription.Object.Tag.ToString().ToLower()
             {
                 var mostRecentMediaIdForTagName = _realTimeMediaUpdateCache.MostRecentMediaTagId(tagName);
