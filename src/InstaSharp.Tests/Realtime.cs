@@ -82,7 +82,7 @@ namespace InstaSharp.Tests
         {
             var result = JsonConvert.DeserializeObject<SubscriptionsResponse>(SubscriptionCreateResponseREAL);
             Assert.AreEqual(200, result.Meta.Code);
-            Assert.AreEqual(9580368, result.Data.Id);
+            Assert.AreEqual("9580368", result.Data.Id);
         }
 
         [TestCategory("Subscribe.Create")]
