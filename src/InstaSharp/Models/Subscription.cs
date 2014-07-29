@@ -12,15 +12,16 @@ namespace InstaSharp.Models {
         /// <summary>
         /// Should be "subscription"
         /// </summary>
-        public string Type { get; set; }
+        public String Type { get; set; }
+
         /// <summary>
         /// <see cref="Endpoints.Subscription.Object"/>
         /// </summary>
-        public string Object { get; set; }
+        public Endpoints.Subscription.Object Object { get; set; }
         /// <summary>
         /// <see cref="InstaSharp.Endpoints.Subscription.Aspect"/>
         /// </summary>
-        public string Aspect { get; set; }
+        public Endpoints.Subscription.Aspect Aspect { get; set; }
 
         [JsonProperty("Callback_Url")]
         public string CallbackUrl { get; set; }
