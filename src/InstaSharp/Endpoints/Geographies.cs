@@ -2,16 +2,28 @@
 using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
 
-namespace InstaSharp.Endpoints {
-    public class Geographies : InstagramApi {
+namespace InstaSharp.Endpoints
+{
+    public class Geographies : InstagramApi
+    {
+        /// <summary>
+        /// Geographies Endpoints
+        /// </summary>
+        /// <param name="config">An instance of the InstagramConfig class.</param>
+        public Geographies(InstagramConfig config)
+            : this(config, null)
+        {
+        }
 
         /// <summary>
         /// Geographies Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="auth">An instance of the OAuthResponse class.</param>
-        public Geographies(InstagramConfig config, OAuthResponse auth = null)
-            : base("geographies/", config, auth) { }
+        public Geographies(InstagramConfig config, OAuthResponse auth)
+            : base("geographies/", config, auth)
+        {
+        }
 
         /// <summary>
         /// Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.
@@ -19,14 +31,28 @@ namespace InstaSharp.Endpoints {
         /// <c>Requires Authentication: </c>False
         /// </para>
         /// </summary>
-        /// <param name="mediaId">The id of the media about which to retrieve data</param>
+        /// <param name="geoId">The id of the media about which to retrieve data</param>
+        public Task<MediaResponse> Recent(int geoId)
+        {
+            return Recent(geoId, null, null);
+        }
+
+        /// <summary>
+        /// Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.
+        /// <para>
+        /// <c>Requires Authentication: </c>False
+        /// </para>
+        /// </summary>
+        /// <param name="geoId">The id of the media about which to retrieve data</param>
         /// <param name="count">Max number of media to return.</param>
-        /// <param name="min_id">Return media before this min_id.</param>
-        public Task<MediaResponse> Recent(int geoId, int? count = null, string min_id = "") {
-            var request = base.Request(string.Format("{0}/media/recent", geoId));
+        /// <param name="minId">Return media before this min_id.</param>
+        public Task<MediaResponse> Recent(int geoId, int? count, string minId)
+        {
+            var request = Request("{id}/media/recent");
+            request.AddUrlSegment("id", geoId.ToString());
             request.AddParameter("count", count);
-            request.AddParameter("min_id", min_id);
-            return base.Client.ExecuteAsync<MediaResponse>(request);
+            request.AddParameter("min_id", minId);
+            return Client.ExecuteAsync<MediaResponse>(request);
         }
     }
 }

@@ -60,7 +60,7 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit Check <see cref="Response.CallsRemainingThisHour"/>
+        /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit Check <see cref="Response.RateLimitLimit"/>
         /// </summary>
         /// <param name="tagName">Return information about this tag.</param>
         /// <param name="minTagId">Return media [before]after  this min_tag_id. If you don't want to use this parameter, use null.</param>
@@ -126,7 +126,7 @@ namespace InstaSharp.Endpoints
             {
                 return false;
             }
-           // var idWithoutUser = ExtractIdWithoutUser(stopatMediaId);
+            // var idWithoutUser = ExtractIdWithoutUser(stopatMediaId);
             var item = data.FirstOrDefault(x => x.Id == stopatMediaId);
             return data.TrimLastAfterItem(item);
         }

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InstaSharp.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Subscription = InstaSharp.Endpoints.Subscription;
 

@@ -40,7 +40,7 @@ namespace InstaSharp.Tests
         public async Task Recent_MinId()
         {
             var result = await tags.Recent("csharp");
-            result = await tags.Recent("csharp", result.Pagination.NextMinId, null);
+            result = await tags.Recent("csharp", result.Pagination.NextMinId, null, null);
             Assert.IsTrue(result.Data.Count == 0);
         }
 
@@ -48,7 +48,7 @@ namespace InstaSharp.Tests
         public async Task Recent_MaxId()
         {
             var result = await tags.Recent("csharp");
-            result = await tags.Recent("csharp", null, result.Pagination.NextMaxId);
+            result = await tags.Recent("csharp", null, result.Pagination.NextMaxId, null);
             Assert.IsTrue(result.Data.Count > 0);
         }
 

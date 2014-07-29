@@ -27,6 +27,11 @@ namespace InstaSharp.Endpoints
             Media
         }
 
+        public static class ResponseError
+        {
+            public static String ApiSubscriptionError = "APISubscriptionError"; // code 400, could be cuased by incorrect CallbackUri
+        }
+
         private readonly InstagramConfig _config;
         private readonly HttpClient _client;
         private static RealTimeMediaUpdateCache _realTimeMediaUpdateCache;
