@@ -59,9 +59,16 @@ namespace InstaSharp.Tests {
         }
 
         [TestMethod, TestCategory("Media.Search")]
-        public async Task Search()
+        public async Task SearchWithLocalAndDate()
         {
-            var result = await media.Search(36.166667, -86.783333, DateTime.Now.AddDays(-7), DateTime.Now.AddDays(-6), 2000);
+            var result = await media.Search(36.166667, -86.783333, 2000, DateTime.Now.AddDays(-7), DateTime.Now.AddDays(-6));
+            Assert.IsTrue(result.Data.Count > 0);
+        }
+
+        [TestMethod, TestCategory("Media.Search")]
+        public async Task SearchWithLocal()
+        {
+            var result = await media.Search(36.166667, -86.783333);
             Assert.IsTrue(result.Data.Count > 0);
         }
     }
