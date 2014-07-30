@@ -1,4 +1,5 @@
-﻿using InstaSharp.Models.Responses;
+﻿using System.Net;
+using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.IO;
@@ -65,7 +66,7 @@ namespace InstaSharp.Tests
         public void CanDeserializeSubscriptionResponse()
         {
             var result = JsonConvert.DeserializeObject<SubscriptionResponse>(SubscriptionCreateResponseREAL);
-            Assert.AreEqual(200, result.Meta.Code);
+            Assert.AreEqual(HttpStatusCode.OK, result.Meta.Code);
             Assert.AreEqual("9580368", result.Data.Id);
         }
 

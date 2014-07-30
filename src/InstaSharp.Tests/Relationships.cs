@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,7 +16,7 @@ namespace InstaSharp.Tests {
         public async Task Follows()
         {
             var result = await relationships.Follows();
-            Assert.IsTrue(result.Meta.Code == 200);
+            Assert.IsTrue(result.Meta.Code == HttpStatusCode.OK);
         }
 
         [TestMethod, TestCategory("Relationships.Follows")]
@@ -62,7 +63,7 @@ namespace InstaSharp.Tests {
         {
             var result = await relationships.RequestedBy();
 
-            Assert.IsTrue(result.Meta.Code == 200);
+            Assert.IsTrue(result.Meta.Code == HttpStatusCode.OK);
         }
 
         [TestMethod, TestCategory("Relationships.Relationship")]

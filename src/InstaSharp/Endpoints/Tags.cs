@@ -105,7 +105,7 @@ namespace InstaSharp.Endpoints
             }
 
             // keep paging back in time until a recent is found
-            while (results.Meta.Code == (int)HttpStatusCode.OK
+            while (results.Meta.Code == HttpStatusCode.OK
                                     && results.Pagination != null
                                     && results.Pagination.NextMaxId != null
                                     && results.Data != null
@@ -113,7 +113,7 @@ namespace InstaSharp.Endpoints
                                     && !(stopatMediaId != null && idFound)) //results.Pagination.NextMaxId
             {
                 results = await Recent(tagName, null, results.Pagination.NextMaxId, 100);
-                if (results.Meta.Code != (int)HttpStatusCode.OK || results.Data == null || results.Data.Count <= 0)
+                if (results.Meta.Code != HttpStatusCode.OK || results.Data == null || results.Data.Count <= 0)
                 {
                     break;
                 }
