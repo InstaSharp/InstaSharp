@@ -22,7 +22,7 @@ namespace InstaSharp.Tests {
         public async Task Post()
         {
             var postComment = await comments.Post("555", "Api Test");
-            Assert.AreEqual(postComment.Meta.Code, 200);
+            Assert.AreEqual(postComment.Meta.Code, HttpStatusCode.OK);
         }*/
     }
 }

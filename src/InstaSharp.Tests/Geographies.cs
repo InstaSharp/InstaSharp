@@ -15,7 +15,7 @@ namespace InstaSharp.Tests {
         /*[TestMethod, TestCategory("Geographies.Recent")]
         public void Recent() {
             var result = _geographies.Recent(20);
-            Assert.IsTrue(result.Meta.Code == 200);
+            Assert.IsTrue(result.Meta.Code == HttpStatusCode.OK);
         }*/
     }
 }
