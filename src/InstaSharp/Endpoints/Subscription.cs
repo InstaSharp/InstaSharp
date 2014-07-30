@@ -1,12 +1,18 @@
-﻿using InstaSharp.Extensions;
+﻿using System.IO;
+using System.Linq;
+using System.Net;
+using InstaSharp.Extensions;
+using InstaSharp.Models;
 using InstaSharp.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace InstaSharp.Endpoints
 {
+    //TODO Turn it InstagramApi subclass
     public class Subscription
     {
         public enum Object
@@ -31,6 +37,12 @@ namespace InstaSharp.Endpoints
             client = new HttpClient { BaseAddress = new Uri(config.RealTimeApi) };
         }
 
+        private void AddClientCredentialParameters(HttpRequestMessage request)
+        {
+            request.AddParameter("client_id", config.ClientId);
+            request.AddParameter("client_secret", config.ClientSecret);
+        }
+
         /// <summary>
         /// Create a subscription
         /// </summary>
@@ -39,7 +51,7 @@ namespace InstaSharp.Endpoints
         /// <param name="objectId">This is required, i.e. if <see cref="type"/> is<see cref="Object.Tag"/> or <see cref="Object.Location"/></param>
         /// <param name="verifyToken"></param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> Create(Object type, Aspect aspect, String objectId = null, String verifyToken = null)
+        public Task<SubscriptionResponse> Create(Object type, Aspect aspect, String objectId = null, String verifyToken = null)
         {
             // create a new guid that uniquely identifies this subscription request
             verifyToken = String.IsNullOrWhiteSpace(verifyToken) ? Guid.NewGuid().ToString() : verifyToken;
@@ -63,7 +75,7 @@ namespace InstaSharp.Endpoints
                 Content = new FormUrlEncodedContent(postParams)
             };
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
@@ -71,15 +83,14 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="id">The subscription id</param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> UnsubscribeUser(string id)
+        public Task<SubscriptionResponse> UnsubscribeUser(string id)
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
+            AddClientCredentialParameters(request);
             request.AddParameter("id", id);
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
@@ -87,44 +98,40 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> RemoveSubscription(Object type)
+        public Task<SubscriptionResponse> RemoveSubscription(Object type)
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
+            AddClientCredentialParameters(request);
             request.AddParameter("object", type.ToString().ToLower());
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
         /// Removes all subscriptions
         /// </summary>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> RemoveAllSubscriptions()
+        public Task<SubscriptionResponse> RemoveAllSubscriptions()
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
+            AddClientCredentialParameters(request);
             request.AddParameter("object", "all");
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
         /// Lists all subscriptions
         /// </summary>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> ListAllSubscriptions()
+        public Task<SubscriptionResponse> ListAllSubscriptions()
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = client.BaseAddress };
+            AddClientCredentialParameters(request);
 
-            request.AddParameter("client_id", config.ClientId);
-            request.AddParameter("client_secret", config.ClientSecret);
-
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
     }
 }

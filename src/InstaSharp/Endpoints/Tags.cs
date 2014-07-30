@@ -1,10 +1,13 @@
-﻿using InstaSharp.Extensions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
-    public class Tags : InstaSharp.Endpoints.InstagramApi
+    public class Tags : InstagramApi
     {
         /// <summary>
         /// Tag Endpoints
@@ -72,14 +75,16 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit
+        /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit Check <see cref="Response.RateLimitLimit"/>
         /// </summary>
         /// <param name="tagName">Return information about this tag.</param>
-        /// <param name="min_tag_id">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
-        /// <param name="max_tag_id">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
+        /// <param name="minTagId">Return media [before]after  this min_tag_id. If you don't want to use this parameter, use null.</param>
+        /// <param name="maxTagId">Return media [after] before this max_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="maxPageCount">the number of pages at which you wish to stop returning data. Otherwise it keeps going until the end. Be warned, you could quickly use your daily limit</param>
+        /// <param name="stopatMediaId">Doesnt return any data older than or including this id</param>
         /// <returns>a response object containing a list of the media responses and the last returned Meta code</returns>
-        public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string min_tag_id = "", string max_tag_id = "", int? maxPageCount = null)
+        /// <remarks>http://stackoverflow.com/questions/20625173/how-does-instagrams-get-tags-tag-media-recent-pagination-actually-work?rq=1 </remarks>
+        public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string minTagId = "", string maxTagId = "", int? maxPageCount = null, string stopatMediaId = null)
         {
             var response = new TagsMultiplePagesResponse();
             if (maxPageCount == 0)
@@ -87,21 +92,58 @@ namespace InstaSharp.Endpoints
                 return response;
             }
 
-            var results = await Recent(tagName, min_tag_id, max_tag_id, 100);
+            var results = await Recent(tagName, minTagId, maxTagId, 100);
             response.PageCount = 1;
+            var idFound = CropDataIfIdFound(results.Data, stopatMediaId);
+            response.Data.AddRange(results.Data);
 
-            while (results.Meta.Code == 200 && results.Pagination != null && results.Pagination.NextMaxId != null && results.Data != null && response.PageCount < maxPageCount)
+            if (idFound)
             {
-                response.Data.AddRange(results.Data);
+                response.PaginationNextMaxId = results.Pagination.NextMaxId;
+                response.Meta = results.Meta;
+                return response;
+            }
+
+            // keep paging back in time until a recent is found
+            while (results.Meta.Code == (int)HttpStatusCode.OK
+                                    && results.Pagination != null
+                                    && results.Pagination.NextMaxId != null
+                                    && results.Data != null
+                                    && response.PageCount < maxPageCount
+                                    && !(stopatMediaId != null && idFound)) //results.Pagination.NextMaxId
+            {
                 results = await Recent(tagName, null, results.Pagination.NextMaxId, 100);
-                if (results.Meta.Code != 200 || results.Data == null || results.Data.Count <= 0)
+                if (results.Meta.Code != (int)HttpStatusCode.OK || results.Data == null || results.Data.Count <= 0)
                 {
                     break;
                 }
+                idFound = CropDataIfIdFound(results.Data, stopatMediaId);
+                response.Data.AddRange(results.Data);
                 response.PageCount++;
+            }
+            if (results.Pagination != null)
+            {
+                response.PaginationNextMaxId = results.Pagination.NextMaxId;
             }
             response.Meta = results.Meta;
             return response;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="stopatMediaId">The media id without the _user suffix</param>
+        /// <returns></returns>
+        private static bool CropDataIfIdFound(List<Models.Media> data, string stopatMediaId)
+        {
+            if (stopatMediaId == null)
+            {
+                return false;
+            }
+            int count = data.Count;
+            data = data.TakeWhile(x => x.Id != stopatMediaId).ToList();
+            return count != data.Count;
         }
 
         /// <summary>
