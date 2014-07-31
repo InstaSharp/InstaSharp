@@ -15,6 +15,7 @@ namespace InstaSharp.Models.Responses
         /// The number of pages in total which were returned
         /// </summary>
         public int PageCount { get; set; }
+
         public string PaginationNextMaxId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Net;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 
 namespace InstaSharp.Tests {
@@ -16,7 +17,7 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Likes.Get")]
         public async Task Get() {
             var result = await likes.Get("555");
-            Assert.IsTrue(result.Meta.Code == 200);
+            Assert.IsTrue(result.Meta.Code == HttpStatusCode.OK);
         }
 
         [TestMethod, TestCategory("Likes.PostAndDelete")]

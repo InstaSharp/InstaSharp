@@ -1,4 +1,5 @@
-﻿using InstaSharp.Models.Responses;
+﻿using System.Net;
+using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
@@ -19,7 +20,7 @@ namespace InstaSharp.Tests
         }
         protected static void AssertMissingClientSecretUrlParameter(Response result)
         {
-            Assert.AreEqual(400, result.Meta.Code);
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.Meta.Code);
             Assert.AreEqual("Missing client_secret URL parameter.", result.Meta.ErrorMessage);
             Assert.AreEqual("OAuthClientException", result.Meta.ErrorType);
         }

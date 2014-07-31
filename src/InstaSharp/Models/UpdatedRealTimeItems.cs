@@ -15,4 +15,4 @@ namespace InstaSharp.Models
             TagMedia.Add(tagName, media);
         }
     }
-}
+} 

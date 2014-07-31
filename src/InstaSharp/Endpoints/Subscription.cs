@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 
 namespace InstaSharp.Endpoints
 {
+    //TODO Turn it InstagramApi subclass
     public class Subscription
     {
         public enum Object
@@ -27,21 +28,15 @@ namespace InstaSharp.Endpoints
             Media
         }
 
-        public static class ResponseError
-        {
-            public static String ApiSubscriptionError = "APISubscriptionError"; // code 400, could be caused by incorrect CallbackUri
-        }
-
         private readonly InstagramConfig config;
         private readonly HttpClient client;
-        private static RealTimeMediaUpdateCache _realTimeMediaUpdateCache;
 
-        public Subscription(InstagramConfig config, RealTimeMediaUpdateCache realTimeMediaUpdateCache = null)
+        public Subscription(InstagramConfig config)
         {
             this.config = config;
             client = new HttpClient { BaseAddress = new Uri(config.RealTimeApi) };
-            _realTimeMediaUpdateCache = realTimeMediaUpdateCache ?? new RealTimeMediaUpdateCache();
         }
+
         private void AddClientCredentialParameters(HttpRequestMessage request)
         {
             request.AddParameter("client_id", config.ClientId);
@@ -56,7 +51,7 @@ namespace InstaSharp.Endpoints
         /// <param name="objectId">This is required, i.e. if <see cref="type"/> is<see cref="Object.Tag"/> or <see cref="Object.Location"/></param>
         /// <param name="verifyToken"></param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> Create(Object type, Aspect aspect, String objectId = null, String verifyToken = null)
+        public Task<SubscriptionResponse> Create(Object type, Aspect aspect, String objectId = null, String verifyToken = null)
         {
             // create a new guid that uniquely identifies this subscription request
             verifyToken = String.IsNullOrWhiteSpace(verifyToken) ? Guid.NewGuid().ToString() : verifyToken;
@@ -67,7 +62,7 @@ namespace InstaSharp.Endpoints
                 new KeyValuePair<string, string>("object", type.ToString().ToLower()),
                 new KeyValuePair<string, string>("aspect", aspect.ToString().ToLower()),
                 new KeyValuePair<string, string>("verify_token", verifyToken),
-                new KeyValuePair<string, string>("callback_url",config.CallbackUri)
+                new KeyValuePair<string, string>("callback_url", config.CallbackUri)
             };
 
             if ((type == Object.Tag || type == Object.Location) && objectId != null)
@@ -80,7 +75,7 @@ namespace InstaSharp.Endpoints
                 Content = new FormUrlEncodedContent(postParams)
             };
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
@@ -88,14 +83,14 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="id">The subscription id</param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> UnsubscribeUser(string id)
+        public Task<SubscriptionResponse> UnsubscribeUser(string id)
         {
-            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri =client.BaseAddress };
+            var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
             AddClientCredentialParameters(request);
             request.AddParameter("id", id);
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
@@ -103,97 +98,40 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> RemoveSubscription(Object type)
+        public Task<SubscriptionResponse> RemoveSubscription(Object type)
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
             AddClientCredentialParameters(request);
             request.AddParameter("object", type.ToString().ToLower());
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
         /// Removes all subscriptions
         /// </summary>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> RemoveAllSubscriptions()
+        public Task<SubscriptionResponse> RemoveAllSubscriptions()
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Delete, RequestUri = client.BaseAddress };
 
             AddClientCredentialParameters(request);
             request.AddParameter("object", "all");
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
 
         /// <summary>
         /// Lists all subscriptions
         /// </summary>
         /// <returns></returns>
-        public Task<SubscriptionsResponse> ListAllSubscriptions()
+        public Task<SubscriptionResponse> ListAllSubscriptions()
         {
             var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = client.BaseAddress };
             AddClientCredentialParameters(request);
 
-            return client.ExecuteAsync<SubscriptionsResponse>(request);
-        }
-
-        /// <summary>
-        /// When someone posts a new photo and it triggers an update of one of your subscriptions, Instagram makes a POST request to the callback URL that you defined in the subscription. 
-        /// The post body contains a raw text JSON body with update objects
-        /// </summary>
-        /// <param name="updatedMediaItems"></param>
-        /// <returns></returns>
-
-        public List<RealtimeUpdateItem> DeserializeUpdatedMediaItems(Stream updatedMediaItems)
-        {
-            using (var str = new StreamReader(updatedMediaItems))
-            {
-                return JsonConvert.DeserializeObject<IEnumerable<RealtimeUpdateItem>>(str.ReadToEnd()).ToList();
-            }
-        }
-
-        /// <summary>
-        /// "When someone posts a new photo and it triggers an update of one of your subscriptions, Instagram makes a POST request to the callback URL that you defined in the subscription. 
-        /// The post body contains a raw text JSON body with update objects."
-        /// The kicker is that it doesnt return the objectIds so you can go and snag them, so this implementation grabs recent items that have not been recently grabbed
-        /// This method grabs tag media types only </summary>
-        /// <param name="updatedMediaItems"></param>
-        /// <param name="maxPageCount">set a reasonable limit on how much will be pulled back</param>
-        /// <param name="tagIdPersisterCallback">This callback is invoked with the tag name and the most recent id</param>
-        /// <returns></returns>
-        /// <remarks>See http://stackoverflow.com/questions/18589445/instagram-realtime-api-does-not-return-content-ids# </remarks>
-        /// <remarks>see http://stackoverflow.com/questions/20625173/how-does-instagrams-get-tags-tag-media-recent-pagination-actually-work?rq=1 </remarks>
-        public async Task<UpdatedRealTimeItems> GetUpdatedTagMediaItems(Stream updatedMediaItems, int maxPageCount = 2, Action<string, string> tagIdPersisterCallback = null)
-        {
-            var result = new UpdatedRealTimeItems();
-            var newMediaItems = DeserializeUpdatedMediaItems(updatedMediaItems);
-
-            var tags = new Tags(config);
-            foreach (var tagName in newMediaItems.Where(x => x.ObjectId != null && x.Object == "tag").Select(x => x.ObjectId)) //InstaSharp.Endpoints.Subscription.Object.Tag.ToString().ToLower()
-            {
-                var mostRecentMediaIdForTagName = _realTimeMediaUpdateCache.MostRecentMediaTagId(tagName);
-                var query = mostRecentMediaIdForTagName != null ? tags.RecentMultiplePages(tagName, mostRecentMediaIdForTagName, null, maxPageCount, mostRecentMediaIdForTagName)
-                                                                : tags.RecentMultiplePages(tagName,  null,  null, maxPageCount);
-                var mediasResponse = await query;
-                if (mediasResponse.Meta.Code != (int) HttpStatusCode.OK || !mediasResponse.Data.Any() )
-                {
-                    continue;
-                }
-                var lastId = mediasResponse.Data.First().Id;// the first one is the newest
-                if (lastId != null)
-                {
-                    _realTimeMediaUpdateCache.MostRecentMediaTagIdsAddOrUpdate(tagName, lastId);
-                    if (tagIdPersisterCallback != null)
-                    {
-                        tagIdPersisterCallback(tagName, lastId);
-                    }
-                }
-
-                result.AddTag(tagName, mediasResponse.Data);
-            }
-            return result;
+            return client.ExecuteAsync<SubscriptionResponse>(request);
         }
     }
 }

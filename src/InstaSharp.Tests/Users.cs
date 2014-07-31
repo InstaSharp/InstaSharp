@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -113,7 +114,7 @@ namespace InstaSharp.Tests
         public async Task Liked()
         {
             var result = await users.Liked(null, null);
-            Assert.AreEqual(200, result.Meta.Code);
+            Assert.AreEqual(HttpStatusCode.OK, result.Meta.Code);
         }
     }
 }
