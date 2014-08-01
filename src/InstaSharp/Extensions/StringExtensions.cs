@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace InstaSharp.Extensions
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static string UrlEncode(this string input)
         {
