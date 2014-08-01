@@ -46,8 +46,8 @@ namespace InstaSharp.Tests {
         [TestMethod, TestCategory("Media.Get")]
         public async Task UserHasLikedNull()
         {
-            var media = new Endpoints.Media(Config);
-            var result = await media.Get("678318766466527577_3808579");
+            var mediaService = new Endpoints.Media(Config);
+            var result = await mediaService.Get("678318766466527577_3808579");
             Assert.IsNull(result.Data.UserHasLiked);
         }
 
