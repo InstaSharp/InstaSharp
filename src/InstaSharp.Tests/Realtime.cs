@@ -1,10 +1,7 @@
-﻿using System.Net;
-using InstaSharp.Models.Responses;
+﻿using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using System.IO;
-using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading.Tasks;
 using Subscription = InstaSharp.Endpoints.Subscription;
 

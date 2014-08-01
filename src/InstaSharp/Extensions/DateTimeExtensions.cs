@@ -2,7 +2,7 @@
 
 namespace InstaSharp.Extensions
 {
-    public static class DateTimeExtensions
+    internal static class DateTimeExtensions
     {
         public static long ToUnixTimestamp(this DateTime dateTime)
         {

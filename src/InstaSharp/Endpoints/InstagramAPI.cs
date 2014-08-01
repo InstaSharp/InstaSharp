@@ -14,7 +14,12 @@ namespace InstaSharp.Endpoints
 
         internal HttpClient Client { get; private set; }
 
-        public InstagramApi(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse = null)
+        public InstagramApi(string endpoint, InstagramConfig instagramConfig) : this(endpoint, instagramConfig, null)
+        {
+            
+        }
+
+        public InstagramApi(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse)
         {
             InstagramConfig = instagramConfig;
             OAuthResponse = oauthResponse;
@@ -48,7 +53,7 @@ namespace InstaSharp.Endpoints
             return Request(fragment, HttpMethod.Get);
         }
 
-        private HttpRequestMessage AddAuth(HttpRequestMessage request)
+        protected virtual HttpRequestMessage AddAuth(HttpRequestMessage request)
         {
             if (OAuthResponse == null)
             {
