@@ -16,8 +16,7 @@ namespace InstaSharp.Tests
 
             // dummy account data. InstaSharpTest
             Auth.Access_Token = "1415228826.554dfe9.502432355f084ea581b679a2f94bb350";
-            Auth.User = new Models.UserInfo();
-            Auth.User.Id = 1415228826;
+            Auth.User = new Models.UserInfo { Id = 1415228826 };
         }
         protected static void AssertMissingClientSecretUrlParameter(Response result)
         {

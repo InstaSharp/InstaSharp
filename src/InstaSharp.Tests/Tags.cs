@@ -55,7 +55,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Tags.Recent")]
         public async Task RecentMultiplePages()
         {
-            var result = await tags.RecentMultiplePages("csharp", null, null, 3);
+            var result = await tags.RecentMultiplePages("csharp", minTagId: null, maxTagId: null, maxPageCount: 3);
             Assert.IsTrue(result.Data.Any());
         }
     }
