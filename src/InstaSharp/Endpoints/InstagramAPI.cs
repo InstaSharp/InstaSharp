@@ -9,11 +9,30 @@ namespace InstaSharp.Endpoints
 {
     public class InstagramApi
     {
+        internal String ips;
+        internal string XInstaForwardedHeader { get; set; }
+
         public InstagramConfig InstagramConfig { get; private set; }
 
         public OAuthResponse OAuthResponse { get; private set; }
 
         internal HttpClient Client { get; private set; }
+
+        /// <summary>
+        ///   IP information: Comma-separated list of one or more IPs; if your app receives requests directly from clients,
+        ///  then it should be the client's remote IP as detected by the your app's load balancer; if your app is behind another load balancer (for example, Amazon's ELB),
+        ///  this should contain the exact contents of the original X-Forwarded-For header. You can use the 127.0.0.1 loopback address during testing
+        /// </summary>
+        public string Ips
+        {
+            set
+            {
+                ips = value;
+                XInstaForwardedHeader = CreateXInstaForwardedHeader();
+            }
+        }
+
+        public bool EnforceSignedHeader { get; set; }
 
         public InstagramApi(string endpoint, InstagramConfig instagramConfig)
             : this(endpoint, instagramConfig, null)
@@ -54,10 +73,9 @@ namespace InstaSharp.Endpoints
         /// <param name="request"></param>
         private void AddHeaders(HttpRequestMessage request)
         {
-            if (!String.IsNullOrWhiteSpace(InstagramConfig.ClientSecret)) //tODO :check config is set some
+            if (EnforceSignedHeader && !String.IsNullOrWhiteSpace(InstagramConfig.ClientSecret)) //tODO :check config is set some
             {
-                var result = CreateXInstaForwardedHeader();
-                request.Headers.Add("X-Insta-Forwarded-For", result);
+                request.Headers.Add("X-Insta-Forwarded-For", XInstaForwardedHeader);
             }
         }
 
@@ -68,12 +86,9 @@ namespace InstaSharp.Endpoints
         /// the X-Insta-Forwarded-For HTTP header and verify its signature. 
         /// HMAC signed using the SHA256 hash algorithm with your client's IP address and Client Secret.
         /// </summary>
-        /// <param name="ips">IP information: Comma-separated list of one or more IPs; if your app receives requests directly from clients,
-        ///                    then it should be the client's remote IP as detected by the your app's load balancer; if your app is behind another load balancer (for example, Amazon's ELB),
-        ///                    this should contain the exact contents of the original X-Forwarded-For header. You can use the 127.0.0.1 loopback address during testing
-        /// </param>
         /// <returns></returns>
-        public string CreateXInstaForwardedHeader(string ips = "127.0.0.1")
+        /// TODO: only internal for unit testing purposes. Move to another class?
+        public string CreateXInstaForwardedHeader()
         {
             var encoding = new ASCIIEncoding();
             var hash = new HMACSHA256(encoding.GetBytes(InstagramConfig.ClientSecret)).ComputeHash(encoding.GetBytes(ips));

@@ -33,7 +33,7 @@ namespace InstaSharp
 
         public static string AuthLink(string instagramOAuthUri, string clientId, string callbackUri, List<Scope> scopes, ResponseType responseType = ResponseType.Token)
         {
-            StringBuilder scope = new StringBuilder();
+            var scope = new StringBuilder();
 
             foreach (var s in scopes)
             {
@@ -55,11 +55,11 @@ namespace InstaSharp
 
         public Task<OAuthResponse> RequestToken(string code)
         {
-            HttpClient client = new HttpClient { BaseAddress = new Uri(config.OAuthUri) };
+            var client = new HttpClient { BaseAddress = new Uri(config.OAuthUri) };
             var request = new HttpRequestMessage(HttpMethod.Post, new Uri(client.BaseAddress, "access_token"));
             //HttpClient client = new HttpClient();
             //var request = new HttpRequestMessage(HttpMethod.Post, "https://api.instagram.com/oauth/access_token");
-            string myParameters = string.Format("client_id={0}&client_secret={1}&grant_type={2}&redirect_uri={3}&code={4}",
+            var myParameters = string.Format("client_id={0}&client_secret={1}&grant_type={2}&redirect_uri={3}&code={4}",
                 config.ClientId.UrlEncode(),
                 config.ClientSecret.UrlEncode(), 
                 "authorization_code".UrlEncode(),
