@@ -1,4 +1,5 @@
-﻿using InstaSharp.Models.Responses;
+﻿using InstaSharp.Endpoints;
+using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.Net;
@@ -82,6 +83,7 @@ namespace InstaSharp.Tests
             var result = await realtime.UnsubscribeUser("joebloggs");
             AssertMissingClientSecretUrlParameter(result);
         }
+
         [TestCategory("Subscribe.Unsubscribe")]
         [TestMethod]
         public async Task RemoveSubscriptionByObjectType()
@@ -89,6 +91,7 @@ namespace InstaSharp.Tests
             var result = await realtime.RemoveSubscription(Subscription.Object.Tag);
             AssertMissingClientSecretUrlParameter(result);
         }
+
         [TestCategory("Subscribe.UnsubscribeAll")]
         [TestMethod]
         public async Task RemoveAllSubscriptions()
@@ -96,12 +99,26 @@ namespace InstaSharp.Tests
             var result = await realtime.RemoveAllSubscriptions();
             AssertMissingClientSecretUrlParameter(result);
         }
+
         [TestCategory("Subscribe.ListAllSubscriptions")]
         [TestMethod]
         public async Task ListAllSubscriptions()
         {
             var result = await realtime.ListAllSubscriptions();
             AssertMissingClientSecretUrlParameter(result);
+        }
+
+
+        [TestCategory("Subscribe.TestHeader")]
+        [TestMethod]
+        public async Task TestHeader()
+        {
+            realtime.InstagramConfig.ClientSecret = "6dc1787668c64c939929c17683d7cb74";
+            var result = realtime.CreateXInstaForwardedHeader("200.15.1.1");
+            Assert.AreEqual("200.15.1.1|7e3c45bc34f56fd8e762ee4590a53c8c2bbce27e967a85484712e5faa0191688", result);
+
+            var result2 = realtime.CreateXInstaForwardedHeader("200.15.1.1,131.51.1.35");
+            Assert.AreEqual("200.15.1.1,131.51.1.35|13cb27eee318a5c88f4456bae149d806437fb37ba9f52fac0b1b7d8c234e6cee", result2);
         }
     }
 }
