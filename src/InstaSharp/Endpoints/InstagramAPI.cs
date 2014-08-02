@@ -32,6 +32,12 @@ namespace InstaSharp.Endpoints
             }
         }
 
+        /// <summary>
+        /// Requires the use of your Client Secret to sign POST and DELETE API requests. Use this option to instruct Instagram to check requests for the 'X-Insta-Forwarded-For' HTTP header. 
+        /// Eligible requests that do not provide this header and a valid signature will fail. This technique helps identify you as the legitimate owner of this OAuth Client. Only enable 
+        /// this option for server-to-server calls. See the Restrict API Requests documentation for details. http://instagram.com/developer/restrict-api-requests/
+        /// This needs to be configured at application level
+        /// </summary>
         public bool EnforceSignedHeader { get; set; }
 
         public InstagramApi(string endpoint, InstagramConfig instagramConfig)
@@ -73,7 +79,8 @@ namespace InstaSharp.Endpoints
         /// <param name="request"></param>
         private void AddHeaders(HttpRequestMessage request)
         {
-            if (EnforceSignedHeader && !String.IsNullOrWhiteSpace(InstagramConfig.ClientSecret)) //tODO :check config is set some
+            if (EnforceSignedHeader && !String.IsNullOrWhiteSpace(InstagramConfig.ClientSecret) 
+                                    && (request.Method == HttpMethod.Post || request.Method == HttpMethod.Delete))
             {
                 request.Headers.Add("X-Insta-Forwarded-For", XInstaForwardedHeader);
             }
