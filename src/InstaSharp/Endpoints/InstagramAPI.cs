@@ -53,7 +53,7 @@ namespace InstaSharp.Endpoints
             return Request(fragment, HttpMethod.Get);
         }
 
-        protected virtual HttpRequestMessage AddAuth(HttpRequestMessage request)
+        internal virtual HttpRequestMessage AddAuth(HttpRequestMessage request)
         {
             if (OAuthResponse == null)
             {

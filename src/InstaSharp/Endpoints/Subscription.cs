@@ -29,7 +29,7 @@ namespace InstaSharp.Endpoints
         {
         }
 
-        protected override HttpRequestMessage AddAuth(HttpRequestMessage request)
+        internal override HttpRequestMessage AddAuth(HttpRequestMessage request)
         {
             request.AddParameter("client_id", InstagramConfig.ClientId);
             request.AddParameter("client_secret", InstagramConfig.ClientSecret);
