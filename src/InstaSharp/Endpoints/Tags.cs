@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
+    /// <summary>
+    /// The Tag API
+    /// </summary>
     public class Tags : InstagramApi
     {
         /// <summary>

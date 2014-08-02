@@ -5,7 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
     [TestClass]
-    public class Relationships : TestBase {
+    internal class Relationships : TestBase
+    {
         readonly Endpoints.Relationships relationships;
 
         public Relationships() {

@@ -7,13 +7,28 @@ using System.Net.Http;
 using System.Text;
 namespace InstaSharp.Endpoints
 {
-    public class InstagramApi
+    /// <summary>
+    /// Base class for Apis
+    /// </summary>
+    public abstract class InstagramApi
     {
         internal String ips;
         internal string XInstaForwardedHeader { get; set; }
 
+        /// <summary>
+        /// Gets the instagram configuration.
+        /// </summary>
+        /// <value>
+        /// The instagram configuration.
+        /// </value>
         public InstagramConfig InstagramConfig { get; private set; }
 
+        /// <summary>
+        /// Gets the o authentication response.
+        /// </summary>
+        /// <value>
+        /// The o authentication response.
+        /// </value>
         public OAuthResponse OAuthResponse { get; private set; }
 
         internal HttpClient Client { get; private set; }
@@ -40,13 +55,19 @@ namespace InstaSharp.Endpoints
         /// </summary>
         public bool EnforceSignedHeader { get; set; }
 
-        public InstagramApi(string endpoint, InstagramConfig instagramConfig)
+        internal InstagramApi(string endpoint, InstagramConfig instagramConfig)
             : this(endpoint, instagramConfig, null)
         {
 
         }
 
-        public InstagramApi(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InstagramApi"/> class.
+        /// </summary>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <param name="instagramConfig">The instagram configuration.</param>
+        /// <param name="oauthResponse">The oauth response.</param>
+        protected InstagramApi(string endpoint, InstagramConfig instagramConfig, OAuthResponse oauthResponse)
         {
             InstagramConfig = instagramConfig;
             OAuthResponse = oauthResponse;
@@ -61,7 +82,7 @@ namespace InstaSharp.Endpoints
             Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.ApiUri), endpoint) };
         }
 
-        protected void AssertIsAuthenticated()
+        internal void AssertIsAuthenticated()
         {
             if (OAuthResponse == null || OAuthResponse.User == null)
             {
@@ -79,7 +100,7 @@ namespace InstaSharp.Endpoints
         /// <param name="request"></param>
         private void AddHeaders(HttpRequestMessage request)
         {
-            if (EnforceSignedHeader && !String.IsNullOrWhiteSpace(InstagramConfig.ClientSecret) 
+            if (EnforceSignedHeader && !String.IsNullOrWhiteSpace(InstagramConfig.ClientSecret)
                                     && (request.Method == HttpMethod.Post || request.Method == HttpMethod.Delete))
             {
                 request.Headers.Add("X-Insta-Forwarded-For", XInstaForwardedHeader);
@@ -94,7 +115,7 @@ namespace InstaSharp.Endpoints
         /// HMAC signed using the SHA256 hash algorithm with your client's IP address and Client Secret.
         /// </summary>
         /// <returns></returns>
-        /// TODO: only internal for unit testing purposes. Move to another class?
+        /// TODO: only public for unit testing purposes. Move to another class?
         public string CreateXInstaForwardedHeader()
         {
             var encoding = new ASCIIEncoding();

@@ -5,7 +5,8 @@ using System;
 namespace InstaSharp.Tests {
     
     [TestClass]
-    public class Media : TestBase {
+    internal class Media : TestBase
+    {
 
         readonly Endpoints.Media media;
 

@@ -3,15 +3,20 @@ using InstaSharp.Models.Responses;
 using System;
 using System.Threading.Tasks;
 
+
 namespace InstaSharp.Endpoints
 {
+    /// <summary>
+    /// The Media API
+    /// </summary>
     public class Media : InstagramApi
     {
         /// <summary>
         /// Media Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        public Media(InstagramConfig config) : this(config, null)
+        public Media(InstagramConfig config)
+            : this(config, null)
         {
         }
 
@@ -20,7 +25,8 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="auth">An instance of the OAuthResponse class.</param>
-        public Media(InstagramConfig config, OAuthResponse auth) : base("media/", config, auth)
+        public Media(InstagramConfig config, OAuthResponse auth)
+            : base("media/", config, auth)
         {
         }
 

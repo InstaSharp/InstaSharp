@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
+    /// <summary>
+    /// The Locations API
+    /// </summary>
     public class Locations : InstagramApi
     {
         /// <summary>
@@ -28,11 +31,18 @@ namespace InstaSharp.Endpoints
 
         /// <summary>
         /// The versions of the Foursquare API
-        /// </summary>
+        /// </summary>   
+       [Obsolete]
         public enum FoursquareVersion
         {
+            /// <summary>
+            ///  one
+            /// </summary>
             [Obsolete]
             One,
+            /// <summary>
+            ///  two
+            /// </summary>
             Two
         }
 
@@ -49,6 +59,11 @@ namespace InstaSharp.Endpoints
             return Client.ExecuteAsync<LocationResponse>(request);
         }
 
+        /// <summary>
+        ///  Get a list of recent media objects from a given location.
+        /// </summary>
+        /// <param name="locationId">The location identifier.</param>
+        /// <returns></returns>
         public Task<MediasResponse> Recent(string locationId)
         {
             return Recent(locationId, null, null, null, null);

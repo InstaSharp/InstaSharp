@@ -5,7 +5,7 @@ using System;
 
 namespace InstaSharp.Infrastructure
 {
-    public class UnixDateTimeConverter : DateTimeConverterBase
+    internal class UnixDateTimeConverter : DateTimeConverterBase
     {
         /// <summary>
         /// Writes the JSON representation of the object.

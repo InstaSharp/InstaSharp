@@ -4,12 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
 {
-    public class TestBase
+    internal class TestBase
     {
         protected readonly OAuthResponse Auth = new OAuthResponse();
         protected readonly InstagramConfig Config = new InstagramConfig();
 
-        public TestBase()
+        protected TestBase()
         {
             // test account client id
             Config.ClientId = "554dfe9286994bbe98417d8dc7b69a24";

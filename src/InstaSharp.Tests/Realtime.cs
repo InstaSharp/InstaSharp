@@ -9,7 +9,7 @@ using Subscription = InstaSharp.Endpoints.Subscription;
 namespace InstaSharp.Tests
 {
     [TestClass]
-    public class Realtime : TestBase
+    internal class Realtime : TestBase
     {
         Subscription realtime;
 

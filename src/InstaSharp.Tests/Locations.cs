@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 namespace InstaSharp.Tests {
 
     [TestClass]
-    public class Locations : TestBase {
+    internal class Locations : TestBase
+    {
         readonly Endpoints.Locations locations;
 
         public Locations()

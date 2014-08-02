@@ -2,9 +2,9 @@
 
 namespace InstaSharp.Extensions
 {
-    public static class ByteExtensions
+    internal static class ByteExtensions
     {
-        public static string ByteArrayToString(this byte[] ba)
+        internal static string ByteArrayToString(this byte[] ba)
         {
             var hex = BitConverter.ToString(ba);
             return hex.Replace("-", "");
