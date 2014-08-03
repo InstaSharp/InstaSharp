@@ -32,7 +32,6 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// The versions of the Foursquare API
         /// </summary>   
-       [Obsolete]
         public enum FoursquareVersion
         {
             /// <summary>

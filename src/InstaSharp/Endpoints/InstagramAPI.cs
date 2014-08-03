@@ -12,8 +12,7 @@ namespace InstaSharp.Endpoints
     /// </summary>
     public abstract class InstagramApi
     {
-        internal String ips;
-        internal string XInstaForwardedHeader { get; set; }
+        private string XInstaForwardedHeader { get; set; }
 
         /// <summary>
         /// Gets the instagram configuration.
@@ -33,6 +32,8 @@ namespace InstaSharp.Endpoints
 
         internal HttpClient Client { get; private set; }
 
+        private string ips;
+
         /// <summary>
         ///   IP information: Comma-separated list of one or more IPs; if your app receives requests directly from clients,
         ///  then it should be the client's remote IP as detected by the your app's load balancer; if your app is behind another load balancer (for example, Amazon's ELB),
@@ -40,6 +41,10 @@ namespace InstaSharp.Endpoints
         /// </summary>
         public string Ips
         {
+            get
+            {
+                return ips;
+            }
             set
             {
                 ips = value;
@@ -82,7 +87,7 @@ namespace InstaSharp.Endpoints
             Client = new HttpClient(handler) { BaseAddress = new Uri(new Uri(InstagramConfig.ApiUri), endpoint) };
         }
 
-        internal void AssertIsAuthenticated()
+        protected void AssertIsAuthenticated()
         {
             if (OAuthResponse == null || OAuthResponse.User == null)
             {
@@ -115,8 +120,7 @@ namespace InstaSharp.Endpoints
         /// HMAC signed using the SHA256 hash algorithm with your client's IP address and Client Secret.
         /// </summary>
         /// <returns></returns>
-        /// TODO: only public for unit testing purposes. Move to another class?
-        public string CreateXInstaForwardedHeader()
+        internal string CreateXInstaForwardedHeader()
         {
             var encoding = new ASCIIEncoding();
             var hash = new HMACSHA256(encoding.GetBytes(InstagramConfig.ClientSecret)).ComputeHash(encoding.GetBytes(ips));
