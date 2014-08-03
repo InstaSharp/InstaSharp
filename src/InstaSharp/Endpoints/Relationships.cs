@@ -6,14 +6,38 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints {
 
+    /// <summary>
+    /// The Relationships Endpoint
+    /// </summary>
     public class Relationships : InstagramApi {
 
+        /// <summary>
+        /// The Action
+        /// </summary>
         public enum Action {
+            /// <summary>
+            /// follow
+            /// </summary>
             Follow,
+            /// <summary>
+            /// unfollow
+            /// </summary>
             Unfollow,
+            /// <summary>
+            /// block
+            /// </summary>
             Block,
+            /// <summary>
+            /// unblock
+            /// </summary>
             Unblock,
+            /// <summary>
+            /// approve
+            /// </summary>
             Approve,
+            /// <summary>
+            /// deny
+            /// </summary>
             Deny
         }
 

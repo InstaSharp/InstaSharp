@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Geographies : InstagramApi
     {
         /// <summary>

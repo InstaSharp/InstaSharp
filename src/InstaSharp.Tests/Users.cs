@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace InstaSharp.Tests
 {
     [TestClass]
-    public class Users : TestBase
+    internal class Users : TestBase
     {
         readonly Endpoints.Users users;
 

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
+    /// <summary>
+    /// The Users API
+    /// </summary>
     public class Users : InstagramApi
     {
         /// <summary>

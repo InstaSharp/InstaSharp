@@ -2,6 +2,9 @@
 
 namespace InstaSharp.Models
 {
+    /// <summary>
+    /// The Subscription
+    /// </summary>
     public class Subscription
     {
 
@@ -25,6 +28,12 @@ namespace InstaSharp.Models
         /// </summary>
         public Endpoints.Subscription.Aspect Aspect { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback URL.
+        /// </summary>
+        /// <value>
+        /// The callback URL.
+        /// </value>
         [JsonProperty("Callback_Url")]
         public string CallbackUrl { get; set; }
 

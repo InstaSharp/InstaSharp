@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
+    /// <summary>
+    /// Comments Endpoint
+    /// </summary>
     public class Comments : InstagramApi
     {
         /// <summary>
