@@ -18,7 +18,7 @@
       -Converted to Portable Class Library
       -Removed RestSharp in favor of HttpClient
       -All calls are async
-      -Support for .NET 4.0, .NET 4.5, Silverlight 5, WP8, Windows Store 8
+      -Support for .NET 4.0, .NET 4.5, Silverlight 5, Windows Phone Silverlight 8, Windows Phone 8.1, Windows Store 8 (Profile136)
       -Support Enforce Signed Header
     </releaseNotes>
     <copyright>Copyright 2013</copyright>
