@@ -1,6 +1,15 @@
 ﻿namespace InstaSharp.Models.Responses {
+    /// <summary>
+    /// Response Base class
+    /// </summary>
     public abstract class Response
     {
+        /// <summary>
+        /// Gets or sets the meta.
+        /// </summary>
+        /// <value>
+        /// The meta.
+        /// </value>
         public Meta Meta { get; set; }
 
         /// <summary>

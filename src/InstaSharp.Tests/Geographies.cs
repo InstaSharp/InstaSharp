@@ -3,7 +3,7 @@
 namespace InstaSharp.Tests {
    
     [TestClass]
-    public class Geographies : TestBase {
+    internal class Geographies : TestBase {
         readonly Endpoints.Geographies geographies;
 
         public Geographies()

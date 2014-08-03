@@ -7,23 +7,51 @@ using System.Threading.Tasks;
 
 namespace InstaSharp.Endpoints
 {
-  
+
+    /// <summary>
+    /// The subscription Api
+    /// </summary>
     public class Subscription : InstagramApi
     {
+        /// <summary>
+        /// The type of media
+        /// </summary>
         public enum Object
         {
+            /// <summary>
+            /// User
+            /// </summary>
             User,
+            /// <summary>
+            /// Tag
+            /// </summary>
             Tag,
-            Location,
+            /// <summary>
+            /// Location
+            /// </summary>  
+            Location,   
+            /// <summary>
+            /// Geography
+            /// </summary>
             Geography
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public enum Aspect
         {
+            /// <summary>
+            /// Media
+            /// </summary>
             Media
         }
 
 
+        /// <summary>
+        /// Construct a Subscription Endpoint
+        /// </summary>
+        /// <param name="config"></param>
         public Subscription(InstagramConfig config)
             : base(config.RealTimeApi, config)
         {
@@ -42,9 +70,9 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="type"></param>
         /// <param name="aspect"></param>
-        /// <param name="objectId">The tag name to subscribe to. This is required, i.e. if <see cref="type"/> is<see cref="Object.Tag"/> or <see cref="Object.Location"/></param>
+        /// <param name="objectId">The tag name to subscribe to. This is required, i.e. if <see param="type"/> is<see cref="Object.Tag"/> or <see cref="Object.Location"/></param>
         /// <param name="verifyToken"></param>
-        /// <exception cref="ArgumentException">If objectId contains spaces and <see cref="type"/>  is objectTag </exception>
+        /// <exception cref="ArgumentException">If objectId contains spaces and <see param="type"/>  is objectTag </exception>
         /// <returns></returns>
         public Task<SubscriptionResponse> Create(Object type, Aspect aspect, string objectId = null, string verifyToken = null)
         {
@@ -92,7 +120,7 @@ namespace InstaSharp.Endpoints
         public Task<SubscriptionResponse> UnsubscribeUser(string id)
         {
             var request = Request(null, HttpMethod.Delete);
-            
+
             request.AddParameter("id", id);
 
             return Client.ExecuteAsync<SubscriptionResponse>(request);
@@ -106,7 +134,7 @@ namespace InstaSharp.Endpoints
         public Task<SubscriptionResponse> RemoveSubscription(Object type)
         {
             var request = Request(null, HttpMethod.Delete);
-            
+
             request.AddParameter("object", type.ToString().ToLower());
 
             return Client.ExecuteAsync<SubscriptionResponse>(request);
