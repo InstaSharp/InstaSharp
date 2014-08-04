@@ -66,7 +66,7 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Creates the user subscription.
+        /// Creates a user subscription.
         /// </summary>
         /// <param name="verifyToken">The verify token.</param>
         /// <returns>Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"</returns>
@@ -77,15 +77,14 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Creates the tag subscription.
+        /// Creates a tag subscription.
         /// </summary>
         /// <param name="tag">The hashtag, e.g. 'csharp'</param>
         /// <param name="verifyToken">The verify token.</param>
         /// <returns>Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"</returns>
-
         public Task<SubscriptionResponse> CreateTag(string tag, String verifyToken = null)
         {
-            if (String.IsNullOrWhiteSpace(tag))
+            if (string.IsNullOrWhiteSpace(tag))
             {
                 throw new ArgumentException("tag must be populated", "tag");
             }
@@ -100,7 +99,7 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Creates the location subscription.
+        /// Creates a location subscription.
         /// </summary>
         /// <param name="locationId">The locationId, e.g. '1257285'</param>
         /// <param name="verifyToken">The verify token.</param>
@@ -117,7 +116,7 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Creates a geaography subscription.
+        /// Creates a geography subscription.
         /// </summary>
         /// <param name="latitude">The latitude.</param>
         /// <param name="longitude">The longitude.</param>
@@ -128,7 +127,7 @@ namespace InstaSharp.Endpoints
         /// </returns>
         /// <exception cref="System.ArgumentException">locationId must be populated;locationId</exception>
         public Task<SubscriptionResponse> CreateGeography(double latitude, double longitude, int radius, String verifyToken = null)
-        { 
+        {
             if (radius < 0 || radius > 5000)
             {
                 throw new ArgumentException("radius must be greater than 0 and less tha 5000", "radius");
