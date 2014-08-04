@@ -1,4 +1,5 @@
-﻿using InstaSharp.Endpoints;
+﻿using System;
+using InstaSharp.Endpoints;
 using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -9,7 +10,7 @@ using Subscription = InstaSharp.Endpoints.Subscription;
 namespace InstaSharp.Tests
 {
     [TestClass]
-    internal class Realtime : TestBase
+    public class Realtime : TestBase
     {
         Subscription realtime;
 
@@ -54,9 +55,17 @@ namespace InstaSharp.Tests
         [TestMethod]
         public async Task SubscribeTag_WithNoClientSecret()
         {
-            var result = await realtime.Create(Subscription.Object.Tag, Subscription.Aspect.Media, "csharp");
+            var result = await realtime.CreateTag("csharp");
             AssertMissingClientSecretUrlParameter(result);
             // This is where Instagram tries to call your callback, without implementing the pubhubsub implementatin that authenticates, it will fail
+            try
+            {
+                var result2 = await realtime.CreateTag("");
+            }
+            catch (Exception exception)
+            {
+                Assert.IsInstanceOfType(exception,typeof(ArgumentException));
+            }
         }
 
         [TestCategory("Subscribe.Create")]
@@ -72,7 +81,7 @@ namespace InstaSharp.Tests
         [TestMethod]
         public async Task SubscribeUser_WithNoClientSecret()
         {
-            var result = await realtime.Create(Subscription.Object.User, Subscription.Aspect.Media, "joebloggs");
+            var result = await realtime.CreateUser("joebloggs");
             AssertMissingClientSecretUrlParameter(result);
         }
 
@@ -80,7 +89,7 @@ namespace InstaSharp.Tests
         [TestMethod]
         public async Task UnsubscribeUser_WithNoClientSecret()
         {
-            var result = await realtime.UnsubscribeUser("joebloggs");
+            var result = await realtime.RemoveSubscription("joebloggs");
             AssertMissingClientSecretUrlParameter(result);
         }
 
