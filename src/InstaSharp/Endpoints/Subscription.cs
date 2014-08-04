@@ -81,7 +81,12 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="tag">The hashtag, e.g. 'csharp'</param>
         /// <param name="verifyToken">The verify token.</param>
-        /// <returns>Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"</returns>
+        /// <returns>
+        /// Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"
+        /// </returns>
+        /// <exception cref="System.ArgumentException">tag must be populated;tag
+        /// or
+        /// subscribing to a tag with spaces is ignored by Instagram;tag</exception>
         public Task<SubscriptionResponse> CreateTag(string tag, String verifyToken = null)
         {
             if (string.IsNullOrWhiteSpace(tag))
@@ -94,7 +99,7 @@ namespace InstaSharp.Endpoints
                 throw new ArgumentException("subscribing to a tag with spaces is ignored by Instagram", "tag");
             }
             var postParams = PostParams(Object.Tag, verifyToken);
-            postParams["object_id"] = tag;
+            postParams["object_id"] = searchTerm;
             return ExecuteAsync(postParams);
         }
 
@@ -125,7 +130,7 @@ namespace InstaSharp.Endpoints
         /// <returns>
         /// Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"
         /// </returns>
-        /// <exception cref="System.ArgumentException">locationId must be populated;locationId</exception>
+        /// <exception cref="System.ArgumentException">radius must be greater than 0 and less tha 5000;radius</exception>
         public Task<SubscriptionResponse> CreateGeography(double latitude, double longitude, int radius, String verifyToken = null)
         {
             if (radius < 0 || radius > 5000)
