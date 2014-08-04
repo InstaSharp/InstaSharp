@@ -73,7 +73,7 @@ namespace InstaSharp.Endpoints
         /// <param name="objectId">The tag name to subscribe to. This is required, i.e. if <see param="type"/> is<see cref="Object.Tag"/> or <see cref="Object.Location"/></param>
         /// <param name="verifyToken"></param>
         /// <exception cref="ArgumentException">If objectId contains spaces and <see param="type"/>  is objectTag </exception>
-        /// <returns></returns>
+        /// <returns>Check the Meta Property for any errors. E.G. Meta.Code == BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"</returns>
         public Task<SubscriptionResponse> Create(Object type, Aspect aspect, string objectId = null, string verifyToken = null)
         {
             string searchTerm = null;
