@@ -2,9 +2,9 @@
 <html>
 
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Instasharp : A c# wrapper for the Instagram API" />
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Instasharp : A c# wrapper for the Instagram API">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -31,37 +31,97 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="instasharp" class="anchor" href="#instasharp"><span class="octicon octicon-link"></span></a>InstaSharp</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>InstaSharp is a wrapper around the Instagram API.  It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p><a href="https://ci.appveyor.com/project/Fujiy/instasharp"><img src="https://ci.appveyor.com/api/projects/status/ch334xwq15i9pcum" alt="Build status"></a></p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<h3>
+<a name="register-your-application" class="anchor" href="#register-your-application"><span class="octicon octicon-link"></span></a>Register Your Application</h3>
+
+<p>To get started, you will need to register an application with Instagram.  They will provide you with a client id, and a client secret.  They will additionally ask you for a callback URL. This is simply a URL that your browser will redirect back to during the Instagram Auth flow.</p>
+
+<h3>
+<a name="the-instagramconfig-class" class="anchor" href="#the-instagramconfig-class"><span class="octicon octicon-link"></span></a>The InstagramConfig Class</h3>
+
+<p>Now that you have registered an application, you need to create an instance of the InstagramConfig class.  This class has many of the options specified for you already, with optional overrides.</p>
+
+<pre><code>var clientId = ConfigurationManager.AppSettings["client_id"];
+var clientSecret = ConfigurationManager.AppSettings["client_secret"];
+var redirectUri = ConfigurationManager.AppSettings["redirect_uri"];
+var realtimeUri = "";
+
+InstagramConfig config = new InstagramConfig(clientId, clientSecret, redirectUri, realtimeUri);
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="authenticate" class="anchor" href="#authenticate"><span class="octicon octicon-link"></span></a>Authenticate</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Use the OAuth class to authenticate. It provides a helper to give you the initial link for handing users off to Instagram for authentication.  It will want to know what level of access you are requesting via the "scope".</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<pre><code>@{
+    // create the auth url
+    var scopes = new List&lt;OAuth.Scope&gt;();
+    scopes.Add(OAuth.Scope.Likes);
+    scopes.Add(OAuth.Scope.Comments);
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+    var link = OAuth.AuthLink(config.OAuthURI + "/authorize", config.ClientId, config.RedirectURI, scopes, OAuth.ResponseType.Code);
+}
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Now Instagram will athenticate the user on their end and callback to your callback url.  When you receive that callback, you need to respond with your client secret.  Instagram will then respond to that request with the authorization token.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<pre><code>[GET("oauth")]
+public async Task&lt;ActionResult&gt; Index(string code)
+{
+    // add this code to the auth object
+    var auth = new InstaSharp.OAuth(config);
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+    // now we have to call back to instagram and include the code they gave us
+    // along with our client secret
+    var oauthResponse = await auth.RequestToken(code);
+
+    // tell the session that we are authenticated
+    config.isAuthenticated = true;
+
+    // both the client secret and the token are considered sensitive data, so we won't be
+    // sending them back to the browser. we'll only store them temporarily.  If a user's session times
+    // out, they will have to click on the authenticate button again - sorry bout yer luck.
+    Session.Add("InstaSharp.AuthInfo", oauthResponse);
+
+    // all done, lets redirect to the home controller which will send some intial data to the app
+    return RedirectToAction("Index", "Home");
+}
+</code></pre>
+
+<p>Now you are authenticated and ready to call the Instagram Endpoints.  Instasharp carves these up under the "endpoints" namespace.  Each one is a class and will be expecting a configuration object and an OAuthResponse object.  For instance, you can request a user's feed as such...</p>
+
+<pre><code>readonly InstaSharp.Endpoints.Users _users;
+
+public UsersController()
+{
+    users = new Endpoints.Users(config, oauthResponse);
+}
+
+[GET("api/users/feed")]
+public async Task&lt;ActionResult&gt; Feed(string next_max_id)
+{
+    var feed = next_max_id == null ? await users.Feed() : await users.Feed(next_max_id);
+
+    // return plain JSON
+    return Json(result.Data);
+}
+</code></pre>
+
+<p>Each response returned by InstaSharp will contains two objects: a Meta object, and a "Data" property that has the reponse fully mapped to .NET types.</p>
+
+<p>The InstaSharp library embeds the documentation of Instagram into the code.  Each endpoint method will tell you if it requires authentication, and what parameters it needs.</p>
       </section>
     </div>
 
