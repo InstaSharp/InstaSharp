@@ -117,7 +117,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="id">The subscription id</param>
         /// <returns></returns>
-        public Task<SubscriptionResponse> UnsubscribeUser(string id)
+        public Task<SubscriptionResponse> RemoveSubscription(string id)
         {
             var request = Request(null, HttpMethod.Delete);
 
