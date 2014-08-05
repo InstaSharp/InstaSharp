@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests
 {
-    internal class TestBase
+    public class TestBase
     {
         protected readonly OAuthResponse Auth = new OAuthResponse();
         protected readonly InstagramConfig Config = new InstagramConfig();

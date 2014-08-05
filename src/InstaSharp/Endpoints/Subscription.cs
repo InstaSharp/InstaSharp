@@ -29,7 +29,7 @@ namespace InstaSharp.Endpoints
             /// <summary>
             /// Location
             /// </summary>  
-            Location,   
+            Location,
             /// <summary>
             /// Geography
             /// </summary>
@@ -66,30 +66,93 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Create a subscription
+        /// Creates a user subscription.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="aspect"></param>
-        /// <param name="objectId">The tag name to subscribe to. This is required, i.e. if <see param="type"/> is<see cref="Object.Tag"/> or <see cref="Object.Location"/></param>
-        /// <param name="verifyToken"></param>
-        /// <exception cref="ArgumentException">If objectId contains spaces and <see param="type"/>  is objectTag </exception>
-        /// <returns></returns>
-        public Task<SubscriptionResponse> Create(Object type, Aspect aspect, string objectId = null, string verifyToken = null)
+        /// <param name="verifyToken">The verify token.</param>
+        /// <returns>Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"</returns>
+        public Task<SubscriptionResponse> CreateUser(String verifyToken = null)
         {
-            string searchTerm = null;
-            if (type == Object.Tag || type == Object.Location)
-            {
-                if (string.IsNullOrWhiteSpace(objectId))
-                {
-                    throw new ArgumentException("objectId must be populated when type is Tag or Location", "objectId");
-                }
-                searchTerm = objectId.Trim().ToLower();
-                if (searchTerm.ContainsWhiteSpace() && type == Object.Tag)
-                {
-                    throw new ArgumentException("subscribing to an objectid with spaces is ignored by Instagram", "objectId");
-                }
-            }
+            var postParams = PostParams(Object.User, verifyToken);
+            return ExecuteAsync(postParams);
+        }
 
+        /// <summary>
+        /// Creates a tag subscription.
+        /// </summary>
+        /// <param name="tag">The hashtag, e.g. 'csharp'</param>
+        /// <param name="verifyToken">The verify token.</param>
+        /// <returns>
+        /// Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"
+        /// </returns>
+        /// <exception cref="System.ArgumentException">tag must be populated;tag
+        /// or
+        /// subscribing to a tag with spaces is ignored by Instagram;tag</exception>
+        public Task<SubscriptionResponse> CreateTag(string tag, String verifyToken = null)
+        {
+            if (string.IsNullOrWhiteSpace(tag))
+            {
+                throw new ArgumentException("tag must be populated", "tag");
+            }
+            var searchTerm = tag.Trim().ToLower();
+            if (searchTerm.ContainsWhiteSpace())
+            {
+                throw new ArgumentException("subscribing to a tag with spaces is ignored by Instagram", "tag");
+            }
+            var postParams = PostParams(Object.Tag, verifyToken);
+            postParams["object_id"] = searchTerm;
+            return ExecuteAsync(postParams);
+        }
+
+        /// <summary>
+        /// Creates a location subscription.
+        /// </summary>
+        /// <param name="locationId">The locationId, e.g. '1257285'</param>
+        /// <param name="verifyToken">The verify token.</param>
+        /// <returns>Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"</returns>
+        public Task<SubscriptionResponse> CreateLocation(String locationId, String verifyToken = null)
+        {
+            if (string.IsNullOrWhiteSpace(locationId))
+            {
+                throw new ArgumentException("locationId must be populated", "locationId");
+            }
+            var postParams = PostParams(Object.Location, verifyToken);
+            postParams["object_id"] = locationId;
+            return ExecuteAsync(postParams);
+        }
+
+        /// <summary>
+        /// Creates a geography subscription.
+        /// </summary>
+        /// <param name="latitude">The latitude.</param>
+        /// <param name="longitude">The longitude.</param>
+        /// <param name="radius">The radius. Must be less than 5000m</param>
+        /// <param name="verifyToken">The verify token.</param>
+        /// <returns>
+        /// Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"
+        /// </returns>
+        /// <exception cref="System.ArgumentException">radius must be greater than 0 and less tha 5000;radius</exception>
+        public Task<SubscriptionResponse> CreateGeography(double latitude, double longitude, int radius, String verifyToken = null)
+        {
+            if (radius < 0 || radius > 5000)
+            {
+                throw new ArgumentException("radius must be greater than 0 and less tha 5000", "radius");
+            }
+            var postParams = PostParams(Object.Geography, verifyToken);
+            postParams["lat"] = latitude.ToString();
+            postParams["lng"] = latitude.ToString();
+            postParams["radius"] = radius.ToString();
+            return ExecuteAsync(postParams);
+        }
+
+        private Task<SubscriptionResponse> ExecuteAsync(Dictionary<string, string> postParams)
+        {
+            var request = Request(null, HttpMethod.Post);
+            request.Content = new FormUrlEncodedContent(postParams);
+            return Client.ExecuteAsync<SubscriptionResponse>(request);
+        }
+
+        private Dictionary<string, string> PostParams(Object type, string verifyToken)
+        {
             // create a new guid that uniquely identifies this subscription request
             verifyToken = string.IsNullOrWhiteSpace(verifyToken) ? Guid.NewGuid().ToString() : verifyToken;
             var postParams = new Dictionary<string, string>
@@ -97,19 +160,11 @@ namespace InstaSharp.Endpoints
                 {"client_id", InstagramConfig.ClientId},
                 {"client_secret", InstagramConfig.ClientSecret},
                 {"object", type.ToString().ToLower()},
-                {"aspect", aspect.ToString().ToLower()},
+                {"aspect", Aspect.Media.ToString().ToLower()},
                 {"verify_token", verifyToken},
                 {"callback_url", InstagramConfig.CallbackUri},
             };
-
-            if (type == Object.Tag || type == Object.Location)
-            {
-                postParams["object_id"] = searchTerm;
-            }
-
-            var request = Request(null, HttpMethod.Post);
-
-            return Client.ExecuteAsync<SubscriptionResponse>(request);
+            return postParams;
         }
 
         /// <summary>
@@ -117,7 +172,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="id">The subscription id</param>
         /// <returns></returns>
-        public Task<SubscriptionResponse> UnsubscribeUser(string id)
+        public Task<SubscriptionResponse> RemoveSubscription(string id)
         {
             var request = Request(null, HttpMethod.Delete);
 
