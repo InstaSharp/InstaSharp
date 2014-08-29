@@ -2,15 +2,17 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace InstaSharp.Tests {
-    
+namespace InstaSharp.Tests
+{
+
     [TestClass]
-    internal class Media : TestBase
+    public class Media : TestBase
     {
 
         readonly Endpoints.Media media;
 
-        public Media() {
+        public Media()
+        {
             media = new Endpoints.Media(Config, Auth);
         }
 
@@ -72,5 +74,7 @@ namespace InstaSharp.Tests {
             var result = await media.Search(36.166667, -86.783333);
             Assert.IsTrue(result.Data.Count > 0);
         }
+
+
     }
 }
