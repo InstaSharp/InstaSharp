@@ -56,7 +56,7 @@
     <Compile Include="Models\Caption.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\NamespaceDoc.cs" />
-    <Compile Include="Models\OEmbedResponse.cs" />
+    <Compile Include="Models\Responses\ShortLinkMediaInfoResponse.cs" />
     <Compile Include="Models\RealtimeUpdateItem.cs" />
     <Compile Include="Models\Resolution.cs" />
     <Compile Include="Models\Responses\NamespaceDoc.cs" />

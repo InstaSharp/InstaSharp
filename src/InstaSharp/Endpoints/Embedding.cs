@@ -6,7 +6,7 @@ using InstaSharp.Models.Responses;
 namespace InstaSharp.Endpoints
 {
     /// <summary>
-    /// 
+    /// The Embedding Api
     /// </summary>
     /// <remarks><see cref="http://instagram.com/developer/embedding/"/></remarks>
     public class Embedding : InstagramApi
