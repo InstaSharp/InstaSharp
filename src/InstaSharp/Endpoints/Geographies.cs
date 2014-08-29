@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace InstaSharp.Endpoints
 {
     /// <summary>
-    /// 
+    /// The Geographies Api
     /// </summary>
     public class Geographies : InstagramApi
     {
@@ -30,11 +30,11 @@ namespace InstaSharp.Endpoints
 
         /// <summary>
         /// Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.
-        /// <para>
-        /// <c>Requires Authentication: </c>False
+        /// <para><c>Requires Authentication: </c>False
         /// </para>
         /// </summary>
         /// <param name="geoId">The id of the media about which to retrieve data</param>
+        /// <returns>A media response containing a list of media</returns>
         public Task<MediaResponse> Recent(int geoId)
         {
             return Recent(geoId, null, null);
@@ -42,13 +42,13 @@ namespace InstaSharp.Endpoints
 
         /// <summary>
         /// Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.
-        /// <para>
-        /// <c>Requires Authentication: </c>False
+        /// <para><c>Requires Authentication: </c>False
         /// </para>
         /// </summary>
         /// <param name="geoId">The id of the media about which to retrieve data</param>
         /// <param name="count">Max number of media to return.</param>
         /// <param name="minId">Return media before this min_id.</param>
+        /// <returns>A media response containing a list of media</returns>
         public Task<MediaResponse> Recent(int geoId, int? count, string minId)
         {
             var request = Request("{id}/media/recent");

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder" version="2014.5.31.0" projectFile="C:\damian\Instasharp\src\InstaSharp\dfgfg.shfbproj" started="02/08/2014 20:08:05">
+<buildStep step="Initializing">
+Finding tools...
+The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
+Searching for HTML Help 1 compiler...
+Found HTML Help 1 compiler in &#39;C:\Program Files (x86)\HTML Help Workshop\&#39;
+Locating components in the following folder(s):
+   C:\damian\Instasharp\src\InstaSharp
+Using presentation style &#39;VS2013&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
+Loading and initializing plug-ins...
+Lightweight Website Style Version 2014.5.31.0
+Copyright &#169; 2006-2014, Eric Woodruff, All Rights Reserved
+Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
+</buildStep>
+<buildStep step="ClearWorkFolder">
+Clearing working folder...
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.dll
+    Found assembly &#39;C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.dll&#39;
+Source: C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.xml
+
+Copying XML comments files
+    C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.XML -&gt; C:\damian\Instasharp\src\InstaSharp\Help\Working\InstaSharp.XML
+</buildStep>
+<buildStep step="GenerateSharedContent">
+Generating shared content files (en-US, English (United States))...
+<plugIn name="Lightweight Website Style" behavior="After" priority="1000">
+</plugIn>    Last step completed in 00:00:00.0090
+</buildStep>
+<buildStep step="GenerateApiFilter">
+Generating API filter for MRefBuilder...
+    Last step completed in 00:00:00.0080
+</buildStep>
+<buildStep step="GenerateReflectionInfo">
+Generating reflection information...
+[C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
+Build started 02/08/2014 20:08:05.
+Project &quot;C:\damian\Instasharp\src\InstaSharp\Help\Working\GenerateRefInfo.proj&quot; on node 1 (default targets).
+PrepareForBuild:
+  Creating directory &quot;obj\Debug\&quot;.
+GenerateRefInfo:
+  MRefBuilder (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Loaded 1 assemblies for reflection and 1 dependency assemblies.
+MRefBuilder : error : Unresolved assembly reference: System.Threading.Tasks (System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a) required by Microsoft.Threading.Tasks [C:\damian\Instasharp\src\InstaSharp\Help\Working\GenerateRefInfo.proj]
+    Last step completed in 00:00:00.8911
+</buildStep>
+<buildStep step="Failed">
+
+SHFB: Error BE0043: Unexpected error detected in last build step.  See output above for details.
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.RunProcess(String fileToRun, String args)
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.Build()
+
+</buildStep>
+</shfbBuild>

@@ -1,0 +1,1831 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InstaSharp</name>
+    </assembly>
+    <members>
+        <member name="T:InstaSharp.Endpoints.Comments">
+            <summary>
+            Comments Endpoint
+            </summary>
+        </member>
+        <member name="T:InstaSharp.Endpoints.InstagramApi">
+            <summary>
+            Base class for Apis
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.InstagramApi.#ctor(System.String,InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InstaSharp.Endpoints.InstagramApi"/> class.
+            </summary>
+            <param name="endpoint">The endpoint.</param>
+            <param name="instagramConfig">The instagram configuration.</param>
+            <param name="oauthResponse">The oauth response.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.InstagramApi.AddHeaders(System.Net.Http.HttpRequestMessage)">
+            <param name="request"></param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.InstagramApi.CreateXInstaForwardedHeader">
+            <summary>
+            You can help us better identify API calls from your app by making server-side calls with a HTTP header named X-Insta-Forwarded-For
+            signed using your Client Secret. This header is optional, but recommended for any app making server-to-server calls. To enable this
+            setting, edit your OAuth Client configuration and mark the Enforce signed header checkbox. When enabled, Instagram will check for 
+            the X-Insta-Forwarded-For HTTP header and verify its signature. 
+            HMAC signed using the SHA256 hash algorithm with your client's IP address and Client Secret.
+            </summary>
+            <returns></returns>
+            TODO: only public for unit testing purposes. Move to another class?
+        </member>
+        <member name="P:InstaSharp.Endpoints.InstagramApi.InstagramConfig">
+            <summary>
+            Gets the instagram configuration.
+            </summary>
+            <value>
+            The instagram configuration.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Endpoints.InstagramApi.OAuthResponse">
+            <summary>
+            Gets the o authentication response.
+            </summary>
+            <value>
+            The o authentication response.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Endpoints.InstagramApi.Ips">
+            <summary>
+              IP information: Comma-separated list of one or more IPs; if your app receives requests directly from clients,
+             then it should be the client's remote IP as detected by the your app's load balancer; if your app is behind another load balancer (for example, Amazon's ELB),
+             this should contain the exact contents of the original X-Forwarded-For header. You can use the 127.0.0.1 loopback address during testing
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Endpoints.InstagramApi.EnforceSignedHeader">
+            <summary>
+            Requires the use of your Client Secret to sign POST and DELETE API requests. Use this option to instruct Instagram to check requests for the 'X-Insta-Forwarded-For' HTTP header. 
+            Eligible requests that do not provide this header and a valid signature will fail. This technique helps identify you as the legitimate owner of this OAuth Client. Only enable 
+            this option for server-to-server calls. See the Restrict API Requests documentation for details. http://instagram.com/developer/restrict-api-requests/
+            This needs to be configured at application level
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Comments.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Comments Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Comments.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Comments Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Comments.Get(System.String)">
+            <summary>
+            Get a full list of comments on a media.
+            <para>Requires Authentication: False
+            </para>
+            <param>
+            <c>Required Scope: </c>comments
+            </param>
+            </summary>
+            <param name="mediaId">The id of the media on which to retrieve comments.</param>
+            <returns>CommentsResponse</returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Comments.Post(System.String,System.String)">
+            <summary>
+            Create a comment on a media. Please email apidevelopers[at]instagram.com for access.
+            <para>
+            <c>Requires Authentication: </c>True
+            </para>
+            <param>
+            <c>Required Scope: </c>comments
+            </param>
+            </summary>
+            <param name="mediaId">The id of the media on which to post a comment.</param>
+            <param name="comment">Text to post as a comment on the media as specified in media-id.</param>
+            <returns>CommentsResponse</returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Comments.Delete(System.String,System.String)">
+            <summary>
+            Remove a comment either on the authenticated user's media or authored by the authenticated user.
+            <para>
+            <c>Requires Authentication: </c>True
+            </para>
+            <param>
+            <c>Required Scope: </c>comments
+            </param>
+            </summary>
+            <param name="mediaId">The id of the media from which to delete the comment.</param>
+            <param name="commentId">The id of the comment to delete.</param>
+            <returns>CommentResponse</returns>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Geographies">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Geographies.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Geographies Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Geographies.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Geographies Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Geographies.Recent(System.Int32)">
+            <summary>
+            Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.
+            <para>
+            <c>Requires Authentication: </c>False
+            </para>
+            </summary>
+            <param name="geoId">The id of the media about which to retrieve data</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Geographies.Recent(System.Int32,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Get very recent media from a geography subscription that you created. Note: you can only access Geographies that were explicitly created by your OAuth client. To backfill photos from the location covered by this geography, use the media search endpoint.
+            <para>
+            <c>Requires Authentication: </c>False
+            </para>
+            </summary>
+            <param name="geoId">The id of the media about which to retrieve data</param>
+            <param name="count">Max number of media to return.</param>
+            <param name="minId">Return media before this min_id.</param>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Likes">
+            <summary>
+            The Likes Api
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Likes.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Likes Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Likes.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Likes Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Likes.Get(System.String)">
+            <summary>
+            Get a list of users who have liked this media.
+            <para>Requires Authentication: False</para>
+            <para>
+            <c>Required Scope: </c> likes
+            </para>
+            </summary>
+            <param name="mediaId">The id of the media about which to retrieve information.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Likes.Post(System.String)">
+            <summary>
+            Set a like on this media by the currently authenticated user.
+            <para>Requires Authentication: False</para>
+            <para>
+            <c>Required Scope: </c>likes
+            </para>
+            </summary>
+            <param name="mediaId">The id of the media to create a like for.</param>
+            <returns>LikesResponse</returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Likes.Delete(System.String)">
+            <summary>
+            Remove a like on this media by the currently authenticated user.
+            <para>Requires Authentication: False</para>
+            <para>
+            <c>Required Scope: </c>likes
+            </para>
+            </summary>
+            <param name="mediaId">The id of the media from wich to remove the like.</param>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Locations">
+            <summary>
+            The Locations API
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Locations Endpoints
+            </summary>
+            <param name="config">An instance of the InstaGram config class</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Locations Endpoints
+            </summary>
+            <param name="config">An instance of the InstaGram config class</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.Get(System.String)">
+            <summary>
+            Get information about a location.
+            <para>
+            <c>Requires Authentication: False</c>
+            </para>
+            </summary>
+            <param name="locationId">The id of the location to retreive information for.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.Recent(System.String)">
+            <summary>
+             Get a list of recent media objects from a given location.
+            </summary>
+            <param name="locationId">The location identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.Recent(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String)">
+            <summary>
+            Get a list of recent media objects from a given location.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="locationId">The id of the location about which to retrieve information.</param>
+            <param name="minTimestamp">Return media after this UNIX timestamp</param>
+            <param name="maxTimestamp">Return media before this UNIX timestamp</param>
+            <param name="minId">Return media before this min_id</param>
+            <param name="maxId">Return media after this max_id</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.Search(System.Double,System.Double)">
+            <summary>
+            Search for a location by geographic coordinate.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="latitude">Latitude of the center search coordinate. If used, lng is required.</param>
+            <param name="longitude">Longitude of the center search coordinate. If used, lat is required.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.Search(System.Double,System.Double,System.Nullable{System.Double})">
+            <summary>
+            Search for a location by geographic coordinate.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="latitude">Latitude of the center search coordinate. If used, lng is required.</param>
+            <param name="longitude">Longitude of the center search coordinate. If used, lat is required.</param>
+            <param name="distance">Default is 1000m (distance=1000), max distance is 5000.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Locations.Search(System.String,InstaSharp.Endpoints.Locations.FoursquareVersion)">
+            <summary>
+            Search for a location by geographic coordinate.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="foursquareId">Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.</param>
+            <param name="foursquareVersion">The version of the FourSquare ID  you are using.  Either version 1 or 2.</param>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Locations.FoursquareVersion">
+            <summary>
+            The versions of the Foursquare API
+            </summary>   
+        </member>
+        <member name="F:InstaSharp.Endpoints.Locations.FoursquareVersion.One">
+            <summary>
+             one
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Locations.FoursquareVersion.Two">
+            <summary>
+             two
+            </summary>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Media">
+            <summary>
+            The Media API
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Media.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Media Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Media.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Media Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Media.Get(System.String)">
+            <summary>
+            Get information about a media object. Note: if you are authenticated, you will receive the user_has_liked key which quickly tells you whether the current user has liked this media item.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="mediaId">The id of the media to retrieve</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Media.Popular">
+            <summary>
+            Get a list of what media is most popular at the moment.
+            <para>Requires Authentication: False</para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Media.Search(System.Double,System.Double)">
+            <summary>
+            Search for media in a given area.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
+            <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Media.Search(System.Double,System.Double,System.Nullable{System.Int32})">
+            <summary>
+            Search for media in a given area.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
+            <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
+            <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Media.Search(System.Double,System.Double,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Search for media in a given area.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
+            <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
+            <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
+            <param name="minTimestamp">All media returned will be taken later than this timestamp.</param>
+            <param name="maxTimestamp">All media returned will be taken earlier than this timestamp.</param>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Relationships">
+            <summary>
+            The Relationships Endpoint
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Relationships Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Relationships Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class.</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.Follows">
+            <summary>
+            Get the list of users this user follows.
+            <para>Requires Authentication: True</para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.Follows(System.Int32)">
+            <summary>
+            Get the list of users this user follows.
+            <para>Requires Authentication: False</para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+            <param name="userId">The list of users that this user id is following.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.Follows(System.Int32,System.String)">
+            <summary>
+            Get the list of users this user follows.
+            <para>Requires Authentication: False</para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+            <param name="userId">The list of users that this user id is following.</param>
+            <param name="cursor">The next cursor id</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.FollowedBy">
+            <summary>
+            Get the list of users this user is followed by.
+            <para>Requires Authentication: True</para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.FollowedBy(System.Int32)">
+            <summary>
+            Get the list of users this user is followed by.
+            <para>Requires Authentication: False</para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+            <param name="userId">The id of the user to get the followers of.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.FollowedBy(System.Int32,System.String)">
+            <summary>
+            Get the list of users this user is followed by.
+            <para>Requires Authentication: False</para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+            <param name="userId">The id of the user to get the followers of.</param>
+            <param name="cursor">The next cursor id</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.RequestedBy">
+            <summary>
+            List the users who have requested this user's permission to follow.
+            <para>
+            <c>Requires Authentication:</c> True
+            </para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.Relationship(System.Int32)">
+            <summary>
+            Get information about a relationship to another user.
+            <para>
+            <c>Requires Authentication:</c> True
+            </para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Relationships.Relationship(System.Int32,InstaSharp.Endpoints.Relationships.Action)">
+            <summary>
+            Modify the relationship between the current user and the target user.
+            <para>
+            <c>Requires Authentication:</c> True
+            </para>
+            <para>
+            <c>Required scope:</c> relationships
+            </para>
+            </summary>
+            <param name="userId">The user id about which to get relationship information.</param>
+            <param name="action">One of Action enum.</param>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Relationships.Action">
+            <summary>
+            The Action
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Relationships.Action.Follow">
+            <summary>
+            follow
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Relationships.Action.Unfollow">
+            <summary>
+            unfollow
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Relationships.Action.Block">
+            <summary>
+            block
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Relationships.Action.Unblock">
+            <summary>
+            unblock
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Relationships.Action.Approve">
+            <summary>
+            approve
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Relationships.Action.Deny">
+            <summary>
+            deny
+            </summary>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Tags">
+            <summary>
+            The Tag API
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Tag Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            Tag Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfig class</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.Get(System.String)">
+            <summary>
+            Get information about a tag object.
+            </summary>
+            <para>Requires Authentication: False</para>
+            <param name="tagName">Return information about this tag.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.Recent(System.String)">
+            <summary>
+            Get a list of recently tagged media. Note that this media is ordered by when the media was tagged with this tag, rather than the order it was posted. Use the max_tag_id and min_tag_id parameters in the pagination response to paginate through these objects.
+            </summary>
+            <para>Requires Authentication: False</para>
+            <param name="tagName">Return information about this tag.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.Recent(System.String,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Get a list of recently tagged media. Note that this media is ordered by when the media was tagged with this tag, rather than the order it was posted. Use the max_tag_id and min_tag_id parameters in the pagination response to paginate through these objects.
+            </summary>
+            <para>Requires Authentication: False</para>
+            <param name="tagName">Return information about this tag.</param>
+            <param name="minTagId">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
+            <param name="maxTagId">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
+            <param name="count">Count of tagged media to return. Will still be governed by Instagram's enforced limit.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.RecentMultiplePages(System.String,System.String,System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit Check <see cref="P:InstaSharp.Models.Responses.Response.RateLimitLimit"/>
+            </summary>
+            <param name="tagName">Return information about this tag.</param>
+            <param name="minTagId">Return media [before]after  this min_tag_id. If you don't want to use this parameter, use null.</param>
+            <param name="maxTagId">Return media [after] before this max_tag_id. If you don't want to use this parameter, use null.</param>
+            <param name="maxPageCount">the number of pages at which you wish to stop returning data. Otherwise it keeps going until the end. Be warned, you could quickly use your daily limit</param>
+            <param name="stopatMediaId">Doesnt return any data older than or including this id</param>
+            <returns>a response object containing a list of the media responses and the last returned Meta code</returns>
+            <remarks>http://stackoverflow.com/questions/20625173/how-does-instagrams-get-tags-tag-media-recent-pagination-actually-work?rq=1 </remarks>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.CropDataIfIdFound(System.Collections.Generic.List{InstaSharp.Models.Media},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <param name="stopatMediaId">The media id without the _user suffix</param>
+            <returns></returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Tags.Search(System.String)">
+            <summary>
+            Search for tags by name. Results are ordered first as an exact match, then by popularity. Short tags will be treated as exact matches.
+            </summary>
+            <para>Requires Authentication: False</para>
+            <param name="searchTerm">A valid tag name without a leading #. (eg. snowy, nofilter)</param>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Users">
+            <summary>
+            The Users API
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            User Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfiguration class</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)">
+            <summary>
+            User Endpoints
+            </summary>
+            <param name="config">An instance of the InstagramConfiguration class</param>
+            <param name="auth">An instance of the OAuthResponse class.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.Get">
+            <summary>
+            Get information about authenticated user.
+            <para>Requires Authentication: True</para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.Get(System.String)">
+            <summary>
+            Get information about a user.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <paramref name="userId">The id of the user who's profile you want to retreive.</paramref>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.GetSelf">
+            <summary>
+            Get information about authenticated user.
+            <para>Requires Authentication: True</para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.Feed(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            See the authenticated user's feed.
+            <para>Requires Authentication: True</para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.RecentSelf">
+            <summary>
+            Get the most recent media published by the logged in user. 
+            <para>Requires Authentication: True</para>
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.RecentSelf(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get the most recent media published by the logged in user. 
+            <para>Requires Authentication: True</para>
+            </summary>
+            <param name="maxId">Return media earlier than this max_id.</param>
+            <param name="minId">Return media later than this min_id.</param>
+            <param name="count">Count of media to return.</param>
+            <param name="minTimestamp">Return media after this timestamp.</param>
+            <param name="maxTimestamp">Return media before this timestamp.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.Recent(System.String)">
+            <summary>
+            Get the most recent media published by a user. 
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="id">The id of the user.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.Recent(System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get the most recent media published by a user. 
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="id">The id of the user.</param>
+            <param name="maxId">Return media earlier than this max_id.</param>
+            <param name="minId">Return media later than this min_id.</param>
+            <param name="count">Count of media to return.</param>
+            <param name="minTimestamp">Return media after this timestamp.</param>
+            <param name="maxTimestamp">Return media before this timestamp.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.Liked(System.String,System.Nullable{System.Int32})">
+            <summary>
+            See the authenticated user's list of media they've liked. Note that this list is ordered by the order in which the user liked the media. Private media is returned as long as the authenticated user has permission to view that media. Liked media lists are only available for the currently authenticated user.
+            <para>Requires Authentication: True</para>
+            </summary>
+            <param name="maxLikeId">Return media ealier than this maxLikeId.</param>
+            <param name="count">Count of media to return.</param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Users.Search(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Search for a user by name.
+            <para>Requires Authentication: False</para>
+            </summary>
+            <param name="searchTerm">A query string.</param>
+            <param name="count">Number of users to return.</param>
+        </member>
+        <member name="M:InstaSharp.Infrastructure.UnixDateTimeConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object.
+            </summary>
+            <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter"/> to write to.</param><param name="value">The value.</param><param name="serializer">The calling serializer.</param>
+        </member>
+        <member name="M:InstaSharp.Infrastructure.UnixDateTimeConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+              Reads the JSON representation of the object.
+            </summary>
+            <param name="reader">The <see cref="T:Newtonsoft.Json.JsonReader"/> to read from.</param>
+            <param name="objectType">Type of the object.</param>
+            <param name="existingValue">The existing value of object being read.</param>
+            <param name="serializer">The calling serializer.</param>
+            <returns>The object value.</returns>
+        </member>
+        <member name="T:InstaSharp.Models.Caption">
+            <summary>
+            The Caption Object
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Caption.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Caption.CreatedTime">
+            <summary>
+            Gets or sets the created time.
+            </summary>
+            <value>
+            The created time.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Caption.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Caption.From">
+            <summary>
+            Gets or sets from.
+            </summary>
+            <value>
+            From.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Comment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Comment.CreatedTime">
+            <summary>
+            Gets or sets the created time.
+            </summary>
+            <value>
+            The created time.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Comment.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Comment.From">
+            <summary>
+            Gets or sets from.
+            </summary>
+            <value>
+            From.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Comment.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.RealtimeUpdateItem">
+            <summary>
+            An object returned frmo a live subscription
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.RealtimeUpdateItem.SubScriptionId">
+            <summary>
+            Gets or sets the sub scription identifier.
+            </summary>
+            <value>
+            The sub scription identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.RealtimeUpdateItem.Object">
+            <summary>
+            Gets or sets the object.
+            </summary>
+            <value>
+            The object.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.RealtimeUpdateItem.ObjectId">
+            <summary>
+            Gets or sets the object identifier.
+            </summary>
+            <value>
+            The object identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.RealtimeUpdateItem.ChangedAspect">
+            <summary>
+            Gets or sets the changed aspect.
+            </summary>
+            <value>
+            The changed aspect.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.RealtimeUpdateItem.Time">
+            <summary>
+            Gets or sets the time.
+            </summary>
+            <value>
+            The time.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Resolution">
+            <summary>
+            Resolution
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Resolution.Url">
+            <summary>
+            Gets or sets the URL.
+            </summary>
+            <value>
+            The URL.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Resolution.Width">
+            <summary>
+            Gets or sets the width.
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Resolution.Height">
+            <summary>
+            Gets or sets the height.
+            </summary>
+            <value>
+            The height.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.TagsMultiplePagesResponse">
+            <summary>
+            TagsMultiplePagesResponse
+            </summary>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.Response">
+            <summary>
+            Response Base class
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.Response.Meta">
+            <summary>
+            Gets or sets the meta.
+            </summary>
+            <value>
+            The meta.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.Response.RateLimitLimit">
+            <summary>
+            The total number of calls allowed within the 1-hour window
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.Response.RateLimitRemaining">
+            <summary>
+            The remaining number of calls available to your app within the 1-hour window
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Models.Responses.TagsMultiplePagesResponse.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:InstaSharp.Models.Responses.TagsMultiplePagesResponse"/> class.
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.TagsMultiplePagesResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.TagsMultiplePagesResponse.PageCount">
+            <summary>
+            The number of pages in total which were returned
+            </summary>
+            <value>
+            The page count.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.TagsMultiplePagesResponse.PaginationNextMaxId">
+            <summary>
+            Gets or sets the pagination next maximum identifier.
+            </summary>
+            <value>
+            The pagination next maximum identifier.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Video">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Video.LowResolution">
+            <summary>
+            Gets or sets the low resolution.
+            </summary>
+            <value>
+            The low resolution.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Video.StandardResolution">
+            <summary>
+            Gets or sets the standard resolution.
+            </summary>
+            <value>
+            The standard resolution.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.SubscriptionResponse">
+            <summary>
+            Subscription Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.SubscriptionResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.OAuth">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:InstaSharp.OAuth.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InstaSharp.OAuth"/> class.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:InstaSharp.OAuth.AuthLink(System.String,System.String,System.String,System.Collections.Generic.List{InstaSharp.OAuth.Scope},InstaSharp.OAuth.ResponseType)">
+            <summary>
+            Authentications the link.
+            </summary>
+            <param name="instagramOAuthUri">The instagram o authentication URI.</param>
+            <param name="clientId">The client identifier.</param>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="scopes">The scopes.</param>
+            <param name="responseType">Type of the response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:InstaSharp.OAuth.RequestToken(System.String)">
+            <summary>
+            Requests the token.
+            </summary>
+            <param name="code">The code.</param>
+            <returns></returns>
+        </member>
+        <member name="T:InstaSharp.OAuth.ResponseType">
+            <summary>
+            Response Type
+            </summary>
+        </member>
+        <member name="F:InstaSharp.OAuth.ResponseType.Code">
+            <summary>
+            The code
+            </summary>
+        </member>
+        <member name="F:InstaSharp.OAuth.ResponseType.Token">
+            <summary>
+            The token
+            </summary>
+        </member>
+        <member name="T:InstaSharp.OAuth.Scope">
+            <summary>
+            Scope
+            </summary>
+        </member>
+        <member name="F:InstaSharp.OAuth.Scope.Basic">
+            <summary>
+            The basic
+            </summary>
+        </member>
+        <member name="F:InstaSharp.OAuth.Scope.Comments">
+            <summary>
+            The comments
+            </summary>
+        </member>
+        <member name="F:InstaSharp.OAuth.Scope.Relationships">
+            <summary>
+            The relationships
+            </summary>
+        </member>
+        <member name="F:InstaSharp.OAuth.Scope.Likes">
+            <summary>
+            The likes
+            </summary>
+        </member>
+        <member name="T:InstaSharp.InstagramConfig">
+            <summary>
+            The Configuration
+            </summary>
+        </member>
+        <member name="M:InstaSharp.InstagramConfig.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:InstaSharp.InstagramConfig"/> class.
+            </summary>
+        </member>
+        <member name="M:InstaSharp.InstagramConfig.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InstaSharp.InstagramConfig"/> class.
+            </summary>
+            <param name="clientId">The client identifier.</param>
+            <param name="clientSecret">The client secret.</param>
+        </member>
+        <member name="M:InstaSharp.InstagramConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InstaSharp.InstagramConfig"/> class.
+            </summary>
+            <param name="clientId">The client identifier.</param>
+            <param name="clientSecret">The client secret.</param>
+            <param name="redirectUri">The redirect URI.</param>
+            <param name="callbackUri">The callback URI.</param>
+            <param name="apiUri">The API URI.</param>
+            <param name="oauthUri">The oauth URI.</param>
+            <param name="realTimeApi">The real time API.</param>
+        </member>
+        <member name="P:InstaSharp.InstagramConfig.ApiUri">
+            <summary>
+            Gets or sets the API URI.
+            </summary>
+            <value>
+            The API URI.
+            </value>
+        </member>
+        <member name="P:InstaSharp.InstagramConfig.OAuthUri">
+            <summary>
+            Gets or sets the o authentication URI.
+            </summary>
+            <value>
+            The o authentication URI.
+            </value>
+        </member>
+        <member name="P:InstaSharp.InstagramConfig.RealTimeApi">
+            <summary>
+            Gets or sets the real time API.
+            </summary>
+            <value>
+            The real time API.
+            </value>
+        </member>
+        <member name="P:InstaSharp.InstagramConfig.ClientId">
+            <summary>
+            Gets or sets the client identifier.
+            </summary>
+            <value>
+            The client identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.InstagramConfig.ClientSecret">
+            <summary>
+            Gets or sets the client secret.
+            </summary>
+            <value>
+            The client secret.
+            </value>
+        </member>
+        <member name="P:InstaSharp.InstagramConfig.RedirectUri">
+            <summary>
+            Gets or sets the redirect URI.
+            </summary>
+            <value>
+            The redirect URI.
+            </value>
+        </member>
+        <member name="P:InstaSharp.InstagramConfig.CallbackUri">
+            <summary>
+            Gets or sets the callback URI.
+            </summary>
+            <value>
+            The callback URI.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.UserInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.UserInfo.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.UserInfo.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>
+            The username.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.UserInfo.FullName">
+            <summary>
+            Gets or sets the full name.
+            </summary>
+            <value>
+            The full name.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.UserInfo.ProfilePicture">
+            <summary>
+            Gets or sets the profile picture.
+            </summary>
+            <value>
+            The profile picture.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Comments">
+            <summary>
+            Comments
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Comments.Count">
+            <summary>
+            Gets or sets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Comments.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Count">
+            <summary>
+            Count
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Count.Media">
+            <summary>
+            Gets or sets the media.
+            </summary>
+            <value>
+            The media.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Count.Follows">
+            <summary>
+            Gets or sets the follows.
+            </summary>
+            <value>
+            The follows.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Count.FollowedBy">
+            <summary>
+            Gets or sets the followed by.
+            </summary>
+            <value>
+            The followed by.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Image">
+            <summary>
+            The Image
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Image.LowResolution">
+            <summary>
+            Gets or sets the low resolution.
+            </summary>
+            <value>
+            The low resolution.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Image.Thumbnail">
+            <summary>
+            Gets or sets the thumbnail.
+            </summary>
+            <value>
+            The thumbnail.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Image.StandardResolution">
+            <summary>
+            Gets or sets the standard resolution.
+            </summary>
+            <value>
+            The standard resolution.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Likes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Likes.Count">
+            <summary>
+            Gets or sets the count.
+            </summary>
+            <value>
+            The count.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Likes.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Location">
+            <summary>
+            Location
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Location.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Location.Latitude">
+            <summary>
+            Gets or sets the latitude.
+            </summary>
+            <value>
+            The latitude.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Location.Longitude">
+            <summary>
+            Gets or sets the longitude.
+            </summary>
+            <value>
+            The longitude.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Location.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Media">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Location">
+            <summary>
+            Gets or sets the location.
+            </summary>
+            <value>
+            The location.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Comments">
+            <summary>
+            Gets or sets the comments.
+            </summary>
+            <value>
+            The comments.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Caption">
+            <summary>
+            Gets or sets the caption.
+            </summary>
+            <value>
+            The caption.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.UserHasLiked">
+            <summary>
+            Gets or sets the user has liked.
+            </summary>
+            <value>
+            The user has liked.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Link">
+            <summary>
+            Gets or sets the link.
+            </summary>
+            <value>
+            The link.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Likes">
+            <summary>
+            Gets or sets the likes.
+            </summary>
+            <value>
+            The likes.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.CreatedTime">
+            <summary>
+            Gets or sets the created time.
+            </summary>
+            <value>
+            The created time.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Images">
+            <summary>
+            Gets or sets the images.
+            </summary>
+            <value>
+            The images.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Videos">
+            <summary>
+            Gets or sets the videos.
+            </summary>
+            <value>
+            The videos.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Filter">
+            <summary>
+            Gets or sets the filter.
+            </summary>
+            <value>
+            The filter.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Tags">
+            <summary>
+            Gets or sets the tags.
+            </summary>
+            <value>
+            The tags.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Media.User">
+            <summary>
+            Gets or sets the user.
+            </summary>
+            <value>
+            The user.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Meta">
+            <summary>
+            Metadata in response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Meta.Code">
+            <summary>
+            Gets or sets the code.
+            </summary>
+            <value>
+            The code.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Meta.ErrorType">
+            <summary>
+            Gets or sets the type of the error.
+            </summary>
+            <value>
+            The type of the error.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Meta.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+            <value>
+            The error message.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Pagination">
+            <summary>
+            Pagination
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Pagination.NextUrl">
+            <summary>
+            Gets or sets the next URL.
+            </summary>
+            <value>
+            The next URL.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Pagination.NextCursor">
+            <summary>
+            Gets or sets the next cursor.
+            </summary>
+            <value>
+            The next cursor.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Pagination.NextMaxId">
+            <summary>
+            Gets or sets the next maximum identifier.
+            </summary>
+            <value>
+            The next maximum identifier.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Pagination.NextMinId">
+            <summary>
+            Gets or sets the next minimum identifier.
+            </summary>
+            <value>
+            The next minimum identifier.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Relationship">
+            <summary>
+            Relationship
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Relationship.OutgoingStatus">
+            <summary>
+            Gets or sets the outgoing status.
+            </summary>
+            <value>
+            The outgoing status.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Relationship.IncomingStatus">
+            <summary>
+            Gets or sets the incoming status.
+            </summary>
+            <value>
+            The incoming status.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Relationship.TargetUserIsPrivate">
+            <summary>
+            Gets or sets a value indicating whether [target user is private].
+            </summary>
+            <value>
+            <c>true</c> if [target user is private]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.CommentsResponse">
+            <summary>
+            Comments Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.CommentsResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.CommentResponse">
+            <summary>
+            Commetns Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.CommentResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.MediasResponse">
+            <summary>
+            Medias Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.MediasResponse.Pagination">
+            <summary>
+            Gets or sets the pagination.
+            </summary>
+            <value>
+            The pagination.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.MediasResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.LikesResponse">
+            <summary>
+            Likes Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.LikesResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.LocationResponse">
+            <summary>
+            Locations Reponse
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.LocationResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.LocationsResponse">
+            <summary>
+            Locations Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.LocationsResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.MediaResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.MediaResponse.Pagination">
+            <summary>
+            Gets or sets the pagination.
+            </summary>
+            <value>
+            The pagination.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.MediaResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.OAuthResponse">
+            <summary>
+            OAuthResponse
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.OAuthResponse.User">
+            <summary>
+            Gets or sets the user.
+            </summary>
+            <value>
+            The user.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.OAuthResponse.Access_Token">
+            <summary>
+            Gets or sets the access_ token.
+            </summary>
+            <value>
+            The access_ token.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.RelationshipResponse">
+            <summary>
+            Relationship Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.RelationshipResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.TagResponse">
+            <summary>
+            Tag Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.TagResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.TagsResponse">
+            <summary>
+            Tags Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.TagsResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.UsersResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.UsersResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.UsersResponse.Pagination">
+            <summary>
+            Gets or sets the pagination.
+            </summary>
+            <value>
+            The pagination.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Subscription">
+            <summary>
+            The Subscription
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Subscription.Id">
+            <summary>
+            The newly created subscriptionId
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Subscription.Type">
+            <summary>
+            Should be "subscription"
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Subscription.Object">
+            <summary>
+            <see cref="T:InstaSharp.Endpoints.Subscription.Object"/>
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Subscription.Aspect">
+            <summary>
+            <see cref="T:InstaSharp.Endpoints.Subscription.Aspect"/>
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Subscription.CallbackUrl">
+            <summary>
+            Gets or sets the callback URL.
+            </summary>
+            <value>
+            The callback URL.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Subscription.ObjectId">
+            <summary>
+            The search term 
+            </summary>
+        </member>
+        <member name="T:InstaSharp.Models.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Tag.MediaCount">
+            <summary>
+            Gets or sets the media count.
+            </summary>
+            <value>
+            The media count.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.Tag.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.User">
+            <summary>
+            The User
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.User.Bio">
+            <summary>
+            Gets or sets the bio.
+            </summary>
+            <value>
+            The bio.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.User.Website">
+            <summary>
+            Gets or sets the website.
+            </summary>
+            <value>
+            The website.
+            </value>
+        </member>
+        <member name="P:InstaSharp.Models.User.Counts">
+            <summary>
+            Gets or sets the counts.
+            </summary>
+            <value>
+            The counts.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Models.Responses.UserResponse">
+            <summary>
+            User Response
+            </summary>
+        </member>
+        <member name="P:InstaSharp.Models.Responses.UserResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Subscription">
+            <summary>
+            The subscription Api
+            </summary>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Subscription.#ctor(InstaSharp.InstagramConfig)">
+            <summary>
+            Construct a Subscription Endpoint
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Subscription.Create(InstaSharp.Endpoints.Subscription.Object,InstaSharp.Endpoints.Subscription.Aspect,System.String,System.String)">
+            <summary>
+            Create a subscription
+            </summary>
+            <param name="type"></param>
+            <param name="aspect"></param>
+            <param name="objectId">The tag name to subscribe to. This is required, i.e. if <see param="type"/> is<see cref="F:InstaSharp.Endpoints.Subscription.Object.Tag"/> or <see cref="F:InstaSharp.Endpoints.Subscription.Object.Location"/></param>
+            <param name="verifyToken"></param>
+            <exception cref="T:System.ArgumentException">If objectId contains spaces and <see param="type"/>  is objectTag </exception>
+            <returns></returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Subscription.UnsubscribeUser(System.String)">
+            <summary>
+            Deletes a subscription by subscription id
+            </summary>
+            <param name="id">The subscription id</param>
+            <returns></returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Subscription.RemoveSubscription(InstaSharp.Endpoints.Subscription.Object)">
+            <summary>
+            Deletes a subscription by type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Subscription.RemoveAllSubscriptions">
+            <summary>
+            Removes all subscriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InstaSharp.Endpoints.Subscription.ListAllSubscriptions">
+            <summary>
+            Lists all subscriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Subscription.Object">
+            <summary>
+            The type of media
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Subscription.Object.User">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Subscription.Object.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Subscription.Object.Location">
+            <summary>
+            Location
+            </summary>  
+        </member>
+        <member name="F:InstaSharp.Endpoints.Subscription.Object.Geography">
+            <summary>
+            Geography
+            </summary>
+        </member>
+        <member name="T:InstaSharp.Endpoints.Subscription.Aspect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:InstaSharp.Endpoints.Subscription.Aspect.Media">
+            <summary>
+            Media
+            </summary>
+        </member>
+    </members>
+</doc>

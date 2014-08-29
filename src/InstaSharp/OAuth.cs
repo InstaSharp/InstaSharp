@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace InstaSharp
 {
     /// <summary>
-    /// 
+    /// OAuth authentication
     /// </summary>
     public class OAuth
     {
@@ -36,19 +36,19 @@ namespace InstaSharp
         public enum Scope
         {
             /// <summary>
-            /// The basic
+            /// basic
             /// </summary>
             Basic,
             /// <summary>
-            /// The comments
+            /// comments
             /// </summary>
             Comments,
             /// <summary>
-            /// The relationships
+            /// relationships
             /// </summary>
             Relationships,
             /// <summary>
-            /// The likes
+            /// likes
             /// </summary>
             Likes
         }
@@ -70,7 +70,7 @@ namespace InstaSharp
         /// <param name="callbackUri">The callback URI.</param>
         /// <param name="scopes">The scopes.</param>
         /// <param name="responseType">Type of the response.</param>
-        /// <returns></returns>
+        /// <returns>The authentication url</returns>
         public static string AuthLink(string instagramOAuthUri, string clientId, string callbackUri, List<Scope> scopes, ResponseType responseType = ResponseType.Token)
         {
             var scope = new StringBuilder();
@@ -97,7 +97,7 @@ namespace InstaSharp
         /// Requests the token.
         /// </summary>
         /// <param name="code">The code.</param>
-        /// <returns></returns>
+        /// <returns>An OAuthResponse object</returns>
         public Task<OAuthResponse> RequestToken(string code)
         {
             var client = new HttpClient { BaseAddress = new Uri(config.OAuthUri) };

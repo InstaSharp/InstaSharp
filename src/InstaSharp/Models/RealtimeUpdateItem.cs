@@ -3,7 +3,7 @@
 namespace InstaSharp.Models
 {
     /// <summary>
-    /// An object returned frmo a live subscription
+    /// An object returned from a live subscription
     /// </summary>
     public class RealtimeUpdateItem
     {

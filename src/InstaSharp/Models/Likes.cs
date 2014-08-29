@@ -2,7 +2,7 @@
 
 namespace InstaSharp.Models {
     /// <summary>
-    /// 
+    /// Likes Information, number of likes and who liked it
     /// </summary>
     public class Likes {
         /// <summary>

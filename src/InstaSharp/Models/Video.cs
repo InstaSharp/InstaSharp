@@ -2,7 +2,7 @@
 
 namespace InstaSharp.Models {
     /// <summary>
-    /// 
+    /// Video Information
     /// </summary>
     public class Video {
 

@@ -34,8 +34,9 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Get information about a tag object.
         /// </summary>
-        /// <para>Requires Authentication: False</para>
         /// <param name="tagName">Return information about this tag.</param>
+        /// <returns>Tag Response</returns>
+        /// <para>Requires Authentication: False</para>
         public Task<TagResponse> Get(string tagName)
         {
             var request = Request("{tag}");
@@ -46,8 +47,9 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Get a list of recently tagged media. Note that this media is ordered by when the media was tagged with this tag, rather than the order it was posted. Use the max_tag_id and min_tag_id parameters in the pagination response to paginate through these objects.
         /// </summary>
-        /// <para>Requires Authentication: False</para>
         /// <param name="tagName">Return information about this tag.</param>
+        /// <returns>Medias Response</returns>
+        /// <para>Requires Authentication: False</para>
         public Task<MediasResponse> Recent(string tagName)
         {
             return Recent(tagName, null, null, null);
@@ -56,11 +58,12 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Get a list of recently tagged media. Note that this media is ordered by when the media was tagged with this tag, rather than the order it was posted. Use the max_tag_id and min_tag_id parameters in the pagination response to paginate through these objects.
         /// </summary>
-        /// <para>Requires Authentication: False</para>
         /// <param name="tagName">Return information about this tag.</param>
         /// <param name="minTagId">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="maxTagId">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="count">Count of tagged media to return. Will still be governed by Instagram's enforced limit.</param>
+        /// <returns>Medias Response</returns>
+        /// <para>Requires Authentication: False</para>
         public Task<MediasResponse> Recent(string tagName, string minTagId, string maxTagId, int? count)
         {
             var request = Request("{tag}/media/recent");
@@ -78,15 +81,19 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit Check <see cref="Response.RateLimitLimit"/>
+        /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit Check <see cref="Response.RateLimitLimit" />
         /// </summary>
         /// <param name="tagName">Return information about this tag.</param>
         /// <param name="minTagId">Return media [before]after  this min_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="maxTagId">Return media [after] before this max_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="maxPageCount">the number of pages at which you wish to stop returning data. Otherwise it keeps going until the end. Be warned, you could quickly use your daily limit</param>
         /// <param name="stopatMediaId">Doesnt return any data older than or including this id</param>
-        /// <returns>a response object containing a list of the media responses and the last returned Meta code</returns>
-        /// <remarks>http://stackoverflow.com/questions/20625173/how-does-instagrams-get-tags-tag-media-recent-pagination-actually-work?rq=1 </remarks>
+        /// <returns>
+        /// a response object containing a list of the media responses and the last returned Meta code
+        /// </returns>
+        /// <remarks>
+        /// http://stackoverflow.com/questions/20625173/how-does-instagrams-get-tags-tag-media-recent-pagination-actually-work?rq=1
+        /// </remarks>
         public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string minTagId = "", string maxTagId = "", int? maxPageCount = null, string stopatMediaId = null)
         {
             var response = new TagsMultiplePagesResponse();
@@ -133,11 +140,11 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// 
+        /// Crops data if id found
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data">List of media data</param>
         /// <param name="stopatMediaId">The media id without the _user suffix</param>
-        /// <returns></returns>
+        /// <returns>true if id found, false otherwise</returns>
         private static bool CropDataIfIdFound(List<Models.Media> data, string stopatMediaId)
         {
             if (stopatMediaId == null)
@@ -152,8 +159,9 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Search for tags by name. Results are ordered first as an exact match, then by popularity. Short tags will be treated as exact matches.
         /// </summary>
-        /// <para>Requires Authentication: False</para>
         /// <param name="searchTerm">A valid tag name without a leading #. (eg. snowy, nofilter)</param>
+        /// <returns>a <see cref="TagsResponse"/> object</returns>
+        /// <para>Requires Authentication: False</para>
         public Task<TagsResponse> Search(string searchTerm)
         {
             var request = Request("search");

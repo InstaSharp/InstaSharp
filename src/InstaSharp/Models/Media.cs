@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace InstaSharp.Models {
     /// <summary>
-    /// 
+    /// The Media Object
     /// </summary>
     public class Media {
         /// <summary>

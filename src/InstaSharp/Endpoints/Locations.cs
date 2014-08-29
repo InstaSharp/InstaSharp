@@ -47,11 +47,10 @@ namespace InstaSharp.Endpoints
 
         /// <summary>
         /// Get information about a location.
-        /// <para>
-        /// <c>Requires Authentication: False</c>
-        /// </para>
+        /// <para><c>Requires Authentication: False</c></para>
         /// </summary>
         /// <param name="locationId">The id of the location to retreive information for.</param>
+        /// <returns>location response</returns>
         public Task<LocationResponse> Get(string locationId)
         {
             var request = Request(locationId);
@@ -62,7 +61,7 @@ namespace InstaSharp.Endpoints
         ///  Get a list of recent media objects from a given location.
         /// </summary>
         /// <param name="locationId">The location identifier.</param>
-        /// <returns></returns>
+        /// <returns>Media Response</returns>
         public Task<MediasResponse> Recent(string locationId)
         {
             return Recent(locationId, null, null, null, null);
@@ -77,6 +76,7 @@ namespace InstaSharp.Endpoints
         /// <param name="maxTimestamp">Return media before this UNIX timestamp</param>
         /// <param name="minId">Return media before this min_id</param>
         /// <param name="maxId">Return media after this max_id</param>
+        /// <returns>media response</returns>
         public Task<MediasResponse> Recent(string locationId, DateTime? minTimestamp, DateTime? maxTimestamp, string minId, string maxId)
         {
             var request = Request("{id}/media/recent");
@@ -96,6 +96,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="latitude">Latitude of the center search coordinate. If used, lng is required.</param>
         /// <param name="longitude">Longitude of the center search coordinate. If used, lat is required.</param>
+        /// <returns>Locations Response</returns>
         public Task<LocationsResponse> Search(double latitude, double longitude)
         {
             return Search(latitude, longitude, null);
@@ -108,6 +109,7 @@ namespace InstaSharp.Endpoints
         /// <param name="latitude">Latitude of the center search coordinate. If used, lng is required.</param>
         /// <param name="longitude">Longitude of the center search coordinate. If used, lat is required.</param>
         /// <param name="distance">Default is 1000m (distance=1000), max distance is 5000.</param>
+        /// <returns>Locations Response</returns>
         public Task<LocationsResponse> Search(double latitude, double longitude, double? distance)
         {
             var request = Request("search");
@@ -125,6 +127,8 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="foursquareId">Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.</param>
         /// <param name="foursquareVersion">The version of the FourSquare ID  you are using.  Either version 1 or 2.</param>
+        /// <returns>location response</returns>
+        /// <exception cref="System.ArgumentException">foursquareId empty;foursquareId</exception>
         public Task<LocationsResponse> Search(string foursquareId, FoursquareVersion foursquareVersion)
         {
             if (string.IsNullOrWhiteSpace(foursquareId))

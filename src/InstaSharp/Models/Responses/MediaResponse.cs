@@ -1,7 +1,7 @@
 ﻿namespace InstaSharp.Models.Responses
 {
     /// <summary>
-    /// 
+    /// Media Response containing a list of media and pagination
     /// </summary>
     public class MediaResponse : Response
     {
