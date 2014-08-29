@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome to the The Instasharp library" Url="html/c688497b-86a9-4040-b9e0-addb972beed8.htm" />
+  <HelpTOCNode Id="6940396a-2b48-475b-b348-c7e902588a12" Title="Version History" Url="html/2bd81f6d-77f9-4fdc-85ac-eb7bd0c88759.htm">
+    <HelpTOCNode Title="Version 1.0.0.0" Url="html/56ce0d70-b0b1-4a8f-9c0d-42c5fc6be1d8.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="0befb537-d4ae-4e71-a49d-18c825a1e1ec" Title="InstaSharp" Url="html/N_InstaSharp.htm">
+    <HelpTOCNode Id="49e41542-96f8-4dc3-9ada-69def3f218a3" Title="InstagramConfig Class" Url="html/T_InstaSharp_InstagramConfig.htm">
+      <HelpTOCNode Id="9a41b950-86d5-4292-aad7-2e386f7329de" Title="InstagramConfig Constructor " Url="html/Overload_InstaSharp_InstagramConfig__ctor.htm">
+        <HelpTOCNode Title="InstagramConfig Constructor " Url="html/M_InstaSharp_InstagramConfig__ctor.htm" />
+        <HelpTOCNode Title="InstagramConfig Constructor (String, String)" Url="html/M_InstaSharp_InstagramConfig__ctor_1.htm" />
+        <HelpTOCNode Title="InstagramConfig Constructor (String, String, String, String, String, String, String)" Url="html/M_InstaSharp_InstagramConfig__ctor_2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="InstagramConfig Methods" Url="html/Methods_T_InstaSharp_InstagramConfig.htm" />
+      <HelpTOCNode Id="d36df30b-e3ff-4535-8c57-e064c4d5b0a2" Title="InstagramConfig Properties" Url="html/Properties_T_InstaSharp_InstagramConfig.htm">
+        <HelpTOCNode Title="ApiUri Property " Url="html/P_InstaSharp_InstagramConfig_ApiUri.htm" />
+        <HelpTOCNode Title="CallbackUri Property " Url="html/P_InstaSharp_InstagramConfig_CallbackUri.htm" />
+        <HelpTOCNode Title="ClientId Property " Url="html/P_InstaSharp_InstagramConfig_ClientId.htm" />
+        <HelpTOCNode Title="ClientSecret Property " Url="html/P_InstaSharp_InstagramConfig_ClientSecret.htm" />
+        <HelpTOCNode Title="OAuthUri Property " Url="html/P_InstaSharp_InstagramConfig_OAuthUri.htm" />
+        <HelpTOCNode Title="RealTimeApi Property " Url="html/P_InstaSharp_InstagramConfig_RealTimeApi.htm" />
+        <HelpTOCNode Title="RedirectUri Property " Url="html/P_InstaSharp_InstagramConfig_RedirectUri.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="54d8a4d9-38e4-4808-851f-c2512802dd2b" Title="OAuth Class" Url="html/T_InstaSharp_OAuth.htm">
+      <HelpTOCNode Title="OAuth Constructor " Url="html/M_InstaSharp_OAuth__ctor.htm" />
+      <HelpTOCNode Id="8cf033f2-f921-4b7f-b5c0-3d636d0fceab" Title="OAuth Methods" Url="html/Methods_T_InstaSharp_OAuth.htm">
+        <HelpTOCNode Title="AuthLink Method " Url="html/M_InstaSharp_OAuth_AuthLink.htm" />
+        <HelpTOCNode Title="RequestToken Method " Url="html/M_InstaSharp_OAuth_RequestToken.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="OAuth.ResponseType Enumeration" Url="html/T_InstaSharp_OAuth_ResponseType.htm" />
+    <HelpTOCNode Title="OAuth.Scope Enumeration" Url="html/T_InstaSharp_OAuth_Scope.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="9ec1ce2f-fa71-417b-af1f-2da892a963da" Title="InstaSharp.Endpoints" Url="html/N_InstaSharp_Endpoints.htm">
+    <HelpTOCNode Id="10f5ed4c-e4b0-433c-9d05-1175b0cfa1b9" Title="Comments Class" Url="html/T_InstaSharp_Endpoints_Comments.htm">
+      <HelpTOCNode Id="e9c28c06-a589-4620-8924-6b1e44d05356" Title="Comments Constructor " Url="html/Overload_InstaSharp_Endpoints_Comments__ctor.htm">
+        <HelpTOCNode Title="Comments Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Comments__ctor.htm" />
+        <HelpTOCNode Title="Comments Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Comments__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a08e3b74-27fe-4828-a21b-f4031c9110e3" Title="Comments Methods" Url="html/Methods_T_InstaSharp_Endpoints_Comments.htm">
+        <HelpTOCNode Title="Delete Method " Url="html/M_InstaSharp_Endpoints_Comments_Delete.htm" />
+        <HelpTOCNode Title="Get Method " Url="html/M_InstaSharp_Endpoints_Comments_Get.htm" />
+        <HelpTOCNode Title="Post Method " Url="html/M_InstaSharp_Endpoints_Comments_Post.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Comments Properties" Url="html/Properties_T_InstaSharp_Endpoints_Comments.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="940c9458-1ac7-44ff-a0b8-dbeab172fb1d" Title="Geographies Class" Url="html/T_InstaSharp_Endpoints_Geographies.htm">
+      <HelpTOCNode Id="aa8e88bd-91f5-4b8e-aca9-caefd23adc9b" Title="Geographies Constructor " Url="html/Overload_InstaSharp_Endpoints_Geographies__ctor.htm">
+        <HelpTOCNode Title="Geographies Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Geographies__ctor.htm" />
+        <HelpTOCNode Title="Geographies Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Geographies__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="76ae5e42-9acc-4fe9-82e2-8e2f08692f73" Title="Geographies Methods" Url="html/Methods_T_InstaSharp_Endpoints_Geographies.htm">
+        <HelpTOCNode Id="50f00b6a-5dd5-4ce2-b6e6-cdde2aac8e8c" Title="Recent Method " Url="html/Overload_InstaSharp_Endpoints_Geographies_Recent.htm">
+          <HelpTOCNode Title="Recent Method (Int32)" Url="html/M_InstaSharp_Endpoints_Geographies_Recent.htm" />
+          <HelpTOCNode Title="Recent Method (Int32, Nullable(Int32), String)" Url="html/M_InstaSharp_Endpoints_Geographies_Recent_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="Geographies Properties" Url="html/Properties_T_InstaSharp_Endpoints_Geographies.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="43310801-5f8e-47ec-8d00-acc435b27001" Title="InstagramApi Class" Url="html/T_InstaSharp_Endpoints_InstagramApi.htm">
+      <HelpTOCNode Title="InstagramApi Constructor " Url="html/M_InstaSharp_Endpoints_InstagramApi__ctor.htm" />
+      <HelpTOCNode Id="7d7310a5-e870-4ba6-879c-abaf8429701e" Title="InstagramApi Methods" Url="html/Methods_T_InstaSharp_Endpoints_InstagramApi.htm">
+        <HelpTOCNode Title="AssertIsAuthenticated Method " Url="html/M_InstaSharp_Endpoints_InstagramApi_AssertIsAuthenticated.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="fa7bef8b-b03f-4deb-b5d1-c63d7009a0e0" Title="InstagramApi Properties" Url="html/Properties_T_InstaSharp_Endpoints_InstagramApi.htm">
+        <HelpTOCNode Title="EnforceSignedHeader Property " Url="html/P_InstaSharp_Endpoints_InstagramApi_EnforceSignedHeader.htm" />
+        <HelpTOCNode Title="InstagramConfig Property " Url="html/P_InstaSharp_Endpoints_InstagramApi_InstagramConfig.htm" />
+        <HelpTOCNode Title="Ips Property " Url="html/P_InstaSharp_Endpoints_InstagramApi_Ips.htm" />
+        <HelpTOCNode Title="OAuthResponse Property " Url="html/P_InstaSharp_Endpoints_InstagramApi_OAuthResponse.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d3cfd88d-5f21-41bf-9c8f-5506fb56768e" Title="Likes Class" Url="html/T_InstaSharp_Endpoints_Likes.htm">
+      <HelpTOCNode Id="f3fcb5a4-958c-445c-b51b-a55907ed0934" Title="Likes Constructor " Url="html/Overload_InstaSharp_Endpoints_Likes__ctor.htm">
+        <HelpTOCNode Title="Likes Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Likes__ctor.htm" />
+        <HelpTOCNode Title="Likes Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Likes__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f3103c48-76e6-4560-8c22-ff19f9a91687" Title="Likes Methods" Url="html/Methods_T_InstaSharp_Endpoints_Likes.htm">
+        <HelpTOCNode Title="Delete Method " Url="html/M_InstaSharp_Endpoints_Likes_Delete.htm" />
+        <HelpTOCNode Title="Get Method " Url="html/M_InstaSharp_Endpoints_Likes_Get.htm" />
+        <HelpTOCNode Title="Post Method " Url="html/M_InstaSharp_Endpoints_Likes_Post.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Likes Properties" Url="html/Properties_T_InstaSharp_Endpoints_Likes.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="e7004c01-71d6-4766-bd39-57f87d7c69c8" Title="Locations Class" Url="html/T_InstaSharp_Endpoints_Locations.htm">
+      <HelpTOCNode Id="03b09082-1be0-43c0-abca-e42c81af790c" Title="Locations Constructor " Url="html/Overload_InstaSharp_Endpoints_Locations__ctor.htm">
+        <HelpTOCNode Title="Locations Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Locations__ctor.htm" />
+        <HelpTOCNode Title="Locations Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Locations__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5a0590a7-cb54-4b23-8eef-9193b11c8458" Title="Locations Methods" Url="html/Methods_T_InstaSharp_Endpoints_Locations.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_InstaSharp_Endpoints_Locations_Get.htm" />
+        <HelpTOCNode Id="c8ceb7a5-6795-40aa-92ee-2f84cde3b92f" Title="Recent Method " Url="html/Overload_InstaSharp_Endpoints_Locations_Recent.htm">
+          <HelpTOCNode Title="Recent Method (String)" Url="html/M_InstaSharp_Endpoints_Locations_Recent.htm" />
+          <HelpTOCNode Title="Recent Method (String, Nullable(DateTime), Nullable(DateTime), String, String)" Url="html/M_InstaSharp_Endpoints_Locations_Recent_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="f8d1d108-05c8-4324-bae6-0fa9d9928eb5" Title="Search Method " Url="html/Overload_InstaSharp_Endpoints_Locations_Search.htm">
+          <HelpTOCNode Title="Search Method (Double, Double)" Url="html/M_InstaSharp_Endpoints_Locations_Search.htm" />
+          <HelpTOCNode Title="Search Method (String, Locations.FoursquareVersion)" Url="html/M_InstaSharp_Endpoints_Locations_Search_2.htm" />
+          <HelpTOCNode Title="Search Method (Double, Double, Nullable(Double))" Url="html/M_InstaSharp_Endpoints_Locations_Search_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="Locations Properties" Url="html/Properties_T_InstaSharp_Endpoints_Locations.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="Locations.FoursquareVersion Enumeration" Url="html/T_InstaSharp_Endpoints_Locations_FoursquareVersion.htm" />
+    <HelpTOCNode Id="738f9db1-dd0d-4e49-a529-af549047a4e2" Title="Media Class" Url="html/T_InstaSharp_Endpoints_Media.htm">
+      <HelpTOCNode Id="dc6b3d52-ae7a-4d4a-9338-7abe553f5c8f" Title="Media Constructor " Url="html/Overload_InstaSharp_Endpoints_Media__ctor.htm">
+        <HelpTOCNode Title="Media Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Media__ctor.htm" />
+        <HelpTOCNode Title="Media Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Media__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7c8613a9-adf7-461a-a7e7-be889643253f" Title="Media Methods" Url="html/Methods_T_InstaSharp_Endpoints_Media.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_InstaSharp_Endpoints_Media_Get.htm" />
+        <HelpTOCNode Title="Popular Method " Url="html/M_InstaSharp_Endpoints_Media_Popular.htm" />
+        <HelpTOCNode Id="383a7fe6-9f7e-4499-a262-fe6edbe5b464" Title="Search Method " Url="html/Overload_InstaSharp_Endpoints_Media_Search.htm">
+          <HelpTOCNode Title="Search Method (Double, Double)" Url="html/M_InstaSharp_Endpoints_Media_Search.htm" />
+          <HelpTOCNode Title="Search Method (Double, Double, Nullable(Int32))" Url="html/M_InstaSharp_Endpoints_Media_Search_1.htm" />
+          <HelpTOCNode Title="Search Method (Double, Double, Nullable(Int32), Nullable(DateTime), Nullable(DateTime))" Url="html/M_InstaSharp_Endpoints_Media_Search_2.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="Media Properties" Url="html/Properties_T_InstaSharp_Endpoints_Media.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="759c6ab9-013c-4f40-abef-41c81dfe82c2" Title="Relationships Class" Url="html/T_InstaSharp_Endpoints_Relationships.htm">
+      <HelpTOCNode Id="b0a91c73-77b8-4e20-9d7b-277f07d3a175" Title="Relationships Constructor " Url="html/Overload_InstaSharp_Endpoints_Relationships__ctor.htm">
+        <HelpTOCNode Title="Relationships Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Relationships__ctor.htm" />
+        <HelpTOCNode Title="Relationships Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Relationships__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="56761320-aa0f-496d-ae4c-aae62eb0e535" Title="Relationships Methods" Url="html/Methods_T_InstaSharp_Endpoints_Relationships.htm">
+        <HelpTOCNode Id="f0313b72-358c-45cc-b368-a7fbca7d6ca3" Title="FollowedBy Method " Url="html/Overload_InstaSharp_Endpoints_Relationships_FollowedBy.htm">
+          <HelpTOCNode Title="FollowedBy Method " Url="html/M_InstaSharp_Endpoints_Relationships_FollowedBy.htm" />
+          <HelpTOCNode Title="FollowedBy Method (Int32)" Url="html/M_InstaSharp_Endpoints_Relationships_FollowedBy_1.htm" />
+          <HelpTOCNode Title="FollowedBy Method (Int32, String)" Url="html/M_InstaSharp_Endpoints_Relationships_FollowedBy_2.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="b105e4e8-25b5-443b-a8b8-8de4040d1ba1" Title="Follows Method " Url="html/Overload_InstaSharp_Endpoints_Relationships_Follows.htm">
+          <HelpTOCNode Title="Follows Method " Url="html/M_InstaSharp_Endpoints_Relationships_Follows.htm" />
+          <HelpTOCNode Title="Follows Method (Int32)" Url="html/M_InstaSharp_Endpoints_Relationships_Follows_1.htm" />
+          <HelpTOCNode Title="Follows Method (Int32, String)" Url="html/M_InstaSharp_Endpoints_Relationships_Follows_2.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="08f5570a-edbe-424d-becf-59a95a3be6fc" Title="Relationship Method " Url="html/Overload_InstaSharp_Endpoints_Relationships_Relationship.htm">
+          <HelpTOCNode Title="Relationship Method (Int32)" Url="html/M_InstaSharp_Endpoints_Relationships_Relationship.htm" />
+          <HelpTOCNode Title="Relationship Method (Int32, Relationships.Action)" Url="html/M_InstaSharp_Endpoints_Relationships_Relationship_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RequestedBy Method " Url="html/M_InstaSharp_Endpoints_Relationships_RequestedBy.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Relationships Properties" Url="html/Properties_T_InstaSharp_Endpoints_Relationships.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="Relationships.Action Enumeration" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+    <HelpTOCNode Id="4d559bd4-a524-49a4-9bdd-6e1c52b7503f" Title="Subscription Class" Url="html/T_InstaSharp_Endpoints_Subscription.htm">
+      <HelpTOCNode Title="Subscription Constructor " Url="html/M_InstaSharp_Endpoints_Subscription__ctor.htm" />
+      <HelpTOCNode Id="8cfa01e6-9bc5-4259-a3a7-6f923188f379" Title="Subscription Methods" Url="html/Methods_T_InstaSharp_Endpoints_Subscription.htm">
+        <HelpTOCNode Title="CreateGeography Method " Url="html/M_InstaSharp_Endpoints_Subscription_CreateGeography.htm" />
+        <HelpTOCNode Title="CreateLocation Method " Url="html/M_InstaSharp_Endpoints_Subscription_CreateLocation.htm" />
+        <HelpTOCNode Title="CreateTag Method " Url="html/M_InstaSharp_Endpoints_Subscription_CreateTag.htm" />
+        <HelpTOCNode Title="CreateUser Method " Url="html/M_InstaSharp_Endpoints_Subscription_CreateUser.htm" />
+        <HelpTOCNode Title="ListAllSubscriptions Method " Url="html/M_InstaSharp_Endpoints_Subscription_ListAllSubscriptions.htm" />
+        <HelpTOCNode Title="RemoveAllSubscriptions Method " Url="html/M_InstaSharp_Endpoints_Subscription_RemoveAllSubscriptions.htm" />
+        <HelpTOCNode Id="e6df5e26-5cf1-4d13-91e6-d4e7c31acbae" Title="RemoveSubscription Method " Url="html/Overload_InstaSharp_Endpoints_Subscription_RemoveSubscription.htm">
+          <HelpTOCNode Title="RemoveSubscription Method (String)" Url="html/M_InstaSharp_Endpoints_Subscription_RemoveSubscription_1.htm" />
+          <HelpTOCNode Title="RemoveSubscription Method (Subscription.Object)" Url="html/M_InstaSharp_Endpoints_Subscription_RemoveSubscription.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="Subscription Properties" Url="html/Properties_T_InstaSharp_Endpoints_Subscription.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="Subscription.Aspect Enumeration" Url="html/T_InstaSharp_Endpoints_Subscription_Aspect.htm" />
+    <HelpTOCNode Title="Subscription.Object Enumeration" Url="html/T_InstaSharp_Endpoints_Subscription_Object.htm" />
+    <HelpTOCNode Id="c979a866-a32e-4235-bf02-95481eac34d7" Title="Tags Class" Url="html/T_InstaSharp_Endpoints_Tags.htm">
+      <HelpTOCNode Id="f929e93d-e347-49a3-923c-7480d3d4dc3d" Title="Tags Constructor " Url="html/Overload_InstaSharp_Endpoints_Tags__ctor.htm">
+        <HelpTOCNode Title="Tags Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Tags__ctor.htm" />
+        <HelpTOCNode Title="Tags Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Tags__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="70c28259-4879-49dc-a829-4744c13e6969" Title="Tags Methods" Url="html/Methods_T_InstaSharp_Endpoints_Tags.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_InstaSharp_Endpoints_Tags_Get.htm" />
+        <HelpTOCNode Id="3fb4f2bb-0c16-4bfd-858b-a1aebdc85261" Title="Recent Method " Url="html/Overload_InstaSharp_Endpoints_Tags_Recent.htm">
+          <HelpTOCNode Title="Recent Method (String)" Url="html/M_InstaSharp_Endpoints_Tags_Recent.htm" />
+          <HelpTOCNode Title="Recent Method (String, String, String, Nullable(Int32))" Url="html/M_InstaSharp_Endpoints_Tags_Recent_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RecentMultiplePages Method " Url="html/M_InstaSharp_Endpoints_Tags_RecentMultiplePages.htm" />
+        <HelpTOCNode Title="Search Method " Url="html/M_InstaSharp_Endpoints_Tags_Search.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Tags Properties" Url="html/Properties_T_InstaSharp_Endpoints_Tags.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="39593e90-f1f2-4915-b44b-f881e5f16fd7" Title="Users Class" Url="html/T_InstaSharp_Endpoints_Users.htm">
+      <HelpTOCNode Id="0a99ab4a-2c65-4e24-bced-bec6a93f2ed2" Title="Users Constructor " Url="html/Overload_InstaSharp_Endpoints_Users__ctor.htm">
+        <HelpTOCNode Title="Users Constructor (InstagramConfig)" Url="html/M_InstaSharp_Endpoints_Users__ctor.htm" />
+        <HelpTOCNode Title="Users Constructor (InstagramConfig, OAuthResponse)" Url="html/M_InstaSharp_Endpoints_Users__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="67d4c648-0e87-4ee5-997c-2f29a4c50ca8" Title="Users Methods" Url="html/Methods_T_InstaSharp_Endpoints_Users.htm">
+        <HelpTOCNode Title="Feed Method " Url="html/M_InstaSharp_Endpoints_Users_Feed.htm" />
+        <HelpTOCNode Id="03520405-4912-4b87-aec4-9d1409206fe1" Title="Get Method " Url="html/Overload_InstaSharp_Endpoints_Users_Get.htm">
+          <HelpTOCNode Title="Get Method " Url="html/M_InstaSharp_Endpoints_Users_Get.htm" />
+          <HelpTOCNode Title="Get Method (String)" Url="html/M_InstaSharp_Endpoints_Users_Get_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GetSelf Method " Url="html/M_InstaSharp_Endpoints_Users_GetSelf.htm" />
+        <HelpTOCNode Title="Liked Method " Url="html/M_InstaSharp_Endpoints_Users_Liked.htm" />
+        <HelpTOCNode Id="5b11506d-2d32-4e32-8d83-c3cc37b86164" Title="Recent Method " Url="html/Overload_InstaSharp_Endpoints_Users_Recent.htm">
+          <HelpTOCNode Title="Recent Method (String)" Url="html/M_InstaSharp_Endpoints_Users_Recent.htm" />
+          <HelpTOCNode Title="Recent Method (String, String, String, Nullable(Int32), Nullable(DateTime), Nullable(DateTime))" Url="html/M_InstaSharp_Endpoints_Users_Recent_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="5128e318-f083-4a72-9f68-9fb36784e04a" Title="RecentSelf Method " Url="html/Overload_InstaSharp_Endpoints_Users_RecentSelf.htm">
+          <HelpTOCNode Title="RecentSelf Method " Url="html/M_InstaSharp_Endpoints_Users_RecentSelf.htm" />
+          <HelpTOCNode Title="RecentSelf Method (String, String, Nullable(Int32), Nullable(DateTime), Nullable(DateTime))" Url="html/M_InstaSharp_Endpoints_Users_RecentSelf_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Search Method " Url="html/M_InstaSharp_Endpoints_Users_Search.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Users Properties" Url="html/Properties_T_InstaSharp_Endpoints_Users.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="ffc9268a-5d48-4dcd-98a5-292ed37e9eeb" Title="InstaSharp.Models" Url="html/N_InstaSharp_Models.htm">
+    <HelpTOCNode Id="3246e8f4-0629-4915-b9e9-06cad7f91703" Title="Caption Class" Url="html/T_InstaSharp_Models_Caption.htm">
+      <HelpTOCNode Title="Caption Constructor " Url="html/M_InstaSharp_Models_Caption__ctor.htm" />
+      <HelpTOCNode Title="Caption Methods" Url="html/Methods_T_InstaSharp_Models_Caption.htm" />
+      <HelpTOCNode Id="e2f416e2-5ff0-46f3-a72b-d2b7bd9c07fb" Title="Caption Properties" Url="html/Properties_T_InstaSharp_Models_Caption.htm">
+        <HelpTOCNode Title="CreatedTime Property " Url="html/P_InstaSharp_Models_Caption_CreatedTime.htm" />
+        <HelpTOCNode Title="From Property " Url="html/P_InstaSharp_Models_Caption_From.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P_InstaSharp_Models_Caption_Id.htm" />
+        <HelpTOCNode Title="Text Property " Url="html/P_InstaSharp_Models_Caption_Text.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8eb784f0-6e64-45e7-bce2-d8d940db840c" Title="Comment Class" Url="html/T_InstaSharp_Models_Comment.htm">
+      <HelpTOCNode Title="Comment Constructor " Url="html/M_InstaSharp_Models_Comment__ctor.htm" />
+      <HelpTOCNode Title="Comment Methods" Url="html/Methods_T_InstaSharp_Models_Comment.htm" />
+      <HelpTOCNode Id="40215027-8251-490f-a7e5-06fddeb5d1af" Title="Comment Properties" Url="html/Properties_T_InstaSharp_Models_Comment.htm">
+        <HelpTOCNode Title="CreatedTime Property " Url="html/P_InstaSharp_Models_Comment_CreatedTime.htm" />
+        <HelpTOCNode Title="From Property " Url="html/P_InstaSharp_Models_Comment_From.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P_InstaSharp_Models_Comment_Id.htm" />
+        <HelpTOCNode Title="Text Property " Url="html/P_InstaSharp_Models_Comment_Text.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a5ac0655-3f00-4d7c-a1ec-25378219b0ef" Title="Comments Class" Url="html/T_InstaSharp_Models_Comments.htm">
+      <HelpTOCNode Title="Comments Constructor " Url="html/M_InstaSharp_Models_Comments__ctor.htm" />
+      <HelpTOCNode Title="Comments Methods" Url="html/Methods_T_InstaSharp_Models_Comments.htm" />
+      <HelpTOCNode Id="a0d2f64e-2896-49fc-a614-8a3f7067f104" Title="Comments Properties" Url="html/Properties_T_InstaSharp_Models_Comments.htm">
+        <HelpTOCNode Title="Count Property " Url="html/P_InstaSharp_Models_Comments_Count.htm" />
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Comments_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fa96648d-0050-439c-a530-b497bd27c002" Title="Count Class" Url="html/T_InstaSharp_Models_Count.htm">
+      <HelpTOCNode Title="Count Constructor " Url="html/M_InstaSharp_Models_Count__ctor.htm" />
+      <HelpTOCNode Title="Count Methods" Url="html/Methods_T_InstaSharp_Models_Count.htm" />
+      <HelpTOCNode Id="e31d4e90-3c67-42f7-b222-37db6bb80bee" Title="Count Properties" Url="html/Properties_T_InstaSharp_Models_Count.htm">
+        <HelpTOCNode Title="FollowedBy Property " Url="html/P_InstaSharp_Models_Count_FollowedBy.htm" />
+        <HelpTOCNode Title="Follows Property " Url="html/P_InstaSharp_Models_Count_Follows.htm" />
+        <HelpTOCNode Title="Media Property " Url="html/P_InstaSharp_Models_Count_Media.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a38e4354-d391-4e7b-a06f-6f7974f4b8ab" Title="Image Class" Url="html/T_InstaSharp_Models_Image.htm">
+      <HelpTOCNode Title="Image Constructor " Url="html/M_InstaSharp_Models_Image__ctor.htm" />
+      <HelpTOCNode Title="Image Methods" Url="html/Methods_T_InstaSharp_Models_Image.htm" />
+      <HelpTOCNode Id="6a4397a1-453f-445f-99b1-287cd66e219d" Title="Image Properties" Url="html/Properties_T_InstaSharp_Models_Image.htm">
+        <HelpTOCNode Title="LowResolution Property " Url="html/P_InstaSharp_Models_Image_LowResolution.htm" />
+        <HelpTOCNode Title="StandardResolution Property " Url="html/P_InstaSharp_Models_Image_StandardResolution.htm" />
+        <HelpTOCNode Title="Thumbnail Property " Url="html/P_InstaSharp_Models_Image_Thumbnail.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2d5923df-ce43-45df-8fdb-d8f351c86228" Title="Likes Class" Url="html/T_InstaSharp_Models_Likes.htm">
+      <HelpTOCNode Title="Likes Constructor " Url="html/M_InstaSharp_Models_Likes__ctor.htm" />
+      <HelpTOCNode Title="Likes Methods" Url="html/Methods_T_InstaSharp_Models_Likes.htm" />
+      <HelpTOCNode Id="86278779-9763-4c51-9f37-6c33b0666671" Title="Likes Properties" Url="html/Properties_T_InstaSharp_Models_Likes.htm">
+        <HelpTOCNode Title="Count Property " Url="html/P_InstaSharp_Models_Likes_Count.htm" />
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Likes_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a68aa673-9855-4f8e-a250-ae495016ebdd" Title="Location Class" Url="html/T_InstaSharp_Models_Location.htm">
+      <HelpTOCNode Title="Location Constructor " Url="html/M_InstaSharp_Models_Location__ctor.htm" />
+      <HelpTOCNode Title="Location Methods" Url="html/Methods_T_InstaSharp_Models_Location.htm" />
+      <HelpTOCNode Id="60153809-0c33-4336-9803-e6fb5dd6f2c4" Title="Location Properties" Url="html/Properties_T_InstaSharp_Models_Location.htm">
+        <HelpTOCNode Title="Id Property " Url="html/P_InstaSharp_Models_Location_Id.htm" />
+        <HelpTOCNode Title="Latitude Property " Url="html/P_InstaSharp_Models_Location_Latitude.htm" />
+        <HelpTOCNode Title="Longitude Property " Url="html/P_InstaSharp_Models_Location_Longitude.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_InstaSharp_Models_Location_Name.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5d21e9a5-b061-46ad-b8b0-fab77c601cf6" Title="Media Class" Url="html/T_InstaSharp_Models_Media.htm">
+      <HelpTOCNode Title="Media Constructor " Url="html/M_InstaSharp_Models_Media__ctor.htm" />
+      <HelpTOCNode Title="Media Methods" Url="html/Methods_T_InstaSharp_Models_Media.htm" />
+      <HelpTOCNode Id="4ea69595-9ebd-4986-b4aa-2bbd58d4e8a0" Title="Media Properties" Url="html/Properties_T_InstaSharp_Models_Media.htm">
+        <HelpTOCNode Title="Caption Property " Url="html/P_InstaSharp_Models_Media_Caption.htm" />
+        <HelpTOCNode Title="Comments Property " Url="html/P_InstaSharp_Models_Media_Comments.htm" />
+        <HelpTOCNode Title="CreatedTime Property " Url="html/P_InstaSharp_Models_Media_CreatedTime.htm" />
+        <HelpTOCNode Title="Filter Property " Url="html/P_InstaSharp_Models_Media_Filter.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P_InstaSharp_Models_Media_Id.htm" />
+        <HelpTOCNode Title="Images Property " Url="html/P_InstaSharp_Models_Media_Images.htm" />
+        <HelpTOCNode Title="Likes Property " Url="html/P_InstaSharp_Models_Media_Likes.htm" />
+        <HelpTOCNode Title="Link Property " Url="html/P_InstaSharp_Models_Media_Link.htm" />
+        <HelpTOCNode Title="Location Property " Url="html/P_InstaSharp_Models_Media_Location.htm" />
+        <HelpTOCNode Title="Tags Property " Url="html/P_InstaSharp_Models_Media_Tags.htm" />
+        <HelpTOCNode Title="Type Property " Url="html/P_InstaSharp_Models_Media_Type.htm" />
+        <HelpTOCNode Title="User Property " Url="html/P_InstaSharp_Models_Media_User.htm" />
+        <HelpTOCNode Title="UserHasLiked Property " Url="html/P_InstaSharp_Models_Media_UserHasLiked.htm" />
+        <HelpTOCNode Title="Videos Property " Url="html/P_InstaSharp_Models_Media_Videos.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="aedb92d8-d9c0-4bfa-be06-08e6b3e6740f" Title="Meta Class" Url="html/T_InstaSharp_Models_Meta.htm">
+      <HelpTOCNode Title="Meta Constructor " Url="html/M_InstaSharp_Models_Meta__ctor.htm" />
+      <HelpTOCNode Title="Meta Methods" Url="html/Methods_T_InstaSharp_Models_Meta.htm" />
+      <HelpTOCNode Id="8287cd8c-d02a-4a6b-9fe6-a8ddf29a74ae" Title="Meta Properties" Url="html/Properties_T_InstaSharp_Models_Meta.htm">
+        <HelpTOCNode Title="Code Property " Url="html/P_InstaSharp_Models_Meta_Code.htm" />
+        <HelpTOCNode Title="ErrorMessage Property " Url="html/P_InstaSharp_Models_Meta_ErrorMessage.htm" />
+        <HelpTOCNode Title="ErrorType Property " Url="html/P_InstaSharp_Models_Meta_ErrorType.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9a8e747e-4450-4cbd-8965-ba1bf0d4abfa" Title="Pagination Class" Url="html/T_InstaSharp_Models_Pagination.htm">
+      <HelpTOCNode Title="Pagination Constructor " Url="html/M_InstaSharp_Models_Pagination__ctor.htm" />
+      <HelpTOCNode Title="Pagination Methods" Url="html/Methods_T_InstaSharp_Models_Pagination.htm" />
+      <HelpTOCNode Id="4593ad20-89e6-4da5-b03d-2441ea7c56dc" Title="Pagination Properties" Url="html/Properties_T_InstaSharp_Models_Pagination.htm">
+        <HelpTOCNode Title="NextCursor Property " Url="html/P_InstaSharp_Models_Pagination_NextCursor.htm" />
+        <HelpTOCNode Title="NextMaxId Property " Url="html/P_InstaSharp_Models_Pagination_NextMaxId.htm" />
+        <HelpTOCNode Title="NextMinId Property " Url="html/P_InstaSharp_Models_Pagination_NextMinId.htm" />
+        <HelpTOCNode Title="NextUrl Property " Url="html/P_InstaSharp_Models_Pagination_NextUrl.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e46b4605-7045-4a91-b8cc-85bfd1da1aa0" Title="RealtimeUpdateItem Class" Url="html/T_InstaSharp_Models_RealtimeUpdateItem.htm">
+      <HelpTOCNode Title="RealtimeUpdateItem Constructor " Url="html/M_InstaSharp_Models_RealtimeUpdateItem__ctor.htm" />
+      <HelpTOCNode Title="RealtimeUpdateItem Methods" Url="html/Methods_T_InstaSharp_Models_RealtimeUpdateItem.htm" />
+      <HelpTOCNode Id="732ee0d1-852e-41c4-b208-694cc13eda7b" Title="RealtimeUpdateItem Properties" Url="html/Properties_T_InstaSharp_Models_RealtimeUpdateItem.htm">
+        <HelpTOCNode Title="ChangedAspect Property " Url="html/P_InstaSharp_Models_RealtimeUpdateItem_ChangedAspect.htm" />
+        <HelpTOCNode Title="Object Property " Url="html/P_InstaSharp_Models_RealtimeUpdateItem_Object.htm" />
+        <HelpTOCNode Title="ObjectId Property " Url="html/P_InstaSharp_Models_RealtimeUpdateItem_ObjectId.htm" />
+        <HelpTOCNode Title="SubScriptionId Property " Url="html/P_InstaSharp_Models_RealtimeUpdateItem_SubScriptionId.htm" />
+        <HelpTOCNode Title="Time Property " Url="html/P_InstaSharp_Models_RealtimeUpdateItem_Time.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e60adcdd-3304-42b2-af8b-a2b7c4bbc094" Title="Relationship Class" Url="html/T_InstaSharp_Models_Relationship.htm">
+      <HelpTOCNode Title="Relationship Constructor " Url="html/M_InstaSharp_Models_Relationship__ctor.htm" />
+      <HelpTOCNode Title="Relationship Methods" Url="html/Methods_T_InstaSharp_Models_Relationship.htm" />
+      <HelpTOCNode Id="c91baa69-a3d9-4c5c-85f5-50edded872f4" Title="Relationship Properties" Url="html/Properties_T_InstaSharp_Models_Relationship.htm">
+        <HelpTOCNode Title="IncomingStatus Property " Url="html/P_InstaSharp_Models_Relationship_IncomingStatus.htm" />
+        <HelpTOCNode Title="OutgoingStatus Property " Url="html/P_InstaSharp_Models_Relationship_OutgoingStatus.htm" />
+        <HelpTOCNode Title="TargetUserIsPrivate Property " Url="html/P_InstaSharp_Models_Relationship_TargetUserIsPrivate.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="80e7bc76-ddca-4118-b49e-f460fd8ff653" Title="Resolution Class" Url="html/T_InstaSharp_Models_Resolution.htm">
+      <HelpTOCNode Title="Resolution Constructor " Url="html/M_InstaSharp_Models_Resolution__ctor.htm" />
+      <HelpTOCNode Title="Resolution Methods" Url="html/Methods_T_InstaSharp_Models_Resolution.htm" />
+      <HelpTOCNode Id="188dd1d5-d6e2-413f-8b08-dfa2e1070338" Title="Resolution Properties" Url="html/Properties_T_InstaSharp_Models_Resolution.htm">
+        <HelpTOCNode Title="Height Property " Url="html/P_InstaSharp_Models_Resolution_Height.htm" />
+        <HelpTOCNode Title="Url Property " Url="html/P_InstaSharp_Models_Resolution_Url.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/P_InstaSharp_Models_Resolution_Width.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="06f89489-867c-42f1-bba3-322e6b04d442" Title="Subscription Class" Url="html/T_InstaSharp_Models_Subscription.htm">
+      <HelpTOCNode Title="Subscription Constructor " Url="html/M_InstaSharp_Models_Subscription__ctor.htm" />
+      <HelpTOCNode Title="Subscription Methods" Url="html/Methods_T_InstaSharp_Models_Subscription.htm" />
+      <HelpTOCNode Id="5db715d1-2fa9-4ae7-96fe-f7b6fd912eb9" Title="Subscription Properties" Url="html/Properties_T_InstaSharp_Models_Subscription.htm">
+        <HelpTOCNode Title="Aspect Property " Url="html/P_InstaSharp_Models_Subscription_Aspect.htm" />
+        <HelpTOCNode Title="CallbackUrl Property " Url="html/P_InstaSharp_Models_Subscription_CallbackUrl.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P_InstaSharp_Models_Subscription_Id.htm" />
+        <HelpTOCNode Title="Object Property " Url="html/P_InstaSharp_Models_Subscription_Object.htm" />
+        <HelpTOCNode Title="ObjectId Property " Url="html/P_InstaSharp_Models_Subscription_ObjectId.htm" />
+        <HelpTOCNode Title="Type Property " Url="html/P_InstaSharp_Models_Subscription_Type.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b9bc6dac-6036-4f5b-944f-ea2a4d7d4426" Title="Tag Class" Url="html/T_InstaSharp_Models_Tag.htm">
+      <HelpTOCNode Title="Tag Constructor " Url="html/M_InstaSharp_Models_Tag__ctor.htm" />
+      <HelpTOCNode Title="Tag Methods" Url="html/Methods_T_InstaSharp_Models_Tag.htm" />
+      <HelpTOCNode Id="0c076a97-8f95-4d9e-8051-16f1d057c2c0" Title="Tag Properties" Url="html/Properties_T_InstaSharp_Models_Tag.htm">
+        <HelpTOCNode Title="MediaCount Property " Url="html/P_InstaSharp_Models_Tag_MediaCount.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_InstaSharp_Models_Tag_Name.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="696a00b7-764f-46bf-ad77-1ca33733baf4" Title="User Class" Url="html/T_InstaSharp_Models_User.htm">
+      <HelpTOCNode Title="User Constructor " Url="html/M_InstaSharp_Models_User__ctor.htm" />
+      <HelpTOCNode Title="User Methods" Url="html/Methods_T_InstaSharp_Models_User.htm" />
+      <HelpTOCNode Id="25c7f9f3-3da8-4bd8-80b1-566728ec4cc7" Title="User Properties" Url="html/Properties_T_InstaSharp_Models_User.htm">
+        <HelpTOCNode Title="Bio Property " Url="html/P_InstaSharp_Models_User_Bio.htm" />
+        <HelpTOCNode Title="Counts Property " Url="html/P_InstaSharp_Models_User_Counts.htm" />
+        <HelpTOCNode Title="Website Property " Url="html/P_InstaSharp_Models_User_Website.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f4d4d4e4-8402-4372-9a42-d7ebcb2f4d4a" Title="UserInfo Class" Url="html/T_InstaSharp_Models_UserInfo.htm">
+      <HelpTOCNode Title="UserInfo Constructor " Url="html/M_InstaSharp_Models_UserInfo__ctor.htm" />
+      <HelpTOCNode Title="UserInfo Methods" Url="html/Methods_T_InstaSharp_Models_UserInfo.htm" />
+      <HelpTOCNode Id="b3e41a39-87c5-4661-a7a9-bd2d51bff874" Title="UserInfo Properties" Url="html/Properties_T_InstaSharp_Models_UserInfo.htm">
+        <HelpTOCNode Title="FullName Property " Url="html/P_InstaSharp_Models_UserInfo_FullName.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P_InstaSharp_Models_UserInfo_Id.htm" />
+        <HelpTOCNode Title="ProfilePicture Property " Url="html/P_InstaSharp_Models_UserInfo_ProfilePicture.htm" />
+        <HelpTOCNode Title="Username Property " Url="html/P_InstaSharp_Models_UserInfo_Username.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2612e393-2765-4780-8fd2-76209c6be1db" Title="Video Class" Url="html/T_InstaSharp_Models_Video.htm">
+      <HelpTOCNode Title="Video Constructor " Url="html/M_InstaSharp_Models_Video__ctor.htm" />
+      <HelpTOCNode Title="Video Methods" Url="html/Methods_T_InstaSharp_Models_Video.htm" />
+      <HelpTOCNode Id="879ed11c-97cf-4397-a1b8-5d0b8b276672" Title="Video Properties" Url="html/Properties_T_InstaSharp_Models_Video.htm">
+        <HelpTOCNode Title="LowResolution Property " Url="html/P_InstaSharp_Models_Video_LowResolution.htm" />
+        <HelpTOCNode Title="StandardResolution Property " Url="html/P_InstaSharp_Models_Video_StandardResolution.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="a6a03056-9ee3-4158-ae9a-df069cd108c8" Title="InstaSharp.Models.Responses" Url="html/N_InstaSharp_Models_Responses.htm">
+    <HelpTOCNode Id="0c3f527c-71e8-45ca-a534-0d45bf9a11ad" Title="CommentResponse Class" Url="html/T_InstaSharp_Models_Responses_CommentResponse.htm">
+      <HelpTOCNode Title="CommentResponse Constructor " Url="html/M_InstaSharp_Models_Responses_CommentResponse__ctor.htm" />
+      <HelpTOCNode Title="CommentResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_CommentResponse.htm" />
+      <HelpTOCNode Id="b6c2c69c-cbba-454f-991c-bda4992aae10" Title="CommentResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_CommentResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_CommentResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4f785472-9eff-44dd-b0a5-5a0e99dffaa7" Title="CommentsResponse Class" Url="html/T_InstaSharp_Models_Responses_CommentsResponse.htm">
+      <HelpTOCNode Title="CommentsResponse Constructor " Url="html/M_InstaSharp_Models_Responses_CommentsResponse__ctor.htm" />
+      <HelpTOCNode Title="CommentsResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_CommentsResponse.htm" />
+      <HelpTOCNode Id="b5041147-539c-41b3-a4fc-91a840cd8583" Title="CommentsResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_CommentsResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_CommentsResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e7ecf75a-3d26-47bd-bbca-070833b1fd60" Title="LikesResponse Class" Url="html/T_InstaSharp_Models_Responses_LikesResponse.htm">
+      <HelpTOCNode Title="LikesResponse Constructor " Url="html/M_InstaSharp_Models_Responses_LikesResponse__ctor.htm" />
+      <HelpTOCNode Title="LikesResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_LikesResponse.htm" />
+      <HelpTOCNode Id="c8c7c8d5-6680-47b2-959d-a03809573a40" Title="LikesResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_LikesResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_LikesResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="66d19e0e-d422-496f-973a-fb03de06240e" Title="LocationResponse Class" Url="html/T_InstaSharp_Models_Responses_LocationResponse.htm">
+      <HelpTOCNode Title="LocationResponse Constructor " Url="html/M_InstaSharp_Models_Responses_LocationResponse__ctor.htm" />
+      <HelpTOCNode Title="LocationResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_LocationResponse.htm" />
+      <HelpTOCNode Id="ad21647d-c49b-4ce8-8046-b9129ee74bcf" Title="LocationResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_LocationResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_LocationResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="bfd6f126-124e-4366-9302-6faab8f6c1dc" Title="LocationsResponse Class" Url="html/T_InstaSharp_Models_Responses_LocationsResponse.htm">
+      <HelpTOCNode Title="LocationsResponse Constructor " Url="html/M_InstaSharp_Models_Responses_LocationsResponse__ctor.htm" />
+      <HelpTOCNode Title="LocationsResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_LocationsResponse.htm" />
+      <HelpTOCNode Id="6742d6c5-fdd5-40d9-879e-ff9a68cf002b" Title="LocationsResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_LocationsResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_LocationsResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e7136f3c-b5ae-47fc-a82d-d274d23f60d8" Title="MediaResponse Class" Url="html/T_InstaSharp_Models_Responses_MediaResponse.htm">
+      <HelpTOCNode Title="MediaResponse Constructor " Url="html/M_InstaSharp_Models_Responses_MediaResponse__ctor.htm" />
+      <HelpTOCNode Title="MediaResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_MediaResponse.htm" />
+      <HelpTOCNode Id="c28f5b72-0570-4d7f-a0f1-225dfd347601" Title="MediaResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_MediaResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_MediaResponse_Data.htm" />
+        <HelpTOCNode Title="Pagination Property " Url="html/P_InstaSharp_Models_Responses_MediaResponse_Pagination.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f4607db2-0770-4935-80f2-a28ed287d863" Title="MediasResponse Class" Url="html/T_InstaSharp_Models_Responses_MediasResponse.htm">
+      <HelpTOCNode Title="MediasResponse Constructor " Url="html/M_InstaSharp_Models_Responses_MediasResponse__ctor.htm" />
+      <HelpTOCNode Title="MediasResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_MediasResponse.htm" />
+      <HelpTOCNode Id="d13aa891-7ef0-4147-81ab-f28760191b91" Title="MediasResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_MediasResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_MediasResponse_Data.htm" />
+        <HelpTOCNode Title="Pagination Property " Url="html/P_InstaSharp_Models_Responses_MediasResponse_Pagination.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="656ea13c-a7c6-452a-a4de-1e8cc4aa9955" Title="OAuthResponse Class" Url="html/T_InstaSharp_Models_Responses_OAuthResponse.htm">
+      <HelpTOCNode Title="OAuthResponse Constructor " Url="html/M_InstaSharp_Models_Responses_OAuthResponse__ctor.htm" />
+      <HelpTOCNode Title="OAuthResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_OAuthResponse.htm" />
+      <HelpTOCNode Id="14f3c2de-6f20-4ef7-a1bb-078a0a8bda24" Title="OAuthResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_OAuthResponse.htm">
+        <HelpTOCNode Title="Access_Token Property " Url="html/P_InstaSharp_Models_Responses_OAuthResponse_Access_Token.htm" />
+        <HelpTOCNode Title="User Property " Url="html/P_InstaSharp_Models_Responses_OAuthResponse_User.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b8b0fb98-d777-4fe0-a60c-7862267e2e91" Title="RelationshipResponse Class" Url="html/T_InstaSharp_Models_Responses_RelationshipResponse.htm">
+      <HelpTOCNode Title="RelationshipResponse Constructor " Url="html/M_InstaSharp_Models_Responses_RelationshipResponse__ctor.htm" />
+      <HelpTOCNode Title="RelationshipResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_RelationshipResponse.htm" />
+      <HelpTOCNode Id="45430e81-8d50-4b19-b3d3-ded8873edc3e" Title="RelationshipResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_RelationshipResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_RelationshipResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="81ed3c61-5a60-4ce9-8568-673d0cb6a2b2" Title="Response Class" Url="html/T_InstaSharp_Models_Responses_Response.htm">
+      <HelpTOCNode Title="Response Constructor " Url="html/M_InstaSharp_Models_Responses_Response__ctor.htm" />
+      <HelpTOCNode Title="Response Methods" Url="html/Methods_T_InstaSharp_Models_Responses_Response.htm" />
+      <HelpTOCNode Id="d02cfd38-99e9-4f6c-944f-6e30fcf080d8" Title="Response Properties" Url="html/Properties_T_InstaSharp_Models_Responses_Response.htm">
+        <HelpTOCNode Title="Meta Property " Url="html/P_InstaSharp_Models_Responses_Response_Meta.htm" />
+        <HelpTOCNode Title="RateLimitLimit Property " Url="html/P_InstaSharp_Models_Responses_Response_RateLimitLimit.htm" />
+        <HelpTOCNode Title="RateLimitRemaining Property " Url="html/P_InstaSharp_Models_Responses_Response_RateLimitRemaining.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f7c83bb5-a65e-4d70-a0db-a96bb13cc63a" Title="SubscriptionResponse Class" Url="html/T_InstaSharp_Models_Responses_SubscriptionResponse.htm">
+      <HelpTOCNode Title="SubscriptionResponse Constructor " Url="html/M_InstaSharp_Models_Responses_SubscriptionResponse__ctor.htm" />
+      <HelpTOCNode Title="SubscriptionResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_SubscriptionResponse.htm" />
+      <HelpTOCNode Id="0f04c8eb-56e4-49d1-98a5-26169792ecde" Title="SubscriptionResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_SubscriptionResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_SubscriptionResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6bbe0c0e-1f3b-4735-b67f-d94a617a6787" Title="TagResponse Class" Url="html/T_InstaSharp_Models_Responses_TagResponse.htm">
+      <HelpTOCNode Title="TagResponse Constructor " Url="html/M_InstaSharp_Models_Responses_TagResponse__ctor.htm" />
+      <HelpTOCNode Title="TagResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_TagResponse.htm" />
+      <HelpTOCNode Id="e99b174a-25ab-46eb-b9e4-4fe25d0467af" Title="TagResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_TagResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_TagResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7f7fa2b9-ad46-4403-a22d-18a901ca3769" Title="TagsMultiplePagesResponse Class" Url="html/T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm">
+      <HelpTOCNode Title="TagsMultiplePagesResponse Constructor " Url="html/M_InstaSharp_Models_Responses_TagsMultiplePagesResponse__ctor.htm" />
+      <HelpTOCNode Title="TagsMultiplePagesResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm" />
+      <HelpTOCNode Id="3d7d3021-d7d7-4ab1-b260-44419302b80a" Title="TagsMultiplePagesResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_Data.htm" />
+        <HelpTOCNode Title="PageCount Property " Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_PageCount.htm" />
+        <HelpTOCNode Title="PaginationNextMaxId Property " Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_PaginationNextMaxId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fff80498-3859-4a90-ac01-373b935afbd2" Title="TagsResponse Class" Url="html/T_InstaSharp_Models_Responses_TagsResponse.htm">
+      <HelpTOCNode Title="TagsResponse Constructor " Url="html/M_InstaSharp_Models_Responses_TagsResponse__ctor.htm" />
+      <HelpTOCNode Title="TagsResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_TagsResponse.htm" />
+      <HelpTOCNode Id="fb1b284b-470f-4f91-979d-a6d93dc5d3f5" Title="TagsResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_TagsResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_TagsResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b6bcc42b-f05b-4971-9301-3a3192ebde8a" Title="UserResponse Class" Url="html/T_InstaSharp_Models_Responses_UserResponse.htm">
+      <HelpTOCNode Title="UserResponse Constructor " Url="html/M_InstaSharp_Models_Responses_UserResponse__ctor.htm" />
+      <HelpTOCNode Title="UserResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_UserResponse.htm" />
+      <HelpTOCNode Id="b2ee2dce-2309-4214-9554-48f4bc68d751" Title="UserResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_UserResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_UserResponse_Data.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5e88bf63-5be3-4932-ae82-033799fe6af0" Title="UsersResponse Class" Url="html/T_InstaSharp_Models_Responses_UsersResponse.htm">
+      <HelpTOCNode Title="UsersResponse Constructor " Url="html/M_InstaSharp_Models_Responses_UsersResponse__ctor.htm" />
+      <HelpTOCNode Title="UsersResponse Methods" Url="html/Methods_T_InstaSharp_Models_Responses_UsersResponse.htm" />
+      <HelpTOCNode Id="00f8cfec-2cad-4831-844b-7856db2d4e22" Title="UsersResponse Properties" Url="html/Properties_T_InstaSharp_Models_Responses_UsersResponse.htm">
+        <HelpTOCNode Title="Data Property " Url="html/P_InstaSharp_Models_Responses_UsersResponse_Data.htm" />
+        <HelpTOCNode Title="Pagination Property " Url="html/P_InstaSharp_Models_Responses_UsersResponse_Pagination.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

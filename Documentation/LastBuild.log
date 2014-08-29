@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder" version="2014.5.31.0" projectFile="C:\damian\Instasharp\Documentation\InstaSharp.Documentation.shfbproj" started="29/08/2014 14:02:15">
+<buildStep step="Initializing">
+Finding tools...
+The Sandcastle tools are located in &#39;D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
+Locating components in the following folder(s):
+   C:\damian\Instasharp\Documentation
+Using presentation style &#39;VS2013&#39; located in &#39;D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
+Loading and initializing plug-ins...
+Assembly Binding Redirection Version 2014.5.31.0
+Copyright &#169; 2006-2014, Eric Woodruff, All Rights Reserved
+Lightweight Website Style Version 2014.5.31.0
+Copyright &#169; 2006-2014, Eric Woodruff, All Rights Reserved
+Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.dll
+    Found assembly &#39;C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.dll&#39;
+Source: C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.xml
+
+References to include (excluding framework assemblies):
+    System.Threading.Tasks, Version=2.6.9.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+
+Copying XML comments files
+    C:\damian\Instasharp\src\InstaSharp\bin\Release\InstaSharp.XML -&gt; C:\damian\Instasharp\Documentation\Help\Working\InstaSharp.XML
+</buildStep>
+<buildStep step="GenerateSharedContent">
+Generating shared content files (en-US, English (United States))...
+<plugIn name="Lightweight Website Style" behavior="After" priority="1000">
+</plugIn>    Last step completed in 00:00:00.0030
+</buildStep>
+<buildStep step="GenerateApiFilter">
+Generating API filter for MRefBuilder...
+    Last step completed in 00:00:00.0010
+</buildStep>
+<buildStep step="GenerateReflectionInfo">
+Generating reflection information...
+<plugIn name="Assembly Binding Redirection" behavior="Before" priority="1000">
+Adding binding redirections to assembly resolver configuration:
+    System.Threading.Tasks, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Version(s) 0.0.0.0-1.5.11.0 redirect to Version 1.5.11.0
+Adding ignored assembly names to assembly resolver configuration:
+    BusinessObjects.Licensing.KeycodeDecoder
+    System.Threading.Tasks
+</plugIn>[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 29/08/2014 14:02:16.
+Project &quot;C:\damian\Instasharp\Documentation\Help\Working\GenerateRefInfo.proj&quot; on node 1 (default targets).
+PrepareForBuild:
+  Creating directory &quot;obj\Debug\&quot;.
+GenerateRefInfo:
+  MRefBuilder (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Loaded assembly binding redirect: System.Threading.Tasks, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Version(s) 0.0.0.0-1.5.11.0 redirect to Version 1.5.11.0
+  Loaded 1 assemblies for reflection and 1 dependency assemblies.
+MRefBuilder : warning : Ignoring unresolved assembly reference: System.Threading.Tasks (System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a) required by Microsoft.Threading.Tasks [C:\damian\Instasharp\Documentation\Help\Working\GenerateRefInfo.proj]
+  Wrote information on 4 namespaces, 52 types, and 235 members
+  Copying file from &quot;reflection.org&quot; to &quot;reflection.all&quot;.
+  XslTransform (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
+Done Building Project &quot;C:\damian\Instasharp\Documentation\Help\Working\GenerateRefInfo.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.81
+    Last step completed in 00:00:00.8821
+</buildStep>
+<buildStep step="TransformReflectionInfo">
+Transforming reflection output...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 29/08/2014 14:02:17.
+Project &quot;C:\damian\Instasharp\Documentation\Help\Working\TransformManifest.proj&quot; on node 1 (default targets).
+TransformManifest:
+  XslTransform (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
+  Copying file from &quot;reflection.xml&quot; to &quot;reflection.nofilenames&quot;.
+  XslTransform (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\AddFilenames.xsl&#39;.
+    Unique name M_InstaSharp_InstagramConfig__ctor_1 generated for M:InstaSharp.InstagramConfig.#ctor(System.String,System.String)
+    Unique name M_InstaSharp_InstagramConfig__ctor_2 generated for M:InstaSharp.InstagramConfig.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+    Unique name M_InstaSharp_Endpoints_Comments__ctor_1 generated for M:InstaSharp.Endpoints.Comments.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Geographies__ctor_1 generated for M:InstaSharp.Endpoints.Geographies.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Geographies_Recent_1 generated for M:InstaSharp.Endpoints.Geographies.Recent(System.Int32,System.Nullable{System.Int32},System.String)
+    Unique name M_InstaSharp_Endpoints_Likes__ctor_1 generated for M:InstaSharp.Endpoints.Likes.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Locations__ctor_1 generated for M:InstaSharp.Endpoints.Locations.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Locations_Recent_1 generated for M:InstaSharp.Endpoints.Locations.Recent(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String)
+    Unique name M_InstaSharp_Endpoints_Locations_Search_1 generated for M:InstaSharp.Endpoints.Locations.Search(System.Double,System.Double,System.Nullable{System.Double})
+    Unique name M_InstaSharp_Endpoints_Locations_Search_2 generated for M:InstaSharp.Endpoints.Locations.Search(System.String,InstaSharp.Endpoints.Locations.FoursquareVersion)
+    Unique name M_InstaSharp_Endpoints_Media__ctor_1 generated for M:InstaSharp.Endpoints.Media.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Media_Search_1 generated for M:InstaSharp.Endpoints.Media.Search(System.Double,System.Double,System.Nullable{System.Int32})
+    Unique name M_InstaSharp_Endpoints_Media_Search_2 generated for M:InstaSharp.Endpoints.Media.Search(System.Double,System.Double,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime})
+    Unique name M_InstaSharp_Endpoints_Relationships__ctor_1 generated for M:InstaSharp.Endpoints.Relationships.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Relationships_FollowedBy_1 generated for M:InstaSharp.Endpoints.Relationships.FollowedBy(System.Int32)
+    Unique name M_InstaSharp_Endpoints_Relationships_FollowedBy_2 generated for M:InstaSharp.Endpoints.Relationships.FollowedBy(System.Int32,System.String)
+    Unique name M_InstaSharp_Endpoints_Relationships_Follows_1 generated for M:InstaSharp.Endpoints.Relationships.Follows(System.Int32)
+    Unique name M_InstaSharp_Endpoints_Relationships_Follows_2 generated for M:InstaSharp.Endpoints.Relationships.Follows(System.Int32,System.String)
+    Unique name M_InstaSharp_Endpoints_Relationships_Relationship_1 generated for M:InstaSharp.Endpoints.Relationships.Relationship(System.Int32,InstaSharp.Endpoints.Relationships.Action)
+    Unique name M_InstaSharp_Endpoints_Subscription_RemoveSubscription_1 generated for M:InstaSharp.Endpoints.Subscription.RemoveSubscription(System.String)
+    Unique name M_InstaSharp_Endpoints_Tags__ctor_1 generated for M:InstaSharp.Endpoints.Tags.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Tags_Recent_1 generated for M:InstaSharp.Endpoints.Tags.Recent(System.String,System.String,System.String,System.Nullable{System.Int32})
+    Unique name M_InstaSharp_Endpoints_Users__ctor_1 generated for M:InstaSharp.Endpoints.Users.#ctor(InstaSharp.InstagramConfig,InstaSharp.Models.Responses.OAuthResponse)
+    Unique name M_InstaSharp_Endpoints_Users_Get_1 generated for M:InstaSharp.Endpoints.Users.Get(System.String)
+    Unique name M_InstaSharp_Endpoints_Users_Recent_1 generated for M:InstaSharp.Endpoints.Users.Recent(System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime})
+    Unique name M_InstaSharp_Endpoints_Users_RecentSelf_1 generated for M:InstaSharp.Endpoints.Users.RecentSelf(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime})
+  XslTransform (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
+Done Building Project &quot;C:\damian\Instasharp\Documentation\Help\Working\TransformManifest.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.27
+    Last step completed in 00:00:00.3550
+</buildStep>
+<buildStep step="GenerateNamespaceSummaries">
+Generating namespace summary information...
+    Last step completed in 00:00:00.5620
+</buildStep>
+<buildStep step="CopyConceptualContent">
+Copying conceptual content...
+Copying standard token shared content file...
+Checking for other token files...
+Checking for code snippets files...
+Copying images and creating the media map file...
+Generating conceptual topic files
+    Parsing topic file &#39;C:\damian\Instasharp\Documentation\Content\Welcome.aml&#39;
+    C:\damian\Instasharp\Documentation\Content\Welcome.aml -&gt; C:\damian\Instasharp\Documentation\Help\Working\ddueXml\c688497b-86a9-4040-b9e0-addb972beed8.xml
+    Parsing topic file &#39;C:\damian\Instasharp\Documentation\Content\VersionHistory\VersionHistory.aml&#39;
+    C:\damian\Instasharp\Documentation\Content\VersionHistory\VersionHistory.aml -&gt; C:\damian\Instasharp\Documentation\Help\Working\ddueXml\2bd81f6d-77f9-4fdc-85ac-eb7bd0c88759.xml
+    Parsing topic file &#39;C:\damian\Instasharp\Documentation\Content\VersionHistory\v1.0.0.0.aml&#39;
+    C:\damian\Instasharp\Documentation\Content\VersionHistory\v1.0.0.0.aml -&gt; C:\damian\Instasharp\Documentation\Help\Working\ddueXml\56ce0d70-b0b1-4a8f-9c0d-42c5fc6be1d8.xml
+    Last step completed in 00:00:00.0200
+</buildStep>
+<buildStep step="CreateConceptualTopicConfigs">
+Creating conceptual topic configuration files...
+    Companion files
+    _ContentMetadata_.xml
+    ConceptualManifest.xml
+    Last step completed in 00:00:00.0030
+</buildStep>
+<buildStep step="CopyAdditionalContent">
+Copying additional content files...
+C:\damian\Instasharp\Documentation\icons\Help.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\Help.png
+    Last step completed in 00:00:00.0020
+</buildStep>
+<buildStep step="MergeTablesOfContents">
+Merging conceptual and additional tables of contents...
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="GenerateIntermediateTableOfContents">
+Generating intermediate table of contents file...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 29/08/2014 14:02:18.
+Project &quot;C:\damian\Instasharp\Documentation\Help\Working\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
+GenerateIntermediateTOC:
+  XslTransform (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
+Done Building Project &quot;C:\damian\Instasharp\Documentation\Help\Working\GenerateIntermediateTOC.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.08
+Generating conceptual content intermediate TOC file...
+    Last step completed in 00:00:00.1420
+</buildStep>
+<buildStep step="CreateBuildAssemblerConfigs">
+Creating Sandcastle configuration files...
+    sandcastle.config
+    conceptual.config
+    Last step completed in 00:00:00.6130
+</buildStep>
+<buildStep step="MergeCustomConfigs">
+Merging custom build component configurations
+C:\damian\Instasharp\Documentation\Help\Working\sandcastle.config
+C:\damian\Instasharp\Documentation\Help\Working\conceptual.config
+    Removing unused ExampleComponent.
+    Last step completed in 00:00:00.5450
+</buildStep>
+<buildStep step="BuildConceptualTopics">
+Building conceptual help topics...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 29/08/2014 14:02:19.
+Project &quot;C:\damian\Instasharp\Documentation\Help\Working\BuildConceptualTopics.proj&quot; on node 1 (default targets).
+BuildConceptualTopics:
+  BuildAssembler (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Loading configuration...
+  Processing topics...
+  Processed 3 topic(s)
+  CopyFromIndexComponent: &quot;metadata&quot; in-memory cache entries used: 1 of 15.
+Done Building Project &quot;C:\damian\Instasharp\Documentation\Help\Working\BuildConceptualTopics.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.25
+    Last step completed in 00:00:01.8501
+</buildStep>
+<buildStep step="BuildReferenceTopics">
+Building reference help topics...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 29/08/2014 14:02:21.
+Project &quot;C:\damian\Instasharp\Documentation\Help\Working\BuildReferenceTopics.proj&quot; on node 1 (default targets).
+BuildReferenceTopics:
+  BuildAssembler (v2014.5.31.0)
+  Copyright c 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2014, Eric Woodruff, All Rights Reserved.
+  Loading configuration...
+  Processing topics...
+  Processed 384 topic(s)
+  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 5 of 15.
+  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 2 of 30.
+Done Building Project &quot;C:\damian\Instasharp\Documentation\Help\Working\BuildReferenceTopics.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.82
+    Last step completed in 00:00:03.8812
+</buildStep>
+<buildStep step="CombiningIntermediateTocFiles">
+Combining conceptual and API intermediate TOC files...
+
+Clearing any prior web output
+    Last step completed in 00:00:00.1280
+</buildStep>
+<buildStep step="ExtractingHtmlInfo">
+Extracting HTML info for HTML Help 1 and/or website...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Sandcastle Help File Builder, version 2014.5.31.0
+Copyright c 2006-2014, Eric Woodruff, All Rights Reserved
+E-Mail: Eric@EWoodruff.us
+
+Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
+
+Processing website files in C:\damian\Instasharp\Documentation\Help\Working\Output\Website
+Processed 387 HTML files
+Sorting keywords and generating See Also indices
+Saving website keyword index to C:\damian\Instasharp\Documentation\Help\Working\WebKI.xml
+Saving website table of contents to C:\damian\Instasharp\Documentation\Help\Working\WebTOC.xml
+    Last step completed in 00:00:00.2870
+</buildStep>
+<buildStep step="CopyStandardHelpContent">
+Copying standard help content...
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertCaution.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\AlertCaution.png
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertNote.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\AlertNote.png
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertSecurity.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\AlertSecurity.png
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CFW.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\CFW.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CodeExample.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\CodeExample.png
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\favicon.ico -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\favicon.ico
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privclass.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privclass.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privdelegate.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privdelegate.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privenumeration.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privenumeration.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privevent.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privevent.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privextension.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privextension.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privfield.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privfield.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privinterface.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privinterface.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privmethod.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privmethod.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privproperty.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privproperty.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privstructure.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\privstructure.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protclass.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protclass.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protdelegate.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protdelegate.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protenumeration.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protenumeration.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protevent.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protevent.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protextension.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protextension.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protfield.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protfield.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protinterface.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protinterface.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protmethod.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protmethod.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protoperator.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protoperator.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protproperty.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protproperty.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protstructure.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\protstructure.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubclass.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubclass.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubdelegate.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubdelegate.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubenumeration.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubenumeration.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubevent.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubevent.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubextension.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubextension.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubfield.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubfield.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubinterface.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubinterface.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubmethod.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubmethod.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\puboperator.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\puboperator.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubproperty.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubproperty.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubstructure.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\pubstructure.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionCollapsed.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\SectionCollapsed.png
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionExpanded.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\SectionExpanded.png
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\slMobile.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\slMobile.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\static.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\static.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\xna.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\xna.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\scripts\branding.js -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\scripts\branding.js
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-cs-CZ.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-cs-CZ.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-de-DE.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-de-DE.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-en-US.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-en-US.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-es-ES.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-es-ES.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-fr-FR.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-fr-FR.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Help1.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-Help1.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Help2.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-Help2.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-HelpViewer.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-HelpViewer.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-it-IT.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-it-IT.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ja-JP.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-ja-JP.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ko-KR.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-ko-KR.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pl-PL.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-pl-PL.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pt-BR.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-pt-BR.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ru-RU.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-ru-RU.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-tr-TR.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-tr-TR.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Website.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-Website.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-zh-CN.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding-zh-TW.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\styles\branding.css
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\index.html -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\index.html
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\search.html -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\search.html
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\SearchHelp.aspx -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\SearchHelp.aspx
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\SearchHelp.inc.php -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\SearchHelp.inc.php
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\SearchHelp.php -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\SearchHelp.php
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\Web.Config -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\Web.Config
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\Search.png -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\Search.png
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocClose.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\TocClose.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocCollapsed.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\TocCollapsed.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocExpanded.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\TocExpanded.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocOpen.gif -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\icons\TocOpen.gif
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\branding-Website.js -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\scripts\branding-Website.js
+D:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\jquery-1.11.0.min.js -&gt; C:\damian\Instasharp\Documentation\Help\Working\Output\Website\scripts\jquery-1.11.0.min.js
+    Last step completed in 00:00:00.2300
+</buildStep>
+<buildStep step="GenerateHelpFormatTableOfContents">
+Generating website table of contents file...
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="GenerateFullTextIndex">
+Generating full-text index for the website...
+
+<plugIn name="Lightweight Website Style" behavior="After" priority="1000">
+Adding lightweight search and TOC elements to each topic...
+</plugIn>    Last step completed in 00:00:01.3821
+</buildStep>
+<buildStep step="CopyingWebsiteFiles">
+Copying website files to output folder...
+
+Copied 100 files
+Copied 200 files
+Copied 300 files
+Copied 400 files
+Copied 500 files
+Copied 600 files
+Copied 607 files for the website content
+    Last step completed in 00:00:00.3890
+</buildStep>
+<buildStep step="CleanIntermediates">
+Removing intermediate files...
+    Last step completed in 00:00:00.1200
+</buildStep>
+<buildStep step="Completed">
+
+Build completed successfully at 08/29/2014 02:02 PM.  Total time: 00:00:12.3067
+
+</buildStep>
+</shfbBuild>

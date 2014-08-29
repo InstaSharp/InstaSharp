@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Access_Token property" Url="html/P_InstaSharp_Models_Responses_OAuthResponse_Access_Token.htm" />
+  <HelpKINode Title="ApiUri property" Url="html/P_InstaSharp_InstagramConfig_ApiUri.htm" />
+  <HelpKINode Title="Approve enumeration member" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="Aspect property" Url="html/P_InstaSharp_Models_Subscription_Aspect.htm" />
+  <HelpKINode Title="AssertIsAuthenticated method" Url="html/M_InstaSharp_Endpoints_InstagramApi_AssertIsAuthenticated.htm" />
+  <HelpKINode Title="AuthLink method" Url="html/M_InstaSharp_OAuth_AuthLink.htm" />
+  <HelpKINode Title="Basic enumeration member" Url="html/T_InstaSharp_OAuth_Scope.htm" />
+  <HelpKINode Title="Bio property" Url="html/P_InstaSharp_Models_User_Bio.htm" />
+  <HelpKINode Title="Block enumeration member" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="CallbackUri property" Url="html/P_InstaSharp_InstagramConfig_CallbackUri.htm" />
+  <HelpKINode Title="CallbackUrl property" Url="html/P_InstaSharp_Models_Subscription_CallbackUrl.htm" />
+  <HelpKINode Title="Caption class">
+    <HelpKINode Title="Caption Class" Url="html/T_InstaSharp_Models_Caption.htm" />
+    <HelpKINode Title="about Caption class" Url="html/T_InstaSharp_Models_Caption.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Caption__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Caption.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Caption.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Caption property" Url="html/P_InstaSharp_Models_Media_Caption.htm" />
+  <HelpKINode Title="Caption.Caption constructor" Url="html/M_InstaSharp_Models_Caption__ctor.htm" />
+  <HelpKINode Title="Caption.CreatedTime property" Url="html/P_InstaSharp_Models_Caption_CreatedTime.htm" />
+  <HelpKINode Title="Caption.From property" Url="html/P_InstaSharp_Models_Caption_From.htm" />
+  <HelpKINode Title="Caption.Id property" Url="html/P_InstaSharp_Models_Caption_Id.htm" />
+  <HelpKINode Title="Caption.Text property" Url="html/P_InstaSharp_Models_Caption_Text.htm" />
+  <HelpKINode Title="ChangedAspect property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_ChangedAspect.htm" />
+  <HelpKINode Title="ClientId property" Url="html/P_InstaSharp_InstagramConfig_ClientId.htm" />
+  <HelpKINode Title="ClientSecret property" Url="html/P_InstaSharp_InstagramConfig_ClientSecret.htm" />
+  <HelpKINode Title="Code enumeration member" Url="html/T_InstaSharp_OAuth_ResponseType.htm" />
+  <HelpKINode Title="Code property" Url="html/P_InstaSharp_Models_Meta_Code.htm" />
+  <HelpKINode Title="Comment class">
+    <HelpKINode Title="Comment Class" Url="html/T_InstaSharp_Models_Comment.htm" />
+    <HelpKINode Title="about Comment class" Url="html/T_InstaSharp_Models_Comment.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Comment__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Comment.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Comment.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Comment.Comment constructor" Url="html/M_InstaSharp_Models_Comment__ctor.htm" />
+  <HelpKINode Title="Comment.CreatedTime property" Url="html/P_InstaSharp_Models_Comment_CreatedTime.htm" />
+  <HelpKINode Title="Comment.From property" Url="html/P_InstaSharp_Models_Comment_From.htm" />
+  <HelpKINode Title="Comment.Id property" Url="html/P_InstaSharp_Models_Comment_Id.htm" />
+  <HelpKINode Title="Comment.Text property" Url="html/P_InstaSharp_Models_Comment_Text.htm" />
+  <HelpKINode Title="CommentResponse class">
+    <HelpKINode Title="CommentResponse Class" Url="html/T_InstaSharp_Models_Responses_CommentResponse.htm" />
+    <HelpKINode Title="about CommentResponse class" Url="html/T_InstaSharp_Models_Responses_CommentResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_CommentResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_CommentResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_CommentResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CommentResponse.CommentResponse constructor" Url="html/M_InstaSharp_Models_Responses_CommentResponse__ctor.htm" />
+  <HelpKINode Title="CommentResponse.Data property" Url="html/P_InstaSharp_Models_Responses_CommentResponse_Data.htm" />
+  <HelpKINode Title="Comments class">
+    <HelpKINode Title="Comments Class" Url="html/T_InstaSharp_Endpoints_Comments.htm" />
+    <HelpKINode Title="Comments Class" Url="html/T_InstaSharp_Models_Comments.htm" />
+    <HelpKINode Title="about Comments class" Url="html/T_InstaSharp_Models_Comments.htm" />
+    <HelpKINode Title="about Comments class" Url="html/T_InstaSharp_Endpoints_Comments.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Comments__ctor.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Comments__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Comments.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Comments.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Comments.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Comments.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Comments enumeration member" Url="html/T_InstaSharp_OAuth_Scope.htm" />
+  <HelpKINode Title="Comments property" Url="html/P_InstaSharp_Models_Media_Comments.htm" />
+  <HelpKINode Title="Comments.Comments constructor">
+    <HelpKINode Title="Comments Constructor " Url="html/M_InstaSharp_Models_Comments__ctor.htm" />
+    <HelpKINode Title="Comments Constructor " Url="html/Overload_InstaSharp_Endpoints_Comments__ctor.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Comments.Count property" Url="html/P_InstaSharp_Models_Comments_Count.htm" />
+  <HelpKINode Title="Comments.Data property" Url="html/P_InstaSharp_Models_Comments_Data.htm" />
+  <HelpKINode Title="Comments.Delete method" Url="html/M_InstaSharp_Endpoints_Comments_Delete.htm" />
+  <HelpKINode Title="Comments.Get method" Url="html/M_InstaSharp_Endpoints_Comments_Get.htm" />
+  <HelpKINode Title="Comments.Post method" Url="html/M_InstaSharp_Endpoints_Comments_Post.htm" />
+  <HelpKINode Title="CommentsResponse class">
+    <HelpKINode Title="CommentsResponse Class" Url="html/T_InstaSharp_Models_Responses_CommentsResponse.htm" />
+    <HelpKINode Title="about CommentsResponse class" Url="html/T_InstaSharp_Models_Responses_CommentsResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_CommentsResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_CommentsResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_CommentsResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CommentsResponse.CommentsResponse constructor" Url="html/M_InstaSharp_Models_Responses_CommentsResponse__ctor.htm" />
+  <HelpKINode Title="CommentsResponse.Data property" Url="html/P_InstaSharp_Models_Responses_CommentsResponse_Data.htm" />
+  <HelpKINode Title="Count class">
+    <HelpKINode Title="Count Class" Url="html/T_InstaSharp_Models_Count.htm" />
+    <HelpKINode Title="about Count class" Url="html/T_InstaSharp_Models_Count.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Count__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Count.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Count.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Count property">
+    <HelpKINode Title="Comments.Count Property " Url="html/P_InstaSharp_Models_Comments_Count.htm" />
+    <HelpKINode Title="Likes.Count Property " Url="html/P_InstaSharp_Models_Likes_Count.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Count.Count constructor" Url="html/M_InstaSharp_Models_Count__ctor.htm" />
+  <HelpKINode Title="Count.FollowedBy property" Url="html/P_InstaSharp_Models_Count_FollowedBy.htm" />
+  <HelpKINode Title="Count.Follows property" Url="html/P_InstaSharp_Models_Count_Follows.htm" />
+  <HelpKINode Title="Count.Media property" Url="html/P_InstaSharp_Models_Count_Media.htm" />
+  <HelpKINode Title="Counts property" Url="html/P_InstaSharp_Models_User_Counts.htm" />
+  <HelpKINode Title="CreatedTime property">
+    <HelpKINode Title="Caption.CreatedTime Property " Url="html/P_InstaSharp_Models_Caption_CreatedTime.htm" />
+    <HelpKINode Title="Comment.CreatedTime Property " Url="html/P_InstaSharp_Models_Comment_CreatedTime.htm" />
+    <HelpKINode Title="Media.CreatedTime Property " Url="html/P_InstaSharp_Models_Media_CreatedTime.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CreateGeography method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateGeography.htm" />
+  <HelpKINode Title="CreateLocation method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateLocation.htm" />
+  <HelpKINode Title="CreateTag method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateTag.htm" />
+  <HelpKINode Title="CreateUser method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateUser.htm" />
+  <HelpKINode Title="Data property">
+    <HelpKINode Title="CommentResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_CommentResponse_Data.htm" />
+    <HelpKINode Title="Comments.Data Property " Url="html/P_InstaSharp_Models_Comments_Data.htm" />
+    <HelpKINode Title="CommentsResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_CommentsResponse_Data.htm" />
+    <HelpKINode Title="Likes.Data Property " Url="html/P_InstaSharp_Models_Likes_Data.htm" />
+    <HelpKINode Title="LikesResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_LikesResponse_Data.htm" />
+    <HelpKINode Title="LocationResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_LocationResponse_Data.htm" />
+    <HelpKINode Title="LocationsResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_LocationsResponse_Data.htm" />
+    <HelpKINode Title="MediaResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_MediaResponse_Data.htm" />
+    <HelpKINode Title="MediasResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_MediasResponse_Data.htm" />
+    <HelpKINode Title="RelationshipResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_RelationshipResponse_Data.htm" />
+    <HelpKINode Title="SubscriptionResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_SubscriptionResponse_Data.htm" />
+    <HelpKINode Title="TagResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_TagResponse_Data.htm" />
+    <HelpKINode Title="TagsMultiplePagesResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_Data.htm" />
+    <HelpKINode Title="TagsResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_TagsResponse_Data.htm" />
+    <HelpKINode Title="UserResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_UserResponse_Data.htm" />
+    <HelpKINode Title="UsersResponse.Data Property " Url="html/P_InstaSharp_Models_Responses_UsersResponse_Data.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Delete method">
+    <HelpKINode Title="Comments.Delete Method " Url="html/M_InstaSharp_Endpoints_Comments_Delete.htm" />
+    <HelpKINode Title="Likes.Delete Method " Url="html/M_InstaSharp_Endpoints_Likes_Delete.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Deny enumeration member" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="EnforceSignedHeader property" Url="html/P_InstaSharp_Endpoints_InstagramApi_EnforceSignedHeader.htm" />
+  <HelpKINode Title="ErrorMessage property" Url="html/P_InstaSharp_Models_Meta_ErrorMessage.htm" />
+  <HelpKINode Title="ErrorType property" Url="html/P_InstaSharp_Models_Meta_ErrorType.htm" />
+  <HelpKINode Title="Feed method" Url="html/M_InstaSharp_Endpoints_Users_Feed.htm" />
+  <HelpKINode Title="Filter property" Url="html/P_InstaSharp_Models_Media_Filter.htm" />
+  <HelpKINode Title="Follow enumeration member" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="FollowedBy method" Url="html/Overload_InstaSharp_Endpoints_Relationships_FollowedBy.htm" />
+  <HelpKINode Title="FollowedBy property" Url="html/P_InstaSharp_Models_Count_FollowedBy.htm" />
+  <HelpKINode Title="Follows method" Url="html/Overload_InstaSharp_Endpoints_Relationships_Follows.htm" />
+  <HelpKINode Title="Follows property" Url="html/P_InstaSharp_Models_Count_Follows.htm" />
+  <HelpKINode Title="From property">
+    <HelpKINode Title="Caption.From Property " Url="html/P_InstaSharp_Models_Caption_From.htm" />
+    <HelpKINode Title="Comment.From Property " Url="html/P_InstaSharp_Models_Comment_From.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FullName property" Url="html/P_InstaSharp_Models_UserInfo_FullName.htm" />
+  <HelpKINode Title="Geographies class">
+    <HelpKINode Title="Geographies Class" Url="html/T_InstaSharp_Endpoints_Geographies.htm" />
+    <HelpKINode Title="about Geographies class" Url="html/T_InstaSharp_Endpoints_Geographies.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Geographies__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Geographies.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Geographies.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Geographies.Geographies constructor" Url="html/Overload_InstaSharp_Endpoints_Geographies__ctor.htm" />
+  <HelpKINode Title="Geographies.Recent method" Url="html/Overload_InstaSharp_Endpoints_Geographies_Recent.htm" />
+  <HelpKINode Title="Geography enumeration member" Url="html/T_InstaSharp_Endpoints_Subscription_Object.htm" />
+  <HelpKINode Title="Get method">
+    <HelpKINode Title="Comments.Get Method " Url="html/M_InstaSharp_Endpoints_Comments_Get.htm" />
+    <HelpKINode Title="Likes.Get Method " Url="html/M_InstaSharp_Endpoints_Likes_Get.htm" />
+    <HelpKINode Title="Locations.Get Method " Url="html/M_InstaSharp_Endpoints_Locations_Get.htm" />
+    <HelpKINode Title="Media.Get Method " Url="html/M_InstaSharp_Endpoints_Media_Get.htm" />
+    <HelpKINode Title="Tags.Get Method " Url="html/M_InstaSharp_Endpoints_Tags_Get.htm" />
+    <HelpKINode Title="Users.Get Method " Url="html/Overload_InstaSharp_Endpoints_Users_Get.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetSelf method" Url="html/M_InstaSharp_Endpoints_Users_GetSelf.htm" />
+  <HelpKINode Title="Height property" Url="html/P_InstaSharp_Models_Resolution_Height.htm" />
+  <HelpKINode Title="Id property">
+    <HelpKINode Title="Caption.Id Property " Url="html/P_InstaSharp_Models_Caption_Id.htm" />
+    <HelpKINode Title="Comment.Id Property " Url="html/P_InstaSharp_Models_Comment_Id.htm" />
+    <HelpKINode Title="Location.Id Property " Url="html/P_InstaSharp_Models_Location_Id.htm" />
+    <HelpKINode Title="Media.Id Property " Url="html/P_InstaSharp_Models_Media_Id.htm" />
+    <HelpKINode Title="Subscription.Id Property " Url="html/P_InstaSharp_Models_Subscription_Id.htm" />
+    <HelpKINode Title="UserInfo.Id Property " Url="html/P_InstaSharp_Models_UserInfo_Id.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Image class">
+    <HelpKINode Title="Image Class" Url="html/T_InstaSharp_Models_Image.htm" />
+    <HelpKINode Title="about Image class" Url="html/T_InstaSharp_Models_Image.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Image__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Image.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Image.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Image.Image constructor" Url="html/M_InstaSharp_Models_Image__ctor.htm" />
+  <HelpKINode Title="Image.LowResolution property" Url="html/P_InstaSharp_Models_Image_LowResolution.htm" />
+  <HelpKINode Title="Image.StandardResolution property" Url="html/P_InstaSharp_Models_Image_StandardResolution.htm" />
+  <HelpKINode Title="Image.Thumbnail property" Url="html/P_InstaSharp_Models_Image_Thumbnail.htm" />
+  <HelpKINode Title="Images property" Url="html/P_InstaSharp_Models_Media_Images.htm" />
+  <HelpKINode Title="IncomingStatus property" Url="html/P_InstaSharp_Models_Relationship_IncomingStatus.htm" />
+  <HelpKINode Title="InstagramApi class">
+    <HelpKINode Title="InstagramApi Class" Url="html/T_InstaSharp_Endpoints_InstagramApi.htm" />
+    <HelpKINode Title="about InstagramApi class" Url="html/T_InstaSharp_Endpoints_InstagramApi.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Endpoints_InstagramApi__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_InstagramApi.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_InstagramApi.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InstagramApi.AssertIsAuthenticated method" Url="html/M_InstaSharp_Endpoints_InstagramApi_AssertIsAuthenticated.htm" />
+  <HelpKINode Title="InstagramApi.EnforceSignedHeader property" Url="html/P_InstaSharp_Endpoints_InstagramApi_EnforceSignedHeader.htm" />
+  <HelpKINode Title="InstagramApi.InstagramApi constructor" Url="html/M_InstaSharp_Endpoints_InstagramApi__ctor.htm" />
+  <HelpKINode Title="InstagramApi.InstagramConfig property" Url="html/P_InstaSharp_Endpoints_InstagramApi_InstagramConfig.htm" />
+  <HelpKINode Title="InstagramApi.Ips property" Url="html/P_InstaSharp_Endpoints_InstagramApi_Ips.htm" />
+  <HelpKINode Title="InstagramApi.OAuthResponse property" Url="html/P_InstaSharp_Endpoints_InstagramApi_OAuthResponse.htm" />
+  <HelpKINode Title="InstagramConfig class">
+    <HelpKINode Title="InstagramConfig Class" Url="html/T_InstaSharp_InstagramConfig.htm" />
+    <HelpKINode Title="about InstagramConfig class" Url="html/T_InstaSharp_InstagramConfig.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_InstagramConfig__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_InstagramConfig.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_InstagramConfig.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InstagramConfig property" Url="html/P_InstaSharp_Endpoints_InstagramApi_InstagramConfig.htm" />
+  <HelpKINode Title="InstagramConfig.ApiUri property" Url="html/P_InstaSharp_InstagramConfig_ApiUri.htm" />
+  <HelpKINode Title="InstagramConfig.CallbackUri property" Url="html/P_InstaSharp_InstagramConfig_CallbackUri.htm" />
+  <HelpKINode Title="InstagramConfig.ClientId property" Url="html/P_InstaSharp_InstagramConfig_ClientId.htm" />
+  <HelpKINode Title="InstagramConfig.ClientSecret property" Url="html/P_InstaSharp_InstagramConfig_ClientSecret.htm" />
+  <HelpKINode Title="InstagramConfig.InstagramConfig constructor" Url="html/Overload_InstaSharp_InstagramConfig__ctor.htm" />
+  <HelpKINode Title="InstagramConfig.OAuthUri property" Url="html/P_InstaSharp_InstagramConfig_OAuthUri.htm" />
+  <HelpKINode Title="InstagramConfig.RealTimeApi property" Url="html/P_InstaSharp_InstagramConfig_RealTimeApi.htm" />
+  <HelpKINode Title="InstagramConfig.RedirectUri property" Url="html/P_InstaSharp_InstagramConfig_RedirectUri.htm" />
+  <HelpKINode Title="InstaSharp namespace" Url="html/N_InstaSharp.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints namespace" Url="html/N_InstaSharp_Endpoints.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Comments class" Url="html/T_InstaSharp_Endpoints_Comments.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Geographies class" Url="html/T_InstaSharp_Endpoints_Geographies.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.InstagramApi class" Url="html/T_InstaSharp_Endpoints_InstagramApi.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Likes class" Url="html/T_InstaSharp_Endpoints_Likes.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Locations class" Url="html/T_InstaSharp_Endpoints_Locations.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Locations.FoursquareVersion enumeration" Url="html/T_InstaSharp_Endpoints_Locations_FoursquareVersion.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Media class" Url="html/T_InstaSharp_Endpoints_Media.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Relationships class" Url="html/T_InstaSharp_Endpoints_Relationships.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Relationships.Action enumeration" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Subscription class" Url="html/T_InstaSharp_Endpoints_Subscription.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Subscription.Aspect enumeration" Url="html/T_InstaSharp_Endpoints_Subscription_Aspect.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Subscription.Object enumeration" Url="html/T_InstaSharp_Endpoints_Subscription_Object.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Tags class" Url="html/T_InstaSharp_Endpoints_Tags.htm" />
+  <HelpKINode Title="InstaSharp.Endpoints.Users class" Url="html/T_InstaSharp_Endpoints_Users.htm" />
+  <HelpKINode Title="InstaSharp.InstagramConfig class" Url="html/T_InstaSharp_InstagramConfig.htm" />
+  <HelpKINode Title="InstaSharp.Models namespace" Url="html/N_InstaSharp_Models.htm" />
+  <HelpKINode Title="InstaSharp.Models.Caption class" Url="html/T_InstaSharp_Models_Caption.htm" />
+  <HelpKINode Title="InstaSharp.Models.Comment class" Url="html/T_InstaSharp_Models_Comment.htm" />
+  <HelpKINode Title="InstaSharp.Models.Comments class" Url="html/T_InstaSharp_Models_Comments.htm" />
+  <HelpKINode Title="InstaSharp.Models.Count class" Url="html/T_InstaSharp_Models_Count.htm" />
+  <HelpKINode Title="InstaSharp.Models.Image class" Url="html/T_InstaSharp_Models_Image.htm" />
+  <HelpKINode Title="InstaSharp.Models.Likes class" Url="html/T_InstaSharp_Models_Likes.htm" />
+  <HelpKINode Title="InstaSharp.Models.Location class" Url="html/T_InstaSharp_Models_Location.htm" />
+  <HelpKINode Title="InstaSharp.Models.Media class" Url="html/T_InstaSharp_Models_Media.htm" />
+  <HelpKINode Title="InstaSharp.Models.Meta class" Url="html/T_InstaSharp_Models_Meta.htm" />
+  <HelpKINode Title="InstaSharp.Models.Pagination class" Url="html/T_InstaSharp_Models_Pagination.htm" />
+  <HelpKINode Title="InstaSharp.Models.RealtimeUpdateItem class" Url="html/T_InstaSharp_Models_RealtimeUpdateItem.htm" />
+  <HelpKINode Title="InstaSharp.Models.Relationship class" Url="html/T_InstaSharp_Models_Relationship.htm" />
+  <HelpKINode Title="InstaSharp.Models.Resolution class" Url="html/T_InstaSharp_Models_Resolution.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses namespace" Url="html/N_InstaSharp_Models_Responses.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.CommentResponse class" Url="html/T_InstaSharp_Models_Responses_CommentResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.CommentsResponse class" Url="html/T_InstaSharp_Models_Responses_CommentsResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.LikesResponse class" Url="html/T_InstaSharp_Models_Responses_LikesResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.LocationResponse class" Url="html/T_InstaSharp_Models_Responses_LocationResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.LocationsResponse class" Url="html/T_InstaSharp_Models_Responses_LocationsResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.MediaResponse class" Url="html/T_InstaSharp_Models_Responses_MediaResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.MediasResponse class" Url="html/T_InstaSharp_Models_Responses_MediasResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.OAuthResponse class" Url="html/T_InstaSharp_Models_Responses_OAuthResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.RelationshipResponse class" Url="html/T_InstaSharp_Models_Responses_RelationshipResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.Response class" Url="html/T_InstaSharp_Models_Responses_Response.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.SubscriptionResponse class" Url="html/T_InstaSharp_Models_Responses_SubscriptionResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.TagResponse class" Url="html/T_InstaSharp_Models_Responses_TagResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.TagsMultiplePagesResponse class" Url="html/T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.TagsResponse class" Url="html/T_InstaSharp_Models_Responses_TagsResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.UserResponse class" Url="html/T_InstaSharp_Models_Responses_UserResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Responses.UsersResponse class" Url="html/T_InstaSharp_Models_Responses_UsersResponse.htm" />
+  <HelpKINode Title="InstaSharp.Models.Subscription class" Url="html/T_InstaSharp_Models_Subscription.htm" />
+  <HelpKINode Title="InstaSharp.Models.Tag class" Url="html/T_InstaSharp_Models_Tag.htm" />
+  <HelpKINode Title="InstaSharp.Models.User class" Url="html/T_InstaSharp_Models_User.htm" />
+  <HelpKINode Title="InstaSharp.Models.UserInfo class" Url="html/T_InstaSharp_Models_UserInfo.htm" />
+  <HelpKINode Title="InstaSharp.Models.Video class" Url="html/T_InstaSharp_Models_Video.htm" />
+  <HelpKINode Title="InstaSharp.OAuth class" Url="html/T_InstaSharp_OAuth.htm" />
+  <HelpKINode Title="InstaSharp.OAuth.ResponseType enumeration" Url="html/T_InstaSharp_OAuth_ResponseType.htm" />
+  <HelpKINode Title="InstaSharp.OAuth.Scope enumeration" Url="html/T_InstaSharp_OAuth_Scope.htm" />
+  <HelpKINode Title="Ips property" Url="html/P_InstaSharp_Endpoints_InstagramApi_Ips.htm" />
+  <HelpKINode Title="Latitude property" Url="html/P_InstaSharp_Models_Location_Latitude.htm" />
+  <HelpKINode Title="Liked method" Url="html/M_InstaSharp_Endpoints_Users_Liked.htm" />
+  <HelpKINode Title="Likes class">
+    <HelpKINode Title="Likes Class" Url="html/T_InstaSharp_Models_Likes.htm" />
+    <HelpKINode Title="Likes Class" Url="html/T_InstaSharp_Endpoints_Likes.htm" />
+    <HelpKINode Title="about Likes class" Url="html/T_InstaSharp_Endpoints_Likes.htm" />
+    <HelpKINode Title="about Likes class" Url="html/T_InstaSharp_Models_Likes.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Likes__ctor.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Likes__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Likes.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Likes.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Likes.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Likes.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Likes enumeration member" Url="html/T_InstaSharp_OAuth_Scope.htm" />
+  <HelpKINode Title="Likes property" Url="html/P_InstaSharp_Models_Media_Likes.htm" />
+  <HelpKINode Title="Likes.Count property" Url="html/P_InstaSharp_Models_Likes_Count.htm" />
+  <HelpKINode Title="Likes.Data property" Url="html/P_InstaSharp_Models_Likes_Data.htm" />
+  <HelpKINode Title="Likes.Delete method" Url="html/M_InstaSharp_Endpoints_Likes_Delete.htm" />
+  <HelpKINode Title="Likes.Get method" Url="html/M_InstaSharp_Endpoints_Likes_Get.htm" />
+  <HelpKINode Title="Likes.Likes constructor">
+    <HelpKINode Title="Likes Constructor " Url="html/Overload_InstaSharp_Endpoints_Likes__ctor.htm" />
+    <HelpKINode Title="Likes Constructor " Url="html/M_InstaSharp_Models_Likes__ctor.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Likes.Post method" Url="html/M_InstaSharp_Endpoints_Likes_Post.htm" />
+  <HelpKINode Title="LikesResponse class">
+    <HelpKINode Title="LikesResponse Class" Url="html/T_InstaSharp_Models_Responses_LikesResponse.htm" />
+    <HelpKINode Title="about LikesResponse class" Url="html/T_InstaSharp_Models_Responses_LikesResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_LikesResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_LikesResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_LikesResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LikesResponse.Data property" Url="html/P_InstaSharp_Models_Responses_LikesResponse_Data.htm" />
+  <HelpKINode Title="LikesResponse.LikesResponse constructor" Url="html/M_InstaSharp_Models_Responses_LikesResponse__ctor.htm" />
+  <HelpKINode Title="Link property" Url="html/P_InstaSharp_Models_Media_Link.htm" />
+  <HelpKINode Title="ListAllSubscriptions method" Url="html/M_InstaSharp_Endpoints_Subscription_ListAllSubscriptions.htm" />
+  <HelpKINode Title="Location class">
+    <HelpKINode Title="Location Class" Url="html/T_InstaSharp_Models_Location.htm" />
+    <HelpKINode Title="about Location class" Url="html/T_InstaSharp_Models_Location.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Location__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Location.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Location.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Location enumeration member" Url="html/T_InstaSharp_Endpoints_Subscription_Object.htm" />
+  <HelpKINode Title="Location property" Url="html/P_InstaSharp_Models_Media_Location.htm" />
+  <HelpKINode Title="Location.Id property" Url="html/P_InstaSharp_Models_Location_Id.htm" />
+  <HelpKINode Title="Location.Latitude property" Url="html/P_InstaSharp_Models_Location_Latitude.htm" />
+  <HelpKINode Title="Location.Location constructor" Url="html/M_InstaSharp_Models_Location__ctor.htm" />
+  <HelpKINode Title="Location.Longitude property" Url="html/P_InstaSharp_Models_Location_Longitude.htm" />
+  <HelpKINode Title="Location.Name property" Url="html/P_InstaSharp_Models_Location_Name.htm" />
+  <HelpKINode Title="LocationResponse class">
+    <HelpKINode Title="LocationResponse Class" Url="html/T_InstaSharp_Models_Responses_LocationResponse.htm" />
+    <HelpKINode Title="about LocationResponse class" Url="html/T_InstaSharp_Models_Responses_LocationResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_LocationResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_LocationResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_LocationResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LocationResponse.Data property" Url="html/P_InstaSharp_Models_Responses_LocationResponse_Data.htm" />
+  <HelpKINode Title="LocationResponse.LocationResponse constructor" Url="html/M_InstaSharp_Models_Responses_LocationResponse__ctor.htm" />
+  <HelpKINode Title="Locations class">
+    <HelpKINode Title="Locations Class" Url="html/T_InstaSharp_Endpoints_Locations.htm" />
+    <HelpKINode Title="about Locations class" Url="html/T_InstaSharp_Endpoints_Locations.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Locations__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Locations.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Locations.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Locations.FoursquareVersion enumeration" Url="html/T_InstaSharp_Endpoints_Locations_FoursquareVersion.htm" />
+  <HelpKINode Title="Locations.Get method" Url="html/M_InstaSharp_Endpoints_Locations_Get.htm" />
+  <HelpKINode Title="Locations.Locations constructor" Url="html/Overload_InstaSharp_Endpoints_Locations__ctor.htm" />
+  <HelpKINode Title="Locations.Recent method" Url="html/Overload_InstaSharp_Endpoints_Locations_Recent.htm" />
+  <HelpKINode Title="Locations.Search method" Url="html/Overload_InstaSharp_Endpoints_Locations_Search.htm" />
+  <HelpKINode Title="LocationsResponse class">
+    <HelpKINode Title="LocationsResponse Class" Url="html/T_InstaSharp_Models_Responses_LocationsResponse.htm" />
+    <HelpKINode Title="about LocationsResponse class" Url="html/T_InstaSharp_Models_Responses_LocationsResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_LocationsResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_LocationsResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_LocationsResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LocationsResponse.Data property" Url="html/P_InstaSharp_Models_Responses_LocationsResponse_Data.htm" />
+  <HelpKINode Title="LocationsResponse.LocationsResponse constructor" Url="html/M_InstaSharp_Models_Responses_LocationsResponse__ctor.htm" />
+  <HelpKINode Title="Longitude property" Url="html/P_InstaSharp_Models_Location_Longitude.htm" />
+  <HelpKINode Title="LowResolution property">
+    <HelpKINode Title="Image.LowResolution Property " Url="html/P_InstaSharp_Models_Image_LowResolution.htm" />
+    <HelpKINode Title="Video.LowResolution Property " Url="html/P_InstaSharp_Models_Video_LowResolution.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Media class">
+    <HelpKINode Title="Media Class" Url="html/T_InstaSharp_Endpoints_Media.htm" />
+    <HelpKINode Title="Media Class" Url="html/T_InstaSharp_Models_Media.htm" />
+    <HelpKINode Title="about Media class" Url="html/T_InstaSharp_Models_Media.htm" />
+    <HelpKINode Title="about Media class" Url="html/T_InstaSharp_Endpoints_Media.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Media__ctor.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Media__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Media.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Media.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Media.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Media.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Media enumeration member" Url="html/T_InstaSharp_Endpoints_Subscription_Aspect.htm" />
+  <HelpKINode Title="Media property" Url="html/P_InstaSharp_Models_Count_Media.htm" />
+  <HelpKINode Title="Media.Caption property" Url="html/P_InstaSharp_Models_Media_Caption.htm" />
+  <HelpKINode Title="Media.Comments property" Url="html/P_InstaSharp_Models_Media_Comments.htm" />
+  <HelpKINode Title="Media.CreatedTime property" Url="html/P_InstaSharp_Models_Media_CreatedTime.htm" />
+  <HelpKINode Title="Media.Filter property" Url="html/P_InstaSharp_Models_Media_Filter.htm" />
+  <HelpKINode Title="Media.Get method" Url="html/M_InstaSharp_Endpoints_Media_Get.htm" />
+  <HelpKINode Title="Media.Id property" Url="html/P_InstaSharp_Models_Media_Id.htm" />
+  <HelpKINode Title="Media.Images property" Url="html/P_InstaSharp_Models_Media_Images.htm" />
+  <HelpKINode Title="Media.Likes property" Url="html/P_InstaSharp_Models_Media_Likes.htm" />
+  <HelpKINode Title="Media.Link property" Url="html/P_InstaSharp_Models_Media_Link.htm" />
+  <HelpKINode Title="Media.Location property" Url="html/P_InstaSharp_Models_Media_Location.htm" />
+  <HelpKINode Title="Media.Media constructor">
+    <HelpKINode Title="Media Constructor " Url="html/M_InstaSharp_Models_Media__ctor.htm" />
+    <HelpKINode Title="Media Constructor " Url="html/Overload_InstaSharp_Endpoints_Media__ctor.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Media.Popular method" Url="html/M_InstaSharp_Endpoints_Media_Popular.htm" />
+  <HelpKINode Title="Media.Search method" Url="html/Overload_InstaSharp_Endpoints_Media_Search.htm" />
+  <HelpKINode Title="Media.Tags property" Url="html/P_InstaSharp_Models_Media_Tags.htm" />
+  <HelpKINode Title="Media.Type property" Url="html/P_InstaSharp_Models_Media_Type.htm" />
+  <HelpKINode Title="Media.User property" Url="html/P_InstaSharp_Models_Media_User.htm" />
+  <HelpKINode Title="Media.UserHasLiked property" Url="html/P_InstaSharp_Models_Media_UserHasLiked.htm" />
+  <HelpKINode Title="Media.Videos property" Url="html/P_InstaSharp_Models_Media_Videos.htm" />
+  <HelpKINode Title="MediaCount property" Url="html/P_InstaSharp_Models_Tag_MediaCount.htm" />
+  <HelpKINode Title="MediaResponse class">
+    <HelpKINode Title="MediaResponse Class" Url="html/T_InstaSharp_Models_Responses_MediaResponse.htm" />
+    <HelpKINode Title="about MediaResponse class" Url="html/T_InstaSharp_Models_Responses_MediaResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_MediaResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_MediaResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_MediaResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MediaResponse.Data property" Url="html/P_InstaSharp_Models_Responses_MediaResponse_Data.htm" />
+  <HelpKINode Title="MediaResponse.MediaResponse constructor" Url="html/M_InstaSharp_Models_Responses_MediaResponse__ctor.htm" />
+  <HelpKINode Title="MediaResponse.Pagination property" Url="html/P_InstaSharp_Models_Responses_MediaResponse_Pagination.htm" />
+  <HelpKINode Title="MediasResponse class">
+    <HelpKINode Title="MediasResponse Class" Url="html/T_InstaSharp_Models_Responses_MediasResponse.htm" />
+    <HelpKINode Title="about MediasResponse class" Url="html/T_InstaSharp_Models_Responses_MediasResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_MediasResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_MediasResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_MediasResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MediasResponse.Data property" Url="html/P_InstaSharp_Models_Responses_MediasResponse_Data.htm" />
+  <HelpKINode Title="MediasResponse.MediasResponse constructor" Url="html/M_InstaSharp_Models_Responses_MediasResponse__ctor.htm" />
+  <HelpKINode Title="MediasResponse.Pagination property" Url="html/P_InstaSharp_Models_Responses_MediasResponse_Pagination.htm" />
+  <HelpKINode Title="Meta class">
+    <HelpKINode Title="Meta Class" Url="html/T_InstaSharp_Models_Meta.htm" />
+    <HelpKINode Title="about Meta class" Url="html/T_InstaSharp_Models_Meta.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Meta__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Meta.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Meta.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Meta property" Url="html/P_InstaSharp_Models_Responses_Response_Meta.htm" />
+  <HelpKINode Title="Meta.Code property" Url="html/P_InstaSharp_Models_Meta_Code.htm" />
+  <HelpKINode Title="Meta.ErrorMessage property" Url="html/P_InstaSharp_Models_Meta_ErrorMessage.htm" />
+  <HelpKINode Title="Meta.ErrorType property" Url="html/P_InstaSharp_Models_Meta_ErrorType.htm" />
+  <HelpKINode Title="Meta.Meta constructor" Url="html/M_InstaSharp_Models_Meta__ctor.htm" />
+  <HelpKINode Title="Name property">
+    <HelpKINode Title="Location.Name Property " Url="html/P_InstaSharp_Models_Location_Name.htm" />
+    <HelpKINode Title="Tag.Name Property " Url="html/P_InstaSharp_Models_Tag_Name.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NextCursor property" Url="html/P_InstaSharp_Models_Pagination_NextCursor.htm" />
+  <HelpKINode Title="NextMaxId property" Url="html/P_InstaSharp_Models_Pagination_NextMaxId.htm" />
+  <HelpKINode Title="NextMinId property" Url="html/P_InstaSharp_Models_Pagination_NextMinId.htm" />
+  <HelpKINode Title="NextUrl property" Url="html/P_InstaSharp_Models_Pagination_NextUrl.htm" />
+  <HelpKINode Title="OAuth class">
+    <HelpKINode Title="OAuth Class" Url="html/T_InstaSharp_OAuth.htm" />
+    <HelpKINode Title="about OAuth class" Url="html/T_InstaSharp_OAuth.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_OAuth__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_OAuth.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OAuth.AuthLink method" Url="html/M_InstaSharp_OAuth_AuthLink.htm" />
+  <HelpKINode Title="OAuth.OAuth constructor" Url="html/M_InstaSharp_OAuth__ctor.htm" />
+  <HelpKINode Title="OAuth.RequestToken method" Url="html/M_InstaSharp_OAuth_RequestToken.htm" />
+  <HelpKINode Title="OAuth.ResponseType enumeration" Url="html/T_InstaSharp_OAuth_ResponseType.htm" />
+  <HelpKINode Title="OAuth.Scope enumeration" Url="html/T_InstaSharp_OAuth_Scope.htm" />
+  <HelpKINode Title="OAuthResponse class">
+    <HelpKINode Title="OAuthResponse Class" Url="html/T_InstaSharp_Models_Responses_OAuthResponse.htm" />
+    <HelpKINode Title="about OAuthResponse class" Url="html/T_InstaSharp_Models_Responses_OAuthResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_OAuthResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_OAuthResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_OAuthResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OAuthResponse property" Url="html/P_InstaSharp_Endpoints_InstagramApi_OAuthResponse.htm" />
+  <HelpKINode Title="OAuthResponse.Access_Token property" Url="html/P_InstaSharp_Models_Responses_OAuthResponse_Access_Token.htm" />
+  <HelpKINode Title="OAuthResponse.OAuthResponse constructor" Url="html/M_InstaSharp_Models_Responses_OAuthResponse__ctor.htm" />
+  <HelpKINode Title="OAuthResponse.User property" Url="html/P_InstaSharp_Models_Responses_OAuthResponse_User.htm" />
+  <HelpKINode Title="OAuthUri property" Url="html/P_InstaSharp_InstagramConfig_OAuthUri.htm" />
+  <HelpKINode Title="Object property">
+    <HelpKINode Title="RealtimeUpdateItem.Object Property " Url="html/P_InstaSharp_Models_RealtimeUpdateItem_Object.htm" />
+    <HelpKINode Title="Subscription.Object Property " Url="html/P_InstaSharp_Models_Subscription_Object.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ObjectId property">
+    <HelpKINode Title="RealtimeUpdateItem.ObjectId Property " Url="html/P_InstaSharp_Models_RealtimeUpdateItem_ObjectId.htm" />
+    <HelpKINode Title="Subscription.ObjectId Property " Url="html/P_InstaSharp_Models_Subscription_ObjectId.htm" />
+  </HelpKINode>
+  <HelpKINode Title="One enumeration member" Url="html/T_InstaSharp_Endpoints_Locations_FoursquareVersion.htm" />
+  <HelpKINode Title="OutgoingStatus property" Url="html/P_InstaSharp_Models_Relationship_OutgoingStatus.htm" />
+  <HelpKINode Title="PageCount property" Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_PageCount.htm" />
+  <HelpKINode Title="Pagination class">
+    <HelpKINode Title="Pagination Class" Url="html/T_InstaSharp_Models_Pagination.htm" />
+    <HelpKINode Title="about Pagination class" Url="html/T_InstaSharp_Models_Pagination.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Pagination__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Pagination.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Pagination.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Pagination property">
+    <HelpKINode Title="MediaResponse.Pagination Property " Url="html/P_InstaSharp_Models_Responses_MediaResponse_Pagination.htm" />
+    <HelpKINode Title="MediasResponse.Pagination Property " Url="html/P_InstaSharp_Models_Responses_MediasResponse_Pagination.htm" />
+    <HelpKINode Title="UsersResponse.Pagination Property " Url="html/P_InstaSharp_Models_Responses_UsersResponse_Pagination.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Pagination.NextCursor property" Url="html/P_InstaSharp_Models_Pagination_NextCursor.htm" />
+  <HelpKINode Title="Pagination.NextMaxId property" Url="html/P_InstaSharp_Models_Pagination_NextMaxId.htm" />
+  <HelpKINode Title="Pagination.NextMinId property" Url="html/P_InstaSharp_Models_Pagination_NextMinId.htm" />
+  <HelpKINode Title="Pagination.NextUrl property" Url="html/P_InstaSharp_Models_Pagination_NextUrl.htm" />
+  <HelpKINode Title="Pagination.Pagination constructor" Url="html/M_InstaSharp_Models_Pagination__ctor.htm" />
+  <HelpKINode Title="PaginationNextMaxId property" Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_PaginationNextMaxId.htm" />
+  <HelpKINode Title="Popular method" Url="html/M_InstaSharp_Endpoints_Media_Popular.htm" />
+  <HelpKINode Title="Post method">
+    <HelpKINode Title="Comments.Post Method " Url="html/M_InstaSharp_Endpoints_Comments_Post.htm" />
+    <HelpKINode Title="Likes.Post Method " Url="html/M_InstaSharp_Endpoints_Likes_Post.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ProfilePicture property" Url="html/P_InstaSharp_Models_UserInfo_ProfilePicture.htm" />
+  <HelpKINode Title="RateLimitLimit property" Url="html/P_InstaSharp_Models_Responses_Response_RateLimitLimit.htm" />
+  <HelpKINode Title="RateLimitRemaining property" Url="html/P_InstaSharp_Models_Responses_Response_RateLimitRemaining.htm" />
+  <HelpKINode Title="RealTimeApi property" Url="html/P_InstaSharp_InstagramConfig_RealTimeApi.htm" />
+  <HelpKINode Title="RealtimeUpdateItem class">
+    <HelpKINode Title="RealtimeUpdateItem Class" Url="html/T_InstaSharp_Models_RealtimeUpdateItem.htm" />
+    <HelpKINode Title="about RealtimeUpdateItem class" Url="html/T_InstaSharp_Models_RealtimeUpdateItem.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_RealtimeUpdateItem__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_RealtimeUpdateItem.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_RealtimeUpdateItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RealtimeUpdateItem.ChangedAspect property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_ChangedAspect.htm" />
+  <HelpKINode Title="RealtimeUpdateItem.Object property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_Object.htm" />
+  <HelpKINode Title="RealtimeUpdateItem.ObjectId property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_ObjectId.htm" />
+  <HelpKINode Title="RealtimeUpdateItem.RealtimeUpdateItem constructor" Url="html/M_InstaSharp_Models_RealtimeUpdateItem__ctor.htm" />
+  <HelpKINode Title="RealtimeUpdateItem.SubScriptionId property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_SubScriptionId.htm" />
+  <HelpKINode Title="RealtimeUpdateItem.Time property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_Time.htm" />
+  <HelpKINode Title="Recent method">
+    <HelpKINode Title="Geographies.Recent Method " Url="html/Overload_InstaSharp_Endpoints_Geographies_Recent.htm" />
+    <HelpKINode Title="Locations.Recent Method " Url="html/Overload_InstaSharp_Endpoints_Locations_Recent.htm" />
+    <HelpKINode Title="Tags.Recent Method " Url="html/Overload_InstaSharp_Endpoints_Tags_Recent.htm" />
+    <HelpKINode Title="Users.Recent Method " Url="html/Overload_InstaSharp_Endpoints_Users_Recent.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RecentMultiplePages method" Url="html/M_InstaSharp_Endpoints_Tags_RecentMultiplePages.htm" />
+  <HelpKINode Title="RecentSelf method" Url="html/Overload_InstaSharp_Endpoints_Users_RecentSelf.htm" />
+  <HelpKINode Title="RedirectUri property" Url="html/P_InstaSharp_InstagramConfig_RedirectUri.htm" />
+  <HelpKINode Title="Relationship class">
+    <HelpKINode Title="Relationship Class" Url="html/T_InstaSharp_Models_Relationship.htm" />
+    <HelpKINode Title="about Relationship class" Url="html/T_InstaSharp_Models_Relationship.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Relationship__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Relationship.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Relationship.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Relationship method" Url="html/Overload_InstaSharp_Endpoints_Relationships_Relationship.htm" />
+  <HelpKINode Title="Relationship.IncomingStatus property" Url="html/P_InstaSharp_Models_Relationship_IncomingStatus.htm" />
+  <HelpKINode Title="Relationship.OutgoingStatus property" Url="html/P_InstaSharp_Models_Relationship_OutgoingStatus.htm" />
+  <HelpKINode Title="Relationship.Relationship constructor" Url="html/M_InstaSharp_Models_Relationship__ctor.htm" />
+  <HelpKINode Title="Relationship.TargetUserIsPrivate property" Url="html/P_InstaSharp_Models_Relationship_TargetUserIsPrivate.htm" />
+  <HelpKINode Title="RelationshipResponse class">
+    <HelpKINode Title="RelationshipResponse Class" Url="html/T_InstaSharp_Models_Responses_RelationshipResponse.htm" />
+    <HelpKINode Title="about RelationshipResponse class" Url="html/T_InstaSharp_Models_Responses_RelationshipResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_RelationshipResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_RelationshipResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_RelationshipResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RelationshipResponse.Data property" Url="html/P_InstaSharp_Models_Responses_RelationshipResponse_Data.htm" />
+  <HelpKINode Title="RelationshipResponse.RelationshipResponse constructor" Url="html/M_InstaSharp_Models_Responses_RelationshipResponse__ctor.htm" />
+  <HelpKINode Title="Relationships class">
+    <HelpKINode Title="Relationships Class" Url="html/T_InstaSharp_Endpoints_Relationships.htm" />
+    <HelpKINode Title="about Relationships class" Url="html/T_InstaSharp_Endpoints_Relationships.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Relationships__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Relationships.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Relationships.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Relationships enumeration member" Url="html/T_InstaSharp_OAuth_Scope.htm" />
+  <HelpKINode Title="Relationships.Action enumeration" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="Relationships.FollowedBy method" Url="html/Overload_InstaSharp_Endpoints_Relationships_FollowedBy.htm" />
+  <HelpKINode Title="Relationships.Follows method" Url="html/Overload_InstaSharp_Endpoints_Relationships_Follows.htm" />
+  <HelpKINode Title="Relationships.Relationship method" Url="html/Overload_InstaSharp_Endpoints_Relationships_Relationship.htm" />
+  <HelpKINode Title="Relationships.Relationships constructor" Url="html/Overload_InstaSharp_Endpoints_Relationships__ctor.htm" />
+  <HelpKINode Title="Relationships.RequestedBy method" Url="html/M_InstaSharp_Endpoints_Relationships_RequestedBy.htm" />
+  <HelpKINode Title="RemoveAllSubscriptions method" Url="html/M_InstaSharp_Endpoints_Subscription_RemoveAllSubscriptions.htm" />
+  <HelpKINode Title="RemoveSubscription method" Url="html/Overload_InstaSharp_Endpoints_Subscription_RemoveSubscription.htm" />
+  <HelpKINode Title="RequestedBy method" Url="html/M_InstaSharp_Endpoints_Relationships_RequestedBy.htm" />
+  <HelpKINode Title="RequestToken method" Url="html/M_InstaSharp_OAuth_RequestToken.htm" />
+  <HelpKINode Title="Resolution class">
+    <HelpKINode Title="Resolution Class" Url="html/T_InstaSharp_Models_Resolution.htm" />
+    <HelpKINode Title="about Resolution class" Url="html/T_InstaSharp_Models_Resolution.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Resolution__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Resolution.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Resolution.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Resolution.Height property" Url="html/P_InstaSharp_Models_Resolution_Height.htm" />
+  <HelpKINode Title="Resolution.Resolution constructor" Url="html/M_InstaSharp_Models_Resolution__ctor.htm" />
+  <HelpKINode Title="Resolution.Url property" Url="html/P_InstaSharp_Models_Resolution_Url.htm" />
+  <HelpKINode Title="Resolution.Width property" Url="html/P_InstaSharp_Models_Resolution_Width.htm" />
+  <HelpKINode Title="Response class">
+    <HelpKINode Title="Response Class" Url="html/T_InstaSharp_Models_Responses_Response.htm" />
+    <HelpKINode Title="about Response class" Url="html/T_InstaSharp_Models_Responses_Response.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_Response__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_Response.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_Response.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Response.Meta property" Url="html/P_InstaSharp_Models_Responses_Response_Meta.htm" />
+  <HelpKINode Title="Response.RateLimitLimit property" Url="html/P_InstaSharp_Models_Responses_Response_RateLimitLimit.htm" />
+  <HelpKINode Title="Response.RateLimitRemaining property" Url="html/P_InstaSharp_Models_Responses_Response_RateLimitRemaining.htm" />
+  <HelpKINode Title="Response.Response constructor" Url="html/M_InstaSharp_Models_Responses_Response__ctor.htm" />
+  <HelpKINode Title="Search method">
+    <HelpKINode Title="Locations.Search Method " Url="html/Overload_InstaSharp_Endpoints_Locations_Search.htm" />
+    <HelpKINode Title="Media.Search Method " Url="html/Overload_InstaSharp_Endpoints_Media_Search.htm" />
+    <HelpKINode Title="Tags.Search Method " Url="html/M_InstaSharp_Endpoints_Tags_Search.htm" />
+    <HelpKINode Title="Users.Search Method " Url="html/M_InstaSharp_Endpoints_Users_Search.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StandardResolution property">
+    <HelpKINode Title="Image.StandardResolution Property " Url="html/P_InstaSharp_Models_Image_StandardResolution.htm" />
+    <HelpKINode Title="Video.StandardResolution Property " Url="html/P_InstaSharp_Models_Video_StandardResolution.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Subscription class">
+    <HelpKINode Title="Subscription Class" Url="html/T_InstaSharp_Models_Subscription.htm" />
+    <HelpKINode Title="Subscription Class" Url="html/T_InstaSharp_Endpoints_Subscription.htm" />
+    <HelpKINode Title="about Subscription class" Url="html/T_InstaSharp_Models_Subscription.htm" />
+    <HelpKINode Title="about Subscription class" Url="html/T_InstaSharp_Endpoints_Subscription.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Subscription__ctor.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Endpoints_Subscription__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Subscription.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Subscription.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Subscription.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Subscription.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Subscription.Aspect enumeration" Url="html/T_InstaSharp_Endpoints_Subscription_Aspect.htm" />
+  <HelpKINode Title="Subscription.Aspect property" Url="html/P_InstaSharp_Models_Subscription_Aspect.htm" />
+  <HelpKINode Title="Subscription.CallbackUrl property" Url="html/P_InstaSharp_Models_Subscription_CallbackUrl.htm" />
+  <HelpKINode Title="Subscription.CreateGeography method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateGeography.htm" />
+  <HelpKINode Title="Subscription.CreateLocation method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateLocation.htm" />
+  <HelpKINode Title="Subscription.CreateTag method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateTag.htm" />
+  <HelpKINode Title="Subscription.CreateUser method" Url="html/M_InstaSharp_Endpoints_Subscription_CreateUser.htm" />
+  <HelpKINode Title="Subscription.Id property" Url="html/P_InstaSharp_Models_Subscription_Id.htm" />
+  <HelpKINode Title="Subscription.ListAllSubscriptions method" Url="html/M_InstaSharp_Endpoints_Subscription_ListAllSubscriptions.htm" />
+  <HelpKINode Title="Subscription.Object enumeration" Url="html/T_InstaSharp_Endpoints_Subscription_Object.htm" />
+  <HelpKINode Title="Subscription.Object property" Url="html/P_InstaSharp_Models_Subscription_Object.htm" />
+  <HelpKINode Title="Subscription.ObjectId property" Url="html/P_InstaSharp_Models_Subscription_ObjectId.htm" />
+  <HelpKINode Title="Subscription.RemoveAllSubscriptions method" Url="html/M_InstaSharp_Endpoints_Subscription_RemoveAllSubscriptions.htm" />
+  <HelpKINode Title="Subscription.RemoveSubscription method" Url="html/Overload_InstaSharp_Endpoints_Subscription_RemoveSubscription.htm" />
+  <HelpKINode Title="Subscription.Subscription constructor">
+    <HelpKINode Title="Subscription Constructor " Url="html/M_InstaSharp_Models_Subscription__ctor.htm" />
+    <HelpKINode Title="Subscription Constructor " Url="html/M_InstaSharp_Endpoints_Subscription__ctor.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Subscription.Type property" Url="html/P_InstaSharp_Models_Subscription_Type.htm" />
+  <HelpKINode Title="SubScriptionId property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_SubScriptionId.htm" />
+  <HelpKINode Title="SubscriptionResponse class">
+    <HelpKINode Title="SubscriptionResponse Class" Url="html/T_InstaSharp_Models_Responses_SubscriptionResponse.htm" />
+    <HelpKINode Title="about SubscriptionResponse class" Url="html/T_InstaSharp_Models_Responses_SubscriptionResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_SubscriptionResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_SubscriptionResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_SubscriptionResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SubscriptionResponse.Data property" Url="html/P_InstaSharp_Models_Responses_SubscriptionResponse_Data.htm" />
+  <HelpKINode Title="SubscriptionResponse.SubscriptionResponse constructor" Url="html/M_InstaSharp_Models_Responses_SubscriptionResponse__ctor.htm" />
+  <HelpKINode Title="Tag class">
+    <HelpKINode Title="Tag Class" Url="html/T_InstaSharp_Models_Tag.htm" />
+    <HelpKINode Title="about Tag class" Url="html/T_InstaSharp_Models_Tag.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Tag__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Tag.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Tag.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Tag enumeration member" Url="html/T_InstaSharp_Endpoints_Subscription_Object.htm" />
+  <HelpKINode Title="Tag.MediaCount property" Url="html/P_InstaSharp_Models_Tag_MediaCount.htm" />
+  <HelpKINode Title="Tag.Name property" Url="html/P_InstaSharp_Models_Tag_Name.htm" />
+  <HelpKINode Title="Tag.Tag constructor" Url="html/M_InstaSharp_Models_Tag__ctor.htm" />
+  <HelpKINode Title="TagResponse class">
+    <HelpKINode Title="TagResponse Class" Url="html/T_InstaSharp_Models_Responses_TagResponse.htm" />
+    <HelpKINode Title="about TagResponse class" Url="html/T_InstaSharp_Models_Responses_TagResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_TagResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_TagResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_TagResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TagResponse.Data property" Url="html/P_InstaSharp_Models_Responses_TagResponse_Data.htm" />
+  <HelpKINode Title="TagResponse.TagResponse constructor" Url="html/M_InstaSharp_Models_Responses_TagResponse__ctor.htm" />
+  <HelpKINode Title="Tags class">
+    <HelpKINode Title="Tags Class" Url="html/T_InstaSharp_Endpoints_Tags.htm" />
+    <HelpKINode Title="about Tags class" Url="html/T_InstaSharp_Endpoints_Tags.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Tags__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Tags.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Tags.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Tags property" Url="html/P_InstaSharp_Models_Media_Tags.htm" />
+  <HelpKINode Title="Tags.Get method" Url="html/M_InstaSharp_Endpoints_Tags_Get.htm" />
+  <HelpKINode Title="Tags.Recent method" Url="html/Overload_InstaSharp_Endpoints_Tags_Recent.htm" />
+  <HelpKINode Title="Tags.RecentMultiplePages method" Url="html/M_InstaSharp_Endpoints_Tags_RecentMultiplePages.htm" />
+  <HelpKINode Title="Tags.Search method" Url="html/M_InstaSharp_Endpoints_Tags_Search.htm" />
+  <HelpKINode Title="Tags.Tags constructor" Url="html/Overload_InstaSharp_Endpoints_Tags__ctor.htm" />
+  <HelpKINode Title="TagsMultiplePagesResponse class">
+    <HelpKINode Title="TagsMultiplePagesResponse Class" Url="html/T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm" />
+    <HelpKINode Title="about TagsMultiplePagesResponse class" Url="html/T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_TagsMultiplePagesResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_TagsMultiplePagesResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TagsMultiplePagesResponse.Data property" Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_Data.htm" />
+  <HelpKINode Title="TagsMultiplePagesResponse.PageCount property" Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_PageCount.htm" />
+  <HelpKINode Title="TagsMultiplePagesResponse.PaginationNextMaxId property" Url="html/P_InstaSharp_Models_Responses_TagsMultiplePagesResponse_PaginationNextMaxId.htm" />
+  <HelpKINode Title="TagsMultiplePagesResponse.TagsMultiplePagesResponse constructor" Url="html/M_InstaSharp_Models_Responses_TagsMultiplePagesResponse__ctor.htm" />
+  <HelpKINode Title="TagsResponse class">
+    <HelpKINode Title="TagsResponse Class" Url="html/T_InstaSharp_Models_Responses_TagsResponse.htm" />
+    <HelpKINode Title="about TagsResponse class" Url="html/T_InstaSharp_Models_Responses_TagsResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_TagsResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_TagsResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_TagsResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TagsResponse.Data property" Url="html/P_InstaSharp_Models_Responses_TagsResponse_Data.htm" />
+  <HelpKINode Title="TagsResponse.TagsResponse constructor" Url="html/M_InstaSharp_Models_Responses_TagsResponse__ctor.htm" />
+  <HelpKINode Title="TargetUserIsPrivate property" Url="html/P_InstaSharp_Models_Relationship_TargetUserIsPrivate.htm" />
+  <HelpKINode Title="Text property">
+    <HelpKINode Title="Caption.Text Property " Url="html/P_InstaSharp_Models_Caption_Text.htm" />
+    <HelpKINode Title="Comment.Text Property " Url="html/P_InstaSharp_Models_Comment_Text.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Thumbnail property" Url="html/P_InstaSharp_Models_Image_Thumbnail.htm" />
+  <HelpKINode Title="Time property" Url="html/P_InstaSharp_Models_RealtimeUpdateItem_Time.htm" />
+  <HelpKINode Title="Token enumeration member" Url="html/T_InstaSharp_OAuth_ResponseType.htm" />
+  <HelpKINode Title="Two enumeration member" Url="html/T_InstaSharp_Endpoints_Locations_FoursquareVersion.htm" />
+  <HelpKINode Title="Type property">
+    <HelpKINode Title="Media.Type Property " Url="html/P_InstaSharp_Models_Media_Type.htm" />
+    <HelpKINode Title="Subscription.Type Property " Url="html/P_InstaSharp_Models_Subscription_Type.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Unblock enumeration member" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="Unfollow enumeration member" Url="html/T_InstaSharp_Endpoints_Relationships_Action.htm" />
+  <HelpKINode Title="Url property" Url="html/P_InstaSharp_Models_Resolution_Url.htm" />
+  <HelpKINode Title="User class">
+    <HelpKINode Title="User Class" Url="html/T_InstaSharp_Models_User.htm" />
+    <HelpKINode Title="about User class" Url="html/T_InstaSharp_Models_User.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_User__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_User.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_User.htm" />
+  </HelpKINode>
+  <HelpKINode Title="User enumeration member" Url="html/T_InstaSharp_Endpoints_Subscription_Object.htm" />
+  <HelpKINode Title="User property">
+    <HelpKINode Title="Media.User Property " Url="html/P_InstaSharp_Models_Media_User.htm" />
+    <HelpKINode Title="OAuthResponse.User Property " Url="html/P_InstaSharp_Models_Responses_OAuthResponse_User.htm" />
+  </HelpKINode>
+  <HelpKINode Title="User.Bio property" Url="html/P_InstaSharp_Models_User_Bio.htm" />
+  <HelpKINode Title="User.Counts property" Url="html/P_InstaSharp_Models_User_Counts.htm" />
+  <HelpKINode Title="User.User constructor" Url="html/M_InstaSharp_Models_User__ctor.htm" />
+  <HelpKINode Title="User.Website property" Url="html/P_InstaSharp_Models_User_Website.htm" />
+  <HelpKINode Title="UserHasLiked property" Url="html/P_InstaSharp_Models_Media_UserHasLiked.htm" />
+  <HelpKINode Title="UserInfo class">
+    <HelpKINode Title="UserInfo Class" Url="html/T_InstaSharp_Models_UserInfo.htm" />
+    <HelpKINode Title="about UserInfo class" Url="html/T_InstaSharp_Models_UserInfo.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_UserInfo__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_UserInfo.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_UserInfo.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UserInfo.FullName property" Url="html/P_InstaSharp_Models_UserInfo_FullName.htm" />
+  <HelpKINode Title="UserInfo.Id property" Url="html/P_InstaSharp_Models_UserInfo_Id.htm" />
+  <HelpKINode Title="UserInfo.ProfilePicture property" Url="html/P_InstaSharp_Models_UserInfo_ProfilePicture.htm" />
+  <HelpKINode Title="UserInfo.UserInfo constructor" Url="html/M_InstaSharp_Models_UserInfo__ctor.htm" />
+  <HelpKINode Title="UserInfo.Username property" Url="html/P_InstaSharp_Models_UserInfo_Username.htm" />
+  <HelpKINode Title="Username property" Url="html/P_InstaSharp_Models_UserInfo_Username.htm" />
+  <HelpKINode Title="UserResponse class">
+    <HelpKINode Title="UserResponse Class" Url="html/T_InstaSharp_Models_Responses_UserResponse.htm" />
+    <HelpKINode Title="about UserResponse class" Url="html/T_InstaSharp_Models_Responses_UserResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_UserResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_UserResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_UserResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UserResponse.Data property" Url="html/P_InstaSharp_Models_Responses_UserResponse_Data.htm" />
+  <HelpKINode Title="UserResponse.UserResponse constructor" Url="html/M_InstaSharp_Models_Responses_UserResponse__ctor.htm" />
+  <HelpKINode Title="Users class">
+    <HelpKINode Title="Users Class" Url="html/T_InstaSharp_Endpoints_Users.htm" />
+    <HelpKINode Title="about Users class" Url="html/T_InstaSharp_Endpoints_Users.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_InstaSharp_Endpoints_Users__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Endpoints_Users.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Endpoints_Users.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Users.Feed method" Url="html/M_InstaSharp_Endpoints_Users_Feed.htm" />
+  <HelpKINode Title="Users.Get method" Url="html/Overload_InstaSharp_Endpoints_Users_Get.htm" />
+  <HelpKINode Title="Users.GetSelf method" Url="html/M_InstaSharp_Endpoints_Users_GetSelf.htm" />
+  <HelpKINode Title="Users.Liked method" Url="html/M_InstaSharp_Endpoints_Users_Liked.htm" />
+  <HelpKINode Title="Users.Recent method" Url="html/Overload_InstaSharp_Endpoints_Users_Recent.htm" />
+  <HelpKINode Title="Users.RecentSelf method" Url="html/Overload_InstaSharp_Endpoints_Users_RecentSelf.htm" />
+  <HelpKINode Title="Users.Search method" Url="html/M_InstaSharp_Endpoints_Users_Search.htm" />
+  <HelpKINode Title="Users.Users constructor" Url="html/Overload_InstaSharp_Endpoints_Users__ctor.htm" />
+  <HelpKINode Title="UsersResponse class">
+    <HelpKINode Title="UsersResponse Class" Url="html/T_InstaSharp_Models_Responses_UsersResponse.htm" />
+    <HelpKINode Title="about UsersResponse class" Url="html/T_InstaSharp_Models_Responses_UsersResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Responses_UsersResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Responses_UsersResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Responses_UsersResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UsersResponse.Data property" Url="html/P_InstaSharp_Models_Responses_UsersResponse_Data.htm" />
+  <HelpKINode Title="UsersResponse.Pagination property" Url="html/P_InstaSharp_Models_Responses_UsersResponse_Pagination.htm" />
+  <HelpKINode Title="UsersResponse.UsersResponse constructor" Url="html/M_InstaSharp_Models_Responses_UsersResponse__ctor.htm" />
+  <HelpKINode Title="version">
+    <HelpKINode Title="1.0.0.0" Url="html/56ce0d70-b0b1-4a8f-9c0d-42c5fc6be1d8.htm" />
+    <HelpKINode Title="history" Url="html/2bd81f6d-77f9-4fdc-85ac-eb7bd0c88759.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Video class">
+    <HelpKINode Title="Video Class" Url="html/T_InstaSharp_Models_Video.htm" />
+    <HelpKINode Title="about Video class" Url="html/T_InstaSharp_Models_Video.htm" />
+    <HelpKINode Title="constructor" Url="html/M_InstaSharp_Models_Video__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_InstaSharp_Models_Video.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_InstaSharp_Models_Video.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Video.LowResolution property" Url="html/P_InstaSharp_Models_Video_LowResolution.htm" />
+  <HelpKINode Title="Video.StandardResolution property" Url="html/P_InstaSharp_Models_Video_StandardResolution.htm" />
+  <HelpKINode Title="Video.Video constructor" Url="html/M_InstaSharp_Models_Video__ctor.htm" />
+  <HelpKINode Title="Videos property" Url="html/P_InstaSharp_Models_Media_Videos.htm" />
+  <HelpKINode Title="Website property" Url="html/P_InstaSharp_Models_User_Website.htm" />
+  <HelpKINode Title="Welcome" Url="html/c688497b-86a9-4040-b9e0-addb972beed8.htm" />
+  <HelpKINode Title="Width property" Url="html/P_InstaSharp_Models_Resolution_Width.htm" />
+</HelpKI>
