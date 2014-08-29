@@ -4,11 +4,11 @@ using System;
 
 namespace InstaSharp.Models {
     /// <summary>
-    /// 
+    /// A comment
     /// </summary>
     public class Comment {
         /// <summary>
-        /// Gets or sets the created time.
+        /// Gets or sets the created time of the comment.
         /// </summary>
         /// <value>
         /// The created time.
@@ -23,7 +23,7 @@ namespace InstaSharp.Models {
         /// </value>
         public string Text { get; set; }
         /// <summary>
-        /// Gets or sets from.
+        /// Gets or sets the user this comment was from.
         /// </summary>
         /// <value>
         /// From.

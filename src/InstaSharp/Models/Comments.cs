@@ -6,14 +6,15 @@ namespace InstaSharp.Models {
     /// </summary>
     public class Comments {
         /// <summary>
-        /// Gets or sets the count.
+        /// Gets the count of comments.
         /// </summary>
         /// <value>
         /// The count.
         /// </value>
         public int Count { get; set; }
+        
         /// <summary>
-        /// Gets or sets the data.
+        /// Gets a list of comments.
         /// </summary>
         /// <value>
         /// The data.

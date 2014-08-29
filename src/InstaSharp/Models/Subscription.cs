@@ -19,13 +19,19 @@ namespace InstaSharp.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// <see cref="Endpoints.Subscription.Object"/>
+        ///   <see cref="Endpoints.Subscription.Object" />
         /// </summary>
+        /// <value>
+        /// The object.
+        /// </value>
         public Endpoints.Subscription.Object Object { get; set; }
 
         /// <summary>
-        /// <see cref="InstaSharp.Endpoints.Subscription.Aspect"/>
+        ///   <see cref="InstaSharp.Endpoints.Subscription.Aspect" />
         /// </summary>
+        /// <value>
+        /// The aspect.
+        /// </value>
         public Endpoints.Subscription.Aspect Aspect { get; set; }
 
         /// <summary>

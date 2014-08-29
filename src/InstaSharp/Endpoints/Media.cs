@@ -35,6 +35,9 @@ namespace InstaSharp.Endpoints
         /// <para>Requires Authentication: False</para>
         /// </summary>
         /// <param name="mediaId">The id of the media to retrieve</param>
+        /// <returns>
+        /// Media Response
+        /// </returns>
         public Task<MediaResponse> Get(string mediaId)
         {
             var request = Request(mediaId);
@@ -45,6 +48,9 @@ namespace InstaSharp.Endpoints
         /// Get a list of what media is most popular at the moment.
         /// <para>Requires Authentication: False</para>
         /// </summary>
+        /// <returns>
+        /// Media Response
+        /// </returns>
         public Task<MediasResponse> Popular()
         {
             var request = Request("popular");
@@ -56,7 +62,9 @@ namespace InstaSharp.Endpoints
         /// <para>Requires Authentication: False</para>
         /// </summary>
         /// <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
-        /// <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
+        /// <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param> /// <returns>
+        /// Media Response
+        /// </returns>
         public Task<MediasResponse> Search(double latitude, double longitude)
         {
             return Search(latitude, longitude, null, null, null);
@@ -68,7 +76,9 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="latitude">Latitude of the center search coordinate. If used, longitude is required.</param>
         /// <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
-        /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
+        /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param> /// <returns>
+        /// Media Response
+        /// </returns>
         public Task<MediasResponse> Search(double latitude, double longitude, int? distance)
         {
             return Search(latitude, longitude, distance, null, null);
@@ -82,7 +92,10 @@ namespace InstaSharp.Endpoints
         /// <param name="longitude">Longitude of the center search coordinate. If used, latitude is required.</param>
         /// <param name="distance">Default is 1km (distance=1000), max distance is 5km.</param>
         /// <param name="minTimestamp">All media returned will be taken later than this timestamp.</param>
-        /// <param name="maxTimestamp">All media returned will be taken earlier than this timestamp.</param>
+        /// <param name="maxTimestamp">All media returned will be taken earlier than this timestamp.</param> 
+        /// <returns>
+        /// Media Response
+        /// </returns>
         public Task<MediasResponse> Search(double latitude, double longitude, int? distance, DateTime? minTimestamp, DateTime? maxTimestamp)
         {
             var request = Request("search");

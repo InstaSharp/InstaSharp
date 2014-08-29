@@ -33,6 +33,7 @@ namespace InstaSharp.Endpoints
         /// Get information about authenticated user.
         /// <para>Requires Authentication: True</para>
         /// </summary>
+        /// <returns>User response</returns>
         public Task<UserResponse> Get()
         {
             return Get(null);
@@ -42,6 +43,8 @@ namespace InstaSharp.Endpoints
         /// Get information about a user.
         /// <para>Requires Authentication: False</para>
         /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>user response</returns>
         /// <paramref name="userId">The id of the user who's profile you want to retreive.</paramref>
         public Task<UserResponse> Get(string userId)
         {
@@ -61,6 +64,7 @@ namespace InstaSharp.Endpoints
         /// Get information about authenticated user.
         /// <para>Requires Authentication: True</para>
         /// </summary>
+        /// <returns>User response</returns>
         public Task<UserResponse> GetSelf()
         {
             AssertIsAuthenticated();
@@ -74,6 +78,10 @@ namespace InstaSharp.Endpoints
         /// See the authenticated user's feed.
         /// <para>Requires Authentication: True</para>
         /// </summary>
+        /// <param name="maxId">The maximum identifier.</param>
+        /// <param name="minId">The minimum identifier.</param>
+        /// <param name="count">The count.</param>
+        /// <returns>Media Response</returns>
         public Task<MediasResponse> Feed(string maxId, string minId, int? count)
         {
             var request = Request("self/feed");
@@ -84,11 +92,12 @@ namespace InstaSharp.Endpoints
 
             return Client.ExecuteAsync<MediasResponse>(request);
         }
-        
+
         /// <summary>
-        /// Get the most recent media published by the logged in user. 
+        /// Get the most recent media published by the logged in user.
         /// <para>Requires Authentication: True</para>
         /// </summary>
+        /// <returns>Media Response</returns>
         public Task<MediasResponse> RecentSelf()
         {
             return RecentSelf(null, null, null, null, null);
@@ -102,7 +111,8 @@ namespace InstaSharp.Endpoints
         /// <param name="minId">Return media later than this min_id.</param>
         /// <param name="count">Count of media to return.</param>
         /// <param name="minTimestamp">Return media after this timestamp.</param>
-        /// <param name="maxTimestamp">Return media before this timestamp.</param>
+        /// <param name="maxTimestamp">Return media before this timestamp.</param>   
+        /// <returns>Media Response</returns>
         public Task<MediasResponse> RecentSelf(string maxId, string minId, int? count, DateTime? minTimestamp, DateTime? maxTimestamp)
         {
             AssertIsAuthenticated();
@@ -111,17 +121,18 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Get the most recent media published by a user. 
+        /// Get the most recent media published by a user.
         /// <para>Requires Authentication: False</para>
         /// </summary>
         /// <param name="id">The id of the user.</param>
+        /// <returns>Media Response</returns>
         public Task<MediasResponse> Recent(string id)
         {
             return Recent(id, null, null, null, null, null);
         }
 
         /// <summary>
-        /// Get the most recent media published by a user. 
+        /// Get the most recent media published by a user.
         /// <para>Requires Authentication: False</para>
         /// </summary>
         /// <param name="id">The id of the user.</param>
@@ -130,6 +141,7 @@ namespace InstaSharp.Endpoints
         /// <param name="count">Count of media to return.</param>
         /// <param name="minTimestamp">Return media after this timestamp.</param>
         /// <param name="maxTimestamp">Return media before this timestamp.</param>
+        /// <returns>Media Response</returns>
         public Task<MediasResponse> Recent(string id, string maxId, string minId, int? count, DateTime? minTimestamp, DateTime? maxTimestamp)
         {
             var request = Request("{id}/media/recent");
@@ -151,6 +163,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="maxLikeId">Return media ealier than this maxLikeId.</param>
         /// <param name="count">Count of media to return.</param>
+        /// <returns>Media Response</returns>
         public Task<MediasResponse> Liked(string maxLikeId, int? count)
         {
             AssertIsAuthenticated();
@@ -169,6 +182,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="searchTerm">A query string.</param>
         /// <param name="count">Number of users to return.</param>
+        /// <returns>User response</returns>
         public Task<UsersResponse> Search(string searchTerm, int? count)
         {
             var request = Request("search");
