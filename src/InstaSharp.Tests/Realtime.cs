@@ -60,7 +60,7 @@ namespace InstaSharp.Tests
             // This is where Instagram tries to call your callback, without implementing the pubhubsub implementatin that authenticates, it will fail
             try
             {
-                var result2 = await realtime.CreateTag("");
+                await realtime.CreateTag("");
             }
             catch (Exception exception)
             {

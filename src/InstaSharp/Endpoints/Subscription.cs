@@ -37,7 +37,7 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// 
+        /// Aspect, Can only be media type currently
         /// </summary>
         public enum Aspect
         {
@@ -51,7 +51,7 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Construct a Subscription Endpoint
         /// </summary>
-        /// <param name="config"></param>
+        /// <param name="config">An instagram config object</param>
         public Subscription(InstagramConfig config)
             : base(config.RealTimeApi, config)
         {
@@ -108,7 +108,10 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="locationId">The locationId, e.g. '1257285'</param>
         /// <param name="verifyToken">The verify token.</param>
-        /// <returns>Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"</returns>
+        /// <returns>
+        /// Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"
+        /// </returns>
+        /// <exception cref="System.ArgumentException">locationId must be populated;locationId</exception>
         public Task<SubscriptionResponse> CreateLocation(String locationId, String verifyToken = null)
         {
             if (string.IsNullOrWhiteSpace(locationId))
@@ -128,7 +131,7 @@ namespace InstaSharp.Endpoints
         /// <param name="radius">The radius. Must be less than 5000m</param>
         /// <param name="verifyToken">The verify token.</param>
         /// <returns>
-        /// Check the Meta Property for any errors. E.G. Meta.Code =HttpStatusCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"
+        /// Check the Meta Property for any errors. E.G. Meta.Code =HttpStatuu stil lcomin over tonmgsCode.BadRequest, ErrorType="APISubscriptionError" and ErrorMessage="Unable to reach callback URL [url] will be set if the callback url has issues"
         /// </returns>
         /// <exception cref="System.ArgumentException">radius must be greater than 0 and less tha 5000;radius</exception>
         public Task<SubscriptionResponse> CreateGeography(double latitude, double longitude, int radius, String verifyToken = null)
@@ -171,7 +174,7 @@ namespace InstaSharp.Endpoints
         /// Deletes a subscription by subscription id
         /// </summary>
         /// <param name="id">The subscription id</param>
-        /// <returns></returns>
+        /// <returns>Subscription Response</returns>
         public Task<SubscriptionResponse> RemoveSubscription(string id)
         {
             var request = Request(null, HttpMethod.Delete);
@@ -184,8 +187,8 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Deletes a subscription by type
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <param name="type">The <see cref="Object"/> type</param>
+        /// <returns>Subscription Response</returns>
         public Task<SubscriptionResponse> RemoveSubscription(Object type)
         {
             var request = Request(null, HttpMethod.Delete);
@@ -198,7 +201,7 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Removes all subscriptions
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Subscription Response</returns>
         public Task<SubscriptionResponse> RemoveAllSubscriptions()
         {
             var request = Request(null, HttpMethod.Delete);
@@ -211,7 +214,7 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// Lists all subscriptions
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Subscription Response</returns>
         public Task<SubscriptionResponse> ListAllSubscriptions()
         {
             var request = Request(null);

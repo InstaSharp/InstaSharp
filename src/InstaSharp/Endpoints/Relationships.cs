@@ -60,11 +60,10 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Get the list of users this user follows.
-        /// <para>Requires Authentication: True</para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
+        /// <para>Requires Authentication: True</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
+        /// <returns>UsersResponse</returns>
         public Task<UsersResponse> Follows()
         {
             AssertIsAuthenticated();
@@ -74,12 +73,11 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Get the list of users this user follows.
-        /// <para>Requires Authentication: False</para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
+        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
+        /// <returns>UsersResponse</returns>
         public Task<UsersResponse> Follows(int userId)
         {
             return Follows(userId, null);
@@ -87,13 +85,12 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Get the list of users this user follows.
-        /// <para>Requires Authentication: False</para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
+        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
         /// <param name="cursor">The next cursor id</param>
+        /// <returns>UsersResponse</returns>
         public Task<UsersResponse> Follows(int userId, string cursor)
         {
             var request = Request("{id}/follows");
@@ -105,11 +102,10 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Get the list of users this user is followed by.
-        /// <para>Requires Authentication: True</para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
+        /// <para>Requires Authentication: True</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
+        /// <returns>UsersResponse</returns>
         public Task<UsersResponse> FollowedBy()
         {
             AssertIsAuthenticated();
@@ -119,12 +115,11 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Get the list of users this user is followed by.
-        /// <para>Requires Authentication: False</para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
+        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
         /// <param name="userId">The id of the user to get the followers of.</param>
+        /// <returns>Users response</returns>
         public Task<UsersResponse> FollowedBy(int userId)
         {
             return FollowedBy(userId, null);
@@ -132,13 +127,12 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Get the list of users this user is followed by.
-        /// <para>Requires Authentication: False</para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
+        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
         /// <param name="userId">The id of the user to get the followers of.</param>
         /// <param name="cursor">The next cursor id</param>
+        /// <returns>Users response</returns>
         public Task<UsersResponse> FollowedBy(int userId, string cursor)
         {
             var request = Request("{id}/followed-by");
@@ -157,6 +151,7 @@ namespace InstaSharp.Endpoints {
         /// <c>Required scope:</c> relationships
         /// </para>
         /// </summary>
+        ///   <returns>Users response</returns>
         public Task<UsersResponse> RequestedBy()
         {
             var request = Request("self/requested-by");
@@ -165,10 +160,11 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Get information about a relationship to another user.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
+        /// <para><c>Requires Authentication:</c> True
         /// </para>
         /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>RelationshipResponse</returns>
         public Task<RelationshipResponse> Relationship(int userId)
         {
             var request = Request("{id}/relationship");
@@ -179,15 +175,13 @@ namespace InstaSharp.Endpoints {
 
         /// <summary>
         /// Modify the relationship between the current user and the target user.
-        /// <para>
-        /// <c>Requires Authentication:</c> True
-        /// </para>
-        /// <para>
-        /// <c>Required scope:</c> relationships
+        /// <para><c>Requires Authentication:</c> True
+        /// </para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
         /// <param name="userId">The user id about which to get relationship information.</param>
         /// <param name="action">One of Action enum.</param>
+        /// <returns>RelationshipResponse</returns>
         public Task<RelationshipResponse> Relationship(int userId, Action action)
         {
             var request = Request("{id}/relationship", HttpMethod.Post);

@@ -11,7 +11,7 @@ namespace InstaSharp.Endpoints
     public class Likes : InstagramApi
     {
         /// <summary>
-        /// Likes Endpoints
+        /// Likes Endpoint
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
         public Likes(InstagramConfig config)
@@ -20,7 +20,7 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Likes Endpoints
+        /// Likes Endpoint
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="auth">An instance of the OAuthResponse class.</param>
@@ -31,12 +31,11 @@ namespace InstaSharp.Endpoints
 
         /// <summary>
         /// Get a list of users who have liked this media.
-        /// <para>Requires Authentication: False</para>
-        /// <para>
-        /// <c>Required Scope: </c> likes
+        /// <para>Requires Authentication: False</para><para><c>Required Scope: </c> likes
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media about which to retrieve information.</param>
+        /// <returns>Users Response</returns>
         public Task<UsersResponse> Get(string mediaId)
         {
             var request = Request("{id}/likes");
@@ -64,12 +63,11 @@ namespace InstaSharp.Endpoints
 
         /// <summary>
         /// Remove a like on this media by the currently authenticated user.
-        /// <para>Requires Authentication: False</para>
-        /// <para>
-        /// <c>Required Scope: </c>likes
+        /// <para>Requires Authentication: False</para><para><c>Required Scope: </c>likes
         /// </para>
         /// </summary>
         /// <param name="mediaId">The id of the media from wich to remove the like.</param>
+        /// <returns>LikesResponse</returns>
         public Task<LikesResponse> Delete(string mediaId)
         {
             AssertIsAuthenticated();

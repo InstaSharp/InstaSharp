@@ -30,7 +30,7 @@ namespace InstaSharp.Models {
         /// </value>
         public string Text { get; set; }
         /// <summary>
-        /// Gets or sets from.
+        /// Gets or sets the User the caption was created by.
         /// </summary>
         /// <value>
         /// From.

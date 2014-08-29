@@ -2,7 +2,7 @@
 
 namespace InstaSharp.Models {
     /// <summary>
-    /// 
+    /// User Information
     /// </summary>
     public class UserInfo {
         /// <summary>

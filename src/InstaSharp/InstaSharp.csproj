@@ -40,6 +40,7 @@
     <Compile Include="Endpoints\InstagramApi.cs" />
     <Compile Include="Endpoints\Locations.cs" />
     <Compile Include="Endpoints\Media.cs" />
+    <Compile Include="Endpoints\NamespaceDoc.cs" />
     <Compile Include="Endpoints\Relationships.cs" />
     <Compile Include="Endpoints\Tags.cs" />
     <Compile Include="Endpoints\Users.cs" />
@@ -52,11 +53,14 @@
     <Compile Include="Infrastructure\UnixDateTimeConverter.cs" />
     <Compile Include="Models\Caption.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\NamespaceDoc.cs" />
     <Compile Include="Models\RealtimeUpdateItem.cs" />
     <Compile Include="Models\Resolution.cs" />
+    <Compile Include="Models\Responses\NamespaceDoc.cs" />
     <Compile Include="Models\Responses\TagsMultiplePagesResponse.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Models\Responses\SubscriptionResponse.cs" />
+    <Compile Include="NamespaceDoc.cs" />
     <Compile Include="OAuth.cs" />
     <Compile Include="InstagramConfig.cs" />
     <Compile Include="Models\UserInfo.cs" />

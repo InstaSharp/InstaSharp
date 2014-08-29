@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.20827.3
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSharp", "src\InstaSharp\InstaSharp.csproj", "{CD3EA37A-6C9D-4B74-A2A8-1483259FB1B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSharp.Tests", "src\InstaSharp.Tests\InstaSharp.Tests.csproj", "{32025768-5A2A-4085-A95E-D6B5E616034C}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "InstaSharp.Documentation", "Documentation\InstaSharp.Documentation.shfbproj", "{5638F692-6773-4327-A341-80245C2ADC72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{32025768-5A2A-4085-A95E-D6B5E616034C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32025768-5A2A-4085-A95E-D6B5E616034C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32025768-5A2A-4085-A95E-D6B5E616034C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5638F692-6773-4327-A341-80245C2ADC72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5638F692-6773-4327-A341-80245C2ADC72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5638F692-6773-4327-A341-80245C2ADC72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5638F692-6773-4327-A341-80245C2ADC72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
