@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 namespace InstaSharp.Models.Responses
 {
     /// <summary>
-    /// ShortLinkMediaInfoResponse
+    /// oEmbed is a format for allowing an embedded representation of a URL on third party sites. 
     /// </summary>
-    public class ShortLinkMediaInfoResponse
+    public class OEmbedResponse
     {
         /// <summary>
         /// Gets the provider URL.

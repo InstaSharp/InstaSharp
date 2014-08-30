@@ -145,7 +145,7 @@ namespace InstaSharp.Endpoints
             }
             else
             {
-                request.AddParameter("access_token", OAuthResponse.Access_Token);
+                request.AddParameter("access_token", OAuthResponse.AccessToken);
             }
 
             return request;
