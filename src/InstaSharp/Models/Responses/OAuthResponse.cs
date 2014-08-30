@@ -1,4 +1,6 @@
-﻿namespace InstaSharp.Models.Responses
+﻿using Newtonsoft.Json;
+
+namespace InstaSharp.Models.Responses
 {
     /// <summary>
     /// OAuthResponse
@@ -18,6 +20,7 @@
         /// <value>
         /// The access_ token.
         /// </value>
-        public string Access_Token { get; set; }
+        [JsonProperty("Access_Token")]
+        public string AccessToken { get; set; }
     }
 }
