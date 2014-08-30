@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace InstaSharp.Tests
 {
     [TestClass]
-    internal class Tags : TestBase
+    public class Tags : TestBase
     {
 
         readonly Endpoints.Tags tags;

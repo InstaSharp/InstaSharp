@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace InstaSharp.Tests {
     [TestClass]
-    internal class Comments : TestBase {
+    public class Comments : TestBase {
         readonly Endpoints.Comments comments;
 
         public Comments() {

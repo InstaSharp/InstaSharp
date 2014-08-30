@@ -35,11 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Endpoints\Comments.cs" />
+    <Compile Include="Endpoints\Embedding.cs" />
     <Compile Include="Endpoints\Geographies.cs" />
     <Compile Include="Endpoints\Likes.cs" />
     <Compile Include="Endpoints\InstagramApi.cs" />
     <Compile Include="Endpoints\Locations.cs" />
     <Compile Include="Endpoints\Media.cs" />
+    <Compile Include="Models\MediaSize.cs" />
     <Compile Include="Endpoints\NamespaceDoc.cs" />
     <Compile Include="Endpoints\Relationships.cs" />
     <Compile Include="Endpoints\Tags.cs" />
@@ -54,10 +56,12 @@
     <Compile Include="Models\Caption.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\NamespaceDoc.cs" />
+    <Compile Include="Models\Responses\ShortLinkMediaInfoResponse.cs" />
     <Compile Include="Models\RealtimeUpdateItem.cs" />
     <Compile Include="Models\Resolution.cs" />
     <Compile Include="Models\Responses\NamespaceDoc.cs" />
     <Compile Include="Models\Responses\TagsMultiplePagesResponse.cs" />
+    <Compile Include="Models\ShortCodeResponse.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Models\Responses\SubscriptionResponse.cs" />
     <Compile Include="NamespaceDoc.cs" />

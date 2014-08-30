@@ -1,4 +1,5 @@
 ﻿using InstaSharp.Extensions;
+using InstaSharp.Models;
 using InstaSharp.Models.Responses;
 using System;
 using System.Threading.Tasks;
@@ -112,5 +113,6 @@ namespace InstaSharp.Endpoints
             request.AddParameter("distance", distance);
             return Client.ExecuteAsync<MediasResponse>(request);
         }
+
     }
 }
