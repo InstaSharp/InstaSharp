@@ -4,6 +4,14 @@ InstaSharp is a wrapper around the Instagram API.  It's goal is to provide you w
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ch334xwq15i9pcum)](https://ci.appveyor.com/project/Fujiy/instasharp)
 
+###Where do I get support?
+
+Bugs, Feature Requests and Discussion at [github.com/InstaSharp/InstaSharp/issues](https://github.com/InstaSharp/InstaSharp/issues) or on [Stack Overflow](http://stackoverflow.com/questions/tagged/instasharp). Feel free to submit Pull Requests on GitHub.
+
+###Where is the current documentation?
+
+See [Documentation](http://instasharp.github.io/InstaSharp/Documentation/index.html)
+
 ## Getting Started
 
 ### Register Your Application 
