@@ -60,7 +60,6 @@ namespace InstaSharp
         /// </value>
         public string CallbackUri { get; set; }
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="InstagramConfig"/> class.
         /// </summary>
@@ -76,6 +75,29 @@ namespace InstaSharp
         /// <param name="clientSecret">The client secret.</param>
         public InstagramConfig(string clientId, string clientSecret)
             : this(clientId, clientSecret, null, null, ApiUriDefault, OAuthUriDefault, RealTimeApiDefault)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InstagramConfig"/> class.
+        /// </summary>
+        /// <param name="clientId">The client identifier.</param>
+        /// <param name="clientSecret">The client secret.</param>
+        /// <param name="redirectUri">The redirect URI.</param>
+        public InstagramConfig(string clientId, string clientSecret, string redirectUri)
+            : this(clientId, clientSecret, redirectUri, null, ApiUriDefault, OAuthUriDefault, RealTimeApiDefault)
+        {
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InstagramConfig"/> class.
+        /// </summary>
+        /// <param name="clientId">The client identifier.</param>
+        /// <param name="clientSecret">The client secret.</param>
+        /// <param name="redirectUri">The redirect URI.</param>
+        /// <param name="callbackUri">The callback URI.</param>
+        public InstagramConfig(string clientId, string clientSecret, string redirectUri, string callbackUri)
+            : this(clientId, clientSecret, redirectUri, callbackUri, ApiUriDefault, OAuthUriDefault, RealTimeApiDefault)
         {
         }
 

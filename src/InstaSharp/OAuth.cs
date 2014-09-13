@@ -73,24 +73,25 @@ namespace InstaSharp
         /// <returns>The authentication url</returns>
         public static string AuthLink(string instagramOAuthUri, string clientId, string callbackUri, List<Scope> scopes, ResponseType responseType = ResponseType.Token)
         {
-            var scope = new StringBuilder();
+            var scopesForUri = BuildScopeForUri(scopes);
+            return BuildAuthUri(instagramOAuthUri, clientId, callbackUri, responseType, scopesForUri);
+        }
 
-            foreach (var s in scopes)
-            {
-                if (scope.Length > 0)
-                {
-                    scope.Append("+");
-                }
-                scope.Append(s);
-            }
-
-            return string.Format("{0}?client_id={1}&redirect_uri={2}&response_type={3}&scope={4}", new object[] {
-                instagramOAuthUri.ToLower(),
-                clientId.ToLower(), 
-                callbackUri.ToLower(), 
-                responseType,
-                scope.ToString().ToLower()
-            });
+        /// <summary>
+        /// Get authentication link.
+        /// </summary>
+        /// <param name="config">Instagram configuration.</param>
+        /// <param name="scopes">The scopes.</param>
+        /// <param name="responseType">Type of the response.</param>
+        /// <returns>The authentication url</returns>
+        public static string AuthLink(InstagramConfig config, List<Scope> scopes, ResponseType responseType = ResponseType.Token)
+        {
+            var scopesForUri = BuildScopeForUri(scopes);
+            return BuildAuthUri(config.OAuthUri.TrimEnd('/') + "/authorize", 
+                config.ClientId, 
+                config.RedirectUri, 
+                responseType, 
+                scopesForUri);
         }
 
         /// <summary>
@@ -115,6 +116,47 @@ namespace InstaSharp
 
             return client.ExecuteAsync<OAuthResponse>(request);
 
+        }
+
+        /// <summary>
+        /// Build scope string for auth uri.
+        /// </summary>
+        /// <param name="scopes">List of scopes.</param>
+        /// <returns>Comma separated scopes.</returns>
+        private static string BuildScopeForUri(List<Scope> scopes)
+        {
+            var scope = new StringBuilder();
+
+            foreach (var s in scopes)
+            {
+                if (scope.Length > 0)
+                {
+                    scope.Append("+");
+                }
+                scope.Append(s);
+            }
+
+            return scope.ToString();
+        }
+
+        /// <summary>
+        /// Build authentication link.
+        /// </summary>
+        /// <param name="instagramOAuthUri">The instagram o authentication URI.</param>
+        /// <param name="clientId">The client identifier.</param>
+        /// <param name="callbackUri">The callback URI.</param>
+        /// <param name="scopes">The scopes.</param>
+        /// <param name="responseType">Type of the response.</param>
+        /// <returns>The authentication uri</returns>
+        private static string BuildAuthUri(string instagramOAuthUri, string clientId, string callbackUri, ResponseType responseType, string scopes)
+        {
+            return string.Format("{0}?client_id={1}&redirect_uri={2}&response_type={3}&scope={4}", new object[] {
+                instagramOAuthUri.ToLower(),
+                clientId.ToLower(), 
+                callbackUri.ToLower(), 
+                responseType.ToString().ToLower(),
+                scopes.ToLower()
+            });
         }
     }
 }
