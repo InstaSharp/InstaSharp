@@ -123,12 +123,11 @@ namespace InstaSharp.Tests
         public void TestHeader()
         {
             realtime.InstagramConfig.ClientSecret = "6dc1787668c64c939929c17683d7cb74";
-            realtime.Ips = "200.15.1.1";
-            realtime.EnforceSignedHeader = true;
+            realtime.EnableEnforceSignedHeader("200.15.1.1");
             var result = realtime.CreateXInstaForwardedHeader();
             Assert.AreEqual("200.15.1.1|7e3c45bc34f56fd8e762ee4590a53c8c2bbce27e967a85484712e5faa0191688", result);
           
-            realtime.Ips = "200.15.1.1,131.51.1.35";
+            realtime.EnableEnforceSignedHeader("200.15.1.1,131.51.1.35");
             var result2 = realtime.CreateXInstaForwardedHeader();
             Assert.AreEqual("200.15.1.1,131.51.1.35|13cb27eee318a5c88f4456bae149d806437fb37ba9f52fac0b1b7d8c234e6cee", result2);
         }
