@@ -32,25 +32,12 @@ namespace InstaSharp.Endpoints
 
         internal HttpClient Client { get; private set; }
 
-        private string ips;
-
         /// <summary>
-        ///   IP information: Comma-separated list of one or more IPs; if your app receives requests directly from clients,
+        ///  IP information: Comma-separated list of one or more IPs; if your app receives requests directly from clients,
         ///  then it should be the client's remote IP as detected by the your app's load balancer; if your app is behind another load balancer (for example, Amazon's ELB),
         ///  this should contain the exact contents of the original X-Forwarded-For header. You can use the 127.0.0.1 loopback address during testing
         /// </summary>
-        public string Ips
-        {
-            get
-            {
-                return ips;
-            }
-            set
-            {
-                ips = value;
-                XInstaForwardedHeader = CreateXInstaForwardedHeader();
-            }
-        }
+        public string Ips { get; private set; }
 
         /// <summary>
         /// Requires the use of your Client Secret to sign POST and DELETE API requests. Use this option to instruct Instagram to check requests for the 'X-Insta-Forwarded-For' HTTP header. 
@@ -58,7 +45,7 @@ namespace InstaSharp.Endpoints
         /// this option for server-to-server calls. See the Restrict API Requests documentation for details. http://instagram.com/developer/restrict-api-requests/
         /// This needs to be configured at application level
         /// </summary>
-        public bool EnforceSignedHeader { get; set; }
+        public bool EnforceSignedHeader { get; private set; }
 
         internal InstagramApi(string endpoint, InstagramConfig instagramConfig)
             : this(endpoint, instagramConfig, null)
@@ -99,13 +86,36 @@ namespace InstaSharp.Endpoints
             }
         }
 
+        /// <summary>
+        /// Requires the use of your Client Secret to sign POST and DELETE API requests. Use this option to instruct Instagram to check requests for the 'X-Insta-Forwarded-For' HTTP header. 
+        /// Eligible requests that do not provide this header and a valid signature will fail. This technique helps identify you as the legitimate owner of this OAuth Client. Only enable 
+        /// this option for server-to-server calls. See the Restrict API Requests documentation for details. http://instagram.com/developer/restrict-api-requests/
+        /// This needs to be configured at application level
+        /// </summary>
+        /// <param name="ipAdresses">IP information: Comma-separated list of one or more IPs; if your app receives requests directly from clients,
+        ///  then it should be the client's remote IP as detected by the your app's load balancer; if your app is behind another load balancer (for example, Amazon's ELB),
+        ///  this should contain the exact contents of the original X-Forwarded-For header. You can use the 127.0.0.1 loopback address during testing</param>
+        public void EnableEnforceSignedHeader(string ipAdresses)
+        {
+            Ips = ipAdresses;
+            EnforceSignedHeader = true;
+            XInstaForwardedHeader = CreateXInstaForwardedHeader();
+        }
+
+        public void DisableEnforceSignedHeader(string ipAdresses)
+        {
+            Ips = null;
+            EnforceSignedHeader = false;
+            XInstaForwardedHeader = null;
+        }
+
         internal HttpRequestMessage Request(string fragment, HttpMethod method)
         {
             var request = new HttpRequestMessage(method, new Uri(Client.BaseAddress, fragment));
             AddHeaders(request);
             return AddAuth(request);
         }
-
+        
         /// <param name="request"></param>
         private void AddHeaders(HttpRequestMessage request)
         {
@@ -127,9 +137,9 @@ namespace InstaSharp.Endpoints
         internal string CreateXInstaForwardedHeader()
         {
             var encoding = new ASCIIEncoding();
-            var hash = new HMACSHA256(encoding.GetBytes(InstagramConfig.ClientSecret)).ComputeHash(encoding.GetBytes(ips));
+            var hash = new HMACSHA256(encoding.GetBytes(InstagramConfig.ClientSecret)).ComputeHash(encoding.GetBytes(Ips));
             var digest = hash.ByteArrayToString().ToLower(); //TODO: can the ToLower() be avoided
-            return string.Format("{0}|{1}", ips, digest);
+            return string.Format("{0}|{1}", Ips, digest);
         }
 
         internal HttpRequestMessage Request(string fragment)
