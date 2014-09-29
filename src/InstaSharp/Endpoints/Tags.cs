@@ -102,7 +102,14 @@ namespace InstaSharp.Endpoints
                 return response;
             }
 
+            
             var results = await Recent(tagName, minTagId, maxTagId, 100);
+            if (results.Data == null)
+            {
+                response.Meta = results.Meta;
+                return response;
+            }
+
             response.PageCount = 1;
             var idFound = CropDataIfIdFound(results.Data, stopatMediaId);
             response.Data.AddRange(results.Data);
