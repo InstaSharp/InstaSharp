@@ -87,7 +87,7 @@ namespace InstaSharp.Endpoints
 
             var request = Request("{media-id}/comments/{comment-id}", HttpMethod.Delete);
             request.AddUrlSegment("media-id", mediaId);
-            request.AddUrlSegment("media-id", commentId);
+            request.AddUrlSegment("comment-id", commentId);
 
             return Client.ExecuteAsync<CommentResponse>(request);
         }
