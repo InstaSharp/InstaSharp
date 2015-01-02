@@ -36,6 +36,11 @@ namespace InstaSharp.Endpoints
         /// <returns></returns>
         public Task<OEmbedResponse> MediaInfo(string shortlink, int? maximumHeight = null, int? maximumWidth = null, bool? hidecaption = null, bool? omitscript = null)
         {
+            if (maximumWidth != null && maximumWidth < 320)
+            {
+                throw new ArgumentException("Maximum width must be greater or equal to 320 if specified","maximumWidth");
+            }
+
             var request = Request("/oembed/?url=" + shortlink + (maximumHeight == null ? String.Empty : "&maxheight=" + maximumHeight)
                                                               + (maximumWidth == null ? String.Empty : "&maxwidth=" + maximumWidth)
                                                               + (hidecaption == null ? String.Empty : "&hidecaption=" + hidecaption)

@@ -2,7 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InstaSharp.Tests {
+namespace InstaSharp.Tests
+{
 
     [TestClass]
     public class Locations : TestBase
@@ -41,6 +42,17 @@ namespace InstaSharp.Tests {
             var result = await locations.Search("40b52f80f964a52052001fe3", Endpoints.Locations.FoursquareVersion.Two);
             Assert.AreEqual(result.Data.Count, 1);
             Assert.AreEqual(result.Data.Single().Name, "Microsoft");
+        }
+
+        [TestMethod, TestCategory("Locations.Search")]
+        public async Task SearchFacebookPlaces()
+        {
+            var result = await locations.Search(104999729569954);
+            var locationItem = result.Data.Single();
+            Assert.AreEqual(locationItem.Latitude, 1.378994349M);
+            Assert.AreEqual(locationItem.Longitude, 103.848781586M);
+            Assert.AreEqual(locationItem.Id, 906462);
+            Assert.AreEqual(locationItem.Name, "Nanyang Polytechnic (NYP)");
         }
     }
 }
