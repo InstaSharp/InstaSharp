@@ -12,7 +12,7 @@ namespace InstaSharp.Endpoints
     /// Instagram provides two simple ways to get information about a shared link in order to display a preview: an OEmbed endpoint 
     /// and a simple URL append endpoint. Neither requires an access_token or client_id.
     /// </summary>
-    /// <remarks><see cref="http://instagram.com/developer/embedding/"/></remarks>
+    /// <remarks><see href="http://instagram.com/developer/embedding/"/></remarks>
     public class Embedding : InstagramApi
     {
         /// <summary>
@@ -29,10 +29,17 @@ namespace InstaSharp.Endpoints
         /// <param name="shortlink">The shortlink.</param>
         /// <param name="maximumHeight">The maximum height.</param>
         /// <param name="maximumWidth">The maximum width.</param>
+        /// <param name="hidecaption">If set to true, the embed code hides the caption. Defaults to false. 
+        /// NOTE: If this is set to true the <see cref="maximumHeight"/> property appears to be disregarded</param>
+        /// <param name="omitscript">If set to true, the embed code does not include the script tag. This is useful for websites that want to handle the loading of the embeds.js script by themselves.
+        /// NOTE: If this is set to true the <see cref="maximumHeight"/> property appears to be disregarded. A different thumbnail url appears to also be returned</param>
         /// <returns></returns>
-        public Task<OEmbedResponse> MediaInfo(string shortlink, int? maximumHeight = null, int? maximumWidth = null)
+        public Task<OEmbedResponse> MediaInfo(string shortlink, int? maximumHeight = null, int? maximumWidth = null, bool? hidecaption = null, bool? omitscript = null)
         {
-            var request = Request("/oembed/?url=" + shortlink + (maximumHeight == null ? "" : "&maxheight=" + maximumHeight) + (maximumWidth == null ? "" : "&maxwidth=" + maximumWidth));
+            var request = Request("/oembed/?url=" + shortlink + (maximumHeight == null ? String.Empty : "&maxheight=" + maximumHeight)
+                                                              + (maximumWidth == null ? String.Empty : "&maxwidth=" + maximumWidth)
+                                                              + (hidecaption == null ? String.Empty : "&hidecaption=" + hidecaption)
+                                                              + (omitscript == null ? String.Empty : "&omitscript=" + omitscript));
             return Client.ExecuteAsync<OEmbedResponse>(request);
         }
 
