@@ -8,6 +8,13 @@ namespace InstaSharp.Models.Responses
     public class MediasResponse : Response
     {
         /// <summary>
+        /// Create a MediasResponse object
+        /// </summary>
+        public MediasResponse()
+        {
+            Data = new List<Media>();
+        }
+        /// <summary>
         /// Gets or sets the pagination.
         /// </summary>
         /// <value>

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
 using System.Threading.Tasks;
@@ -13,10 +15,24 @@ namespace InstaSharp.Endpoints
     public class Tags : InstagramApi
     {
         /// <summary>
+        /// The Instagram Api disallows '#', spaces, and special characters. It allows underscore
+        /// </summary>
+        /// <param name="tagName"></param>
+        private static void ValidateTagName(string tagName)
+        {
+            var regex = new Regex(@"^\w+$");
+            if (!regex.IsMatch(tagName))
+            {
+                throw new ArgumentException("'tagName' parameter contains invalid characters: " + tagName);
+            }
+        }
+
+        /// <summary>
         /// Tag Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class</param>
-        public Tags(InstagramConfig config) : this(config, null)
+        public Tags(InstagramConfig config)
+            : this(config, null)
         {
 
         }
@@ -26,7 +42,8 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class</param>
         /// <param name="auth">An instance of the OAuthResponse class.</param>
-        public Tags(InstagramConfig config, OAuthResponse auth) : base("tags/", config, auth)
+        public Tags(InstagramConfig config, OAuthResponse auth)
+            : base("tags/", config, auth)
         {
 
         }
@@ -37,8 +54,10 @@ namespace InstaSharp.Endpoints
         /// <param name="tagName">Return information about this tag.</param>
         /// <returns>Tag Response</returns>
         /// <para>Requires Authentication: False</para>
+        ///  <exception cref="ArgumentException">thrown when searchTerm contains invalida characters</exception>
         public Task<TagResponse> Get(string tagName)
         {
+            ValidateTagName(tagName);
             var request = Request("{tag}");
             request.AddUrlSegment("tag", tagName);
             return Client.ExecuteAsync<TagResponse>(request);
@@ -50,6 +69,7 @@ namespace InstaSharp.Endpoints
         /// <param name="tagName">Return information about this tag.</param>
         /// <returns>Medias Response</returns>
         /// <para>Requires Authentication: False</para>
+        /// <exception cref="ArgumentException">thrown when searchTerm contains invalid characters</exception>
         public Task<MediasResponse> Recent(string tagName)
         {
             return Recent(tagName, null, null, null);
@@ -61,11 +81,14 @@ namespace InstaSharp.Endpoints
         /// <param name="tagName">Return information about this tag.</param>
         /// <param name="minTagId">Return media before this min_tag_id. If you don't want to use this parameter, use null.</param>
         /// <param name="maxTagId">Return media after this max_tag_id. If you don't want to use this parameter, use null.</param>
-        /// <param name="count">Count of tagged media to return. Will still be governed by Instagram's enforced limit.</param>
+        /// <param name="count">Count of tagged media to return. Will still be governed by Instagram's enforced limit.</param> 
+        /// <exception cref="ArgumentException">thrown when searchTerm contains invalid characters</exception>
         /// <returns>Medias Response</returns>
         /// <para>Requires Authentication: False</para>
         public Task<MediasResponse> Recent(string tagName, string minTagId, string maxTagId, int? count)
         {
+            ValidateTagName(tagName);
+
             var request = Request("{tag}/media/recent");
             request.AddUrlSegment("tag", tagName);
 
@@ -79,6 +102,7 @@ namespace InstaSharp.Endpoints
 
             return Client.ExecuteAsync<MediasResponse>(request);
         }
+
 
         /// <summary>
         /// Gets a list of recently tagged media. Paginates until a predefined limit is reached or the end is reached. Note this could increase your daily limit Check <see cref="Response.RateLimitLimit" />
@@ -96,13 +120,15 @@ namespace InstaSharp.Endpoints
         /// </remarks>
         public async Task<TagsMultiplePagesResponse> RecentMultiplePages(string tagName, string minTagId = "", string maxTagId = "", int? maxPageCount = null, string stopatMediaId = null)
         {
+            ValidateTagName(tagName);
+
             var response = new TagsMultiplePagesResponse();
             if (maxPageCount == 0)
             {
                 return response;
             }
 
-            
+
             var results = await Recent(tagName, minTagId, maxTagId, 100);
             if (results.Data == null)
             {
@@ -158,7 +184,7 @@ namespace InstaSharp.Endpoints
             {
                 return false;
             }
-            int count = data.Count;
+            var count = data.Count;
             data = data.TakeWhile(x => x.Id != stopatMediaId).ToList();
             return count != data.Count;
         }
@@ -169,8 +195,10 @@ namespace InstaSharp.Endpoints
         /// <param name="searchTerm">A valid tag name without a leading #. (eg. snowy, nofilter)</param>
         /// <returns>a <see cref="TagsResponse"/> object</returns>
         /// <para>Requires Authentication: False</para>
+        /// <exception cref="ArgumentException">thrown when searchTerm contains invalid characters</exception>
         public Task<TagsResponse> Search(string searchTerm)
         {
+            ValidateTagName(searchTerm);
             var request = Request("search");
             request.AddParameter("q", searchTerm);
             return Client.ExecuteAsync<TagsResponse>(request);
