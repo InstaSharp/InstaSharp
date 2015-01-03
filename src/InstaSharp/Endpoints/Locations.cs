@@ -32,6 +32,7 @@ namespace InstaSharp.Endpoints
         /// <summary>
         /// The versions of the Foursquare API
         /// </summary>   
+        [Obsolete]
         public enum FoursquareVersion
         {
             /// <summary>
@@ -112,11 +113,32 @@ namespace InstaSharp.Endpoints
         /// <returns>Locations Response</returns>
         public Task<LocationsResponse> Search(double latitude, double longitude, double? distance)
         {
+            if (distance != null && distance > 5000)
+            {
+                throw new ArgumentException("distance must be less than 5000", "distance");
+            }
+
             var request = Request("search");
 
             request.AddParameter("lat", latitude);
             request.AddParameter("lng", longitude);
-            request.AddParameter("distance", distance);
+            if (distance != null)
+            {
+                request.AddParameter("distance", distance);
+            }
+            return base.Client.ExecuteAsync<LocationsResponse>(request);
+        }
+
+        /// <summary>
+        /// Search for a location by geographic coordinate.
+        /// <para>Requires Authentication: False</para>
+        /// </summary>
+        /// <param name="facebookPlacesId">Facebook places id</param>
+        /// <returns>Locations Response</returns>
+        public Task<LocationsResponse> Search(long facebookPlacesId)
+        {
+            var request = Request("search");
+            request.AddParameter("facebook_places_id", facebookPlacesId);
 
             return base.Client.ExecuteAsync<LocationsResponse>(request);
         }

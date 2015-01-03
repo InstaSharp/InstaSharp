@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -50,6 +51,26 @@ namespace InstaSharp.Tests
             var result = await tags.Recent("csharp");
             result = await tags.Recent("csharp", null, result.Pagination.NextMaxId, null);
             Assert.IsTrue(result.Data.Count > 0);
+        }
+
+        [TestMethod, TestCategory("Tags.Recent")]
+        public async Task RecentIncorrectlyFormatted()
+        {
+            var invalidTags = new[] { "csharp.aspnet", "#csharpaspnet", "csharp aspnet" };
+            var exceptionCount = 0;
+            foreach (var tagName in invalidTags)
+            {
+                try
+                {
+                    await tags.Recent(tagName);
+                }
+                catch (Exception exception)
+                {
+                    Assert.IsInstanceOfType(exception, typeof(ArgumentException));
+                    exceptionCount++;
+                }
+            }
+            Assert.AreEqual(exceptionCount, invalidTags.Length);
         }
 
         [TestMethod, TestCategory("Tags.Recent")]

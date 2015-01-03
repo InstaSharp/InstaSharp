@@ -8,7 +8,7 @@ namespace InstaSharp.Extensions
 {
     internal static class HttpClientExtensions
     {
-        private const string RateLimitRamainingHeader = "X-Ratelimit-Remaining";
+        private const string RateLimitRemainingHeader = "X-Ratelimit-Remaining";
         private const string RateLimitHeader = "X-Ratelimit-Limit";
 
         public static async Task<T> ExecuteAsync<T>(this HttpClient client, HttpRequestMessage request)
@@ -30,11 +30,11 @@ namespace InstaSharp.Extensions
                             .SingleOrDefault();
                 }
 
-                if (response.Headers.Contains(RateLimitRamainingHeader))
+                if (response.Headers.Contains(RateLimitRemainingHeader))
                 {
                     endpointResponse.RateLimitRemaining =
                         response.Headers
-                            .GetValues(RateLimitRamainingHeader)
+                            .GetValues(RateLimitRemainingHeader)
                             .Select(int.Parse)
                             .SingleOrDefault();
                 }
