@@ -1,20 +1,23 @@
 ﻿using InstaSharp.Extensions;
+using InstaSharp.Models;
 using InstaSharp.Models.Responses;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace InstaSharp.Endpoints {
-
+namespace InstaSharp.Endpoints
+{
     /// <summary>
     /// The Relationships Endpoint
     /// </summary>
-    public class Relationships : InstagramApi {
+    public class Relationships : InstagramApi
+    {
 
         /// <summary>
         /// The Action
         /// </summary>
-        public enum Action {
+        public enum Action
+        {
             /// <summary>
             /// follow
             /// </summary>
@@ -45,7 +48,8 @@ namespace InstaSharp.Endpoints {
         /// Relationships Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
-        public Relationships(InstagramConfig config) : this(config, null)
+        public Relationships(InstagramConfig config)
+            : this(config, null)
         {
         }
 
@@ -54,7 +58,8 @@ namespace InstaSharp.Endpoints {
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class.</param>
         /// <param name="auth">An instance of the OAuthResponse class.</param>
-        public Relationships(InstagramConfig config, OAuthResponse auth) : base("users/", config, auth)
+        public Relationships(InstagramConfig config, OAuthResponse auth)
+            : base("users/", config, auth)
         {
         }
 
@@ -84,7 +89,7 @@ namespace InstaSharp.Endpoints {
         }
 
         /// <summary>
-        /// Get the list of users this user follows.
+        /// Get a page worth of users this user follows.
         /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
@@ -101,7 +106,7 @@ namespace InstaSharp.Endpoints {
         }
 
         /// <summary>
-        /// Get the list of users this user is followed by.
+        /// Get the list of users this user is followed by (one page worth).
         /// <para>Requires Authentication: True</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
@@ -109,9 +114,34 @@ namespace InstaSharp.Endpoints {
         public Task<UsersResponse> FollowedBy()
         {
             AssertIsAuthenticated();
-
             return FollowedBy(OAuthResponse.User.Id, null);
         }
+
+        /// <summary>
+        /// Get the list of users this user is followed by all (pages)
+        /// <para>Requires Authentication: True</para><para><c>Required scope:</c> relationships
+        /// </para>
+        /// </summary>
+        /// <returns>UsersResponse</returns>
+        public async Task<List<User>> FollowedByAll()
+        {
+            AssertIsAuthenticated();
+            return await new PageReader<User, UsersResponse>().ReadPages(OAuthResponse.User.Id, FollowedBy);
+        }
+
+        /// <summary>
+        /// Get the list of users this user follows.
+        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
+        /// </para>
+        /// </summary>
+        /// <param name="userId">The list of users that this user id is following.</param>
+        /// <returns>UsersResponse</returns>
+        public async Task<List<User>> FollowsAll(int userId)
+        {
+            AssertIsAuthenticated();
+            return await new PageReader<User, UsersResponse>().ReadPages(userId, Follows);
+        }
+
 
         /// <summary>
         /// Get the list of users this user is followed by.
@@ -138,7 +168,7 @@ namespace InstaSharp.Endpoints {
             var request = Request("{id}/followed-by");
             request.AddUrlSegment("id", userId.ToString());
             request.AddParameter("cursor", cursor);
-            
+
             return Client.ExecuteAsync<UsersResponse>(request);
         }
 
@@ -186,7 +216,10 @@ namespace InstaSharp.Endpoints {
         {
             var request = Request("{id}/relationship", HttpMethod.Post);
             request.AddUrlSegment("id", userId.ToString());
-            request.Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>() {new KeyValuePair<string, string>("action", action.ToString().ToLower())});
+            request.Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("action", action.ToString().ToLower())
+            });
             return Client.ExecuteAsync<RelationshipResponse>(request);
         }
     }

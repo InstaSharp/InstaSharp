@@ -142,7 +142,7 @@ namespace InstaSharp.Endpoints
 
             if (idFound)
             {
-                response.PaginationNextMaxId = results.Pagination.NextMaxId;
+                response.PaginationNextMaxId = results.Pagination.MinTagId;
                 response.Meta = results.Meta;
                 return response;
             }
@@ -150,12 +150,12 @@ namespace InstaSharp.Endpoints
             // keep paging back in time until a recent is found
             while (results.Meta.Code == HttpStatusCode.OK
                                     && results.Pagination != null
-                                    && results.Pagination.NextMaxId != null
+                                    && results.Pagination.NextMaxTagId != null
                                     && results.Data != null
                                     && response.PageCount < maxPageCount
                                     && !(stopatMediaId != null && idFound)) //results.Pagination.NextMaxId
             {
-                results = await Recent(tagName, null, results.Pagination.NextMaxId, 100);
+                results = await Recent(tagName, null, results.Pagination.NextMaxTagId, 100);
                 if (results.Meta.Code != HttpStatusCode.OK || results.Data == null || results.Data.Count <= 0)
                 {
                     break;
@@ -166,7 +166,7 @@ namespace InstaSharp.Endpoints
             }
             if (results.Pagination != null)
             {
-                response.PaginationNextMaxId = results.Pagination.NextMaxId;
+                response.PaginationNextMaxId = results.Pagination.NextMaxTagId;
             }
             response.Meta = results.Meta;
             return response;

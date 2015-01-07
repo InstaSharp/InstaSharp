@@ -8,22 +8,22 @@ namespace InstaSharp.Models
     public class Relationship
     {
         /// <summary>
-        /// Gets or sets the outgoing status.
+        /// Your relationship to the user.
         /// </summary>
         /// <value>
         /// The outgoing status.
         /// </value>
         [JsonProperty("outgoing_status")]
-        public string OutgoingStatus { get; set; }
+        public OutgoingStatus OutgoingStatus { get; set; }
 
         /// <summary>
-        /// Gets or sets the incoming status.
+        /// A user's relationship to you. 
         /// </summary>
         /// <value>
         /// The incoming status.
         /// </value>
         [JsonProperty("incoming_status")]
-        public string IncomingStatus { get; set; }
+        public IncomingStatus IncomingStatus { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [target user is private].
@@ -34,5 +34,4 @@ namespace InstaSharp.Models
         [JsonProperty("target_user_is_private")]
         public bool TargetUserIsPrivate { get; set; }
     }
-
 }

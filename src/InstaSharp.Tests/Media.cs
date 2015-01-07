@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -74,7 +75,5 @@ namespace InstaSharp.Tests
             var result = await media.Search(36.166667, -86.783333);
             Assert.IsTrue(result.Data.Count > 0);
         }
-
-
     }
 }

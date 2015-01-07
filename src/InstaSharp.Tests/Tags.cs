@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -38,19 +39,21 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod, TestCategory("Tags.Recent")]
-        public async Task Recent_MinId()
+        public async Task Recent_MinTagId()
         {
             var result = await tags.Recent("csharp");
-            result = await tags.Recent("csharp", result.Pagination.NextMinId, null, null);
+            var minPageId = result.Pagination.MinTagId;
+            result = await tags.Recent("csharp", minPageId, null, null);
             Assert.IsTrue(result.Data.Count == 0);
         }
 
         [TestMethod, TestCategory("Tags.Recent")]
-        public async Task Recent_MaxId()
+        public async Task Recent_NextMaxTagId()
         {
             var result = await tags.Recent("csharp");
-            result = await tags.Recent("csharp", null, result.Pagination.NextMaxId, null);
-            Assert.IsTrue(result.Data.Count > 0);
+            var nextMaxTagId = result.Pagination.NextMaxTagId;
+            result = await tags.Recent("csharp", null, nextMaxTagId, null);
+               Assert.IsTrue(result.Data.Count>0);
         }
 
         [TestMethod, TestCategory("Tags.Recent")]
@@ -76,8 +79,10 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Tags.Recent")]
         public async Task RecentMultiplePages()
         {
-            var result = await tags.RecentMultiplePages("csharp", minTagId: null, maxTagId: null, maxPageCount: 3);
+            var result = await tags.RecentMultiplePages("csharp", null, null, 3);
             Assert.IsTrue(result.Data.Any());
+            Assert.AreEqual(result.Data.Select(x => x.Id).Distinct().Count(), result.Data.Count);
+            Assert.AreEqual(result.Data.Select(x => x.Link).Distinct().Count(), result.Data.Count);
         }
     }
 }

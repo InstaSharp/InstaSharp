@@ -5,7 +5,7 @@ namespace InstaSharp.Models.Responses
     /// <summary>
     /// Response object holding a list of users and pagination
     /// </summary>
-    public class UsersResponse : Response
+    public class UsersResponse : Response, IPagination<User>
     {
         /// <summary>
         /// Gets or sets the data.

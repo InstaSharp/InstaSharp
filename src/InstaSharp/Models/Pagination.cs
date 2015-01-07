@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace InstaSharp.Models {
     /// <summary>
@@ -21,6 +22,7 @@ namespace InstaSharp.Models {
         /// </value>
         [JsonProperty("next_cursor")]
         public string NextCursor { get; set; }
+     
         /// <summary>
         /// Gets or sets the next maximum identifier.
         /// </summary>
@@ -28,7 +30,9 @@ namespace InstaSharp.Models {
         /// The next maximum identifier.
         /// </value>
         [JsonProperty("next_max_id")]
+        [Obsolete]
         public string NextMaxId { get; set; }
+       
         /// <summary>
         /// Gets or sets the next minimum identifier.
         /// </summary>
@@ -36,6 +40,25 @@ namespace InstaSharp.Models {
         /// The next minimum identifier.
         /// </value>
         [JsonProperty("next_min_id")]
+        [Obsolete]
         public string NextMinId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the next maximum identifier.
+        /// </summary>
+        /// <value>
+        /// The next minimum identifier.
+        /// </value>
+        [JsonProperty("min_tag_id")]
+        public string MinTagId { get; set; }
+      
+        /// <summary>
+        /// Gets or sets the next minimum identifier.
+        /// </summary>
+        /// <value>
+        /// The next minimum identifier.
+        /// </value>
+        [JsonProperty("next_max_tag_id")]
+        public string NextMaxTagId { get; set; }
     }
 }
