@@ -59,7 +59,6 @@ namespace InstaSharp.Tests
         public async Task Popular()
         {
             var result = await media.Popular();
-            var asd = result.Data.Select(x => x.UsersInPhoto).ToList();
             Assert.IsTrue(result.Data.Count > 0);
         }
 
