@@ -3,11 +3,21 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace InstaSharp.Models {
+namespace InstaSharp.Models
+{
     /// <summary>
     /// The Media Object
     /// </summary>
-    public class Media {
+    public class Media
+    {
+
+        /// <summary>
+        /// Gets or sets the attribution.
+        /// </summary>
+        /// <value>
+        /// The attribution.
+        /// </value>
+        public string Attribution { get; set; }
         /// <summary>
         /// Gets or sets the location.
         /// </summary>
@@ -109,5 +119,14 @@ namespace InstaSharp.Models {
         /// The user.
         /// </value>
         public User User { get; set; }
+
+        /// <summary>
+        /// Gets or sets the users in photo.
+        /// </summary>
+        /// <value>
+        /// The users in photo.
+        /// </value>
+        [JsonProperty("users_in_photo")]
+        public List<UserInPhoto> UsersInPhoto { get; set; }
     }
 }

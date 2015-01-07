@@ -41,6 +41,8 @@
     <Compile Include="Endpoints\InstagramApi.cs" />
     <Compile Include="Endpoints\Locations.cs" />
     <Compile Include="Endpoints\Media.cs" />
+    <Compile Include="Endpoints\PageReader.cs" />
+    <Compile Include="Models\IncomingStatus.cs" />
     <Compile Include="Models\MediaSize.cs" />
     <Compile Include="Endpoints\NamespaceDoc.cs" />
     <Compile Include="Endpoints\Relationships.cs" />
@@ -56,12 +58,16 @@
     <Compile Include="Models\Caption.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\NamespaceDoc.cs" />
+    <Compile Include="Models\OutgoingStatus.cs" />
+    <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\IPagination.cs" />
     <Compile Include="Models\Responses\OEmbedResponse.cs" />
     <Compile Include="Models\RealtimeUpdateItem.cs" />
     <Compile Include="Models\Resolution.cs" />
     <Compile Include="Models\Responses\NamespaceDoc.cs" />
     <Compile Include="Models\Responses\TagsMultiplePagesResponse.cs" />
     <Compile Include="Models\ShortCodeResponse.cs" />
+    <Compile Include="Models\UserInPhoto.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Models\Responses\SubscriptionResponse.cs" />
     <Compile Include="NamespaceDoc.cs" />
