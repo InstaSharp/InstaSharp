@@ -11,6 +11,6 @@
         /// <value>
         /// The data.
         /// </value>
-        public string Data { get; set; }
+        public Comment Data { get; set; }
     }
 }
