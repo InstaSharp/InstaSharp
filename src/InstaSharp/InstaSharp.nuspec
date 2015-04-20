@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
-  <metadata>
-    <id>InstaSharp</id>
-    <version>2.0.0-beta7</version>
-    <title>InstaSharp</title>
-    <authors>Burke Holland,Felipe Fujiy</authors>
-    <owners>Burke Holland,Felipe Fujiy</owners>
-    <projectUrl>http://instasharp.org</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>InstaSharp is a wrapper around the Instagram API. It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.</description>
-    <summary>InstaSharp is a C# library that wraps the Instagram API and makes it easy to write applications with Instagram data.</summary>
-    <releaseNotes>
-      Re-design Beta
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>InstaSharp</id>
+        <version>2.0.0</version>
+        <title>InstaSharp</title>
+        <authors>Burke Holland,Felipe Fujiy</authors>
+        <owners>Burke Holland,Felipe Fujiy</owners>
+        <projectUrl>http://instasharp.org</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>InstaSharp is a wrapper around the Instagram API. It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.</description>
+        <summary>InstaSharp is a C# library that wraps the Instagram API and makes it easy to write applications with Instagram data.</summary>
+        <releaseNotes>Re-design
 
       New Features:
 
@@ -19,19 +18,18 @@
       -Removed RestSharp in favor of HttpClient
       -All calls are async
       -Support for .NET 4.0, .NET 4.5, Silverlight 5, Windows Phone Silverlight 8, Windows Phone 8.1, Windows Store 8 (Profile136)
-      -Support Enforce Signed Header
-    </releaseNotes>
-    <copyright>Copyright 2013</copyright>
-    <tags>Instagram REST API</tags>
-    <dependencies>
-      <dependency id="BouncyCastle-PCL" version="1.0.0.4" />
-      <dependency id="Newtonsoft.Json" version="6.0.4" />
-      <dependency id="Microsoft.Bcl" version="1.1.9" />
-      <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-      <dependency id="Microsoft.Net.Http" version="2.2.22" />
-    </dependencies>
-  </metadata>
-  <files>
-    <file src="bin\Release\InstaSharp.dll" target="lib\portable-net403+sl5+wp8+win8\InstaSharp.dll" />
-  </files>
+      -Support Enforce Signed Header</releaseNotes>
+        <copyright>Copyright 2015</copyright>
+        <tags>Instagram REST API</tags>
+        <dependencies>
+            <dependency id="BouncyCastle-PCL" version="1.0.0.4" />
+            <dependency id="Newtonsoft.Json" version="6.0.4" />
+            <dependency id="Microsoft.Bcl" version="1.1.9" />
+            <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+            <dependency id="Microsoft.Net.Http" version="2.2.22" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\InstaSharp.dll" target="lib\portable-net403+sl5+wp8+win8\InstaSharp.dll" />
+    </files>
 </package>
