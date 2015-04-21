@@ -49,10 +49,10 @@ namespace InstaSharp.Tests
         {
             var result = await locations.Search(104999729569954);
             var locationItem = result.Data.Single();
-            Assert.AreEqual(locationItem.Latitude, 1.379678091M);
-            Assert.AreEqual(locationItem.Longitude, 103.848781586M);
+            Assert.AreEqual(1.379678091M, locationItem.Latitude);
+            Assert.AreEqual(103.848876663M, locationItem.Longitude);
             Assert.AreEqual(locationItem.Id, 906462);
-            Assert.AreEqual(locationItem.Name, "Nanyang Polytechnic (NYP)");
+            Assert.AreEqual("Nanyang Polytechnic", locationItem.Name);
         }
     }
 }

@@ -23,28 +23,51 @@ namespace InstaSharp.Endpoints
         {
         }
 
+
+
         /// <summary>
         /// Given a short link, returns information about the media associated with that link.
         /// </summary>
-        /// <param name="shortlink">The shortlink.</param>
-        /// <param name="maximumHeight">The maximum height.</param>
-        /// <param name="maximumWidth">The maximum width.</param>
-        /// <param name="hidecaption">If set to true, the embed code hides the caption. Defaults to false. 
-        /// NOTE: If this is set to true the <see cref="maximumHeight"/> property appears to be disregarded</param>
-        /// <param name="omitscript">If set to true, the embed code does not include the script tag. This is useful for websites that want to handle the loading of the embeds.js script by themselves.
-        /// NOTE: If this is set to true the <see cref="maximumHeight"/> property appears to be disregarded. A different thumbnail url appears to also be returned</param>
+        /// <param name="shortlink">A short link, like http://instagr.am/p/fA9uwTtkSN/.</param>
         /// <returns></returns>
-        public Task<OEmbedResponse> MediaInfo(string shortlink, int? maximumHeight = null, int? maximumWidth = null, bool? hidecaption = null, bool? omitscript = null)
+        public Task<OEmbedResponse> MediaInfo(string shortlink)
         {
-            if (maximumWidth != null && maximumWidth < 320)
+            return MediaInfo(shortlink, null, null, null, null);
+        }
+
+        /// <summary>
+        /// Given a short link, returns information about the media associated with that link.
+        /// </summary>
+        /// <param name="shortlink">A short link, like http://instagr.am/p/fA9uwTtkSN/.</param>
+        /// <param name="callback">A JSON callback to be invoked.</param>
+        /// <param name="maximumWidth">The maximum width.</param>
+        /// <param name="hidecaption">If set to true, the embed code hides the caption. Defaults to false.</param>
+        /// <param name="omitscript">If set to true, the embed code does not include the script tag. This is useful for websites that want to handle the loading of the embeds.js script by themselves.</param>
+        /// <returns></returns>
+        public Task<OEmbedResponse> MediaInfo(string shortlink, string callback, int? maximumWidth, bool? hidecaption, bool? omitscript)
+        {
+            if (maximumWidth <= 320)
             {
-                throw new ArgumentException("Maximum width must be greater or equal to 320 if specified","maximumWidth");
+                throw new ArgumentException("Maximum width must be greater or equal to 320 if specified", "maximumWidth");
             }
 
-            var request = Request("/oembed/?url=" + shortlink + (maximumHeight == null ? String.Empty : "&maxheight=" + maximumHeight)
-                                                              + (maximumWidth == null ? String.Empty : "&maxwidth=" + maximumWidth)
-                                                              + (hidecaption == null ? String.Empty : "&hidecaption=" + hidecaption)
-                                                              + (omitscript == null ? String.Empty : "&omitscript=" + omitscript));
+            var request = Request("oembed");
+            request.AddParameter("url", shortlink);
+            request.AddParameter("callback", callback);
+
+            if (omitscript.HasValue)
+            {
+                request.AddParameter("omitscript", omitscript.Value.ToString().ToLower());
+            }
+            if (hidecaption.HasValue)
+            {
+                request.AddParameter("hidecaption", hidecaption.Value.ToString().ToLower());
+            }
+            if (maximumWidth.HasValue)
+            {
+                request.AddParameter("maxwidth", maximumWidth.Value.ToString());
+            }
+
             return Client.ExecuteAsync<OEmbedResponse>(request);
         }
 

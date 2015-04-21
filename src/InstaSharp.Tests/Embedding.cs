@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using InstaSharp.Models;
+﻿using InstaSharp.Models;
 using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
 
 namespace InstaSharp.Tests
 {
@@ -36,21 +35,9 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod, TestCategory("Embedding")]
-        public async Task MediaInfoWithDimension()
+        public async Task MediaInfoWidthDimension()
         {
-            var result = await embedding.MediaInfo("http://instagr.am/p/BUG/", maximumWidth: 600); // this dimension is less than the original
-            AssertResponseCorrect(result);
-            Assert.AreEqual(null, result.Height);
-            Assert.AreEqual(600, result.Width);
-            Assert.AreEqual(306, result.ThumbnailHeight);
-            Assert.AreEqual(306, result.ThumbnailWidth);
-            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_6.jpg", result.ThumbnailUrl);
-        }
-
-        [TestMethod, TestCategory("Embedding")]
-        public async Task MediaInfoWithHeightDimension()
-        {
-            var result = await embedding.MediaInfo("http://instagr.am/p/BUG/", 600); // this dimension is less than the original
+            var result = await embedding.MediaInfo("http://instagr.am/p/BUG/", null, 600, null, null); // this dimension is less than the original
             AssertResponseCorrect(result);
             Assert.AreEqual(null, result.Height);
             Assert.AreEqual(600, result.Width);
@@ -62,27 +49,27 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Embedding")]
         public async Task MediaInfoWithHideCaption()
         {
-            var result = await embedding.MediaInfo("http://instagr.am/p/BUG/", 600, hidecaption: true); // this dimension is less than the original
+            var result = await embedding.MediaInfo("http://instagr.am/p/BUG/", null, 600, true, null); // this dimension is less than the original
             AssertResponseCorrect(result);
             Assert.AreEqual(null, result.Height);
             //Assert.AreEqual(600, result.Width);
             //Assert.AreEqual(612, result.ThumbnailHeight);
             //Assert.AreEqual(612, result.ThumbnailWidth);
             Assert.IsFalse(result.Html.Contains("data-instgrm-captioned"));
-            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl);
+            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_6.jpg", result.ThumbnailUrl);
         }
 
         [TestMethod, TestCategory("Embedding")]
         public async Task MediaInfoWithOmitScript()
         {
-            var result = await embedding.MediaInfo("http://instagr.am/p/BUG/", 600, omitscript: true); // this dimension is less than the original
+            var result = await embedding.MediaInfo("http://instagr.am/p/BUG/", null, 600, null, true); // this dimension is less than the original
             AssertResponseCorrect(result);
             Assert.AreEqual(null, result.Height);
             //Assert.AreEqual(600, result.Width);
             //Assert.AreEqual(612, result.ThumbnailHeight);
             //Assert.AreEqual(612, result.ThumbnailWidth);
             Assert.IsFalse(result.Html.Contains("embeds.js"));
-            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl); //different url
+            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_6.jpg", result.ThumbnailUrl); //different url
         }
 
         private static void AssertResponseCorrect(OEmbedResponse result)
