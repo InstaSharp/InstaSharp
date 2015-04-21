@@ -32,7 +32,7 @@ namespace InstaSharp.Tests
             Assert.AreEqual(612, result.ThumbnailHeight);
             Assert.AreEqual(612, result.ThumbnailWidth);
 
-            Assert.AreEqual("http://images.ak.instagram.com/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl);
+            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl);
         }
 
         [TestMethod, TestCategory("Embedding")]
@@ -44,7 +44,7 @@ namespace InstaSharp.Tests
             Assert.AreEqual(600, result.Width);
             Assert.AreEqual(306, result.ThumbnailHeight);
             Assert.AreEqual(306, result.ThumbnailWidth);
-            Assert.AreEqual("http://images.ak.instagram.com/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_6.jpg", result.ThumbnailUrl);
+            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_6.jpg", result.ThumbnailUrl);
         }
 
         [TestMethod, TestCategory("Embedding")]
@@ -56,7 +56,7 @@ namespace InstaSharp.Tests
             Assert.AreEqual(600, result.Width);
             Assert.AreEqual(306, result.ThumbnailHeight);
             Assert.AreEqual(306, result.ThumbnailWidth);
-            Assert.AreEqual("http://images.ak.instagram.com/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_6.jpg", result.ThumbnailUrl);
+            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_6.jpg", result.ThumbnailUrl);
         }
 
         [TestMethod, TestCategory("Embedding")]
@@ -69,7 +69,7 @@ namespace InstaSharp.Tests
             //Assert.AreEqual(612, result.ThumbnailHeight);
             //Assert.AreEqual(612, result.ThumbnailWidth);
             Assert.IsFalse(result.Html.Contains("data-instgrm-captioned"));
-            Assert.AreEqual("http://images.ak.instagram.com/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl);
+            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl);
         }
 
         [TestMethod, TestCategory("Embedding")]
@@ -82,18 +82,18 @@ namespace InstaSharp.Tests
             //Assert.AreEqual(612, result.ThumbnailHeight);
             //Assert.AreEqual(612, result.ThumbnailWidth);
             Assert.IsFalse(result.Html.Contains("embeds.js"));
-            Assert.AreEqual("http://images.ak.instagram.com/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl); //different url
+            Assert.AreEqual("https://instagramimages-a.akamaihd.net/media/2010/10/02/7e4051fdcf1d45ab9bc1fba2582c0c6b_7.jpg", result.ThumbnailUrl); //different url
         }
 
         private static void AssertResponseCorrect(OEmbedResponse result)
         {
-            Assert.AreEqual("http://instagram.com/", result.ProviderUrl);
+            Assert.AreEqual("https://instagram.com/", result.ProviderUrl);
             Assert.AreEqual(72, result.AuthorId);
             Assert.AreEqual("5382_72", result.MediaId);
             Assert.AreEqual("danrubin", result.AuthorName);
-            Assert.AreEqual("http://instagram.com/danrubin", result.AuthorUrl);
+            Assert.AreEqual("https://instagram.com/danrubin", result.AuthorUrl);
             Assert.AreEqual("Instagram", result.ProviderName);
-            Assert.AreEqual("http://instagram.com/", result.ProviderUrl);
+            Assert.AreEqual("https://instagram.com/", result.ProviderUrl);
             Assert.AreEqual("Rays", result.Title);
             Assert.AreEqual("rich", result.Type);
             Assert.AreEqual(1.0, result.Version);
