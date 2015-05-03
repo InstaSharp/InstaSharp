@@ -81,6 +81,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Comments.cs" />
+    <Compile Include="DateTimeExtensionsTest.cs" />
     <Compile Include="Embedding.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Geographies.cs" />
