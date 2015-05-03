@@ -153,7 +153,7 @@ namespace InstaSharp
             return string.Format("{0}?client_id={1}&redirect_uri={2}&response_type={3}&scope={4}", new object[] {
                 instagramOAuthUri.ToLower(),
                 clientId.ToLower(), 
-                callbackUri.ToLower(), 
+                callbackUri, 
                 responseType.ToString().ToLower(),
                 scopes.ToLower()
             });
