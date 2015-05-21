@@ -32,32 +32,34 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a name="instasharp" class="anchor" href="#instasharp"><span class="octicon octicon-link"></span></a>InstaSharp</h1>
+<a id="instasharp" class="anchor" href="#instasharp" aria-hidden="true"><span class="octicon octicon-link"></span></a>InstaSharp</h1>
+
+<p><a href="https://gitter.im/InstaSharp/InstaSharp?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/InstaSharp/InstaSharp"></a></p>
 
 <p>InstaSharp is a wrapper around the Instagram API.  It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.</p>
 
 <p><a href="https://ci.appveyor.com/project/Fujiy/instasharp"><img src="https://ci.appveyor.com/api/projects/status/ch334xwq15i9pcum" alt="Build status"></a></p>
 
 <h3>
-<a name="where-do-i-get-support" class="anchor" href="#where-do-i-get-support"><span class="octicon octicon-link"></span></a>Where do I get support?</h3>
+<a id="where-do-i-get-support" class="anchor" href="#where-do-i-get-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where do I get support?</h3>
 
 <p>Bugs, Feature Requests and Discussion at <a href="https://github.com/InstaSharp/InstaSharp/issues">github.com/InstaSharp/InstaSharp/issues</a> or on <a href="http://stackoverflow.com/questions/tagged/instasharp">Stack Overflow</a>. Feel free to submit Pull Requests on GitHub.</p>
 
 <h3>
-<a name="where-is-the-current-documentation" class="anchor" href="#where-is-the-current-documentation"><span class="octicon octicon-link"></span></a>Where is the current documentation?</h3>
+<a id="where-is-the-current-documentation" class="anchor" href="#where-is-the-current-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where is the current documentation?</h3>
 
 <p>See <a href="http://instasharp.github.io/InstaSharp/Documentation/index.html">Documentation</a></p>
 
 <h2>
-<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
 <h3>
-<a name="register-your-application" class="anchor" href="#register-your-application"><span class="octicon octicon-link"></span></a>Register Your Application</h3>
+<a id="register-your-application" class="anchor" href="#register-your-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Register Your Application</h3>
 
 <p>To get started, you will need to register an application with Instagram.  They will provide you with a client id, and a client secret.  They will additionally ask you for a callback URL. This is simply a URL that your browser will redirect back to during the Instagram Auth flow.</p>
 
 <h3>
-<a name="the-instagramconfig-class" class="anchor" href="#the-instagramconfig-class"><span class="octicon octicon-link"></span></a>The InstagramConfig Class</h3>
+<a id="the-instagramconfig-class" class="anchor" href="#the-instagramconfig-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>The InstagramConfig Class</h3>
 
 <p>Now that you have registered an application, you need to create an instance of the InstagramConfig class.  This class has many of the options specified for you already, with optional overrides.</p>
 
@@ -70,7 +72,7 @@ InstagramConfig config = new InstagramConfig(clientId, clientSecret, redirectUri
 </code></pre>
 
 <h3>
-<a name="authenticate" class="anchor" href="#authenticate"><span class="octicon octicon-link"></span></a>Authenticate</h3>
+<a id="authenticate" class="anchor" href="#authenticate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authenticate</h3>
 
 <p>Use the OAuth class to authenticate. It provides a helper to give you the initial link for handing users off to Instagram for authentication.  It will want to know what level of access you are requesting via the "scope".</p>
 
@@ -139,7 +141,7 @@ public async Task&lt;ActionResult&gt; Feed(string next_max_id)
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Instasharp maintained by <a href="https://github.com/InstaSharp">InstaSharp</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
