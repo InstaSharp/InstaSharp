@@ -17,7 +17,7 @@ namespace InstaSharp.Models
         /// <value>
         /// The attribution.
         /// </value>
-        public string Attribution { get; set; }
+        public Attribution Attribution { get; set; }
         /// <summary>
         /// Gets or sets the location.
         /// </summary>
