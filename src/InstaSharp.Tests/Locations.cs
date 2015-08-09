@@ -47,12 +47,17 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Locations.Search")]
         public async Task SearchFacebookPlaces()
         {
-            var result = await locations.Search(104999729569954);
+            //Golden Gate Bridge on Facebook Places = https://www.facebook.com/pages/Golden-Gate-Bridge/111856692159256
+ 
+            // Arrange & Act
+            var result = await locations.Search(facebookPlacesId:111856692159256);
             var locationItem = result.Data.Single();
-            Assert.AreEqual(1.379678091M, locationItem.Latitude);
-            Assert.AreEqual(103.848876663M, locationItem.Longitude);
-            Assert.AreEqual(locationItem.Id, 906462);
-            Assert.AreEqual("Nanyang Polytechnic", locationItem.Name);
+
+            // Assert
+            Assert.AreEqual(locationItem.Id, 3000840);
+            Assert.AreEqual("Golden Gate Bridge", locationItem.Name, ignoreCase: true);
+            Assert.AreNotEqual(locationItem.Latitude, default(decimal));
+            Assert.AreNotEqual(locationItem.Longitude, default(decimal));
         }
     }
 }
