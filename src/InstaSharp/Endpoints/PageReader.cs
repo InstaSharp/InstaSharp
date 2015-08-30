@@ -9,7 +9,7 @@ namespace InstaSharp.Endpoints
         where T1 : IPagination<TResult>
         where TResult : class
     {
-        public async Task<List<TResult>> ReadPages(int userId, Func<int, string, Task<T1>> method, int pageLimit = 0)
+        public async Task<List<TResult>> ReadPages(long userId, Func<long, string, Task<T1>> method, int pageLimit = 0)
         {
             var result = new List<TResult>();
             var pageCount = 0;
