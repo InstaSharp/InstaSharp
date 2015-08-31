@@ -42,7 +42,7 @@ Use the OAuth class to authenticate. It provides a helper to give you the initia
 	    scopes.Add(OAuth.Scope.Comments);
 
 
-	    var link = OAuth.AuthLink(config.OAuthURI + "/authorize", config.ClientId, config.RedirectURI, scopes, OAuth.ResponseType.Code);
+	    var link = OAuth.AuthLink(config.OAuthUri + "authorize", config.ClientId, config.RedirectUri, scopes, OAuth.ResponseType.Code);
 	}
 
 Now Instagram will athenticate the user on their end and callback to your callback url.  When you receive that callback, you need to respond with your client secret.  Instagram will then respond to that request with the authorization token.
