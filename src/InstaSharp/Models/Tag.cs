@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace InstaSharp.Models
 {
@@ -13,7 +15,7 @@ namespace InstaSharp.Models
         /// <value>
         /// The media count.
         /// </value>
-        [JsonProperty("media_count")]
+        [JsonProperty("media_count"), JsonConverter(typeof(ConverterToInt))]
         public int MediaCount { get; set; }
 
         /// <summary>
@@ -23,5 +25,23 @@ namespace InstaSharp.Models
         /// The name.
         /// </value>
         public string Name { get; set; }
+    }
+
+    public class ConverterToInt : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(double) || objectType == typeof(float);
+        }
+
+        public override object ReadJson(JsonReader reader,Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            return Convert.ToInt32(reader.Value);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
