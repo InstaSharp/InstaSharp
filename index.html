@@ -83,7 +83,7 @@ InstagramConfig config = new InstagramConfig(clientId, clientSecret, redirectUri
     scopes.Add(OAuth.Scope.Comments);
 
 
-    var link = OAuth.AuthLink(config.OAuthURI + "/authorize", config.ClientId, config.RedirectURI, scopes, OAuth.ResponseType.Code);
+    var link = OAuth.AuthLink(config.OAuthUri + "authorize", config.ClientId, config.RedirectUri, scopes, OAuth.ResponseType.Code);
 }
 </code></pre>
 
