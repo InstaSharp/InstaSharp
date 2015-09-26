@@ -1,0 +1,50 @@
+﻿@model InstaSharp.Models.UserInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h4>UserInfo</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ProfilePicture)
+            </dt>
+    
+            <dd>
+                <img src="@Model.ProfilePicture" />
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <p>
+            @Html.ActionLink("My Feed", "MyFeed")
+        </p>
+    </div>
+</body>
+</html>

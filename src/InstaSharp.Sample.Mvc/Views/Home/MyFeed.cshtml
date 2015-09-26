@@ -1,0 +1,25 @@
+﻿@model IEnumerable<InstaSharp.Models.Media>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyPhotos</title>
+</head>
+<body>
+
+
+    @foreach (var item in Model)
+    {
+        <div>
+            <img src="@item.Images.StandardResolution.Url" />
+        </div>
+    }
+
+</body>
+</html>
