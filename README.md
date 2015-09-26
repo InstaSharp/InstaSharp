@@ -35,30 +35,27 @@ Now that you have registered an application, you need to create an instance of t
 
 Use the OAuth class to authenticate. It provides a helper to give you the initial link for handing users off to Instagram for authentication.  It will want to know what level of access you are requesting via the "scope".
 
-	@{
-	    // create the auth url
-	    var scopes = new List<OAuth.Scope>();
-	    scopes.Add(OAuth.Scope.Likes);
-	    scopes.Add(OAuth.Scope.Comments);
+    public ActionResult Login()
+    {
+        var scopes = new List<OAuth.Scope>();
+        scopes.Add(InstaSharp.OAuth.Scope.Likes);
+        scopes.Add(InstaSharp.OAuth.Scope.Comments);
 
+        var link = InstaSharp.OAuth.AuthLink(config.OAuthUri + "authorize", config.ClientId, config.RedirectUri, scopes, InstaSharp.OAuth.ResponseType.Code);
 
-	    var link = OAuth.AuthLink(config.OAuthUri + "authorize", config.ClientId, config.RedirectUri, scopes, OAuth.ResponseType.Code);
-	}
+        return Redirect(link);
+    }
 
-Now Instagram will athenticate the user on their end and callback to your callback url.  When you receive that callback, you need to respond with your client secret.  Instagram will then respond to that request with the authorization token.
+Now Instagram will athenticate the user on their end and callback to your callback url. When you receive that callback, you need to respond with your client secret. Instagram will then respond to that request with the authorization token.
 
-    [GET("oauth")]
-    public async Task<ActionResult> Index(string code)
+    public async Task<ActionResult> OAuth(string code)
     {
         // add this code to the auth object
-        var auth = new InstaSharp.OAuth(config);
-        
+        var auth = new OAuth(config);
+
         // now we have to call back to instagram and include the code they gave us
         // along with our client secret
         var oauthResponse = await auth.RequestToken(code);
-
-        // tell the session that we are authenticated
-        config.isAuthenticated = true;
 
         // both the client secret and the token are considered sensitive data, so we won't be
         // sending them back to the browser. we'll only store them temporarily.  If a user's session times
@@ -66,25 +63,25 @@ Now Instagram will athenticate the user on their end and callback to your callba
         Session.Add("InstaSharp.AuthInfo", oauthResponse);
 
         // all done, lets redirect to the home controller which will send some intial data to the app
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index");
     }
 
 Now you are authenticated and ready to call the Instagram Endpoints.  Instasharp carves these up under the "endpoints" namespace.  Each one is a class and will be expecting a configuration object and an OAuthResponse object.  For instance, you can request a user's feed as such...
 
-	readonly InstaSharp.Endpoints.Users _users;
-
-    public UsersController()
+    public async Task<ActionResult> MyFeed()
     {
-        users = new Endpoints.Users(config, oauthResponse);
-    }
+        var oAuthResponse = Session["InstaSharp.AuthInfo"] as OAuthResponse;
 
-    [GET("api/users/feed")]
-    public async Task<ActionResult> Feed(string next_max_id)
-    {
-        var feed = next_max_id == null ? await users.Feed() : await users.Feed(next_max_id);
+        if (oAuthResponse == null)
+        {
+            return RedirectToAction("Login");
+        }
 
-        // return plain JSON
-        return Json(result.Data);
+        var users = new Endpoints.Users(config, oAuthResponse);
+
+        var feed = await users.Feed(null, null, null);
+
+        return View(feed.Data);
     }
 
 Each response returned by InstaSharp will contains two objects: a Meta object, and a "Data" property that has the reponse fully mapped to .NET types.
