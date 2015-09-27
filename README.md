@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/InstaSharp/InstaSharp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/InstaSharp/InstaSharp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![NuGet version](https://badge.fury.io/nu/InstaSharp.svg)](http://badge.fury.io/nu/InstaSharp)
+[![NuGet version](https://badge.fury.io/nu/InstaSharp.svg)](https://www.nuget.org/packages/InstaSharp)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ch334xwq15i9pcum)](https://ci.appveyor.com/project/Fujiy/instasharp)
 
