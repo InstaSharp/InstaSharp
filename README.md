@@ -2,9 +2,13 @@
 
 [![Join the chat at https://gitter.im/InstaSharp/InstaSharp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/InstaSharp/InstaSharp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-InstaSharp is a wrapper around the Instagram API.  It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.
+[![NuGet version](https://img.shields.io/nuget/v/InstaSharp.svg)](https://www.nuget.org/packages/InstaSharp)
+
+[![NuGet downloads](https://img.shields.io/nuget/dt/InstaSharp.svg)](https://www.nuget.org/packages/InstaSharp)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ch334xwq15i9pcum)](https://ci.appveyor.com/project/Fujiy/instasharp)
+
+InstaSharp is a wrapper around the Instagram API.  It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.
 
 ###Where do I get support?
 

@@ -66,6 +66,7 @@
     <Compile Include="Models\RealtimeUpdateItem.cs" />
     <Compile Include="Models\Resolution.cs" />
     <Compile Include="Models\Responses\NamespaceDoc.cs" />
+    <Compile Include="Models\Responses\SubscriptionsResponse.cs" />
     <Compile Include="Models\Responses\TagsMultiplePagesResponse.cs" />
     <Compile Include="Models\ShortCodeResponse.cs" />
     <Compile Include="Models\UserInPhoto.cs" />
