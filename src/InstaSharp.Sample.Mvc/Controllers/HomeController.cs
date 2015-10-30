@@ -1,5 +1,6 @@
 ﻿using InstaSharp.Models.Responses;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -7,9 +8,9 @@ namespace InstaSharp.Sample.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        static string clientId = "554dfe9286994bbe98417d8dc7b69a24";
-        static string clientSecret = "";
-        static string redirectUri = "http://localhost:5969/Home/OAuth";
+        static string clientId = ConfigurationManager.AppSettings["MS_WebHookReceiverSecret_InstagramId"];
+        static string clientSecret = ConfigurationManager.AppSettings["MS_WebHookReceiverSecret_Instagram"];
+        static string redirectUri = ConfigurationManager.AppSettings["redirectUri"];
 
         InstagramConfig config = new InstagramConfig(clientId, clientSecret, redirectUri, "");
 
