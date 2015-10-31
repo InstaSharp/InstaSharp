@@ -1,6 +1,4 @@
-﻿using System;
-using InstaSharp.Endpoints;
-using InstaSharp.Models.Responses;
+﻿using InstaSharp.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.Net;
@@ -13,6 +11,7 @@ namespace InstaSharp.Tests
     public class Realtime : TestBase
     {
         Subscription realtime;
+        Subscription realtimeWithoutSecret;
 
         /// <summary>
         /// This is what the instagram docuomentation says (http://instagram.com/developer/realtime/), which is WRONG!, it doesn't contain an array
@@ -48,24 +47,8 @@ namespace InstaSharp.Tests
 
         public Realtime()
         {
-            realtime = new Subscription(base.Config);
-        }
-
-        [TestCategory("Subscribe.Create")]
-        [TestMethod]
-        public async Task SubscribeTag_WithNoClientSecret()
-        {
-            var result = await realtime.CreateTag("csharp");
-            AssertMissingClientSecretUrlParameter(result);
-            // This is where Instagram tries to call your callback, without implementing the pubhubsub implementatin that authenticates, it will fail
-            try
-            {
-                await realtime.CreateTag("");
-            }
-            catch (Exception exception)
-            {
-                Assert.IsInstanceOfType(exception,typeof(ArgumentException));
-            }
+            realtime = new Subscription(ConfigWithSecret);
+            realtimeWithoutSecret = new Subscription(Config);
         }
 
         [TestCategory("Subscribe.Create")]
@@ -77,46 +60,12 @@ namespace InstaSharp.Tests
             Assert.AreEqual("9580368", result.Data.Id);
         }
 
-        [TestCategory("Subscribe.Create")]
-        [TestMethod]
-        public async Task SubscribeUser_WithNoClientSecret()
-        {
-            var result = await realtime.CreateUser("joebloggs");
-            AssertMissingClientSecretUrlParameter(result);
-        }
-
-        [TestCategory("Subscribe.Unsubscribe")]
-        [TestMethod]
-        public async Task UnsubscribeUser_WithNoClientSecret()
-        {
-            var result = await realtime.RemoveSubscription("joebloggs");
-            AssertMissingClientSecretUrlParameter(result);
-        }
-
-        [TestCategory("Subscribe.Unsubscribe")]
-        [TestMethod]
-        public async Task RemoveSubscriptionByObjectType()
-        {
-            var result = await realtime.RemoveSubscription(Subscription.Object.Tag);
-            AssertMissingClientSecretUrlParameter(result);
-        }
-
-        [TestCategory("Subscribe.UnsubscribeAll")]
-        [TestMethod]
-        public async Task RemoveAllSubscriptions()
-        {
-            var result = await realtime.RemoveAllSubscriptions();
-            AssertMissingClientSecretUrlParameter(result);
-        }
-
         [TestCategory("Subscribe.ListAllSubscriptions")]
         [TestMethod]
         public async Task ListAllSubscriptions()
         {
             var result = await realtime.ListAllSubscriptions();
-            AssertMissingClientSecretUrlParameter(result);
         }
-
 
         [TestCategory("Subscribe.TestHeader")]
         [TestMethod]
@@ -126,10 +75,50 @@ namespace InstaSharp.Tests
             realtime.EnableEnforceSignedHeader("200.15.1.1");
             var result = realtime.CreateXInstaForwardedHeader();
             Assert.AreEqual("200.15.1.1|7e3c45bc34f56fd8e762ee4590a53c8c2bbce27e967a85484712e5faa0191688", result);
-          
+
             realtime.EnableEnforceSignedHeader("200.15.1.1,131.51.1.35");
             var result2 = realtime.CreateXInstaForwardedHeader();
             Assert.AreEqual("200.15.1.1,131.51.1.35|13cb27eee318a5c88f4456bae149d806437fb37ba9f52fac0b1b7d8c234e6cee", result2);
+        }
+
+        [TestCategory("Subscribe.Create")]
+        [TestMethod]
+        public async Task SubscribeUser_WithNoClientSecret()
+        {
+            var result = await realtimeWithoutSecret.CreateUser("joebloggs");
+            AssertMissingClientSecretUrlParameter(result);
+        }
+
+        [TestCategory("Subscribe.Unsubscribe")]
+        [TestMethod]
+        public async Task UnsubscribeUser_WithNoClientSecret()
+        {
+            var result = await realtimeWithoutSecret.RemoveSubscription("joebloggs");
+            AssertMissingClientSecretUrlParameter(result);
+        }
+
+        [TestCategory("Subscribe.Create")]
+        [TestMethod]
+        public async Task SubscribeTag_WithNoClientSecret()
+        {
+            var result = await realtimeWithoutSecret.CreateTag("csharp");
+            AssertMissingClientSecretUrlParameter(result);
+        }
+
+        [TestCategory("Subscribe.Unsubscribe")]
+        [TestMethod]
+        public async Task RemoveSubscriptionByObjectType_WithNoClientSecret()
+        {
+            var result = await realtimeWithoutSecret.RemoveSubscription(Subscription.Object.Tag);
+            AssertMissingClientSecretUrlParameter(result);
+        }
+
+        [TestCategory("Subscribe.UnsubscribeAll")]
+        [TestMethod]
+        public async Task RemoveAllSubscriptions_WithNoClientSecret()
+        {
+            var result = await realtimeWithoutSecret.RemoveAllSubscriptions();
+            AssertMissingClientSecretUrlParameter(result);
         }
     }
 }
