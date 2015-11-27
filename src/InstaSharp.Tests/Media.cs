@@ -25,6 +25,13 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod, TestCategory("Media.Get")]
+        public async Task Shortcode()
+        {
+            var result = await media.Shortcode("tsxp1hhQTG");
+            Assert.IsTrue(result.Data != null);
+        }
+
+        [TestMethod, TestCategory("Media.Get")]
         public async Task GetVideo()
         {
             var result = await media.Get("673935902211830157_3808579");
