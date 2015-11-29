@@ -136,7 +136,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="userId">The list of users that this user id is following.</param>
         /// <returns>UsersResponse</returns>
-        public async Task<List<User>> FollowsAll(int userId)
+        public async Task<List<User>> FollowsAll(long userId)
         {
             AssertIsAuthenticated();
             return await new PageReader<User, UsersResponse>().ReadPages(userId, Follows);
@@ -195,7 +195,7 @@ namespace InstaSharp.Endpoints
         /// </summary>
         /// <param name="userId">The user identifier.</param>
         /// <returns>RelationshipResponse</returns>
-        public Task<RelationshipResponse> Relationship(int userId)
+        public Task<RelationshipResponse> Relationship(long userId)
         {
             var request = Request("{id}/relationship");
             request.AddUrlSegment("id", userId.ToString());
@@ -212,7 +212,7 @@ namespace InstaSharp.Endpoints
         /// <param name="userId">The user id about which to get relationship information.</param>
         /// <param name="action">One of Action enum.</param>
         /// <returns>RelationshipResponse</returns>
-        public Task<RelationshipResponse> Relationship(int userId, Action action)
+        public Task<RelationshipResponse> Relationship(long userId, Action action)
         {
             var request = Request("{id}/relationship", HttpMethod.Post);
             request.AddUrlSegment("id", userId.ToString());
