@@ -40,6 +40,14 @@ namespace InstaSharp
             /// </summary>
             Basic,
             /// <summary>
+            /// public_content
+            /// </summary>
+            Public_Content,
+            /// <summary>
+            /// follower_list
+            /// </summary>
+            Follower_List,
+            /// <summary>
             /// comments
             /// </summary>
             Comments,
