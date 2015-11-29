@@ -46,6 +46,20 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
+        /// This endpoint returns the same response as GET /media/media-id.
+        /// A media object's shortcode can be found in its shortlink URL. An example shortlink is http://instagram.com/p/tsxp1hhQTG/. Its corresponding shortcode is tsxp1hhQTG.
+        /// </summary>
+        /// <param name="shortcode">The short code of the media to retrieve</param>
+        /// <returns>
+        /// Media Response
+        /// </returns>
+        public Task<MediaResponse> Shortcode(string shortcode)
+        {
+            var request = Request("shortcode/" + shortcode);
+            return Client.ExecuteAsync<MediaResponse>(request);
+        }
+
+        /// <summary>
         /// Get a list of what media is most popular at the moment.
         /// <para>Requires Authentication: False</para>
         /// </summary>
