@@ -87,7 +87,7 @@ namespace InstaSharp.Models.Responses
         /// The author identifier.
         /// </value>
         [JsonProperty("author_id")]
-        public int AuthorId { get; set; }
+        public long AuthorId { get; set; }
 
         /// <summary>
         /// Gets the type.
