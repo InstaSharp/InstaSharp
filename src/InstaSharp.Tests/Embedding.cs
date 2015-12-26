@@ -72,13 +72,12 @@ namespace InstaSharp.Tests
 
         private static void AssertResponseCorrect(OEmbedResponse result)
         {
-            Assert.AreEqual("https://instagram.com/", result.ProviderUrl);
+            Assert.AreEqual("https://www.instagram.com", result.ProviderUrl);
             Assert.AreEqual(72, result.AuthorId);
             Assert.AreEqual("5382_72", result.MediaId);
             Assert.AreEqual("danrubin", result.AuthorName);
-            Assert.AreEqual("https://instagram.com/danrubin", result.AuthorUrl);
+            Assert.AreEqual("https://www.instagram.com/danrubin", result.AuthorUrl);
             Assert.AreEqual("Instagram", result.ProviderName);
-            Assert.AreEqual("https://instagram.com/", result.ProviderUrl);
             Assert.AreEqual("Rays", result.Title);
             Assert.AreEqual("rich", result.Type);
             Assert.AreEqual(1.0, result.Version);
