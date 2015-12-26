@@ -22,7 +22,7 @@
         <copyright>Copyright 2015</copyright>
         <tags>Instagram REST API</tags>
         <dependencies>
-            <dependency id="BouncyCastle-PCL" version="1.0.0.4" />
+            <dependency id="BouncyCastle-PCL" version="1.0.0.6" />
             <dependency id="Newtonsoft.Json" version="6.0.4" />
             <dependency id="Microsoft.Bcl" version="1.1.9" />
             <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
