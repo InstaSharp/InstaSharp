@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Net.Http;
 
 namespace InstaSharp.Tests
 {
@@ -74,6 +75,19 @@ namespace InstaSharp.Tests
         {
             var result = await users.Recent("3");
             Assert.IsTrue(result.Data.Count > 0);
+        }
+
+        [TestMethod, TestCategory("Users.Recent")]
+        public async Task Recent_MaxIdInvalidUserId()
+        {
+            try
+            {
+                var result = await users.Recent("ffujiy");
+            }
+            catch (HttpRequestException ex)
+            {
+
+            }
         }
 
         [TestMethod, TestCategory("Users.Recent")]

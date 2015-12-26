@@ -14,6 +14,12 @@ namespace InstaSharp.Extensions
         public static async Task<T> ExecuteAsync<T>(this HttpClient client, HttpRequestMessage request)
         {
             var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode == false && response.Content.Headers.ContentType.MediaType != "application/json")
+            {
+                response.EnsureSuccessStatusCode();
+            }
+
             string resultData = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<T>(resultData);
 
