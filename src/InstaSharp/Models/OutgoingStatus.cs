@@ -1,14 +1,17 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace InstaSharp.Models
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum OutgoingStatus
     {
-        [JsonProperty("follows")]
+        [EnumMember(Value = "follows")]
         Follows,
-        [JsonProperty("requested")]
+        [EnumMember(Value = "requested")]
         Requested,
-        [JsonProperty("none")]
+        [EnumMember(Value = "none")]
         None
     }
 }

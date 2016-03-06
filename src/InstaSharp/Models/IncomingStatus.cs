@@ -1,16 +1,19 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace InstaSharp.Models
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum IncomingStatus
     {
-        [JsonProperty("followed_by")]
+        [EnumMember(Value = "followed_by")]
         FollowedBy,
-        [JsonProperty("requested_by")]
+        [EnumMember(Value = "requested_by")]
         RequestedBy,
-        [JsonProperty("blocked_by_you")]
+        [EnumMember(Value = "blocked_by_you")]
         BlockedbyYou,
-        [JsonProperty("none")]
+        [EnumMember(Value = "none")]
         None
     }
 }

@@ -18,30 +18,12 @@ namespace InstaSharp.Endpoints
         /// </summary>
         public enum Action
         {
-            /// <summary>
-            /// follow
-            /// </summary>
             Follow,
-            /// <summary>
-            /// unfollow
-            /// </summary>
-            Unfollow,
-            /// <summary>
-            /// block
-            /// </summary>
+            Unfollow,           
             Block,
-            /// <summary>
-            /// unblock
-            /// </summary>
             Unblock,
-            /// <summary>
-            /// approve
-            /// </summary>
-            Approve,
-            /// <summary>
-            /// deny
-            /// </summary>
-            Deny
+            Approve,		
+            Ignore,
         }
 
         /// <summary>
