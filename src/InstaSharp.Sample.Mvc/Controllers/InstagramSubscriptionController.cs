@@ -1,4 +1,5 @@
 ﻿using InstaSharp.Endpoints;
+using InstaSharp.Sample.Mvc.Models;
 using Microsoft.AspNet.WebHooks;
 using System;
 using System.Collections.Generic;
