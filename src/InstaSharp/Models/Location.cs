@@ -10,7 +10,7 @@ namespace InstaSharp.Models {
         /// <value>
         /// The identifier.
         /// </value>
-        public int Id { get; set; }
+        public long Id { get; set; }
         /// <summary>
         /// Gets or sets the latitude.
         /// </summary>
