@@ -41,6 +41,13 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod, TestCategory("Media.Get")]
+        public async Task GetBigIdLocation()
+        {
+            var result = await media.Get("1245746113076281966_2334123855");
+            Assert.IsTrue(result.Data != null);
+        }
+
+        [TestMethod, TestCategory("Media.Get")]
         public async Task UserHasLikedTrue()
         {
             var result = await media.Get("3_3");
