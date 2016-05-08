@@ -30,23 +30,6 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// The versions of the Foursquare API
-        /// </summary>   
-        [Obsolete]
-        public enum FoursquareVersion
-        {
-            /// <summary>
-            ///  one
-            /// </summary>
-            [Obsolete]
-            One,
-            /// <summary>
-            ///  two
-            /// </summary>
-            Two
-        }
-
-        /// <summary>
         /// Get information about a location.
         /// <para><c>Requires Authentication: False</c></para>
         /// </summary>
@@ -141,36 +124,6 @@ namespace InstaSharp.Endpoints
             request.AddParameter("facebook_places_id", facebookPlacesId);
 
             return base.Client.ExecuteAsync<LocationsResponse>(request);
-        }
-
-        /// <summary>
-        /// Search for a location by geographic coordinate.
-        /// <para>Requires Authentication: False</para>
-        /// </summary>
-        /// <param name="foursquareId">Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.</param>
-        /// <param name="foursquareVersion">The version of the FourSquare ID  you are using.  Either version 1 or 2.</param>
-        /// <returns>location response</returns>
-        /// <exception cref="System.ArgumentException">foursquareId empty;foursquareId</exception>
-        public Task<LocationsResponse> Search(string foursquareId, FoursquareVersion foursquareVersion)
-        {
-            if (string.IsNullOrWhiteSpace(foursquareId))
-            {
-                throw new ArgumentException("foursquareId empty", "foursquareId");
-            }
-
-            var request = Request("search");
-
-            switch (foursquareVersion)
-            {
-                case FoursquareVersion.One:
-                    request.AddParameter("foursquare_id", foursquareId);
-                    break;
-                case FoursquareVersion.Two:
-                    request.AddParameter("foursquare_v2_id", foursquareId);
-                    break;
-            }
-
-            return Client.ExecuteAsync<LocationsResponse>(request);
         }
     }
 }

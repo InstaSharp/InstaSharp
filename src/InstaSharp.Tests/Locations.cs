@@ -36,15 +36,6 @@ namespace InstaSharp.Tests
             Assert.IsTrue(result.Data.Count > 0);
         }
 
-        [TestMethod, TestCategory("Locations"),Ignore]
-		// Apr 20, 2016: Deprecation of foursquare_id and foursquare_v2_id parameters for /location/search
-		public async Task SearchFourSquareV2()
-        {
-            var result = await locations.Search("40b52f80f964a52052001fe3", Endpoints.Locations.FoursquareVersion.Two);
-            Assert.AreEqual(result.Data.Count, 1);
-            Assert.AreEqual(result.Data.Single().Name, "Microsoft");
-        }
-
         [TestMethod, TestCategory("Locations.Search")]
         public async Task SearchFacebookPlaces()
         {
