@@ -84,7 +84,7 @@ namespace InstaSharp.Tests
             {
                 var result = await users.Recent("ffujiy");
             }
-            catch (HttpRequestException ex)
+            catch (HttpRequestException)
             {
 
             }
