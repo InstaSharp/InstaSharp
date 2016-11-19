@@ -120,7 +120,7 @@ namespace InstaSharp
                 config.RedirectUri.UrlEncode(), 
                 code.UrlEncode());
 
-            request.Content = new StringContent(myParameters);
+            request.Content = new StringContent(myParameters, Encoding.UTF8, "application/x-www-form-urlencoded");
 
             return client.ExecuteAsync<OAuthResponse>(request);
 

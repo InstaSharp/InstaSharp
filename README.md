@@ -50,7 +50,7 @@ Use the OAuth class to authenticate. It provides a helper to give you the initia
         return Redirect(link);
     }
 
-Now Instagram will athenticate the user on their end and callback to your callback url. When you receive that callback, you need to respond with your client secret. Instagram will then respond to that request with the authorization token.
+Now Instagram will authenticate the user on their end and callback to your callback url. When you receive that callback, you need to respond with your client secret. Instagram will then respond to that request with the authorization token/access token.
 
     public async Task<ActionResult> OAuth(string code)
     {
