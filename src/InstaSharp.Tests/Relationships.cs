@@ -102,7 +102,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Relationships.RelationshipIncomingStatusFollowedBy")]
         public async Task RelationshipIncomingStatusFollowedBy()
         {
-            var follow = await relationships.Relationship(3015751092);
+            var follow = await relationships.Relationship(457273003);
             Assert.AreEqual(follow.Data.OutgoingStatus, OutgoingStatus.None);
             Assert.AreEqual(follow.Data.IncomingStatus, IncomingStatus.FollowedBy);
         }
