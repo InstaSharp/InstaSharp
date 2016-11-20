@@ -48,7 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="InstaSharp, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\InstaSharp.2.0.3\lib\portable-net403+sl5+wp8+win8\InstaSharp.dll</HintPath>
+      <HintPath>..\..\packages\InstaSharp.2.0.4\lib\portable-net403+sl5+wp8+win8\InstaSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.WebHooks.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
