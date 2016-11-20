@@ -42,22 +42,6 @@ namespace InstaSharp.Sample.Mvc.Controllers
             return Redirect(link);
         }
 
-        public async Task<ActionResult> MyFeed()
-        {
-            var oAuthResponse = Session["InstaSharp.AuthInfo"] as OAuthResponse;
-
-            if (oAuthResponse == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            var users = new Endpoints.Users(config, oAuthResponse);
-
-            var feed = await users.Feed(null, null, null);
-
-            return View(feed.Data);
-        }
-
         public async Task<ActionResult> OAuth(string code)
         {
             // add this code to the auth object
