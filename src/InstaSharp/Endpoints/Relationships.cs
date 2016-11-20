@@ -95,7 +95,23 @@ namespace InstaSharp.Endpoints
         public Task<UsersResponse> FollowedBy()
         {
             AssertIsAuthenticated();
-            return FollowedBy(OAuthResponse.User.Id, null);
+            return FollowedBy(null);
+        }
+
+        /// <summary>
+        /// Get the list of users this user is followed by.
+        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
+        /// </para>
+        /// </summary>
+        /// <param name="userId">The id of the user to get the followers of.</param>
+        /// <param name="cursor">The next cursor id</param>
+        /// <returns>Users response</returns>
+        public Task<UsersResponse> FollowedBy(string cursor)
+        {
+            var request = Request("self/followed-by");
+            request.AddParameter("cursor", cursor);
+
+            return Client.ExecuteAsync<UsersResponse>(request);
         }
 
         /// <summary>
@@ -107,37 +123,7 @@ namespace InstaSharp.Endpoints
         public async Task<List<User>> FollowedByAll()
         {
             AssertIsAuthenticated();
-            return await new PageReader<User, UsersResponse>().ReadPages(OAuthResponse.User.Id, FollowedBy);
-        }
-
-
-        /// <summary>
-        /// Get the list of users this user is followed by.
-        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The id of the user to get the followers of.</param>
-        /// <returns>Users response</returns>
-        public Task<UsersResponse> FollowedBy(long userId)
-        {
-            return FollowedBy(userId, null);
-        }
-
-        /// <summary>
-        /// Get the list of users this user is followed by.
-        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The id of the user to get the followers of.</param>
-        /// <param name="cursor">The next cursor id</param>
-        /// <returns>Users response</returns>
-        public Task<UsersResponse> FollowedBy(long userId, string cursor)
-        {
-            var request = Request("{id}/followed-by");
-            request.AddUrlSegment("id", userId.ToString());
-            request.AddParameter("cursor", cursor);
-
-            return Client.ExecuteAsync<UsersResponse>(request);
+            return await new PageReader<User, UsersResponse>().ReadPages(FollowedBy);
         }
 
         /// <summary>
