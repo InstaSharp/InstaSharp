@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net;
+using InstaSharp.Models.Responses;
 
 namespace InstaSharp.Tests
 {
@@ -20,6 +22,16 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Media.Get")]
         public async Task Get()
         {
+            var result = await media.Get("756098485446234014_1415228826");
+            Assert.IsTrue(result.Data != null);
+        }
+
+        [TestMethod, TestCategory("Media.Get")]
+        public async Task Get_WithSignedHeader()
+        {
+            var media = new Endpoints.Media(ConfigWithSecret, Auth);
+            media.EnforceSignedRequests = true;
+
             var result = await media.Get("756098485446234014_1415228826");
             Assert.IsTrue(result.Data != null);
         }
