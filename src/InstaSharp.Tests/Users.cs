@@ -17,20 +17,10 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod, TestCategory("Users.Get")]
-        public async Task Get()
-        {
-            var result = await users.Get();
-
-            // serialize the response to 
-
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod, TestCategory("Users.Get")]
         public async Task Get_Id()
         {
-            var result = await users.Get("3808579");
-            Assert.IsTrue(result.Data.Username == "nasagoddard", "Parameters: userId");
+            var result = await users.Get(InstaSharpTest2UserId);
+            Assert.IsTrue(result.Data.Username == "instasharptest2");
         }
 
         [TestMethod, TestCategory("Users.Get")]
@@ -40,65 +30,22 @@ namespace InstaSharp.Tests
             Assert.IsNotNull(result);
         }
 
-        [TestMethod, TestCategory("Users.Feed")]
-        public async Task Feed()
-        {
-            var result = await users.Feed(null, null, null);
-            Assert.IsTrue(result.Data.Count > 0);
-        }
-
-        [TestMethod, TestCategory("Users.Feed")]
-        public async Task Feed_MaxId()
-        {
-            var result = await users.Feed(null, null, 10);
-            Assert.IsTrue(result.Data.Count > 0, "Parameters: Count");
-        }
-
-        [TestMethod, TestCategory("Users.Feed")]
-        public async Task Feed_MaxId_Count()
-        {
-            var normalResult = await users.Feed(null, null, null);
-
-            var result = await users.Feed(normalResult.Data.First().Id, null, 1);
-            Assert.IsTrue(result.Data.First().Id == normalResult.Data.Skip(1).First().Id, "Parameters: MaxId, Count");
-        }
-
         [TestMethod, TestCategory("Users.Recent")]
-        public async Task Recent()
+        public async Task Recent_Self()
         {
             var result = await users.RecentSelf();
-            Assert.IsTrue(result.Data.Count > 0);
+            Assert.IsTrue(result.Data.Any());
         }
 
         [TestMethod, TestCategory("Users.Recent")]
-        public async Task Recent_MaxId()
+        public async Task Recent_UserId()
         {
-            var result = await users.Recent("3");
-            Assert.IsTrue(result.Data.Count > 0);
+            var result = await users.Recent(FfujiyUserId);
+            Assert.IsTrue(result.Data.Any());
         }
 
         [TestMethod, TestCategory("Users.Recent")]
-        public async Task Recent_MaxIdInvalidUserId()
-        {
-            try
-            {
-                var result = await users.Recent("ffujiy");
-            }
-            catch (HttpRequestException)
-            {
-
-            }
-        }
-
-        [TestMethod, TestCategory("Users.Recent")]
-        public async Task Recent_MinId()
-        {
-            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123", null, null, null);
-            Assert.IsTrue(result.Data.Count > 0);
-        }
-
-        [TestMethod, TestCategory("Users.Recent")]
-        public async Task Recent_MinId_Count()
+        public async Task Recent_Self_Count()
         {
             const int count = 3;
 
@@ -107,12 +54,35 @@ namespace InstaSharp.Tests
         }
 
         [TestMethod, TestCategory("Users.Recent")]
-        public async Task Recent_MaxId_Count()
+        public async Task Recent_MinId()
         {
-            var normalResult = await users.Feed(null, null, null);
+            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123", null, null, null);
+            Assert.IsTrue(result.Data.Any());
+        }
 
+        [TestMethod, TestCategory("Users.Recent")]
+        public async Task Recent_MinId_Count()
+        {
             const int count = 3;
 
+            var result = await users.RecentSelf(string.Empty, "142863708947821401_22987123", count, null, null);
+            Assert.AreEqual(count, result.Data.Count);
+        }
+
+        [TestMethod, TestCategory("Users.Recent")]
+        public async Task Recent_MaxId()
+        {
+            var normalResult = await users.RecentSelf(null, null, 1, null, null);
+            var result = await users.RecentSelf(normalResult.Data.First().Id, string.Empty, null, null, null);
+            Assert.IsTrue(result.Data.Any());
+        }
+
+        [TestMethod, TestCategory("Users.Recent")]
+        public async Task Recent_MaxId_Count()
+        {
+            const int count = 3;
+
+            var normalResult = await users.RecentSelf(null, null, 1, null, null);
             var result = await users.RecentSelf(normalResult.Data.First().Id, string.Empty, count, null, null);
             Assert.AreEqual(count, result.Data.Count);
         }
@@ -120,8 +90,8 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Users.Search")]
         public async Task Search()
         {
-            var result = await users.Search("beiber", null);
-            Assert.IsTrue(result.Data.Count > 0);
+            var result = await users.Search(FfujiyUserName, null);
+            Assert.IsTrue(result.Data.Any());
         }
 
         [TestMethod, TestCategory("Users.Liked")]

@@ -60,19 +60,6 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Get a list of what media is most popular at the moment.
-        /// <para>Requires Authentication: False</para>
-        /// </summary>
-        /// <returns>
-        /// Media Response
-        /// </returns>
-        public Task<MediasResponse> Popular()
-        {
-            var request = Request("popular");
-            return Client.ExecuteAsync<MediasResponse>(request);
-        }
-
-        /// <summary>
         /// Search for media in a given area.
         /// <para>Requires Authentication: False</para>
         /// </summary>

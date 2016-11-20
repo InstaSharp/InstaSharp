@@ -20,73 +20,44 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Media.Get")]
         public async Task Get()
         {
-            var result = await media.Get("555");
+            var result = await media.Get("756098485446234014_1415228826");
             Assert.IsTrue(result.Data != null);
         }
 
         [TestMethod, TestCategory("Media.Get")]
         public async Task Shortcode()
         {
-            var result = await media.Shortcode("tsxp1hhQTG");
+            var result = await media.Shortcode("p-M5EIO8-e");
             Assert.IsTrue(result.Data != null);
         }
 
         [TestMethod, TestCategory("Media.Get")]
         public async Task GetVideo()
         {
-            var result = await media.Get("673935902211830157_3808579");
+            var result = await media.Get("579991339860422858_457273003");
             Assert.IsTrue(result.Data != null);
             Assert.IsTrue(result.Data.Videos != null);
             Assert.IsTrue(result.Data.Videos.LowResolution != null);
         }
 
         [TestMethod, TestCategory("Media.Get")]
-        public async Task GetBigIdLocation()
-        {
-            var result = await media.Get("1245746113076281966_2334123855");
-            Assert.IsTrue(result.Data != null);
-        }
-
-        [TestMethod, TestCategory("Media.Get")]
         public async Task UserHasLikedTrue()
         {
-            var result = await media.Get("3_3");
+            var result = await media.Get("756098117387669401_1415228826");
             Assert.IsTrue(result.Data.UserHasLiked.Value);
         }
 
         [TestMethod, TestCategory("Media.Get")]
         public async Task UserHasLikedFalse()
         {
-            var result = await media.Get("678318766466527577_3808579");
+            var result = await media.Get("756098040556408727_1415228826");
             Assert.IsFalse(result.Data.UserHasLiked.Value);
-        }
-
-        [TestMethod, TestCategory("Media.Get")]
-        public async Task UserHasLikedNull()
-        {
-            var mediaService = new Endpoints.Media(Config);
-            var result = await mediaService.Get("678318766466527577_3808579");
-            Assert.IsNull(result.Data.UserHasLiked);
-        }
-
-        [TestMethod, TestCategory("Media.Popular")]
-        public async Task Popular()
-        {
-            var result = await media.Popular();
-            Assert.IsTrue(result.Data.Count > 0);
-        }
-
-        [TestMethod, TestCategory("Media.Search")]
-        public async Task SearchWithLocalAndDate()
-        {
-            var result = await media.Search(36.166667, -86.783333, 2000, DateTime.Now.AddDays(-7), DateTime.Now.AddDays(-6));
-            Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Media.Search")]
         public async Task SearchWithLocal()
         {
-            var result = await media.Search(36.166667, -86.783333);
+            var result = await media.Search(47.608013, -122.335167);
             Assert.IsTrue(result.Data.Count > 0);
         }
     }

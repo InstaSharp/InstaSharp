@@ -15,6 +15,13 @@ namespace InstaSharp.Tests
         protected readonly InstagramConfig Config;
         protected readonly InstagramConfig ConfigWithSecret;
 
+        protected long InstaSharpTestUserId = 1415228826;
+        protected long InstaSharpTest2UserId = 3015751092;
+        protected long InstaSharpTest3UserId = 4170847167;
+        protected long FfujiyUserId = 457273003;
+        
+        protected string FfujiyUserName = "ffujiy";
+
         protected TestBase()
         {
             // test account client id
