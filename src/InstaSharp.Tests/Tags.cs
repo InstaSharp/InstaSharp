@@ -14,14 +14,14 @@ namespace InstaSharp.Tests
 
         public Tags()
         {
-            tags = new Endpoints.Tags(Config);
+            tags = new Endpoints.Tags(Config, Auth);
         }
 
         [TestMethod, TestCategory("Tags.Get")]
         public async Task Get()
         {
-            var result = await tags.Get("beiber");
-            Assert.IsTrue(result.Data.Name == "beiber");
+            var result = await tags.Get("keyboard");
+            Assert.IsTrue(result.Data.Name == "keyboard");
         }
 
         [TestMethod, TestCategory("Tags.Search")]
@@ -34,25 +34,25 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Tags.Recent")]
         public async Task Recent()
         {
-            var result = await tags.Recent("csharp");
+            var result = await tags.Recent("keyboard");
             Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Tags.Recent")]
         public async Task Recent_MinTagId()
         {
-            var result = await tags.Recent("csharp");
+            var result = await tags.Recent("keyboard");
             var minPageId = result.Pagination.MinTagId;
-            result = await tags.Recent("csharp", minPageId, null, null);
+            result = await tags.Recent("keyboard", minPageId, null, null);
             Assert.IsTrue(result.Data.Count == 0);
         }
 
         [TestMethod, TestCategory("Tags.Recent")]
         public async Task Recent_NextMaxTagId()
         {
-            var result = await tags.Recent("csharp");
+            var result = await tags.Recent("keyboard");
             var nextMaxTagId = result.Pagination.NextMaxTagId;
-            result = await tags.Recent("csharp", null, nextMaxTagId, null);
+            result = await tags.Recent("keyboard", null, nextMaxTagId, null);
                Assert.IsTrue(result.Data.Count>0);
         }
 
@@ -79,7 +79,7 @@ namespace InstaSharp.Tests
         [TestMethod, TestCategory("Tags.Recent")]
         public async Task RecentMultiplePages()
         {
-            var result = await tags.RecentMultiplePages("csharp", null, null, 3);
+            var result = await tags.RecentMultiplePages("keyboard", null, null, 3);
             Assert.IsTrue(result.Data.Any());
             Assert.AreEqual(result.Data.Select(x => x.Id).Distinct().Count(), result.Data.Count);
             Assert.AreEqual(result.Data.Select(x => x.Link).Distinct().Count(), result.Data.Count);

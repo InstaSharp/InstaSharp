@@ -31,16 +31,6 @@ namespace InstaSharp.Endpoints
         /// Tag Endpoints
         /// </summary>
         /// <param name="config">An instance of the InstagramConfig class</param>
-        public Tags(InstagramConfig config)
-            : this(config, null)
-        {
-
-        }
-
-        /// <summary>
-        /// Tag Endpoints
-        /// </summary>
-        /// <param name="config">An instance of the InstagramConfig class</param>
         /// <param name="auth">An instance of the OAuthResponse class.</param>
         public Tags(InstagramConfig config, OAuthResponse auth)
             : base("tags/", config, auth)
