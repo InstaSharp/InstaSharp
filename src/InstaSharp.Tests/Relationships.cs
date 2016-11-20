@@ -21,12 +21,6 @@ namespace InstaSharp.Tests
         {
             var result = await relationships.Follows();
             Assert.IsTrue(result.Meta.Code == HttpStatusCode.OK);
-        }
-
-        [TestMethod, TestCategory("Relationships.Follows")]
-        public async Task Follows_Id()
-        {
-            var result = await relationships.Follows(Auth.User.Id);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
@@ -35,16 +29,17 @@ namespace InstaSharp.Tests
         {
             //This test will fail if testing with an account with less than one page of follows
             var result = await relationships.Follows();
-            result = await relationships.Follows(524549267/*microsoft*/, result.Pagination.NextCursor);
+            result = await relationships.Follows(result.Pagination.NextCursor);
             Assert.IsTrue(result.Data.Count > 0);
         }
 
         [TestMethod, TestCategory("Relationships.Follows")]
         public async Task FollowsAll()
         {
-            var result = await relationships.FollowsAll(524549267);/*microsoft*/
-            Assert.IsTrue(result.Count > 50);
+            var result = await relationships.FollowsAll();
+            Assert.IsTrue(result.Count > 0);
         }
+
         [TestMethod, TestCategory("Relationships.FollowedBy")]
         public async Task FollowedBy()
         {

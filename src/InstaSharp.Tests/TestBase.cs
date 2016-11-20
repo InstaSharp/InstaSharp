@@ -6,6 +6,7 @@ namespace InstaSharp.Tests
 {
     //InstaSharpTest - 1415228826
     //InstaSharpTest2 - 3015751092
+    //ffujiy - 457273003
 
     public class TestBase
     {
@@ -25,7 +26,7 @@ namespace InstaSharp.Tests
             {
                 ClientId = "fa50f43776ba4cfdaaaa375acc5ccab7",
                 CallbackUri = "https://instasharpapi.azurewebsites.net/Realtime/Callback",
-                ClientSecret = "cd0d5d2f66f146c28cef06d4f4d2dc82"
+                ClientSecret = "c08dc81715f64c5eb0e462a1c5c7f234"
             };
 
             // dummy account data. InstaSharpTest

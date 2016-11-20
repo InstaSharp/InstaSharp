@@ -1,6 +1,7 @@
 ﻿using InstaSharp.Extensions;
 using InstaSharp.Models;
 using InstaSharp.Models.Responses;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -54,37 +55,35 @@ namespace InstaSharp.Endpoints
         public Task<UsersResponse> Follows()
         {
             AssertIsAuthenticated();
-
-            return Follows(OAuthResponse.User.Id, null);
+            return Follows(null);
         }
 
         /// <summary>
         /// Get the list of users this user follows.
-        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
+        /// <para>Requires Authentication: True</para><para><c>Required scope:</c> relationships
         /// </para>
         /// </summary>
-        /// <param name="userId">The list of users that this user id is following.</param>
         /// <returns>UsersResponse</returns>
-        public Task<UsersResponse> Follows(long userId)
+        public Task<UsersResponse> Follows(string cursor)
         {
-            return Follows(userId, null);
-        }
+            AssertIsAuthenticated();
 
-        /// <summary>
-        /// Get a page worth of users this user follows.
-        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The list of users that this user id is following.</param>
-        /// <param name="cursor">The next cursor id</param>
-        /// <returns>UsersResponse</returns>
-        public Task<UsersResponse> Follows(long userId, string cursor)
-        {
-            var request = Request("{id}/follows");
-            request.AddUrlSegment("id", userId.ToString());
+            var request = Request("self/follows");
             request.AddParameter("cursor", cursor);
 
             return Client.ExecuteAsync<UsersResponse>(request);
+        }
+
+        /// <summary>
+        /// Get the list of users this user follows.
+        /// <para>Requires Authentication: True</para><para><c>Required scope:</c> relationships
+        /// </para>
+        /// </summary>
+        /// <returns>UsersResponse</returns>
+        public async Task<List<User>> FollowsAll()
+        {
+            AssertIsAuthenticated();
+            return await new PageReader<User, UsersResponse>().ReadPages(Follows);
         }
 
         /// <summary>
@@ -109,19 +108,6 @@ namespace InstaSharp.Endpoints
         {
             AssertIsAuthenticated();
             return await new PageReader<User, UsersResponse>().ReadPages(OAuthResponse.User.Id, FollowedBy);
-        }
-
-        /// <summary>
-        /// Get the list of users this user follows.
-        /// <para>Requires Authentication: False</para><para><c>Required scope:</c> relationships
-        /// </para>
-        /// </summary>
-        /// <param name="userId">The list of users that this user id is following.</param>
-        /// <returns>UsersResponse</returns>
-        public async Task<List<User>> FollowsAll(long userId)
-        {
-            AssertIsAuthenticated();
-            return await new PageReader<User, UsersResponse>().ReadPages(userId, Follows);
         }
 
 

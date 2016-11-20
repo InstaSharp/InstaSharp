@@ -27,5 +27,25 @@ namespace InstaSharp.Endpoints
             } while (!String.IsNullOrEmpty(nextCursor));
             return result;
         }
+
+
+        public async Task<List<TResult>> ReadPages(Func<string, Task<T1>> method, int pageLimit = 0)
+        {
+            var result = new List<TResult>();
+            var pageCount = 0;
+            string nextCursor = null;
+            do
+            {
+                var response = await method(nextCursor);
+                result.AddRange(response.Data);
+                nextCursor = response.Pagination.NextCursor;
+                pageCount++;
+                if (pageLimit != 0 && pageCount == pageLimit)
+                {
+                    break;
+                }
+            } while (!String.IsNullOrEmpty(nextCursor));
+            return result;
+        }
     }
 }
