@@ -83,22 +83,6 @@ namespace InstaSharp.Tests
             AssertMissingClientSecretUrlParameter(result);
         }
 
-        [TestCategory("Subscribe.Create")]
-        [TestMethod]
-        public async Task SubscribeTag_WithNoClientSecret()
-        {
-            var result = await realtimeWithoutSecret.CreateTag("csharp");
-            AssertMissingClientSecretUrlParameter(result);
-        }
-
-        [TestCategory("Subscribe.Unsubscribe")]
-        [TestMethod]
-        public async Task RemoveSubscriptionByObjectType_WithNoClientSecret()
-        {
-            var result = await realtimeWithoutSecret.RemoveSubscription(Subscription.Object.Tag);
-            AssertMissingClientSecretUrlParameter(result);
-        }
-
         [TestCategory("Subscribe.UnsubscribeAll")]
         [TestMethod]
         public async Task RemoveAllSubscriptions_WithNoClientSecret()
