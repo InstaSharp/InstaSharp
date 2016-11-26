@@ -52,7 +52,6 @@
     <Compile Include="Endpoints\Relationships.cs" />
     <Compile Include="Endpoints\Tags.cs" />
     <Compile Include="Endpoints\Users.cs" />
-    <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\HttpClientExtensions.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />

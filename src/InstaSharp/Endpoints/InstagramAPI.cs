@@ -1,10 +1,12 @@
 ﻿using InstaSharp.Extensions;
 using InstaSharp.Models.Responses;
+using Org.BouncyCastle.Crypto.Digests;
+using Org.BouncyCastle.Crypto.Macs;
+using Org.BouncyCastle.Crypto.Parameters;
 using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace InstaSharp.Endpoints
@@ -94,8 +96,6 @@ namespace InstaSharp.Endpoints
 
         private string CreateRequestSignature(HttpRequestMessage request)
         {
-            var encoding = new ASCIIEncoding();
-
             var valueToHash = request.RequestUri.AbsolutePath.StartsWith("/v1/") ? request.RequestUri.AbsolutePath.Substring(3) :  request.RequestUri.AbsolutePath;
 
             var queryParams = string.Join("|", request.RequestUri.Query.Substring(1).Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries).OrderBy(x => x));
@@ -105,9 +105,22 @@ namespace InstaSharp.Endpoints
                 valueToHash = valueToHash + "|" + queryParams;
             }            
 
-            var hash = new HMACSHA256(encoding.GetBytes(InstagramConfig.ClientSecret)).ComputeHash(encoding.GetBytes(valueToHash));
-            var digest = hash.ByteArrayToString().ToLower();
+            var hash = Hash(InstagramConfig.ClientSecret, valueToHash);
+            var digest = BitConverter.ToString(hash).Replace("-", "").ToLower();
             return digest;
+        }
+
+        private static byte[] Hash(string key, string text)
+        {
+            var hmac = new HMac(new Sha256Digest());
+            hmac.Init(new KeyParameter(Encoding.UTF8.GetBytes(key)));
+            byte[] result = new byte[hmac.GetMacSize()];
+            byte[] bytes = Encoding.UTF8.GetBytes(text);
+
+            hmac.BlockUpdate(bytes, 0, bytes.Length);
+            hmac.DoFinal(result, 0);
+
+            return result;
         }
 
         internal HttpRequestMessage Request(string fragment)
