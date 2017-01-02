@@ -6,7 +6,7 @@
         <title>InstaSharp</title>
         <authors>Burke Holland,Felipe Fujiy</authors>
         <owners>Burke Holland,Felipe Fujiy</owners>
-        <projectUrl>http://instasharp.org</projectUrl>
+        <projectUrl>http://instasharp.github.io/InstaSharp/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>InstaSharp is a wrapper around the Instagram API. It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.</description>
         <summary>InstaSharp is a C# library that wraps the Instagram API and makes it easy to write applications with Instagram data.</summary>
