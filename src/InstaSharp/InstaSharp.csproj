@@ -1,124 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CD3EA37A-6C9D-4B74-A2A8-1483259FB1B8}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InstaSharp</RootNamespace>
-    <AssemblyName>InstaSharp</AssemblyName>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netstandard1.2</TargetFramework>
+    <Version>2.0.6</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Description>InstaSharp is a wrapper around the Instagram API. It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Felipe Fujiy Pessoto, Burke Holland</Authors>
+    <PackageProjectUrl>http://instasharp.github.io/InstaSharp/</PackageProjectUrl>
+    <PackageReleaseNotes>.NET Standard 1.2</PackageReleaseNotes>
+    <PackageTags>Instagram REST API C# SDK</PackageTags>
+    <RepositoryUrl>https://github.com/InstaSharp/InstaSharp</RepositoryUrl>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\InstaSharp.XML</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Endpoints\Comments.cs" />
-    <Compile Include="Endpoints\Embedding.cs" />
-    <Compile Include="Endpoints\Geographies.cs" />
-    <Compile Include="Endpoints\Likes.cs" />
-    <Compile Include="Endpoints\InstagramApi.cs" />
-    <Compile Include="Endpoints\Locations.cs" />
-    <Compile Include="Endpoints\Media.cs" />
-    <Compile Include="Endpoints\PageReader.cs" />
-    <Compile Include="Models\Attribution.cs" />
-    <Compile Include="Models\IncomingStatus.cs" />
-    <Compile Include="Models\MediaSize.cs" />
-    <Compile Include="Endpoints\NamespaceDoc.cs" />
-    <Compile Include="Endpoints\Relationships.cs" />
-    <Compile Include="Endpoints\Tags.cs" />
-    <Compile Include="Endpoints\Users.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\HttpClientExtensions.cs" />
-    <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
-    <Compile Include="Extensions\Int64Extensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Infrastructure\UnixDateTimeConverter.cs" />
-    <Compile Include="Models\Caption.cs" />
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\NamespaceDoc.cs" />
-    <Compile Include="Models\OutgoingStatus.cs" />
-    <Compile Include="Models\Position.cs" />
-    <Compile Include="Models\IPagination.cs" />
-    <Compile Include="Models\Responses\OEmbedResponse.cs" />
-    <Compile Include="Models\RealtimeUpdateItem.cs" />
-    <Compile Include="Models\Resolution.cs" />
-    <Compile Include="Models\Responses\NamespaceDoc.cs" />
-    <Compile Include="Models\Responses\SubscriptionsResponse.cs" />
-    <Compile Include="Models\Responses\TagsMultiplePagesResponse.cs" />
-    <Compile Include="Models\ShortCodeResponse.cs" />
-    <Compile Include="Models\UserInPhoto.cs" />
-    <Compile Include="Models\Video.cs" />
-    <Compile Include="Models\Responses\SubscriptionResponse.cs" />
-    <Compile Include="OAuth.cs" />
-    <Compile Include="InstagramConfig.cs" />
-    <Compile Include="Models\UserInfo.cs" />
-    <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\Count.cs" />
-    <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\Likes.cs" />
-    <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Media.cs" />
-    <Compile Include="Models\Meta.cs" />
-    <Compile Include="Models\Pagination.cs" />
-    <Compile Include="Models\Relationship.cs" />
-    <Compile Include="Models\Responses\CommentsResponse.cs" />
-    <Compile Include="Models\Responses\CommentResponse.cs" />
-    <Compile Include="Models\Responses\Response.cs" />
-    <Compile Include="Models\Responses\MediasResponse.cs" />
-    <Compile Include="Models\Responses\LikesResponse.cs" />
-    <Compile Include="Models\Responses\LocationResponse.cs" />
-    <Compile Include="Models\Responses\LocationsResponse.cs" />
-    <Compile Include="Models\Responses\MediaResponse.cs" />
-    <Compile Include="Models\Responses\OAuthResponse.cs" />
-    <Compile Include="Models\Responses\RelationshipResponse.cs" />
-    <Compile Include="Models\Responses\TagResponse.cs" />
-    <Compile Include="Models\Responses\TagsResponse.cs" />
-    <Compile Include="Models\Responses\UsersResponse.cs" />
-    <Compile Include="Models\Subscription.cs" />
-    <Compile Include="Models\Tag.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Responses\UserResponse.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Endpoints\Subscription.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.1.2" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="InstaSharp.nuspec" />
-    <None Include="project.json" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
