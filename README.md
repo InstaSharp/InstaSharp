@@ -10,11 +10,11 @@
 
 InstaSharp is a wrapper around the Instagram API.  It's goal is to provide you with a clean and neat interface for ineracting with Instagram's data services, while taking care of all the lower level things like HTTP requests, OAuth flow, and mapping the JSON request to .NET classes.
 
-###Where do I get support?
+### Where do I get support?
 
 Bugs, Feature Requests and Discussion at [github.com/InstaSharp/InstaSharp/issues](https://github.com/InstaSharp/InstaSharp/issues) or on [Stack Overflow](http://stackoverflow.com/questions/tagged/instasharp). Feel free to submit Pull Requests on GitHub.
 
-###Where is the current documentation?
+### Where is the current documentation?
 
 See [Documentation](http://instasharp.github.io/InstaSharp/Documentation/index.html)
 
