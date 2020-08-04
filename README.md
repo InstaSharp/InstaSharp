@@ -1,3 +1,6 @@
+# INACTIVE PROJECT - Instagram changed the policies to access the APIs, making it impossible to properly test the library.
+
+
 # InstaSharp
 
 [![Join the chat at https://gitter.im/InstaSharp/InstaSharp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/InstaSharp/InstaSharp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
